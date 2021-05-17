@@ -1,4 +1,9 @@
 // Import libraries here 👇🏻
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/grid";
 
 // Reset
 @import "reset.css";
