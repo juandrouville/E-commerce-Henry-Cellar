@@ -1,5 +1,8 @@
 // Import libraries here 👇🏻
 
+// Reset
+@import "reset.css";
+
 // Utils
 @import "./utils/variables";
 @import "./utils/mixins";
@@ -26,4 +29,30 @@ body {
   "Segoe UI Emoji",
   "Segoe UI Symbol";
   ;
+
+  // Remove this styles 👇🏻
+  .welcome-screen {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3098F3;
+    color: $white;
+    text-align: center;
+
+    .icon {
+      
+      svg {
+        width: auto;
+        height: 275px;
+      }
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      margin-top: 3rem;
+    }
+  }
+  // Remove this styles 👆🏻
 }
