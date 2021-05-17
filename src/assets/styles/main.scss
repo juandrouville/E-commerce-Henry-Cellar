@@ -1,0 +1,29 @@
+// Import libraries here 👇🏻
+
+// Utils
+@import "./utils/variables";
+@import "./utils/mixins";
+
+// Layouts
+@import './layouts/layout-primary';
+
+// Components
+@import "./components/menu";
+
+// Pages
+@import "./screens/home";
+
+body {
+  font-family: $font--primary, // 👈🏻 replace with the font family
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Helvetica,
+  Arial,
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol";
+  ;
+}
