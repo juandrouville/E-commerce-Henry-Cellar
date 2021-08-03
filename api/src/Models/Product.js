@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define("Accessories", {
+  sequelize.define("product", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,11 +15,7 @@ module.exports = (sequelize) => {
     description: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    quality: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
+    },    
     image: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,6 +24,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
+    },
+    harvest: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   });
 };

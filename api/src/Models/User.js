@@ -34,14 +34,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: "",
     },
-    subscribed: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false,
-    },
-    blocked: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
+    // subscribed: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false,
+    //   allowNull: false,
+    // },
+    // blocked: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false,
+    // },
   });
 };

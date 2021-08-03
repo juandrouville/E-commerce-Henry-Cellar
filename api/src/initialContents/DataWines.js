@@ -1,4 +1,5 @@
 const products = [
+
     {
         name:'Terra Malbec',
         img:'www.espaciovino.com.ar/media/default/0001/63/thumb_62806_default_small.jpeg',
@@ -321,8 +322,5 @@ const products = [
         category: "wines",
     },
   
-
-  
 ]
-
 
