@@ -207,7 +207,7 @@ const products = [
         precio: 830,
         stock:30,
         category: "wines",
-    }
+    },
 
     {
         name: "Cafayate Torrontes",
