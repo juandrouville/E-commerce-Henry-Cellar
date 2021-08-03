@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define("variety", {
     id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false,
     },
     type: {
