@@ -30,9 +30,16 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-//const { models } = sequelize.models;
+const { Categories,Order,Orderline,Product,Review,User,Variety,Wineries } = sequelize.models;
 
 //Relations 
+
+// User.hasMany(Order)
+// Order.hasMany(Orderline)
+// //Orderline.hasOne(Product)
+// Product.belongsTo(Categories)
+// Wineries.hasMany(Product)
+
 
 
 module.exports = {
