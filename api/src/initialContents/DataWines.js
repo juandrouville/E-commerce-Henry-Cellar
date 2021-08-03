@@ -8,7 +8,7 @@ const products = [
         bodega:'Viniterra',
         precio: 432,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Postales Del Fin Del Mundo',
@@ -19,7 +19,7 @@ const products = [
         bodega:'Del Fin Del Mundo',
         precio: 540,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Dv Catena Cabernet Malbec ',
@@ -30,7 +30,7 @@ const products = [
         bodega:'Catena Zapata',
         precio: 1.500,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Del Fin Del Mundo Special Blend',
@@ -41,7 +41,7 @@ const products = [
         bodega:'Del Fin del Mundo',
         precio: 3.870,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Quara Reserva Cabeernet Sauvignon',
@@ -52,7 +52,7 @@ const products = [
         bodega:'Finca Quara',
         precio: 410,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Famiglia Bianchi Cabernet Sauvignon',
@@ -63,7 +63,7 @@ const products = [
         bodega:'Casa Bianchi',
         precio: 810,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Pulenta Estate Merlot',
@@ -74,7 +74,7 @@ const products = [
         bodega:'Pulenta Estate',
         precio: 1.750,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Casa Boher Merlot',
@@ -85,7 +85,7 @@ const products = [
         bodega:'Rosell Boher',
         precio: 1.100,
         stock:30,
-        category:wine,
+        category:'wine',
     },
     {
         name:'Sacacorcho 2 tiempos Azul WineFroz',
@@ -96,7 +96,7 @@ const products = [
         bodega:null,
         precio: 550,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Sacacorcho Caucho Winefroz',
@@ -107,7 +107,7 @@ const products = [
         bodega:null,
         precio: 4.150,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Sacacorcho Acero Winefroz',
@@ -118,7 +118,7 @@ const products = [
         bodega:null,
         precio: 4.150,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Aireador de Vino Winefroz',
@@ -129,7 +129,7 @@ const products = [
         bodega:null,
         precio: 4.999,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Limpia Copa + Limpia Decanter Winefroz',
@@ -140,7 +140,7 @@ const products = [
         bodega:null,
         precio: 2.150,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Copa Bordeaux Linea Wine Lovers ',
@@ -151,7 +151,7 @@ const products = [
         bodega:null,
         precio: 1375,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Copa Vino Blanco Linea Wine Lovers ',
@@ -162,7 +162,7 @@ const products = [
         bodega:null,
         precio: 1375,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Decanter Casual',
@@ -173,7 +173,7 @@ const products = [
         bodega:null,
         precio: 6.930,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Decanter Hybrid',
@@ -184,7 +184,7 @@ const products = [
         bodega:null,
         precio: 12.400,
         stock:30,
-        category:accessories,
+        category:'accessories',
     },
     {
         name:'Alamos Chardonnay',
