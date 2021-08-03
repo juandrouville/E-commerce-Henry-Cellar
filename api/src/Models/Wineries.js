@@ -9,11 +9,18 @@ module.exports = (sequelize) => {
     },
 
     location :{
-        type:DataTypes.STRING
+        type:DataTypes.STRING,
+        allowNull:false,
     },
 
     email:{
-        type:DataTypes.STRING
+        type:DataTypes.STRING,
+        allowNull: false,
+    },
+
+    description:{
+      type:DataTypes.TEXT,
+      allowNull: false,
     }
   });
   
