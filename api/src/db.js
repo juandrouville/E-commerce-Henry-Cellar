@@ -30,13 +30,29 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Categories,Order,Orderline,Product,Review,User,Variety,Wineries } = sequelize.models;
+const { Categories,Order,Orderline,Product,Review,User,Wineries } = sequelize.models;
 
 //Relations 
 Product.belongsToMany(Categories, {through: 'products_categories'});
 Categories.belongsToMany(Product, {through: 'products_categories'});
 
+Product.hasMany(Wineries);
+Wineries.belongsTo(Product);
 
+Review.hasMany(Product);
+Product.belongsTo(Review);
+
+Orderline.hasMany(Order);
+Order.belongsTo(Orderline);
+
+Product.hasOne(Orderline);
+Orderline.belongsTo(Product);
+
+Review.hasOne(Order);
+Order.belongsTo(Review);
+
+Order.hasMany(User);
+User.belongsTo(Order);
 
 
 
