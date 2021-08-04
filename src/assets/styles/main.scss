@@ -13,7 +13,7 @@
 @import "./utils/mixins";
 
 // Layouts
-@import './layouts/layout-primary';
+@import "./layouts/layout-primary";
 
 // Components
 @import "./components/menu";
@@ -22,18 +22,12 @@
 @import "./screens/home";
 
 body {
-  font-family: $font--primary, // 👈🏻 replace with the font family
-  -apple-system,
-  BlinkMacSystemFont,
-  "Segoe UI",
-  Roboto,
-  Helvetica,
-  Arial,
-  sans-serif,
-  "Apple Color Emoji",
-  "Segoe UI Emoji",
-  "Segoe UI Symbol";
-  ;
+  font-family: $font--primary,
+    // 👈🏻 replace with the font family
+    -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: red;
 
   // Remove this styles 👇🏻
   .welcome-screen {
@@ -42,12 +36,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3098F3;
+    background-color: red;
     color: $white;
     text-align: center;
 
     .icon {
-      
       svg {
         width: auto;
         height: 275px;
