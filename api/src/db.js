@@ -36,23 +36,36 @@ const { Categories,Order,Orderline,Product,Review,User,Wineries } = sequelize.mo
 Product.belongsToMany(Categories, {through: 'products_categories'});
 Categories.belongsToMany(Product, {through: 'products_categories'});
 
-Product.hasMany(Wineries);
-Wineries.belongsTo(Product);
+// Product.hasMany(Wineries, {
+//   foreignKey: 'product_wineries'
+// });
+// Wineries.belongsTo(Product);
 
-Review.hasMany(Product);
-Product.belongsTo(Review);
+// Review.hasMany(Product, {
+//   foreignKey: 'review_product'
+// });
+// Product.belongsTo(Review);
 
-Orderline.hasMany(Order);
-Order.belongsTo(Orderline);
+// Orderline.hasMany(Order, {
+//   foreignKey: 'orderline_order'
+// });
+// Order.belongsTo(Orderline);
 
-Product.hasOne(Orderline);
-Orderline.belongsTo(Product);
+// Product.hasOne(Orderline, {
+//   foreignKey: 'product_orderline'
+// });
+// Orderline.belongsTo(Product);
 
-Review.hasOne(Order);
-Order.belongsTo(Review);
 
-Order.hasMany(User);
-User.belongsTo(Order);
+// Review.hasOne(Order, {
+//   foreignKey: 'review_order'
+// });
+// Order.belongsTo(Review);
+
+// Order.hasMany(User, {
+//   foreignKey: 'order_user'
+// });
+// User.belongsTo(Order);
 
 
 
