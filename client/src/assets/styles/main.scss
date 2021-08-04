@@ -1,0 +1,63 @@
+// Import libraries here 👇🏻
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/grid";
+
+// Reset
+@import "reset.css";
+
+// Utils
+@import "./utils/variables";
+@import "./utils/mixins";
+
+// Layouts
+@import './layouts/layout-primary';
+
+// Components
+@import "./components/menu";
+
+// Pages
+@import "./screens/home";
+
+body {
+  font-family: $font--primary, // 👈🏻 replace with the font family
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Helvetica,
+  Arial,
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol";
+  ;
+
+  // Remove this styles 👇🏻
+  .welcome-screen {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3098F3;
+    color: $white;
+    text-align: center;
+
+    .icon {
+      
+      svg {
+        width: auto;
+        height: 275px;
+      }
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      margin-top: 3rem;
+    }
+  }
+  // Remove this styles 👆🏻
+}
