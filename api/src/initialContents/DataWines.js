@@ -164,7 +164,7 @@ const products = [
         bodega:'Alamos',
         precio: 540,
         stock:30,
-        category:
+        category: ["wines",'Blanco','Chardonnay'],
     },
     {
         name:'La Linda Chardonnay',
