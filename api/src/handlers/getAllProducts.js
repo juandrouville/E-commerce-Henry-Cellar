@@ -6,6 +6,31 @@ const getAllproducts = async (req, res, next) => {
     var precio = req.query.precio;
     var categoria = req.query.categoria;
     var bodega = req.query.bodega
+    if (order) {
+        if (precio === 'Ascendant'){
+            var asc = await Prodcut.findAll({
+                order: sequelize.literal('precio ASC')
+            })
+            res.send(asc)
+        } 
+        if (precio === 'Descendant') {
+            var desc = await Prodcut.findAll({
+                order: sequelize.literal('precio DESC')
+            })
+            res.send(desc)
+        }
+        else if (categoria) {
+            var findOne = await Categories.findAll({
+                where: {
+                    categoria: categoria,
+                }
+            })
+            if(findOne.length === 0){
+                return res.status(404).send('Error: Name of continent is invalid')
+            } else return res.json(findOne)
+        }
+    }
+    else{
     try {
         const ProductDB = await Product.findAll({
            
@@ -24,7 +49,7 @@ const getAllproducts = async (req, res, next) => {
                 name: p.name,
                 img: p.img,
                 description: p.description,
-                bodega: p.bodega,
+                harvest: p.harvest,
                 precio: p.precio
             }
             resultAllProduct.push(obj);
@@ -36,7 +61,7 @@ const getAllproducts = async (req, res, next) => {
         next(error)
     }
 
-
+    }
 }
 
 
