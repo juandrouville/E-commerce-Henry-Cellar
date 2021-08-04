@@ -15,6 +15,7 @@ const SearchBar = () => {
     const handleClick = (event)=>{
         event.preventDefault();
         //dispatch(getNameProduct(product));
+
     }
     
     return (
