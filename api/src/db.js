@@ -30,65 +30,22 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Categories,Order,Product,Review,User,Wineries } = sequelize.models;
+const { Categories,Order,Product,Review,User,Wineries,Orderline } = sequelize.models;
 
 //Relations 
 Categories.belongsToMany(Product, {through: 'products_categories'});
 Product.belongsToMany(Categories, {through: 'products_categories'});
 
-const Orderline = sequelize.define('oderline',{
-  cantidad:{
-      type:DataTypes.DECIMAL,
-      allowNull:false
-  }
-});
+Order.hasMany(Orderline);
+Orderline.belongsTo(Order);
 
-
-Order.belongsToMany(Product, { through: Orderline });
-Product.belongsToMany(Order, { through: Orderline });
-
-User.hasMany(Order);//Esto va sin tabla intermedia, la tabla intermedia es para la relacion belongsToMany
+User.hasMany(Order);
 Order.belongsTo(User);
 
-//el producto va a tener muchas reviews
-//agrega una tabla a reviews productosid
+Orderline.hasOne(Product);
+
 Product.hasMany(Review)
-
-//las reviews van a tener un usuario
-//agrega userid a la tabla reviews
-Review.belongsTo(User)
-// Product.hasMany(Wineries, {
-//   foreignKey: 'product_wineries'
-// });
-// Wineries.belongsTo(Product);
-
-// Review.hasMany(Product, {
-//   foreignKey: 'review_product'
-// });
-// Product.belongsTo(Review);
-
-// Orderline.hasMany(Order, {
-//   foreignKey: 'orderline_order'
-// });
-// Order.belongsTo(Orderline);
-
-// Product.hasOne(Orderline, {
-//   foreignKey: 'product_orderline'
-// });
-// Orderline.belongsTo(Product);
-
-
-// Review.hasOne(Order, {
-//   foreignKey: 'review_order'
-// });
-// Order.belongsTo(Review);
-
-// Order.hasMany(User, {
-//   foreignKey: 'order_user'
-// });
-// User.belongsTo(Order);
-
-
+Review.belongsTo(Product)
 
 module.exports = {
   ...sequelize.models, 
