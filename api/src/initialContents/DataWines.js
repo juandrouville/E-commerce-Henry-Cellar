@@ -1,4 +1,4 @@
-export const products = [
+const products = [
 
     {
         name:'Terra Malbec',
@@ -269,4 +269,8 @@ export const products = [
     },
   
 ]
+
+module.exports = {
+    products
+}
 
