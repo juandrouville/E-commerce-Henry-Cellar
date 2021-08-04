@@ -12,7 +12,7 @@ import Home from 'pages/index.js'
 
 ReactDOM.render(
   <Router>
-    <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Home} />
   </Router>,
   document.getElementById('root')
 )
