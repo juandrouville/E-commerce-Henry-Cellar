@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
@@ -30,12 +30,33 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Categories,Order,Orderline,Product,Review,User,Wineries } = sequelize.models;
+const { Categories,Order,Product,Review,User,Wineries } = sequelize.models;
 
 //Relations 
-Product.belongsToMany(Categories, {through: 'products_categories'});
 Categories.belongsToMany(Product, {through: 'products_categories'});
+Product.belongsToMany(Categories, {through: 'products_categories'});
 
+const Orderline = sequelize.define('oderline',{
+  cantidad:{
+      type:DataTypes.DECIMAL,
+      allowNull:false
+  }
+});
+
+
+Order.belongsToMany(Product, { through: Orderline });
+Product.belongsToMany(Order, { through: Orderline });
+
+User.hasMany(Order);//Esto va sin tabla intermedia, la tabla intermedia es para la relacion belongsToMany
+Order.belongsTo(User);
+
+//el producto va a tener muchas reviews
+//agrega una tabla a reviews productosid
+Product.hasMany(Review)
+
+//las reviews van a tener un usuario
+//agrega userid a la tabla reviews
+Review.belongsTo(User)
 // Product.hasMany(Wineries, {
 //   foreignKey: 'product_wineries'
 // });
