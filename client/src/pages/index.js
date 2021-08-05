@@ -1,3 +1,4 @@
+
 import menu from "../components/menu/index.js";
 
 const Home = () => {

@@ -1,10 +1,19 @@
-const Product = ({ stock, image, name, price }) => {
+const Product = ({ image, name, price }) => {
   return (
     <div className="product">
-      <p>{stock}</p>
-      <img src={image} alt="Henry" />
-      <h3>{name}</h3>
-      <p>{price}</p>
+      <img
+        src="https://cepadevinos.com/wp-content/uploads/2016/09/Paradigma-Blend.jpg"
+        alt="Henry"
+        width="246"
+        height="246"
+      />
+      <div className="product__data">
+        <h3>Paradigma Blend</h3>
+        <br />
+        <p>$500</p>
+        <br />
+        <p className="product__stock">Stock</p>
+      </div>
     </div>
   );
 };

@@ -21,7 +21,7 @@
 @import "./components/productDetail";
 
 // Pages
-@import "./screens/home";
+@import "./screens/catalogo";
 
 body {
   font-family: $font--primary,
@@ -29,30 +29,4 @@ body {
     -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background-color: $blue;
-
-  // Remove this styles 👇🏻
-  .welcome-screen {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: red;
-    color: $white;
-    text-align: center;
-
-    .icon {
-      svg {
-        width: auto;
-        height: 275px;
-      }
-    }
-
-    h1 {
-      font-size: 4.5rem;
-      margin-top: 3rem;
-    }
-  }
-  // Remove this styles 👆🏻
 }
