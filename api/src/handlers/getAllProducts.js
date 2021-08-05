@@ -54,9 +54,18 @@ const getAllproducts = async (req, res, next) => {
 
 
 };
-
+const getProductoById = async (req, res) => {
+    try {
+      const producto = await Productos.findById(req.params.id);
+      res.json(producto);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ mensaje: "fallo en el servidor" });
+    }
+  };
 
 
 module.exports = {
     getAllproducts,
+    getProductoById
 }
