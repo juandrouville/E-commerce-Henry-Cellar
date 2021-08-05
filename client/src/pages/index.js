@@ -1,7 +1,6 @@
-
 import menu from "../components/menu/index.js";
 
-const Home = () => {
+const Catalogo = () => {
   return (
     <div className="welcome-screen">
       <div>
@@ -11,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Catalogo;

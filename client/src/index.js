@@ -12,11 +12,14 @@ import "assets/styles/main.scss";
 // Pages 👇🏻
 import Home from "pages/index.js";
 import menu from "components/menu/index.js";
+import ProductDetail from "components/productDetail/ProductDetail";
+
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Route path="/" component={menu} />
       <Route exact path="/" component={Home} />
+      <Route exact path="/product-detail" component={ProductDetail} />
     </Router>
   </Provider>,
   document.getElementById("root")
