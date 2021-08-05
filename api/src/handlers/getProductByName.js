@@ -2,7 +2,7 @@ const { Product, Categories } = require("../db");
 const { Op } = require("sequelize");
 
 const getProductByName = async (req, res, next) => {
-  const { name } = req.params;
+  const name = req.query.name;
   try {
     const productSearch = await Product.findAll({
       where: {
@@ -10,15 +10,22 @@ const getProductByName = async (req, res, next) => {
           [Op.iLike]: `%${name}%`,
         },
       },
-      include: [Categories],
+      include: {
+        model: Categories,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
     });
+
     if (productSearch.length === 0) {
-      res.status(404).send({ message: "Nothing found in our Database" });
+      return res.status(404).send({ message: "Nothing found in our Database" });
     } else {
-      res.send(productSearch);
+      return res.json(productSearch);
     }
   } catch (error) {
-    res.status(404).send({ message: "Something went wrong" });
+    next(error);
   }
 };
 

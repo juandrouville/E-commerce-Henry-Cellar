@@ -1,10 +1,10 @@
-import menu from "../components/menu/index.js";
+import NavBar from "../components/NavBar/NavBar.js";
 
 const Catalogo = () => {
   return (
     <div className="welcome-screen">
       <div>
-        <menu />
+        <NavBar />
       </div>
     </div>
   );

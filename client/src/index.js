@@ -10,16 +10,21 @@ import Store from "./Store/index.js";
 import "assets/styles/main.scss";
 
 // Pages 👇🏻
-import Home from "pages/index.js";
-import menu from "components/menu/index.js";
 import ProductDetail from "components/productDetail/ProductDetail";
 
+import Home from "pages/Home.js";
+import NavBar from "components/NavBar/NavBar.js";
+import Edit from "components/Edit/Edit";
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
-      <Route path="/" component={menu} />
+      <Route path="/" component={NavBar} />
       <Route exact path="/" component={Home} />
       <Route exact path="/product-detail" component={ProductDetail} />
+      <Route
+        path="/editProduct/:id"
+        render={({ match }) => <Edit id={match.params.id} />}
+      />
     </Router>
   </Provider>,
   document.getElementById("root")
