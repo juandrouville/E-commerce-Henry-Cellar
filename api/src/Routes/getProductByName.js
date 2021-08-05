@@ -1,8 +1,7 @@
-const { Router } = require('express');
-const {getProductByName} = require("../handlers/getProductByName")
+const { Router } = require("express");
+const { getProductByName } = require("../handlers/getProductByName");
 const router = Router();
 
-router.get("/:name", getProductByName);
-
+router.get("/", getProductByName);
 
 module.exports = router;
