@@ -97,7 +97,7 @@ const getAllproducts = async (req, res, next) => {
 
     }
 }
-
+}
 
 module.exports = {
     getAllproducts,

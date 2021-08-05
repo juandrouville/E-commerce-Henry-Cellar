@@ -14,8 +14,7 @@ const postProduct = async (req,res,next) => {
                 price:price,
                 description: description,
                 image: image,
-                stock: stock,
-                harvest: harvest,
+                stock: stock
             }
                 
         })
