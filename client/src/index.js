@@ -10,6 +10,8 @@ import Store from "./Store/index.js";
 import "assets/styles/main.scss";
 
 // Pages 👇🏻
+import ProductDetail from "components/productDetail/ProductDetail";
+
 import Home from "pages/Home.js";
 import NavBar from "components/NavBar/NavBar.js";
 import Edit from "components/Edit/Edit";
@@ -18,7 +20,11 @@ ReactDOM.render(
     <Router>
       <Route path="/" component={NavBar} />
       <Route exact path="/" component={Home} />
-      <Route path="/editProduct/:id" render={({match})=><Edit id={match.params.id}/>}/>
+      <Route exact path="/product-detail" component={ProductDetail} />
+      <Route
+        path="/editProduct/:id"
+        render={({ match }) => <Edit id={match.params.id} />}
+      />
     </Router>
   </Provider>,
   document.getElementById("root")

@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar/NavBar.js";
 
-const Home = () => {
+const Catalogo = () => {
   return (
     <div className="welcome-screen">
       <div>
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Catalogo;
