@@ -34,7 +34,7 @@ const getAllproducts = async (req, res, next) => {
         } else {
 
             const productDB = await Product.findAll({
-                attributes: { exclude: ["createdAt", "updatedAt", 'price'] },
+                attributes: { exclude: ["createdAt", "updatedAt"] },
                 include: {
                     model: Categories,
                     attributes: ["name"],
