@@ -5,13 +5,8 @@ const getAllproducts = async (req, res, next) => {
     var name = req.query.name;
     var precio = req.query.precio;
     var categoria = req.query.categoria;
-<<<<<<< HEAD
-    var bodega = req.query.bodega
-    
-=======
     var bodega = req.query.bodega;
     var order = req.query.order;
->>>>>>> 8026d652b1f0d55e748b7f43484733f13a1efab8
     try {
         if (order) {
             if (precio === 'Ascendant') {
