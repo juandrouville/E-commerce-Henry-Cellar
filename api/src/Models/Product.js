@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },    
     image: {
@@ -24,10 +24,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
-    },
-    harvest: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
     },
   });
 };
