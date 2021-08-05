@@ -1,28 +1,32 @@
-const {Product} =require('../db')
-const {Categories} =require('../db')
+const { Product } = require('../db')
+const { Categories } = require('../db')
 
-async function getProductDetail(req,res,next){
-    const {id}=req.params
+async function getProductDetail(req, res, next) {
+    const { id } = req.params
     try {
-        const product=await Product.findOne({where:{id},include:[Categories]})
+        const product = await Product.findOne({
+            where: { id },
+            attributes: { exclude: ["createdAt", "updatedAt", 'price'] },
+            include: {
+                model: Categories,
+                attributes: ["name"],
+                through: {
+                    attributes: []
+                },
+            },
+        });
 
-        let result={
-         name:product.name,
-         price:product.price,
-         description:product.description,
-         image:product.image,
-         stock:product.stock,
-         harvest:product.harvest || null,
-         categories:product.categories
-        }
-
-     res.json(result)
+        res.json(product);
 
     } catch (error) {
-        
+
         next(error)
-    }
+    };
 
+};
+
+
+
+module.exports = { 
+    getProductDetail, 
 }
-
-module.exports={getProductDetail}

@@ -10,13 +10,13 @@ const getAllproducts = async (req, res, next) => {
     try {
         if (order) {
             if (precio === 'Ascendant') {
-                var asc = await Prodcut.findAll({
+                var asc = await Product.findAll({
                     order: sequelize.literal('precio ASC')
                 })
                 res.send(asc)
             }
             if (precio === 'Descendant') {
-                var desc = await Prodcut.findAll({
+                var desc = await Product.findAll({
                     order: sequelize.literal('precio DESC')
                 })
                 res.send(desc)
