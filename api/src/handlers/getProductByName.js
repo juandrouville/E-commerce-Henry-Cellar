@@ -10,7 +10,13 @@ const getProductByName = async (req, res, next) => {
           [Op.iLike]: `%${name}%`,
         },
       },
-      include: [Categories],
+      include: {
+        model: Categories,
+        attributes: ["name"],
+        through: {
+            attributes: []
+        },
+    },
     });
 
     console.log(productSearch);
