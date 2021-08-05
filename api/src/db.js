@@ -42,7 +42,7 @@ Orderline.belongsTo(Order);
 User.hasMany(Order);
 Order.belongsTo(User);
 
-Orderline.hasOne(Product);
+Product.hasOne(Orderline);
 
 Product.hasMany(Review)
 Review.belongsTo(Product)

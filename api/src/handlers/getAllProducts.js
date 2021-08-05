@@ -1,22 +1,22 @@
 const { Product, Categories } = require("../db");
-const { SetDataInitial } = require('../initialContents/SetDataInitial');
-const { products } = require('../initialContents/DataWines');
+
 
 const getAllproducts = async (req, res, next) => {
     var name = req.query.name;
     var precio = req.query.precio;
     var categoria = req.query.categoria;
-    var bodega = req.query.bodega
+    var bodega = req.query.bodega;
+    var order = req.query.order;
     try {
         if (order) {
             if (precio === 'Ascendant') {
-                var asc = await Prodcut.findAll({
+                var asc = await Product.findAll({
                     order: sequelize.literal('precio ASC')
                 })
                 res.send(asc)
             }
             if (precio === 'Descendant') {
-                var desc = await Prodcut.findAll({
+                var desc = await Product.findAll({
                     order: sequelize.literal('precio DESC')
                 })
                 res.send(desc)
@@ -32,24 +32,26 @@ const getAllproducts = async (req, res, next) => {
                 } else return res.json(findOne)
             }
         } else {
-            // await SetDataInitial(products);
+
             const productDB = await Product.findAll({
                 attributes: { exclude: ["createdAt", "updatedAt", 'price'] },
-                include:{
-                    model:Categories,
-                    attributes: {
-                        exclude: ["createdAt", "updatedAt"]
+                include: {
+                    model: Categories,
+                    attributes: ["name"],
+                    through: {
+                        attributes: []
                     },
-            }});
-            
+                },
+            });
+
             res.send(productDB);
-        }; 
+        };
 
     } catch (error) {
-            next(error)
+        next(error)
+    };
 
 
-        };
 
 };
 
