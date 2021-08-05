@@ -1,7 +1,8 @@
 const { Product, Categories } = require("../db");
+const { Op } = require("sequelize");
 
 const postProduct = async (req,res,next) => {
-    const {name, price, description, image, stock, harvest, categories} = req.body;
+    const {name, price, description, image, stock, categories} = req.body;
 
     try {
         if(!name || !price || name==="" || price===""){
@@ -21,10 +22,12 @@ const postProduct = async (req,res,next) => {
 
         
         if(categories && categories.length>0){
-            categories.forEach(async (c)=>{
+            categories.forEach(async (name)=>{
                 const categorie = await Categories.findOne({
                     where:{
-                        id : c.id
+                        name: {
+                            [Op.iLike]: `%${name}%`,
+                        },
                     }
                 });
                 await categorie.addProduct(addProduct[0])

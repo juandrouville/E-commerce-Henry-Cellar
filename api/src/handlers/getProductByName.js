@@ -10,15 +10,19 @@ const getProductByName = async (req, res, next) => {
           [Op.iLike]: `%${name}%`,
         },
       },
-      include: [Categories],
+      include: {
+        model: Categories,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
     });
 
-    console.log(productSearch);
-    res.json(productSearch);
     if (productSearch.length === 0) {
-      res.status(404).send({ message: "Nothing found in our Database" });
+      return res.status(404).send({ message: "Nothing found in our Database" });
     } else {
-      res.send(productSearch);
+      return res.json(productSearch);
     }
   } catch (error) {
     next(error);
