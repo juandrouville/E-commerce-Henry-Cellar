@@ -1,1 +1,44 @@
 // Your menu styles here 👇🏻
+.menu-left {
+  flex: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+}
+
+.menu-left img {
+  max-height: 75px;
+  max-width: 100px;
+}
+
+.menu-right {
+  flex: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 25px;
+}
+
+.menu-right a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.menu-right a h3 {
+  color: white;
+}
+
+.menu-right a:hover h3 {
+  color: crimson;
+}
+
+.menu-right img {
+  padding: 5px;
+  max-height: 50px;
+  max-width: 50px;
+}

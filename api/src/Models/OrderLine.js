@@ -2,9 +2,6 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("orderline", {
-    product: {
-      type: DataTypes.STRING,
-    },
     unitPrice:{
       type:DataTypes.INTEGER,
       defaultValue:1,

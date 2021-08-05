@@ -1,6 +1,14 @@
-// import Product from "components/product/Product";
-const Catalogo = () => {
-  return <div className="catalogo"></div>;
+
+import menu from "../components/menu/index.js";
+
+const Home = () => {
+  return (
+    <div className="welcome-screen">
+      <div>
+        <menu />
+      </div>
+    </div>
+  );
 };
 
-export default Catalogo;
+export default Home;

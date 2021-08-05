@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
@@ -30,15 +30,22 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Categories,Order,Orderline,Product,Review,User,Variety,Wineries } = sequelize.models;
+const { Categories,Order,Product,Review,User,Wineries,Orderline } = sequelize.models;
 
 //Relations 
-Product.belongsToMany(Categories, {through: 'products_categories'});
 Categories.belongsToMany(Product, {through: 'products_categories'});
+Product.belongsToMany(Categories, {through: 'products_categories'});
 
+Order.hasMany(Orderline);
+Orderline.belongsTo(Order);
 
+User.hasMany(Order);
+Order.belongsTo(User);
 
+Orderline.hasOne(Product);
 
+Product.hasMany(Review)
+Review.belongsTo(Product)
 
 module.exports = {
   ...sequelize.models, 
