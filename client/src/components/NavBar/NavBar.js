@@ -6,7 +6,7 @@ import search from "../../assets/images/search.png";
 import login from "../../assets/images/login.png";
 import { NavLink } from "react-router-dom";
 
-const Menu = () => {
+const NavBar = () => {
   return (
     // Your menu here 👇🏻
     <div className="menu-left">
@@ -35,4 +35,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default NavBar;

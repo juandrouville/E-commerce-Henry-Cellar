@@ -10,12 +10,12 @@ import Store from "./Store/index.js";
 import "assets/styles/main.scss";
 
 // Pages 👇🏻
-import Home from "pages/index.js";
-import menu from "components/menu/index.js";
+import Home from "pages/Home.js";
+import NavBar from "components/NavBar/NavBar.js";
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
-      <Route path="/" component={menu} />
+      <Route path="/" component={NavBar} />
       <Route exact path="/" component={Home} />
     </Router>
   </Provider>,
