@@ -1,7 +1,5 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {Product} =require('./src/db')
-const {Categories} =require('./src/db')
 
 // Syncing all the models at once.
 conn.sync({ force: true })
