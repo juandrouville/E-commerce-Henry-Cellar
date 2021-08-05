@@ -12,11 +12,13 @@ import "assets/styles/main.scss";
 // Pages 👇🏻
 import Home from "pages/Home.js";
 import NavBar from "components/NavBar/NavBar.js";
+import Edit from "components/Edit/Edit";
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Route path="/" component={NavBar} />
       <Route exact path="/" component={Home} />
+      <Route path="/editProduct/:id" render={({match})=><Edit id={match.params.id}/>}/>
     </Router>
   </Provider>,
   document.getElementById("root")
