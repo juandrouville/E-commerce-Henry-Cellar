@@ -1,11 +1,6 @@
-const Home = () => {
-  return (
-    <div className="welcome-screen">
-      <div>
-        
-      </div>
-    </div>
-  )
-}
+// import Product from "components/product/Product";
+const Catalogo = () => {
+  return <div className="catalogo"></div>;
+};
 
-export default Home
+export default Catalogo;
