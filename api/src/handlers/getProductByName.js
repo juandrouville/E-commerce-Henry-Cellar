@@ -12,11 +12,13 @@ const getProductByName = async (req, res, next) => {
             },
             include: [Categories],
         });
-        
+        if (productSearch.length === 0) {
+            res.status(404).send({ message: "Nothing found in our Database" });
+        } else {
         res.send(productSearch);
+        }
     } catch (error) {
-        res.status(400).json({ message: "Nothing found" });
-        console.log("error", error);
+        next(error);
     }
 }
 
