@@ -1,5 +1,6 @@
 
-const { Product } = require('../db');
+const { Product,Categories } = require('../db');
+
 
 async function SetDataInitial(arrayProducts){
     try{
@@ -15,9 +16,16 @@ async function SetDataInitial(arrayProducts){
                     stock:arrayProducts[e].stock,
                 },
             });
-
+            var oneProduct = await Product.findOne({where:{name:arrayProducts[e].name}});
+            
+            
+            await arrayProducts[e].category.map(async (e)=>{
+                await Categories.findOrCreate({where:{name:e}});
+                var category = await Categories.findOne({where:{name:e}});
+                await oneProduct.addCategories(category);
+            });
                 
-    };
+        };
     } catch(error){
         return console.error(error);
     };
