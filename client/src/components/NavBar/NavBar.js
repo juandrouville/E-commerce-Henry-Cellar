@@ -5,6 +5,11 @@ import login from "../../assets/images/login.png";
 import { NavLink } from "react-router-dom";
 import home1 from "assets/icons/logo-wine.png";
 
+//Authentication
+import React from "react";
+import AuthNav from "../auth-Nav/auth-nav";
+
+
 const NavBar = () => {
   return (
     // Your menu here 👇🏻
@@ -23,10 +28,9 @@ const NavBar = () => {
           <img src={cart2} alt="cartlogo" width="40" height="40" />
           <h3>Cart</h3>
         </NavLink>
-        <NavLink to="/login" refresh="true" style={{ textDecoration: "none" }}>
-          <img src={login} alt="loginlogo" width="40" height="40" />
-          <h3>Login</h3>
-        </NavLink>
+
+        <AuthNav />
+        
         <div className="nav__items">
           {" "}
           <SearchBar />

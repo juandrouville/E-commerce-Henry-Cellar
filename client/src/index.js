@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Store from "./Store/index.js";
+import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 
 // Styles
 import "assets/styles/main.scss";
@@ -17,12 +18,14 @@ import Edit from "components/Edit/Edit";
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/product-detail" component={ProductDetail} />
-      <Route
-        path="/editProduct/:id"
-        render={({ match }) => <Edit id={match.params.id} />}
-      />
+      <Auth0ProviderWithHistory>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/product-detail" component={ProductDetail} />
+        <Route
+          path="/editProduct/:id"
+          render={({ match }) => <Edit id={match.params.id} />}
+        />
+      </Auth0ProviderWithHistory>
     </Router>
   </Provider>,
   document.getElementById("root")

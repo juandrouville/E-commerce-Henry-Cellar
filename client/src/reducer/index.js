@@ -1,4 +1,4 @@
-import (GET_ALL_PRODUCTS, SORT_BY_PRECIO)
+import {GET_ALL_PRODUCTS, SORT_BY_PRECIO} from "../actions/index";
 const initialState = {
   prueba: [],
   getAllProducts: [],
