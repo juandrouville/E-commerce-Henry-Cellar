@@ -5,9 +5,9 @@ async function editProduct(req, res, next) {
 
     const {id}=req.params
     
-    const { name, price, description, image, stock, harvest, categories } = req.body;
+    const { name, price, description, image, stock, categories } = req.body;
 
-    let productValues={name:name,description:description,price:price,image:image,stock:stock,harvest:harvest }
+    let productValues={name:name,description:description,price:price,image:image,stock:stock}
 
     try {
         let productToEdit=Product.findOne({where:{id}})
