@@ -3,6 +3,7 @@
   align-items: center;
   flex-direction: column;
   margin: 100px 50px 0px 50px;
+
   @include response(medium) {
     flex-direction: row;
     border: 1px solid rgb(113, 43, 43);
@@ -25,6 +26,17 @@
       border-top: 1px solid black;
       margin-top: 30px;
       padding-top: 20px;
+      text-align: center;
+    }
+  }
+
+  img {
+    width: 267px;
+    height: 267px;
+
+    @include response(medium) {
+      width: 535px;
+      height: 535px;
     }
   }
 }

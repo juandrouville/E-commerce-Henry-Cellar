@@ -1,16 +1,8 @@
 //React
 import React from "react";
 
-// Components
-import Menu from "components/menu/";
-
 const LayoutPrimary = ({ children }) => {
-  return (
-    <React.Fragment>
-      <Menu />
-      {children}
-    </React.Fragment>
-  );
+  return <React.Fragment>{children}</React.Fragment>;
 };
 
 export default LayoutPrimary;

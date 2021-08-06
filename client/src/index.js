@@ -11,14 +11,12 @@ import "assets/styles/main.scss";
 
 // Pages 👇🏻
 import ProductDetail from "components/productDetail/ProductDetail";
-
 import Home from "pages/Home.js";
-import NavBar from "components/NavBar/NavBar.js";
 import Edit from "components/Edit/Edit";
+
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
-      <Route path="/" component={NavBar} />
       <Route exact path="/" component={Home} />
       <Route exact path="/product-detail" component={ProductDetail} />
       <Route

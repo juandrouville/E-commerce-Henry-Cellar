@@ -1,3 +1,4 @@
+import ProductDetail from "components/productDetail/ProductDetail.js";
 import NavBar from "../components/NavBar/NavBar.js";
 
 const Catalogo = () => {
@@ -5,6 +6,7 @@ const Catalogo = () => {
     <div className="welcome-screen">
       <div>
         <NavBar />
+        <ProductDetail />
       </div>
     </div>
   );
