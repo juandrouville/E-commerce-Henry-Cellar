@@ -1,5 +1,7 @@
 
+
 const { Product, Categories,Wineries } = require('../db');
+
 
 
 
@@ -20,23 +22,22 @@ async function SetDataInitial(arrayProducts) {
       var oneProduct = await Product.findOne({ where: { name: arrayProducts[e].name } });
 
 
-      
+
       await arrayProducts[e].category.map(async (e) => {
         await Categories.findOrCreate({ where: { name: e } });
         var category = await Categories.findOne({ where: { name: e } });
         await oneProduct.addCategories(category);
       })
-      
-      if(arrayProducts[e].bodega){
-        
+
+      if (arrayProducts[e].bodega) {
+
         await Wineries.findOrCreate({ where: { name: arrayProducts[e].bodega } });
         var winerie = await Wineries.findOne({ where: { name: arrayProducts[e].bodega } });
         await winerie.setProducts(oneProduct);
       }
-      
-
 
     };
+
   } catch (error) {
     return console.error(error);
   };
@@ -45,6 +46,7 @@ async function SetDataInitial(arrayProducts) {
 module.exports = {
   SetDataInitial,
 };
+
 
 
 
