@@ -1,5 +1,9 @@
 
-const { Product, Categories, Wineries } = require("../db");
+
+const { Product, Categories,Wineries } = require('../db');
+
+
+
 
 async function SetDataInitial(arrayProducts) {
   try {
@@ -42,13 +46,6 @@ async function SetDataInitial(arrayProducts) {
 module.exports = {
   SetDataInitial,
 };
-
-
-
-
-
-
-
 
 
 

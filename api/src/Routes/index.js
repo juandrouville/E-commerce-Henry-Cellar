@@ -7,12 +7,14 @@ const getAllProductsRouter = require("./getAllProducts");
 const productDetail=require("./productDetail");
 const getProductByNameRouter=require("./getProductByName");
 const postProduct=require("./postProduct");
-const editProduct=require('./editProduct')
+const editProduct=require('./editProduct');
+const { getAllCategories } = require('../handlers/getAllCategories');
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product",productDetail);
 router.use("/productSearch",getProductByNameRouter);
 router.use("/postproduct",postProduct);
-router.use("/editProduct",editProduct)
+router.use("/editProduct",editProduct);
+router.use("/categories",getAllCategories);
 
 
 module.exports = router;
