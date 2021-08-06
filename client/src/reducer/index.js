@@ -1,4 +1,5 @@
 import {GET_ALL_PRODUCTS, SORT_BY_PRECIO} from "../actions/index";
+//fixed import
 const initialState = {
   prueba: [],
   getAllProducts: [],

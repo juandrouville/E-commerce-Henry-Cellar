@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Store from "./Store/index.js";
+
+//Auth0
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 
 // Styles

@@ -5,7 +5,7 @@ import login from "../../assets/images/login.png";
 import { NavLink } from "react-router-dom";
 import home1 from "assets/icons/logo-wine.png";
 
-//Authentication
+//Authentication with Auth0
 import React from "react";
 import AuthNav from "../auth-Nav/auth-nav";
 
