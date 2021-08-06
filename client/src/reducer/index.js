@@ -1,13 +1,14 @@
 import {
   GET_ALL_PRODUCTS,
   SORT_BY_PRECIO,
+  PRODUCT_DETAIL,
   POST_PRODUCT,
 } from "../actions/index";
 //fixed import
 const initialState = {
   prueba: [],
   getAllProducts: [],
-  createdProduct: [],
+  productDetail: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -28,7 +29,17 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         createdProduct: state.createdProduct.concat(action.payload),
       };
+    case SORT_BY_PRECIO:
+      return {
+        ...state,
+        getAllProducts: action.payload,
+      };
+    case PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail: action.payload,
+      };
   }
+  return state;
 };
-
 export default rootReducer;

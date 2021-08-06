@@ -13,7 +13,7 @@ import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 import "assets/styles/main.scss";
 
 // Pages 👇🏻
-import ProductDetail from "components/productDetail/ProductDetail";
+import ProductDetail from "./components/productDetail/ProductDetail";
 import Home from "pages/Home.js";
 import Edit from "components/Edit/Edit";
 
@@ -22,7 +22,7 @@ ReactDOM.render(
     <Router>
       <Auth0ProviderWithHistory>
         <Route exact path="/" component={Home} />
-        <Route exact path="/product-detail" component={ProductDetail} />
+        <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route
           path="/editProduct/:id"
           render={({ match }) => <Edit id={match.params.id} />}
