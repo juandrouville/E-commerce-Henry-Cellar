@@ -1,35 +1,36 @@
 import SearchBar from "../SearchBar/SearchBar";
-import Home from "../../assets/images/Home.png";
 import cart2 from "../../assets/images/cart2.png";
-import contact from "../../assets/images/contact.png";
 import search from "../../assets/images/search.png";
 import login from "../../assets/images/login.png";
 import { NavLink } from "react-router-dom";
+import home1 from "assets/icons/logo-wine.png";
 
 const NavBar = () => {
   return (
     // Your menu here 👇🏻
-    <div className="menu-left">
-      <div>
-        <NavLink to="/" refresh="true">
-          <img src={Home} alt="winelogo" />
+    <div className="nav-bar">
+      <div className="nav__brand">
+        <NavLink
+          to="/"
+          refresh="true"
+          className="wine"
+          style={{ textDecoration: "none" }}
+        >
+          <h1>Henry Cellar</h1>
+          <img src={home1} alt="winelogo" width="50" height="50" />
         </NavLink>
-      </div>
-      <div className="menu-right">
-        <NavLink to="/contact" refresh="true">
-          <img src={contact} alt="contactlogo" />
-          <h3>Contact</h3>
-        </NavLink>
-        <NavLink to="/mycart" refresh="true">
-          <img src={cart2} alt="cartlogo" />
+        <NavLink to="/mycart" refresh="true" style={{ textDecoration: "none" }}>
+          <img src={cart2} alt="cartlogo" width="40" height="40" />
           <h3>Cart</h3>
         </NavLink>
-        <NavLink to="/login" refresh="true">
-          <img src={login} alt="loginlogo" />
-          <h3>Log in</h3>
+        <NavLink to="/login" refresh="true" style={{ textDecoration: "none" }}>
+          <img src={login} alt="loginlogo" width="40" height="40" />
+          <h3>Login</h3>
         </NavLink>
-        <SearchBar />
-        <img src={search} alt="searchlogo" />
+        <div className="nav__items">
+          {" "}
+          <SearchBar />
+        </div>
       </div>
     </div>
   );

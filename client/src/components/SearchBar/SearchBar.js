@@ -17,9 +17,9 @@ const SearchBar = () => {
   };
 
   return (
-    <div class="search-box">
+    <div className="search-box">
       <input
-        class="search-txt"
+        className="search-txt"
         type="search"
         placeholder="Search for products"
         onChange={(e) => handleInputChange(e)}

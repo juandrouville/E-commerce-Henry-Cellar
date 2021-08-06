@@ -5,8 +5,7 @@ const ProductDetail = ({ image, name, price, description, stock }) => {
         <img
           src="https://cepadevinos.com/wp-content/uploads/2016/09/Paradigma-Blend.jpg"
           alt="Henry"
-          width="556"
-          height="556"
+          width="40%"
         />
 
         <div className="product__data">

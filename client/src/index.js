@@ -11,10 +11,9 @@ import "assets/styles/main.scss";
 
 // Pages 👇🏻
 import ProductDetail from "components/productDetail/ProductDetail";
-
 import Home from "pages/Home.js";
-
 import Edit from "components/Edit/Edit";
+
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
