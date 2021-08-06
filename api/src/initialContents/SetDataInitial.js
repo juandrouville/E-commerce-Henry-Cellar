@@ -1,9 +1,5 @@
 
-
-
 const { Product, Categories,Wineries } = require('../db');
-
-
 
 
 
@@ -49,3 +45,7 @@ async function SetDataInitial(arrayProducts) {
 module.exports = {
   SetDataInitial,
 };
+
+
+
+
