@@ -6,9 +6,8 @@ const getAllproducts = async (req, res, next) => {
     var precio = req.query.precio;
     var categoria = req.query.categoria;
     var bodega = req.query.bodega;
-    var order = req.query.order;
     try {
-        if (order) {
+        if (precio) {
             if (precio === 'Ascendant') {
                 var asc = await Product.findAll({
                     order: sequelize.literal('precio ASC')
@@ -46,7 +45,7 @@ const getAllproducts = async (req, res, next) => {
                             )
                 
                 if (findOne.length === 0) {
-                    return res.status(404).send('Error: Name of category is invalid')
+                    return res.status(404).send('Error: Name of CELLAR is invalid')
                 } else return res.json(findOne)
             }
         } else {
