@@ -36,6 +36,9 @@ const { Categories,Order,Product,Review,User,Wineries,Orderline } = sequelize.mo
 Categories.belongsToMany(Product, {through: 'products_categories'});
 Product.belongsToMany(Categories, {through: 'products_categories'});
 
+Wineries.hasMany(Product);
+Product.belongsTo(Wineries);
+
 Order.hasMany(Orderline);
 Orderline.belongsTo(Order);
 
