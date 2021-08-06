@@ -1,10 +1,14 @@
 
+
+
 const { Product, Categories,Wineries } = require('../db');
+
+
+
 
 
 async function SetDataInitial(arrayProducts) {
   try {
-
     for (var e in arrayProducts) {
 
       await Product.findOrCreate({
@@ -16,6 +20,7 @@ async function SetDataInitial(arrayProducts) {
           stock: arrayProducts[e].stock,
         },
       });
+
       var oneProduct = await Product.findOne({ where: { name: arrayProducts[e].name } });
 
 

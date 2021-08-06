@@ -6,7 +6,7 @@ async function getProductDetail(req, res, next) {
     try {
         const product = await Product.findOne({
             where: { id },
-            attributes: { exclude: ["createdAt", "updatedAt", 'price'] },
+            attributes: { exclude: ["createdAt", "updatedAt"] },
             include: {
                 model: Categories,
                 attributes: ["name"],

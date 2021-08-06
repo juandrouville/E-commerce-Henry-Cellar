@@ -6,17 +6,28 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Store from "./Store/index.js";
 
+//Auth0
+import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
+
 // Styles
 import "assets/styles/main.scss";
 
 // Pages 👇🏻
-import Home from "pages/index.js";
-import menu from "components/menu/index.js";
+import ProductDetail from "components/productDetail/ProductDetail";
+import Home from "pages/Home.js";
+import Edit from "components/Edit/Edit";
+
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
-      <Route path="/" component={menu} />
-      <Route exact path="/" component={Home} />
+      <Auth0ProviderWithHistory>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/product-detail" component={ProductDetail} />
+        <Route
+          path="/editProduct/:id"
+          render={({ match }) => <Edit id={match.params.id} />}
+        />
+      </Auth0ProviderWithHistory>
     </Router>
   </Provider>,
   document.getElementById("root")
