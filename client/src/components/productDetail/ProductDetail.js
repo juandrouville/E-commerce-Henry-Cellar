@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getProductDetail, clearProductDetail } from "../../actions/index"
+import { getProductDetail, clearProductDetail, getAllproducts } from "../../actions/index"
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -15,11 +15,14 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
+  function onClickFiltro(){
+    dispatch(getAllproducts())
+  }
 
   return (
     <div>
       <Link to={`/`} >
-      <buttom>home</buttom>
+      <buttom onClick={(e) =>onClickFiltro(e)}>home</buttom>
       </Link>
       <div className="product__detail">
         <img

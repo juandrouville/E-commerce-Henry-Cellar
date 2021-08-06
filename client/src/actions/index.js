@@ -53,6 +53,6 @@ export function getProductDetail(id) {
 export function clearProductDetail() {
 	return {
 		type: PRODUCT_DETAIL,
-		payload: undefined,
+		payload: [],
 	};
 };
