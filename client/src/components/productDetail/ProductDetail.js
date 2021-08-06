@@ -1,38 +1,42 @@
-const ProductDetail = ({ image, name, price, description, stock }) => {
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { getProductDetail, clearProductDetail } from "../../actions/index"
+
+export default function ProductDetail() {
+  const dispatch = useDispatch();
+  const productDetail = useSelector((state) => state.productDetail)
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getProductDetail(id));
+    return () => {
+      dispatch(clearProductDetail());
+    };
+  }, [dispatch, id]);
+
+
   return (
     <div>
+      <Link to={`/`} >
+      <buttom>home</buttom>
+      </Link>
       <div className="product__detail">
         <img
-          src="https://cepadevinos.com/wp-content/uploads/2016/09/Paradigma-Blend.jpg"
+          src={productDetail.image}
           alt="Henry"
           width="40%"
         />
 
         <div className="product__data">
           <div className="name__price">
-            <h1>Paradigma blend</h1>
-            <h1>$500</h1>
+            <h1>{productDetail.name}</h1>
+            <h1>{productDetail.price}</h1>
           </div>
-          <p className="data__description">
-            1845. Milán. En su primer laboratorio de la Porta Nuova, Bernardino
-            Branca, un singular autodidacta, obtiene una bebida única producto
-            de la sabia combinación de hierbas, cortezas, raíces y frutos
-            macerados en alcohol. Cuenta con un colaborador, el Dr. Fernet y
-            Bernardino decide unir sus nombres para bautizar a su reciente
-            creación. Nacía Fernet Branca. Con el tiempo se convertiría en un
-            producto y una marca que trascendería las fronteras de Italia para
-            expandirse por el mundo. Hoy, la combinación de ingredientes
-            naturales obtenidos en distintas partes del mundo, macerados en
-            alcohol, respetando estrictamente un proceso que lleva más de 160
-            años y que culmina con una paciente maduración de 12 meses en cubas
-            de roble de Eslavonia es el secreto de Fernet Branca y constituyen
-            su espíritu único.
-          </p>
-          <p>stock</p>
+          <p className="data__description"> {productDetail.description} </p>
+          <p>{productDetail.stock}</p>
         </div>
       </div>
     </div>
   );
 };
-
-export default ProductDetail;
