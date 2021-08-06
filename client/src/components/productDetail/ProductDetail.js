@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getProductDetail, clearProductDetail } from "../../actions/index"
+import { getProductDetail, clearProductDetail, getAllproducts } from "../../actions/index"
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -15,28 +15,34 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
+  function onClickFiltro() {
+    dispatch(getAllproducts())
+  }
 
   return (
     <div>
       <Link to={`/`} >
-      <buttom>home</buttom>
+        <buttom onClick={(e) => onClickFiltro(e)}>home</buttom>
       </Link>
-      <div className="product__detail">
-        <img
-          src={productDetail.image}
-          alt="Henry"
-          width="40%"
-        />
+      {productDetail ?
+        <div className="product__detail">
+          <img
+            src={productDetail.image}
+            alt="Loading..."
+            width="40%"
+          />
 
-        <div className="product__data">
-          <div className="name__price">
-            <h1>{productDetail.name}</h1>
-            <h1>{productDetail.price}</h1>
+          <div className="product__data">
+            <div className="name__price">
+              <h1>{productDetail.name}</h1>
+              <h1>{productDetail.price}</h1>
+            </div>
+            <p className="data__description"> {productDetail.description} </p>
+            <p>{productDetail.stock}</p>
           </div>
-          <p className="data__description"> {productDetail.description} </p>
-          <p>{productDetail.stock}</p>
         </div>
-      </div>
-    </div>
+        : <p>Cargando...</p>
+      }
+    </div >
   );
 };
