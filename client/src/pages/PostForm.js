@@ -11,13 +11,14 @@ export default function PostProduct() {
 
   const [input, setInput] = React.useState({
     name: "",
-    img: "",
     description: "",
     bodega: "",
     precio: "",
     stock: "",
     harvest: "",
     categoria: "",
+    img:
+      "https://previews.123rf.com/images/sakmeniko/sakmeniko2007/sakmeniko200700116/150774024-water-bottle-icon-vector-design-template.jpg",
   });
 
   const [errors, setErrors] = React.useState({});
@@ -55,7 +56,6 @@ export default function PostProduct() {
   return (
     <div className="form">
       <img
-        className="photo"
         src="https://previews.123rf.com/images/sakmeniko/sakmeniko2007/sakmeniko200700116/150774024-water-bottle-icon-vector-design-template.jpg"
         alt="post photo"
       />
