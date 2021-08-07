@@ -1,8 +1,16 @@
 // Your "Home" styles here 👇🏻
 .catalogo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 50px;
+  margin: 15px;
+  display: grid;
+  grid-template-columns: auto;
+  @include response(small) {
+    grid-template-columns: auto auto;
+  }
+
+  @include response(medium) {
+    margin: 40px;
+    grid-template-columns: auto auto auto;
+    gap: 80px;
+    justify-content: center;
+  }
 }

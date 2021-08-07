@@ -11,16 +11,16 @@ function AllProducts({ products, GetProducts }) {
 
   return (
     <div>
-      <div>
+      <div className="catalogo">
         {products ? (
           products.map((p) => {
             return (
-                <Link to={`/product-detail/${p.id}`} key={p.id}>
-              <div>
-                <Product name={p.name} image={p.image} price={p.price} />
-              </div>
-            </Link>
-              );
+              <Link to={`/product-detail/${p.id}`} key={p.id}>
+                <div>
+                  <Product name={p.name} image={p.image} price={p.price} />
+                </div>
+              </Link>
+            );
           })
         ) : (
           <p>Cargando...</p>

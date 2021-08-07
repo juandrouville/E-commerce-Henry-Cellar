@@ -1,13 +1,15 @@
 import NavBar from "../components/NavBar/NavBar.js";
-import AllProducts from "../components/allProducts/allproducts"
+import AllProducts from "../components/allProducts/allproducts";
+import Wine from "assets/images/backgrond-wine.jpeg";
 
 const Catalogo = () => {
   return (
-    <div className="welcome-screen">
+    <div>
       <div>
         <NavBar />
+      </div>
+      <div className="container">
         <AllProducts />
-
       </div>
     </div>
   );
