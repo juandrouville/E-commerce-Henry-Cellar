@@ -7,7 +7,7 @@ import Product from "../product/Product";
 function AllProducts({ products, GetProducts }) {
   useEffect(() => {
     GetProducts();
-  }, []);
+  }, [GetProducts]);
 
   return (
     <div>
