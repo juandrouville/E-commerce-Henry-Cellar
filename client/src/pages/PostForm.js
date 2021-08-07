@@ -13,11 +13,11 @@ export default function PostProduct() {
     name: "",
     description: "",
     bodega: "",
-    precio: "",
+    price: "",
     stock: "",
     harvest: "",
     categoria: "",
-    img:
+    image:
       "https://previews.123rf.com/images/sakmeniko/sakmeniko2007/sakmeniko200700116/150774024-water-bottle-icon-vector-design-template.jpg",
   });
 
@@ -71,7 +71,7 @@ export default function PostProduct() {
             name="name"
             onChange={handleInputChange}
             value={input.name}
-          />{" "}
+          />
           {errors.name && <p className="danger">{errors.name}</p>}
           <div>
             <label>Categoría:</label>
@@ -81,7 +81,7 @@ export default function PostProduct() {
               name="categoria"
               onChange={handleInputChange}
               value={input.categoria}
-            />{" "}
+            />
             {errors.categoria && <p className="danger">{errors.categoria}</p>}
             <div>
               <label>Bodega:</label>
@@ -91,7 +91,7 @@ export default function PostProduct() {
                 name="bodega"
                 onChange={handleInputChange}
                 value={input.bodega}
-              />{" "}
+              />
               {errors.bodega && <p className="danger">{errors.bodega}</p>}
               <div>
                 <label>Cosecha:</label>
@@ -101,18 +101,18 @@ export default function PostProduct() {
                   name="harvest"
                   onChange={handleInputChange}
                   value={input.harvest}
-                />{" "}
+                />
                 {errors.harvest && <p className="danger">{errors.harvest}</p>}
                 <div>
                   <label>Precio:</label>
                   <input
-                    className={errors.precio && "danger"}
+                    className={errors.price && "danger"}
                     type="number"
-                    name="precio"
+                    name="price"
                     onChange={handleInputChange}
-                    value={input.precio}
-                  />{" "}
-                  {errors.precio && <p className="danger">{errors.precio}</p>}
+                    value={input.price}
+                  />
+                  {errors.price && <p className="danger">{errors.price}</p>}
                   <div>
                     <label>Descripción:</label>
                     <input
@@ -121,7 +121,7 @@ export default function PostProduct() {
                       name="description"
                       onChange={handleInputChange}
                       value={input.description}
-                    />{" "}
+                    />
                     {errors.description && (
                       <p className="danger">{errors.description}</p>
                     )}
@@ -133,7 +133,7 @@ export default function PostProduct() {
                         name="stock"
                         onChange={handleInputChange}
                         value={input.stock}
-                      />{" "}
+                      />
                       {errors.stock && <p className="danger">{errors.stock}</p>}
                     </div>
                   </div>

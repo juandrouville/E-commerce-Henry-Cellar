@@ -6,7 +6,7 @@ export function validation(input) {
     errors.name = "Product name must be only letters";
   }
   if (!input.harvest) {
-    errors.harvest = "Product category is required";
+    errors.harvest = "Product harvest is required";
   } else if (!/^[A-Za-z]+$/.test(input.harvest)) {
     errors.harvest = "Product harvest must be only letters";
   }
@@ -14,11 +14,6 @@ export function validation(input) {
     errors.categoria = "Product category is required";
   } else if (!/^[A-Za-z]+$/.test(input.categoria)) {
     errors.categoria = "Product categoria must be only letters";
-  }
-  if (!input.description) {
-    errors.description = "Product category is required";
-  } else if (!/^[A-Za-z]+$/.test(input.description)) {
-    errors.description = "Product description must be only letters";
   }
   if (!input.stock) {
     errors.stock = "Stock is required";
