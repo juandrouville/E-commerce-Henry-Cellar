@@ -1,10 +1,11 @@
 import React from "react";
-import { validation } from "./validation.js";
+import { validation } from "../components/validation/validation.js";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { postProduct } from "../actions";
 
-export function PostProduct() {
+export default function PostProduct() {
   const dispatch = useDispatch();
   //linkear categorias ???
 
@@ -23,7 +24,7 @@ export function PostProduct() {
 
   useEffect(() => {
     setInput({ ...input });
-  });
+  }, []);
 
   const handleInputChange = function (e) {
     setInput({
@@ -58,6 +59,9 @@ export function PostProduct() {
         src="https://previews.123rf.com/images/sakmeniko/sakmeniko2007/sakmeniko200700116/150774024-water-bottle-icon-vector-design-template.jpg"
         alt="post photo"
       />
+      <Link to={`/`}>
+        <button>home</button>
+      </Link>
       <form className="table" onSubmit={handleSubmit}>
         <div>
           <label>Product name:</label>
