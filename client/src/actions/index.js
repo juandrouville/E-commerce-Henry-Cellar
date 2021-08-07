@@ -5,6 +5,7 @@ export const POST_PRODUCT = "POST_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
 export const FILTRO_CATEGORIA = "FILTRO_CATEGORIA";
 export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
+export const SEARCH_PROCUCT_BY_NAME = "SEARCH_PROCUCT_BY_NAME";
 export const ASC = "Ascendant";
 export const DESC = "Descendant";
 
@@ -68,4 +69,15 @@ export function postProduct(input) {
       alert("HEMOSIDO TIMADO -error en post-");
     }
   };
+}
+
+export function searchProductByName(name) {
+  return async (dispatch) => {
+    try {
+      const products = await axios.get(`http://localhost:3001/productSearch?name=${name}`);
+      dispatch({ type: SEARCH_PROCUCT_BY_NAME, payload: products.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };      
 }

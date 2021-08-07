@@ -1,19 +1,20 @@
+import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { getNameProduct } from '../../actions';
+import { searchProductByName } from "../../actions/index";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const [search, setSearch] = useState("");
+  const [name, setName] = useState("");
 
   const handleInputChange = (event) => {
     event.preventDefault();
-    setSearch(event.target.value);
+    setName(event.target.value);
   };
 
   const handleClick = (event) => {
     event.preventDefault();
-    //dispatch(getNameProduct(product));
+    dispatch(searchProductByName(name));
   };
 
   return (
