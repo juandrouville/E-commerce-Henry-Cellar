@@ -1,1 +1,52 @@
-// Your layout styles 👇🏻
+// Your layout styles 👇🏻// Your layout styles 👇🏻
+.layout__wrapper {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.layout {
+  margin-right: 0;
+  margin-left: 0;
+
+  .layout__col {
+    padding-left: 0;
+    padding-right: 0;
+
+    &--sidebar {
+      @include response(medium) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+.layout__content {
+  padding-bottom: 40px;
+
+  margin-bottom: 50px;
+
+  @include response(medium) {
+    padding: 144px 0px 118px;
+  }
+
+  .content__title {
+    margin-bottom: 32px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  h3 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
