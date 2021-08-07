@@ -8,7 +8,7 @@ const Product = ({ image, name, price }) => {
         <div className="product__data">
           <h3>{name}</h3>
           <br />
-          <p>{price}</p>
+          <p>${price}</p>
           <br />
           <p className="product__stock">Stock</p>
         </div>
