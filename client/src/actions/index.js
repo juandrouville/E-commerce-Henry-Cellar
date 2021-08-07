@@ -16,6 +16,7 @@ export function getAllproducts() {
     dispatch({ type: GET_ALL_PRODUCTS, payload: V });
   };
 }
+
 export function sortByPrecio(order) {
   return function (dispatch) {
     axios
@@ -74,10 +75,12 @@ export function postProduct(input) {
 export function searchProductByName(name) {
   return async (dispatch) => {
     try {
-      const products = await axios.get(`http://localhost:3001/productSearch?name=${name}`);
+      const products = await axios.get(
+        `http://localhost:3001/productSearch?name=${name}`
+      );
       dispatch({ type: SEARCH_PROCUCT_BY_NAME, payload: products.data });
     } catch (error) {
       console.log(error);
     }
-  };      
+  };
 }
