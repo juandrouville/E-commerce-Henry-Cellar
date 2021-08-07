@@ -16,12 +16,14 @@ import "assets/styles/main.scss";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import Home from "pages/Home.js";
 import Edit from "components/Edit/Edit";
+import PostProduct from "pages/PostForm.js";
 
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
         <Route exact path="/" component={Home} />
+        <Route exact path="/create" component={PostProduct} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route
           path="/editProduct/:id"

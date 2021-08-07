@@ -64,7 +64,7 @@ export function clearProductDetail() {
 export function postProduct(input) {
   return async (dispatch) => {
     try {
-      const res = axios.post("hhtp://localhost:3001/allproductos", input);
+      const res = axios.post("http://localhost:3001/postproduct/", input);
       dispatch({ type: POST_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");

@@ -9,7 +9,6 @@ import home1 from "assets/icons/logo-wine.png";
 import React from "react";
 import AuthNav from "../auth-Nav/auth-nav";
 
-
 const NavBar = () => {
   return (
     // Your menu here 👇🏻
@@ -29,8 +28,12 @@ const NavBar = () => {
           <h3>Cart</h3>
         </NavLink>
 
+        <NavLink to="/create" refresh="true" style={{ textDecoration: "none" }}>
+          <h3>PostForm</h3>
+        </NavLink>
+
         <AuthNav />
-        
+
         <div className="nav__items">
           {" "}
           <SearchBar />
