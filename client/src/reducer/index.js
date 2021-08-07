@@ -3,43 +3,53 @@ import {
   SORT_BY_PRECIO,
   PRODUCT_DETAIL,
   POST_PRODUCT,
+  SEARCH_PROCUCT_BY_NAME,
 } from "../actions/index";
-//fixed import
+
 const initialState = {
   prueba: [],
   getAllProducts: [],
   productDetail: [],
+  searchProductByName: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ALL_PRODUCTS:
-      return {
-        ...state,
-        getAllProducts: action.payload,
-      };
-    case SORT_BY_PRECIO:
-      return {
-        ...state,
-        getAllProducts: action.payload,
-      };
+    default: {
       return state;
-    case POST_PRODUCT:
+    }
+    case GET_ALL_PRODUCTS:{
+      return {
+        ...state,
+        getAllProducts: action.payload,
+      };
+    }
+    case SORT_BY_PRECIO:{
+      return {
+        ...state,
+        getAllProducts: action.payload,
+        };
+      }
+    case POST_PRODUCT:{
       return {
         ...state,
         createdProduct: state.createdProduct.concat(action.payload),
-      };
-    case SORT_BY_PRECIO:
+        };
+      }
+    case PRODUCT_DETAIL:{
+      return {
+        ...state,
+        productDetail: action.payload,
+       };
+      }
+    case SEARCH_PROCUCT_BY_NAME: {
       return {
         ...state,
         getAllProducts: action.payload,
       };
-    case PRODUCT_DETAIL:
-      return {
-        ...state,
-        productDetail: action.payload,
-      };
+    }
   }
-  return state;
 };
+
+
 export default rootReducer;
