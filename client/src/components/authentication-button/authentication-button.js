@@ -9,9 +9,9 @@ const AuthenticationButton = () => {
   const { isAuthenticated } = useAuth0();
   const { user } = useAuth0();
 
-  return isAuthenticated ? <>
-  <p>Hi, {user.name}</p>
-  <LogoutButton /> </>: <LoginButton />;
+  return isAuthenticated ? <div className="container"> 
+  <p>Bienvenido, {user.name}</p>
+  <LogoutButton /> </div>: <LoginButton />;
 };
 
 export default AuthenticationButton;
