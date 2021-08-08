@@ -17,6 +17,7 @@ import ProductDetail from "./components/productDetail/ProductDetail";
 import Home from "pages/Home.js";
 import Edit from "components/Edit/Edit";
 import PostProduct from "pages/PostForm.js";
+import profile from "components/Profile/profile.js";
 
 ReactDOM.render(
   <Provider store={Store}>
@@ -29,6 +30,7 @@ ReactDOM.render(
           path="/editProduct/:id"
           render={({ match }) => <Edit id={match.params.id} />}
         />
+        <Route path="/profile" component={profile} />
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,
