@@ -3,6 +3,7 @@ import cart2 from "../../assets/images/cart2.png";
 import { NavLink } from "react-router-dom";
 import home1 from "assets/icons/logo-wine.png";
 
+
 //Authentication with Auth0
 import React from "react";
 import AuthNav from "../auth-Nav/auth-nav";
@@ -10,6 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
   const { isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
   return (
     // Your menu here 👇🏻
     <div className="nav-bar">
@@ -26,9 +28,7 @@ const NavBar = () => {
 
         <AuthNav />
 
-        {isAuthenticated ? (
-          <>
-            <NavLink
+        <NavLink
               to="/mycart"
               refresh="true"
               style={{ textDecoration: "none" }}
@@ -36,15 +36,17 @@ const NavBar = () => {
               <img src={cart2} alt="cartlogo" width="40" height="40" />
               <h3>Cart</h3>
             </NavLink>{" "}
-          </>
-        ) : null}
         
-        {isAuthenticated ? (
+        {isAuthenticated && user.sub==="google-oauth2|104304611515444947393" ? (
           <>
-        <NavLink to="/create" refresh="true" style={{ textDecoration: "none" }}>
-          <h3>PostForm</h3>
-        </NavLink>
-        </>
+            <NavLink
+              to="/create"
+              refresh="true"
+              style={{ textDecoration: "none" }}
+            >
+              <h3>PostForm</h3>
+            </NavLink>
+          </>
         ) : null}
 
         <div className="nav__items">
