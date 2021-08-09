@@ -25,13 +25,10 @@ const NavBar = () => {
           <img src={home1} alt="winelogo" width="50" height="50" />
         </NavLink>
         <AuthNav />
-      <NavLink to="/mycart" refresh="true" style={{ textDecoration: "none" }}>
-          <img src={cart2} alt="cartlogo" width="40" height="40" />
-          <h3>Cart</h3>
-        </NavLink>
         {isAuthenticated &&
-        user.sub === "google-oauth2|102669847324725021364" ? (
-
+        (user.sub === "google-oauth2|102669847324725021364" ||
+          user.sub === "google-oauth2|109028710743016612481" ||
+          user.sub === "google-oauth2|110496112430074927748") ? (
           <>
             <NavLink
               to="/create"
@@ -52,3 +49,8 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+// <NavLink to="/mycart" refresh="true" style={{ textDecoration: "none" }}>
+// <img src={cart2} alt="cartlogo" width="40" height="40" />
+// <h3>Cart</h3>
+// </NavLink>

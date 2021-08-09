@@ -29,7 +29,7 @@ const products = [
     description:
       "DV Catena Cabernet Sauvignon-Malbec es un vino elegante y complejo, de color rojo rubi con reflejos violetas.A la nariz, intenso y concentrado, presenta notas de especias aportadas por el Cabernet Sauvignon del viñedo La Pirámide, y notas de moras maduras y ciruelas, características del Malbec del viñedo Angélica, acompañadas por vainilla, tabaco y licor aportadas por la crianza en roble.En boca, de impacto dulce y gran complejidad, con taninos integrados y redondos, de final largo y persistente.",
     bodega: "Catena Zapata",
-    precio: 1500,
+    precio: 1599.99,
     stock: 30,
     category: ["Wine", "Blend", "Tinto"],
   },
