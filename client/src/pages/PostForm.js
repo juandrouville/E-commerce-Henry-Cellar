@@ -5,6 +5,7 @@ import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import NavBar from "components/NavBar/NavBar.js";
 import { validation } from "../components/validation/validation.js";
+import Layout from "../layouts/layout-primary";
 
 export default function PostProduct() {
   const dispatch = useDispatch();
