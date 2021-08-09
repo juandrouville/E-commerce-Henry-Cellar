@@ -6,12 +6,14 @@ export const FILTRO_BODEGA = "FILTRO_BODEGA";
 export const FILTRO_CATEGORIA = "FILTRO_CATEGORIA";
 export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
 export const SEARCH_PROCUCT_BY_NAME = "SEARCH_PROCUCT_BY_NAME";
+export const NEXT_PAGE = "NEXT_PAGE";
+export const PREVIUS_PAGE = "PREVIUS_PAGE";
 export const ASC = "Ascendant";
 export const DESC = "Descendant";
 
 export function getAllproducts() {
   return async (dispatch) => {
-    const res = await axios.get("http://localhost:3001/allproducts");
+    const res = await axios.get(`http://localhost:3001/allproducts`);
     const V = res.data;
     dispatch({ type: GET_ALL_PRODUCTS, payload: V });
   };
@@ -84,3 +86,20 @@ export function searchProductByName(name) {
     }
   };
 }
+
+//Paginado ?page=${page}
+
+export function nextPage(page) {
+  return {
+    type: NEXT_PAGE,
+    payload: page,
+  };
+};
+
+export function prevPage(page) {
+  return {
+    type: PREVIUS_PAGE,
+    payload: page,
+  }
+};
+
