@@ -26,7 +26,7 @@ export default function PostProduct() {
 
   useEffect(() => {
     setInput({ ...input });
-  });
+  }, []);
 
   const handleInputChange = function (e) {
     setInput({
