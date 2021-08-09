@@ -1,44 +1,36 @@
-// Your menu styles here 👇🏻
-.menu-left {
-  flex: 50%;
+.nav-bar {
+  padding: 40px 40px;
+  border-bottom: 1px solid rgb(126, 33, 33);
   display: flex;
-  align-items: center;
-  justify-content: left;
-  -moz-border-radius: 30px;
-  -webkit-border-radius: 30px;
-  border-radius: 30px;
-}
+  flex-direction: column;
+  flex-wrap: wrap;
+  white-space: nowrap;
 
-.menu-left img {
-  max-height: 75px;
-  max-width: 100px;
-}
+  .wine {
+    display: flex;
+    align-items: center;
+    h1 {
+      color: rgb(126, 33, 33);
+    }
+  }
 
-.menu-right {
-  flex: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 25px;
-}
+  .nav__brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    @include response(medium) {
+      flex-direction: row;
+    }
 
-.menu-right a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 30px;
-}
+    img {
+      margin-right: 20px;
+    }
+  }
 
-.menu-right a h3 {
-  color: white;
-}
-
-.menu-right a:hover h3 {
-  color: crimson;
-}
-
-.menu-right img {
-  padding: 5px;
-  max-height: 50px;
-  max-width: 50px;
+  .nav__items {
+    // position: absolute;
+    top: 1;
+    right: 0;
+  }
 }
