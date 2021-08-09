@@ -25,16 +25,28 @@ const getAllproducts = async (req, res, next) => {
           order: sequelize.literal("price DESC"),
         });
         res.send(desc);
-      } else if (categoria) {
+      }}
+      if (categoria) {
+        console.log(categoria);
         var findOne = await Product.findAll({
           limit:limit,
           offset:offset,
-          include: {
-            model: Categories,
+
+          include:{
+            model:Categories,
+            attributes: ["name"],
+            through: {
+            attributes: [],
+            },
+
             where: {
-              categoria,
+              name : categoria,
             },
           },
+          
+          
+            
+          
         });
 
         if (findOne.length === 0) {
@@ -47,7 +59,7 @@ const getAllproducts = async (req, res, next) => {
           include: {
             model: Wineries,
             where: {
-              bodega,
+              name : bodega,
             },
           },
         });
@@ -55,12 +67,12 @@ const getAllproducts = async (req, res, next) => {
         if (findOne.length === 0) {
           return res.status(404).send("Error: Name of CELLAR is invalid");
         } else return res.json(findOne);
-      }
+      
     } else {
       const productDB = await Product.findAll({
         limit:limit,
         offset:offset,
-        attributes: { exclude: ["createdAt", "updatedAt"] },
+        // attributes: { exclude: ["createdAt", "updatedAt"] },
         include: {
           model: Categories,
           attributes: ["name"],
