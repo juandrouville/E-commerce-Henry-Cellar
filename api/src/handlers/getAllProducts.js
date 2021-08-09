@@ -1,4 +1,5 @@
 const { Product, Categories, Wineries } = require("../db");
+var sequelize = require('sequelize');
 
 const getAllproducts = async (req, res, next) => {
   var page = req.query.page ? req.query.page : 0;
@@ -13,7 +14,7 @@ const getAllproducts = async (req, res, next) => {
         var asc = await Product.findAll({
           limit:limit,
           offset:offset,
-          order: sequelize.literal("precio ASC"),
+          order: sequelize.literal("price ASC"),
         });
         res.send(asc);
       }
@@ -21,7 +22,7 @@ const getAllproducts = async (req, res, next) => {
         var desc = await Product.findAll({
           limit:limit,
           offset:offset,
-          order: sequelize.literal("precio DESC"),
+          order: sequelize.literal("price DESC"),
         });
         res.send(desc);
       } else if (categoria) {
