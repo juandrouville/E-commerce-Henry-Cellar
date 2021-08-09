@@ -31,7 +31,7 @@ const products = [
     bodega: "Catena Zapata",
     precio: 1500,
     stock: 30,
-    category: ["wine", "Blend", "Tinto"],
+    category: ["Wine", "Blend", "Tinto"],
   },
   {
     name: "Del Fin Del Mundo Special Blend",
@@ -42,7 +42,7 @@ const products = [
     bodega: "Del Fin del Mundo",
     precio: 387,
     stock: 30,
-    category: ["wine", "Blend", "Tinto"],
+    category: ["Wine", "Blend", "Tinto"],
   },
   {
     name: "Quara Reserva Cabeernet Sauvignon",
@@ -53,7 +53,7 @@ const products = [
     bodega: "Finca Quara",
     precio: 410,
     stock: 30,
-    category: ["wine", "Cabernet Sauvignon", "Tinto"],
+    category: ["Wine", "Cabernet Sauvignon", "Tinto"],
   },
   {
     name: "Famiglia Bianchi Cabernet Sauvignon",
@@ -64,7 +64,7 @@ const products = [
     bodega: "Casa Bianchi",
     precio: 810,
     stock: 30,
-    category: ["wine", "Cabernet Sauvignon", "Tinto"],
+    category: ["Wine", "Cabernet Sauvignon", "Tinto"],
   },
   {
     name: "Pulenta Estate Merlot",
@@ -75,7 +75,7 @@ const products = [
     bodega: "Pulenta Estate",
     precio: 1750,
     stock: 30,
-    category: ["wine", "Tinto", "Merlot"],
+    category: ["Wine", "Tinto", "Merlot"],
   },
   {
     name: "Casa Boher Merlot",
@@ -86,7 +86,7 @@ const products = [
     bodega: "Rosell Boher",
     precio: 1100,
     stock: 30,
-    category: ["wine", "Tinto", "Merlot"],
+    category: ["Wine", "Tinto", "Merlot"],
   },
   {
     name: "Sacacorcho 2 tiempos Azul WineFroz",
@@ -193,7 +193,7 @@ const products = [
     bodega: "Alamos",
     precio: 540,
     stock: 30,
-    category: ["wines", "Blanco", "Chardonnay"],
+    category: ["Wine", "Blanco", "Chardonnay"],
   },
   {
     name: "La Linda Chardonnay",
@@ -204,7 +204,7 @@ const products = [
     bodega: "Luigi Bosca",
     precio: 830,
     stock: 30,
-    category: ["wines", "Blanco", "Chardonnay"],
+    category: ["Wine", "Blanco", "Chardonnay"],
   },
 
   {
@@ -216,7 +216,7 @@ const products = [
     bodega: "Etchart",
     precio: 290,
     stock: 99,
-    category: ["wines", "Blanco", "Torrontes"],
+    category: ["Wine", "Blanco", "Torrontes"],
   },
   {
     name: "Nanni Torrontes",
@@ -227,7 +227,7 @@ const products = [
     bodega: "Nanni",
     precio: 882,
     stock: 99,
-    category: ["wines", "Blanco", "Torrontes"],
+    category: ["Wine", "Blanco", "Torrontes"],
   },
 
   {
@@ -239,7 +239,7 @@ const products = [
     bodega: "Lopez",
     precio: 441,
     stock: 99,
-    category: ["wines", "Blanco", "Blend"],
+    category: ["Wine", "Blanco", "Blend"],
   },
   {
     name: "Capriccio Dulce Natural Dolcezza",
@@ -250,7 +250,7 @@ const products = [
     bodega: "Dante Robino",
     precio: 276,
     stock: 99,
-    category: ["wines", "Blanco", "Blend"],
+    category: ["Wine", "Blanco", "Blend"],
   },
   {
     name: "Colon Rose",
@@ -261,7 +261,7 @@ const products = [
     bodega: "Colon",
     precio: 220,
     stock: 99,
-    category: ["wines", "Rosado", "Malbec"],
+    category: ["Wine", "Rosado", "Malbec"],
   },
   {
     name: "Las Perdices Malbec Ice",
@@ -272,7 +272,7 @@ const products = [
     bodega: "Las Perdices",
     precio: 1630,
     stock: 99,
-    category: ["wines", "Rosado", "Malbec"],
+    category: ["Wine", "Rosado", "Malbec"],
   },
   {
     name: "Mendel Rosadia",
@@ -283,7 +283,7 @@ const products = [
     bodega: "Mendel",
     precio: 3200,
     stock: 99,
-    category: ["wines", "Rosado", "Blend"],
+    category: ["Wine", "Rosado", "Blend"],
   },
   {
     name: "Lagarde Goes Pink Rose",
@@ -294,7 +294,7 @@ const products = [
     bodega: "Lagarde",
     precio: 1100,
     stock: 99,
-    category: ["wines", "Rosado", "Blend"],
+    category: ["Wine", "Rosado", "Blend"],
   },
   {
     name: "Finca Gabriel Rose",
@@ -305,7 +305,7 @@ const products = [
     bodega: "Jorge Rubio",
     precio: 436,
     stock: 99,
-    category: ["wines", "Rosado", "Syrah"],
+    category: ["Wine", "Rosado", "Syrah"],
   },
   {
     name: "Salentein Reserve Rosado",
@@ -316,7 +316,7 @@ const products = [
     bodega: "Salentein",
     precio: 900,
     stock: 99,
-    category: ["wines", "Rosado", "Syrah"],
+    category: ["Wine", "Rosado", "Syrah"],
   },
 ];
 
