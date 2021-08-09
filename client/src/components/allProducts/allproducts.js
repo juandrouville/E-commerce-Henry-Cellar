@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getAllproducts } from "../../actions/index";
 import Product from "../product/Product";
@@ -6,17 +7,19 @@ import Product from "../product/Product";
 function AllProducts({ products, GetProducts }) {
   useEffect(() => {
     GetProducts();
-  }, []);
+  }, [GetProducts]);
 
   return (
     <div>
-      <div>
+      <div className="catalogo">
         {products ? (
           products.map((p) => {
             return (
-              <div key={p.id}>
-                <Product name={p.name} image={p.image} price={p.price} />
-              </div>
+              <Link to={`/product-detail/${p.id}`} key={p.id}>
+                <div>
+                  <Product name={p.name} image={p.image} price={p.price} />
+                </div>
+              </Link>
             );
           })
         ) : (

@@ -242,7 +242,7 @@ const products = [
     category: ["wines", "Blanco", "Blend"],
   },
   {
-    name: "Nanni Torrontes",
+    name: "Capriccio Dulce Natural Dolcezza",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61468_default_big.jpeg",
     description:
