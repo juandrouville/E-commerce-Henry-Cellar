@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { validation } from "../components/validation/validation.js";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { postProduct } from "../actions";
-import Layout from "layouts/layout-primary";
-=======
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +5,6 @@ import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import NavBar from "components/NavBar/NavBar.js";
 import { validation } from "../components/validation/validation.js";
->>>>>>> Lighuen
 
 export default function PostProduct() {
   const dispatch = useDispatch();
