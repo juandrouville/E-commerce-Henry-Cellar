@@ -1,32 +1,37 @@
-import React from "react";
-import { validation } from "../components/validation/validation.js";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { postProduct } from "../actions";
+import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import NavBar from "components/NavBar/NavBar.js";
-import { Link } from "react-router-dom";
+import { validation } from "../components/validation/validation.js";
 
 export default function PostProduct() {
   const dispatch = useDispatch();
+  const productCategories = useSelector((state) => state.productCategories);
   //linkear categorias ???
 
   const [input, setInput] = React.useState({
     name: "",
-    img: "",
+    image: wineimage,
     description: "",
     bodega: "",
-    precio: 0,
-    stock: 0,
-    harvest: 0,
+    price: "",
+    stock: "",
     categoria: "",
   });
+
+  const [category, setCategory] = React.useState([]);
 
   const [errors, setErrors] = React.useState({});
 
   useEffect(() => {
-    setInput({ ...input });
+    dispatch(getAllCategories(category));
   }, []);
+
+  useEffect(() => {
+    setInput({ ...input, categoria: category.toString() });
+  }, [category]);
 
   const handleInputChange = function (e) {
     setInput({
@@ -54,6 +59,14 @@ export default function PostProduct() {
     }
   };
 
+  const handleCategories = (e) => {
+    if (category.length < 1) {
+      if (!category.includes(e.target.value)) {
+        setCategory([...category, e.target.value]);
+      }
+    }
+  };
+
   return (
     <div className="form__container">
       <NavBar />
@@ -77,13 +90,14 @@ export default function PostProduct() {
             </div>
             <div>
               <label>Categoría</label>
-              <input
-                className={errors.categoria && "danger"}
-                type="text"
-                name="categoria"
-                onChange={handleInputChange}
-                value={input.categoria}
-              />
+              <select onChange={(e) => handleCategories(e)}>
+                {productCategories &&
+                  productCategories.map((category, i) => (
+                    <option key={category.id} value={category.name}>
+                      {category.name}
+                    </option>
+                  ))}
+              </select>
             </div>
             {errors.categoria && <p className="danger">{errors.categoria}</p>}
             <div>
@@ -96,17 +110,6 @@ export default function PostProduct() {
                 value={input.bodega}
               />{" "}
               {errors.bodega && <p className="danger">{errors.bodega}</p>}
-            </div>
-            <div>
-              <label>Cosecha</label>
-              <input
-                className={errors.harvest && "danger"}
-                type="text"
-                name="harvest"
-                onChange={handleInputChange}
-                value={input.harvest}
-              />
-              {errors.harvest && <p className="danger">{errors.harvest}</p>}
             </div>
             <div>
               <label>Precio</label>
