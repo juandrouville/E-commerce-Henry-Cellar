@@ -27,7 +27,7 @@ export default function PostProduct() {
 
   useEffect(() => {
     dispatch(getAllCategories(category));
-  }, []);
+  }, [category, dispatch]);
 
   useEffect(() => {
     setInput({ ...input, categoria: category.toString() });
@@ -74,7 +74,7 @@ export default function PostProduct() {
         <button>home</button>
       </Link>
       <div className="form">
-        <img src={wineimage} alt="post photo" width="50%" />
+        <img src={wineimage} alt="post wine" width="50%" />
         <form className="table" onSubmit={handleSubmit}>
           <div className="form__inputs">
             <div>
