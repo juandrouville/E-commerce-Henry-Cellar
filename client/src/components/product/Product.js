@@ -1,6 +1,6 @@
 import React from "react";
 
-const Product = ({ image, name, price }) => {
+const Product = ({ image, name, price, stock }) => {
   return (
     <div className="row center">
       <div key={name} className="product">

@@ -11,45 +11,45 @@ const initialState = {
   getAllProducts: [],
   productDetail: [],
   searchProductByName: [],
+  createdProduct: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    default: {
-      return state;
-    }
-    case GET_ALL_PRODUCTS:{
+    case GET_ALL_PRODUCTS: {
       return {
         ...state,
         getAllProducts: action.payload,
       };
     }
-    case SORT_BY_PRECIO:{
+    case SORT_BY_PRECIO: {
       return {
         ...state,
         getAllProducts: action.payload,
-        };
-      }
-    case POST_PRODUCT:{
+      };
+    }
+    case POST_PRODUCT: {
       return {
         ...state,
         createdProduct: state.createdProduct.concat(action.payload),
-        };
-      }
-    case PRODUCT_DETAIL:{
+      };
+    }
+    case PRODUCT_DETAIL: {
       return {
         ...state,
         productDetail: action.payload,
-       };
-      }
+      };
+    }
     case SEARCH_PROCUCT_BY_NAME: {
       return {
         ...state,
         getAllProducts: action.payload,
       };
     }
+    default: {
+      return state;
+    }
   }
 };
-
 
 export default rootReducer;
