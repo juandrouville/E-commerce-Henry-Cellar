@@ -20,9 +20,9 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
-  function onClickFiltro() {
-    dispatch(getAllproducts());
-  }
+  // function onClickFiltro() {
+  //   dispatch(getAllproducts());
+  // }
 
   return (
     <div>
