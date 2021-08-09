@@ -1,5 +1,6 @@
 import axios from "axios";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
 export const POST_PRODUCT = "POST_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
@@ -11,11 +12,21 @@ export const PREVIUS_PAGE = "PREVIUS_PAGE";
 export const ASC = "Ascendant";
 export const DESC = "Descendant";
 
-export function getAllproducts() {
+export function getAllproducts(page) {
+  if (!page) {
+    page = 0;
+  }
   return async (dispatch) => {
-    const res = await axios.get(`http://localhost:3001/allproducts`);
+    const res = await axios.get(`http://localhost:3001/allproducts?page=${page}`);
     const V = res.data;
     dispatch({ type: GET_ALL_PRODUCTS, payload: V });
+  };
+}
+
+export function getAllCategories() {
+  return async (dispatch) => {
+    const res = await axios.get(`http://localhost:3001/categories`);
+    dispatch({ type: GET_ALL_CATEGORIES, payload: res.data });
   };
 }
 
@@ -94,12 +105,11 @@ export function nextPage(page) {
     type: NEXT_PAGE,
     payload: page,
   };
-};
+}
 
 export function prevPage(page) {
   return {
     type: PREVIUS_PAGE,
     payload: page,
-  }
-};
-
+  };
+}
