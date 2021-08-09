@@ -2,27 +2,25 @@ import React from "react";
 
 import { useAuth0 } from "@auth0/auth0-react";
 
-
 const Profile = () => {
   const { user } = useAuth0();
   const { name, given_name, family_name, picture, email } = user;
 
   return (
     <div>
-      <div >
-        <div >
+      <div>
+        <div>
           <img
             src={picture}
             alt="Profile"
             className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
           />
         </div>
-        <div >
+        <div>
           <h2>{name}</h2>
           <h3>Nombre: {given_name}</h3>
           <h3>Apellido: {family_name}</h3>
-          <p >E-mail: {email}</p>
-          
+          <p>E-mail: {email}</p>
         </div>
       </div>
       {/* <div >
