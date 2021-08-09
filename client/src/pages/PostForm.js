@@ -3,7 +3,7 @@ import { validation } from "../components/validation/validation.js";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { postProduct, getAllproducts } from "../actions";
+import { postProduct } from "../actions";
 import Layout from "layouts/layout-primary";
 
 export default function PostProduct() {
@@ -25,7 +25,7 @@ export default function PostProduct() {
 
   useEffect(() => {
     setInput({ ...input });
-  });
+  }, []);
 
   const handleInputChange = function (e) {
     setInput({
@@ -46,8 +46,8 @@ export default function PostProduct() {
     e.preventDefault();
     try {
       alert("Item successfully created!");
-      dispatch(postProduct(input));
       console.log(input);
+      dispatch(postProduct(input));
     } catch (err) {
       console.log("error en el submit", err);
     }
