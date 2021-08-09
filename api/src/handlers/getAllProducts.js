@@ -1,7 +1,10 @@
 const { Product, Categories, Wineries } = require("../db");
+var sequelize = require('sequelize');
 
 const getAllproducts = async (req, res, next) => {
-  var name = req.query.name;
+  var page = req.query.page ? req.query.page : 0;
+  var limit = 9;
+  var offset = page * limit; 
   var precio = req.query.precio;
   var categoria = req.query.categoria;
   var bodega = req.query.bodega;
@@ -9,17 +12,23 @@ const getAllproducts = async (req, res, next) => {
     if (precio) {
       if (precio === "Ascendant") {
         var asc = await Product.findAll({
-          order: sequelize.literal("precio ASC"),
+          limit:limit,
+          offset:offset,
+          order: sequelize.literal("price ASC"),
         });
         res.send(asc);
       }
       if (precio === "Descendant") {
         var desc = await Product.findAll({
-          order: sequelize.literal("precio DESC"),
+          limit:limit,
+          offset:offset,
+          order: sequelize.literal("price DESC"),
         });
         res.send(desc);
       } else if (categoria) {
         var findOne = await Product.findAll({
+          limit:limit,
+          offset:offset,
           include: {
             model: Categories,
             where: {
@@ -33,6 +42,8 @@ const getAllproducts = async (req, res, next) => {
         } else return res.json(findOne);
       } else if (bodega) {
         var findOne = await Product.findAll({
+          limit:limit,
+          offset:offset,
           include: {
             model: Wineries,
             where: {
@@ -47,6 +58,8 @@ const getAllproducts = async (req, res, next) => {
       }
     } else {
       const productDB = await Product.findAll({
+        limit:limit,
+        offset:offset,
         attributes: { exclude: ["createdAt", "updatedAt"] },
         include: {
           model: Categories,
