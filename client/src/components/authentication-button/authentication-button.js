@@ -11,7 +11,7 @@ const AuthenticationButton = () => {
 
   return isAuthenticated ? <div className="container"> 
   <p>Bienvenido, 
-    <NavLink to="/profile">{user.given_name}</NavLink>
+    <NavLink to="/profile"> {user.given_name}</NavLink>
     </p>
   <LogoutButton /> </div>: <LoginButton />;
 };
