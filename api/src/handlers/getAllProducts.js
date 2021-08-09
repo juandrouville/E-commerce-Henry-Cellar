@@ -31,12 +31,14 @@ const getAllproducts = async (req, res, next) => {
         var findOne = await Product.findAll({
           limit:limit,
           offset:offset,
+
           include:{
             model:Categories,
             attributes: ["name"],
             through: {
             attributes: [],
             },
+
             where: {
               name : categoria,
             },

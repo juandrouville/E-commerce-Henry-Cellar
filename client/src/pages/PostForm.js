@@ -1,12 +1,13 @@
 import React from "react";
-import { validation } from "./validation.js";
+import { validation } from "../components/validation/validation.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { postProduct } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import NavBar from "components/NavBar/NavBar.js";
+import { Link } from "react-router-dom";
 
-export function PostProduct() {
+export default function PostProduct() {
   const dispatch = useDispatch();
   //linkear categorias ???
 
@@ -15,9 +16,9 @@ export function PostProduct() {
     img: "",
     description: "",
     bodega: "",
-    precio: "",
-    stock: "",
-    harvest: "",
+    precio: 0,
+    stock: 0,
+    harvest: 0,
     categoria: "",
   });
 
