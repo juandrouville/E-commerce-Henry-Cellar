@@ -21,7 +21,7 @@ const getAllproducts = async (req, res, next) => {
       } else if (categoria) {
         var findOne = await Product.findAll({
           include: {
-            model: Wineries,
+            model: Categories,
             where: {
               categoria,
             },
