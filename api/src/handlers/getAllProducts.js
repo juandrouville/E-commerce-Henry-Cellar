@@ -58,11 +58,13 @@ const getAllproducts = async (req, res, next) => {
           offset:offset,
           include: {
             model: Wineries,
+            attributes:["name"],
             where: {
               name : bodega,
             },
           },
         });
+            
 
         if (findOne.length === 0) {
           return res.status(404).send("Error: Name of CELLAR is invalid");
