@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetail,
   clearProductDetail,
-  getAllproducts,
+  // getAllproducts,
 } from "../../actions/index";
 import NavBar from "../NavBar/NavBar";
 
@@ -20,9 +20,9 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
-  function onClickFiltro() {
-    dispatch(getAllproducts());
-  }
+  // function onClickFiltro() {
+  //   dispatch(getAllproducts());
+  // }
 
   return (
     <div>
