@@ -1,9 +1,10 @@
 import React from "react";
 import { validation } from "../components/validation/validation.js";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { postProduct } from "../actions";
+import { postProduct, getAllproducts } from "../actions";
+import Layout from "layouts/layout-primary";
 
 export default function PostProduct() {
   const dispatch = useDispatch();
@@ -54,98 +55,108 @@ export default function PostProduct() {
   };
 
   return (
-    <div className="form">
-      <img
-        src="https://previews.123rf.com/images/sakmeniko/sakmeniko2007/sakmeniko200700116/150774024-water-bottle-icon-vector-design-template.jpg"
-        alt="post photo"
-      />
-      <Link to={`/`}>
-        <button>home</button>
-      </Link>
-      <form className="table" onSubmit={handleSubmit}>
-        <div>
-          <label>Product name:</label>
-          <input
-            className={errors.name && "danger"}
-            type="text"
-            name="name"
-            onChange={handleInputChange}
-            value={input.name}
+    <Layout>
+      <div>
+        <Link to={`/`}>
+          <button>home</button>
+        </Link>
+        <div className="form">
+          <img
+            src="https://previews.123rf.com/images/sakmeniko/sakmeniko2007/sakmeniko200700116/150774024-water-bottle-icon-vector-design-template.jpg"
+            alt="post bottle"
           />
-          {errors.name && <p className="danger">{errors.name}</p>}
-          <div>
-            <label>Categoría:</label>
-            <input
-              className={errors.categoria && "danger"}
-              type="text"
-              name="categoria"
-              onChange={handleInputChange}
-              value={input.categoria}
-            />
-            {errors.categoria && <p className="danger">{errors.categoria}</p>}
+          <form className="table" onSubmit={handleSubmit}>
             <div>
-              <label>Bodega:</label>
+              <label>Product name:</label>
               <input
-                className={errors.bodega && "danger"}
+                className={errors.name && "danger"}
                 type="text"
-                name="bodega"
+                name="name"
                 onChange={handleInputChange}
-                value={input.bodega}
+                value={input.name}
               />
-              {errors.bodega && <p className="danger">{errors.bodega}</p>}
+              {errors.name && <p className="danger">{errors.name}</p>}
               <div>
-                <label>Cosecha:</label>
+                <label>Categoría:</label>
                 <input
-                  className={errors.harvest && "danger"}
+                  className={errors.categoria && "danger"}
                   type="text"
-                  name="harvest"
+                  name="categoria"
                   onChange={handleInputChange}
-                  value={input.harvest}
+                  value={input.categoria}
                 />
-                {errors.harvest && <p className="danger">{errors.harvest}</p>}
+                {errors.categoria && (
+                  <p className="danger">{errors.categoria}</p>
+                )}
                 <div>
-                  <label>Precio:</label>
+                  <label>Bodega:</label>
                   <input
-                    className={errors.price && "danger"}
-                    type="number"
-                    name="price"
+                    className={errors.bodega && "danger"}
+                    type="text"
+                    name="bodega"
                     onChange={handleInputChange}
-                    value={input.price}
+                    value={input.bodega}
                   />
-                  {errors.price && <p className="danger">{errors.price}</p>}
+                  {errors.bodega && <p className="danger">{errors.bodega}</p>}
                   <div>
-                    <label>Descripción:</label>
+                    <label>Cosecha:</label>
                     <input
-                      className={errors.description && "danger"}
+                      className={errors.harvest && "danger"}
                       type="text"
-                      name="description"
+                      name="harvest"
                       onChange={handleInputChange}
-                      value={input.description}
+                      value={input.harvest}
                     />
-                    {errors.description && (
-                      <p className="danger">{errors.description}</p>
+                    {errors.harvest && (
+                      <p className="danger">{errors.harvest}</p>
                     )}
                     <div>
-                      <label>Stock:</label>
+                      <label>Precio:</label>
                       <input
-                        className={errors.stock && "danger"}
+                        className={errors.price && "danger"}
                         type="number"
-                        name="stock"
+                        name="price"
                         onChange={handleInputChange}
-                        value={input.stock}
+                        value={input.price}
                       />
-                      {errors.stock && <p className="danger">{errors.stock}</p>}
+                      {errors.price && <p className="danger">{errors.price}</p>}
+                      <div>
+                        <label>Descripción:</label>
+                        <input
+                          className={errors.description && "danger"}
+                          type="text"
+                          name="description"
+                          onChange={handleInputChange}
+                          value={input.description}
+                        />
+                        {errors.description && (
+                          <p className="danger">{errors.description}</p>
+                        )}
+                        <div>
+                          <label>Stock:</label>
+                          <input
+                            className={errors.stock && "danger"}
+                            type="number"
+                            name="stock"
+                            onChange={handleInputChange}
+                            value={input.stock}
+                          />
+                          {errors.stock && (
+                            <p className="danger">{errors.stock}</p>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <button className="btn1" type="submit">
+              Create!
+            </button>
+          </form>
         </div>
-        <button className="btn1" type="submit">
-          Create!
-        </button>
-      </form>
-    </div>
+      </div>
+    </Layout>
   );
 }
