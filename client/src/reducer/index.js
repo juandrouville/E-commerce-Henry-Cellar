@@ -4,6 +4,8 @@ import {
   PRODUCT_DETAIL,
   POST_PRODUCT,
   SEARCH_PROCUCT_BY_NAME,
+  NEXT_PAGE,
+  PREVIUS_PAGE,
 } from "../actions/index";
 
 const initialState = {
@@ -12,6 +14,7 @@ const initialState = {
   productDetail: [],
   searchProductByName: [],
   createdProduct: [],
+  page: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -45,6 +48,18 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         getAllProducts: action.payload,
       };
+    }
+    case NEXT_PAGE: {
+      return {
+        ...state,
+        page: action.payload,
+      }
+    };
+    case PREVIUS_PAGE: {
+      return {
+        ...state,
+        page: action.payload,
+      }
     }
     default: {
       return state;
