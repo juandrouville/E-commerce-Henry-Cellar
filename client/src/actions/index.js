@@ -11,9 +11,12 @@ export const PREVIUS_PAGE = "PREVIUS_PAGE";
 export const ASC = "Ascendant";
 export const DESC = "Descendant";
 
-export function getAllproducts() {
+export function getAllproducts(page) {
+  if (!page) {
+    page = 0;
+  }
   return async (dispatch) => {
-    const res = await axios.get(`http://localhost:3001/allproducts`);
+    const res = await axios.get(`http://localhost:3001/allproducts?page=${page}`);
     const V = res.data;
     dispatch({ type: GET_ALL_PRODUCTS, payload: V });
   };

@@ -27,7 +27,8 @@ const NavBar = () => {
         <AuthNav />
         {isAuthenticated &&
         (user.sub === "google-oauth2|102669847324725021364" ||
-          user.sub === "google-oauth2|109028710743016612481") ? (
+          user.sub === "google-oauth2|109028710743016612481" ||
+          user.sub === "google-oauth2|110496112430074927748") ? (
           <>
             <NavLink
               to="/create"

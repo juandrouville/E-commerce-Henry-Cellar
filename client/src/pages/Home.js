@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar/NavBar.js";
 import AllProducts from "../components/allProducts/allproducts";
+import Pagination from "../components/pagination/pagination";
 
 import Wine from "assets/images/backgrond-wine.jpeg";
 import Layout from "layouts/layout-primary";
@@ -13,6 +14,7 @@ const Home = () => {
           <h1 className="catalogo__title">Catalogo</h1>
           <AllProducts />
         </div>
+        <Pagination/>
       </div>
     </Layout>
   );
