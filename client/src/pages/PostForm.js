@@ -71,7 +71,6 @@ export default function PostProduct() {
   return (
     <Layout>
       <div className="form__container">
-        <NavBar />
         <Link to={`/`}>
           <button>home</button>
         </Link>
