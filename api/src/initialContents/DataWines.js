@@ -29,9 +29,9 @@ const products = [
     description:
       "DV Catena Cabernet Sauvignon-Malbec es un vino elegante y complejo, de color rojo rubi con reflejos violetas.A la nariz, intenso y concentrado, presenta notas de especias aportadas por el Cabernet Sauvignon del viñedo La Pirámide, y notas de moras maduras y ciruelas, características del Malbec del viñedo Angélica, acompañadas por vainilla, tabaco y licor aportadas por la crianza en roble.En boca, de impacto dulce y gran complejidad, con taninos integrados y redondos, de final largo y persistente.",
     bodega: "Catena Zapata",
-    precio: 1.5,
+    precio: 1599.99,
     stock: 30,
-    category: ["wine", "Blend", "Tinto"],
+    category: ["Wine", "Blend", "Tinto"],
   },
   {
     name: "Del Fin Del Mundo Special Blend",
@@ -40,9 +40,9 @@ const products = [
     description:
       "Color rojo profundo, muy intenso.Aroma potente recuerda a frutos rojos, especias y mermelada de frutas, notas a nuez de coco, ahumado y tabaco.En boca es frutado, delicado, de exquisito equilibrio, con taninos suaves y redondos. Su final de boca es elegante y prolongado. Vino de gran jerarquía.",
     bodega: "Del Fin del Mundo",
-    precio: 3.87,
+    precio: 387,
     stock: 30,
-    category: ["wine", "Blend", "Tinto"],
+    category: ["Wine", "Blend", "Tinto"],
   },
   {
     name: "Quara Reserva Cabeernet Sauvignon",
@@ -53,7 +53,7 @@ const products = [
     bodega: "Finca Quara",
     precio: 410,
     stock: 30,
-    category: ["wine", "Cabernet Sauvignon", "Tinto"],
+    category: ["Wine", "Cabernet Sauvignon", "Tinto"],
   },
   {
     name: "Famiglia Bianchi Cabernet Sauvignon",
@@ -64,7 +64,7 @@ const products = [
     bodega: "Casa Bianchi",
     precio: 810,
     stock: 30,
-    category: ["wine", "Cabernet Sauvignon", "Tinto"],
+    category: ["Wine", "Cabernet Sauvignon", "Tinto"],
   },
   {
     name: "Pulenta Estate Merlot",
@@ -73,9 +73,9 @@ const products = [
     description:
       "Estas notables variaciones de temperatura entre el día y la noche, llevan a nuestros viñedos a lograr colores muy profundos, con caracteres frutados muy intensos, aquí, la cereza, el eucalipto, y la menta emergen, para combinarse con las excelentes notas de madera. su gran estructura y persistencia en boca hacen de éste un gran vino.",
     bodega: "Pulenta Estate",
-    precio: 1.75,
+    precio: 1750,
     stock: 30,
-    category: ["wine", "Tinto", "Merlot"],
+    category: ["Wine", "Tinto", "Merlot"],
   },
   {
     name: "Casa Boher Merlot",
@@ -84,9 +84,9 @@ const products = [
     description:
       "Vista:A la vista presenta un color rojo rubí muy intenso con tintes violáceos.Nariz:El aroma de este vino refleja la prolongada maduración de sus bayas donde se perciben frutas secas, guindado, suave pimiento dulce y cassis.Boca: A la boca tiene taninos suaves y buena estructura. Su contenido alcohólico da sensación de dulzura. Con sabores a ciruela y pasas de uva",
     bodega: "Rosell Boher",
-    precio: 1.1,
+    precio: 1100,
     stock: 30,
-    category: ["wine", "Tinto", "Merlot"],
+    category: ["Wine", "Tinto", "Merlot"],
   },
   {
     name: "Sacacorcho 2 tiempos Azul WineFroz",
@@ -105,7 +105,7 @@ const products = [
     description:
       "Peso: Peso bruto 0,3kg Medidas: Ancho 5 cm - Alto 26 cm - Profundidad 5 cm Medidas con caja: Ancho 10,5 cm - Alto 28 cm - Profundidad 9,5 cm Pilas: el modelo funciona con 4 Pilas AA (no incluye las mismas).",
     bodega: null,
-    precio: 4.15,
+    precio: 4150,
     stock: 30,
     category: ["accessories"],
   },
@@ -116,7 +116,7 @@ const products = [
     description:
       "Peso: Peso bruto 0,4kg Medidas: Ancho 5 cm - Alto 27 cm - Profundidad 5 cm Medidas con caja: Ancho 10,5 cm - Alto 32,5 cm - Profundidad 9 cm Pilas: el modelo funciona con 4 Pilas AA (no incluye las mismas).",
     bodega: null,
-    precio: 4.15,
+    precio: 4150,
     stock: 30,
     category: ["accessories"],
   },
@@ -127,7 +127,7 @@ const products = [
     description:
       "Verte el vino en forma uniforme y pausada de manera que entra en contacto con la máxima superficie de aire posible antes de entrar en la copa.",
     bodega: null,
-    precio: 4.999,
+    precio: 4999,
     stock: 30,
     category: ["accessories"],
   },
@@ -138,7 +138,7 @@ const products = [
     description:
       "Set de accesorios Winefroz que contiene: un (1) Limpia Copa y un (1) Limpia Decanter.",
     bodega: null,
-    precio: 2.15,
+    precio: 2150,
     stock: 30,
     category: ["accessories"],
   },
@@ -170,7 +170,7 @@ const products = [
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61387_default_big.jpeg",
     description: "Alto: 240 mm,Capacidad: 1400 ml,Boca: 135 mm.",
     bodega: null,
-    precio: 6.93,
+    precio: 6930,
     stock: 30,
     category: ["accessories"],
   },
@@ -180,7 +180,7 @@ const products = [
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61388_default_big.jpeg",
     description: "Alto: 270 mm,Capacidad: 1800 ml,Boca: 164 mm.",
     bodega: null,
-    precio: 12.4,
+    precio: 1240,
     stock: 30,
     category: ["accessories"],
   },
@@ -193,7 +193,7 @@ const products = [
     bodega: "Alamos",
     precio: 540,
     stock: 30,
-    category: ["wines", "Blanco", "Chardonnay"],
+    category: ["Wine", "Blanco", "Chardonnay"],
   },
   {
     name: "La Linda Chardonnay",
@@ -204,7 +204,7 @@ const products = [
     bodega: "Luigi Bosca",
     precio: 830,
     stock: 30,
-    category: ["wines", "Blanco", "Chardonnay"],
+    category: ["Wine", "Blanco", "Chardonnay"],
   },
 
   {
@@ -216,7 +216,7 @@ const products = [
     bodega: "Etchart",
     precio: 290,
     stock: 99,
-    category: ["wines", "Blanco", "Torrontes"],
+    category: ["Wine", "Blanco", "Torrontes"],
   },
   {
     name: "Nanni Torrontes",
@@ -227,7 +227,7 @@ const products = [
     bodega: "Nanni",
     precio: 882,
     stock: 99,
-    category: ["wines", "Blanco", "Torrontes"],
+    category: ["Wine", "Blanco", "Torrontes"],
   },
 
   {
@@ -239,7 +239,7 @@ const products = [
     bodega: "Lopez",
     precio: 441,
     stock: 99,
-    category: ["wines", "Blanco", "Blend"],
+    category: ["Wine", "Blanco", "Blend"],
   },
   {
     name: "Capriccio Dulce Natural Dolcezza",
@@ -250,7 +250,7 @@ const products = [
     bodega: "Dante Robino",
     precio: 276,
     stock: 99,
-    category: ["wines", "Blanco", "Blend"],
+    category: ["Wine", "Blanco", "Blend"],
   },
   {
     name: "Colon Rose",
@@ -261,7 +261,7 @@ const products = [
     bodega: "Colon",
     precio: 220,
     stock: 99,
-    category: ["wines", "Rosado", "Malbec"],
+    category: ["Wine", "Rosado", "Malbec"],
   },
   {
     name: "Las Perdices Malbec Ice",
@@ -272,7 +272,7 @@ const products = [
     bodega: "Las Perdices",
     precio: 1630,
     stock: 99,
-    category: ["wines", "Rosado", "Malbec"],
+    category: ["Wine", "Rosado", "Malbec"],
   },
   {
     name: "Mendel Rosadia",
@@ -283,7 +283,7 @@ const products = [
     bodega: "Mendel",
     precio: 3200,
     stock: 99,
-    category: ["wines", "Rosado", "Blend"],
+    category: ["Wine", "Rosado", "Blend"],
   },
   {
     name: "Lagarde Goes Pink Rose",
@@ -294,7 +294,7 @@ const products = [
     bodega: "Lagarde",
     precio: 1100,
     stock: 99,
-    category: ["wines", "Rosado", "Blend"],
+    category: ["Wine", "Rosado", "Blend"],
   },
   {
     name: "Finca Gabriel Rose",
@@ -305,7 +305,7 @@ const products = [
     bodega: "Jorge Rubio",
     precio: 436,
     stock: 99,
-    category: ["wines", "Rosado", "Syrah"],
+    category: ["Wine", "Rosado", "Syrah"],
   },
   {
     name: "Salentein Reserve Rosado",
@@ -316,7 +316,7 @@ const products = [
     bodega: "Salentein",
     precio: 900,
     stock: 99,
-    category: ["wines", "Rosado", "Syrah"],
+    category: ["Wine", "Rosado", "Syrah"],
   },
 ];
 

@@ -4,16 +4,18 @@ import {
   PRODUCT_DETAIL,
   POST_PRODUCT,
   SEARCH_PROCUCT_BY_NAME,
-  GET_ALL_CATEGORIES
+  NEXT_PAGE,
+  PREVIUS_PAGE,
+  GET_ALL_CATEGORIES,
 } from "../actions/index";
 
 const initialState = {
-  prueba: [],
+  productCategories: [],
   getAllProducts: [],
   productDetail: [],
   searchProductByName: [],
   createdProduct: [],
-  allCategories:[]
+  page: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -22,6 +24,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         getAllProducts: action.payload,
+      };
+    }
+    case GET_ALL_CATEGORIES: {
+      return {
+        ...state,
+        productCategories: action.payload,
       };
     }
     case SORT_BY_PRECIO: {
@@ -48,11 +56,18 @@ const rootReducer = (state = initialState, action) => {
         getAllProducts: action.payload,
       };
     }
-    case GET_ALL_CATEGORIES:{
+
+    case NEXT_PAGE: {
       return {
         ...state,
-        allCategories:action.payload
-      }
+        page: action.payload,
+      };
+    }
+    case PREVIUS_PAGE: {
+      return {
+        ...state,
+        page: action.payload,
+      };
     }
     default: {
       return state;

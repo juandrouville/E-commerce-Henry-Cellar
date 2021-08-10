@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     description: {
@@ -25,5 +25,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: 0,
     },
+  },{
+    timestamps: false,
+    freezeTableName: true,
   });
 };
+  
