@@ -1,5 +1,6 @@
 import axios from "axios";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const GET_ALL_CATEGORIES="GET_ALL_CATEGORIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
 export const POST_PRODUCT = "POST_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
@@ -82,5 +83,13 @@ export function searchProductByName(name) {
     } catch (error) {
       console.log(error);
     }
+  };
+}
+
+export function getAllCategories(){
+  return async (dispatch) => {
+    const res = await axios.get("http://localhost:3001/categories");
+    const V = res.data;
+    dispatch({ type: GET_ALL_CATEGORIES, payload: V });
   };
 }

@@ -4,6 +4,7 @@ import {
   PRODUCT_DETAIL,
   POST_PRODUCT,
   SEARCH_PROCUCT_BY_NAME,
+  GET_ALL_CATEGORIES
 } from "../actions/index";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   productDetail: [],
   searchProductByName: [],
   createdProduct: [],
+  allCategories:[]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -45,6 +47,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         getAllProducts: action.payload,
       };
+    }
+    case GET_ALL_CATEGORIES:{
+      return {
+        ...state,
+        allCategories:action.payload
+      }
     }
     default: {
       return state;
