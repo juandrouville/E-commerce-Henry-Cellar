@@ -8,7 +8,7 @@ export default function Edit({id}) {
 
     const dispatch=useDispatch()
     const productDetail=useSelector(state=>state.productDetail)
-    const allCategories=useSelector(state=>state.allCategories)
+    const allCategories=useSelector(state=>state.productCategories)
     const [state,setState]=useState({
             name:"",
             price:0,
