@@ -3,6 +3,7 @@ export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
 export const POST_PRODUCT = "POST_PRODUCT";
+export const EDIT_PRODUCT="EDIT_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
 export const FILTRO_CATEGORIA = "FILTRO_CATEGORIA";
 export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
@@ -82,8 +83,19 @@ export function clearProductDetail() {
 export function postProduct(input) {
   return async (dispatch) => {
     try {
-      const res = axios.post("http://localhost:3001/postproduct/", input);
+      const res = await axios.post("http://localhost:3001/postproduct/", input);
       dispatch({ type: POST_PRODUCT, payload: res.data });
+    } catch (err) {
+      alert("HEMOSIDO TIMADO -error en post-");
+    }
+  };
+}
+
+export function editProduct(product){
+  return async (dispatch) => {
+    try {
+      const res = await axios.put(`http://localhost:3001/editProduct/${product.id}`,product);
+      dispatch({ type: EDIT_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
     }
