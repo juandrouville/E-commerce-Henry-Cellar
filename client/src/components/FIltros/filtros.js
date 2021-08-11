@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
-import {getAllproducts, sortByPrecio, filtroCategoria, filtroBodega, ASC, DESC} from '../../actions/countriesActions';
+import {getAllproducts, sortByPrecio, filtroCategoria, filtroBodega, ASC, DESC} from "../../actions/index"
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-import './Filtros.css';
 
 export const Filtros = (props) => {
     console.log(props)
@@ -73,7 +72,7 @@ export const Filtros = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        getAllproducts: state.countries,
+        getAllProducts: state.getAllProducts,
     }
 }
 
@@ -85,8 +84,8 @@ const mapDispatchToProps = (dispatch) => {
         filtroCategoria: (categoria) => {
             dispatch(filtroCategoria(categoria))
         },
-        sortByPrecio: (a, b) => {
-            dispatch(sortByPrecio(a, b))
+        sortByPrecio: (precio) => {
+            dispatch(sortByPrecio(precio))
         },
         filtroBodega: (bodega) => {
             dispatch(filtroBodega(bodega))
