@@ -8,9 +8,9 @@ import { validation } from "../components/validation/validation.js";
 import Layout from "../layouts/layout-primary.js";
 
 
-export default function PostProduct() {
+export default function PostProduct(props) {
   const dispatch = useDispatch();
-  const productCategories = useSelector((state) => state.productCategories);
+  const allCategories=useSelector(state=>state.productCategories)
   //linkear categorias ???
 
   const [input, setInput] = React.useState({
@@ -20,20 +20,18 @@ export default function PostProduct() {
     bodega: "",
     price: "",
     stock: "",
-    categoria: "",
+    categories:[],
   });
 
-  const [category, setCategory] = React.useState([]);
+  // const [category, setCategory] = React.useState([]);
 
   const [errors, setErrors] = React.useState({});
 
   useEffect(() => {
-    dispatch(getAllCategories(category));
-  }, [category, dispatch]);
+    dispatch(getAllCategories());
+    return function cleanup(){}
+  }, [dispatch]);
 
-  useEffect(() => {
-    setInput({ ...input, categoria: category.toString() });
-  }, [category]);
 
   const handleInputChange = function (e) {
     setInput({
@@ -53,21 +51,34 @@ export default function PostProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      alert("Item successfully created!");
-      dispatch(postProduct(input));
+      dispatch(postProduct(input))
+      alert("Item successfully created!"); // ver como usar un toast que es mas estetico
+      props.history.push("/")
       console.log(input);
     } catch (err) {
       console.log("error en el submit", err);
     }
   };
 
-  const handleCategories = (e) => {
-    if (category.length < 1) {
-      if (!category.includes(e.target.value)) {
-        setCategory([...category, e.target.value]);
-      }
+  // const handleCategories = (e) => {
+  //   if (category.length < 1) {
+  //     if (!category.includes(e.target.value)) {
+  //       setCategory([...category, e.target.value]);
+  //     }
+  //   }
+  // };
+
+  const handleSelections=e=>{
+    if(input.categories.includes(e.target.value)){
+        let oldCategories=input.categories
+        let newCategories=oldCategories.filter(category=>category!==e.target.value)
+        setInput({...input,categories:newCategories})
+    } else {
+        let newCategories=input.categories
+        newCategories.push(e.target.value)
+        setInput({...input,categories:newCategories})
     }
-  };
+}
 
   return (
     <Layout>
@@ -92,14 +103,18 @@ export default function PostProduct() {
               </div>
               <div>
                 <label>Categoría</label>
-                <select onChange={(e) => handleCategories(e)}>
+                {allCategories.length && allCategories.map(category=>
+               <div key={category.id}><label>{category.name}</label>
+                    <input type="checkbox" value={category.name} onClick={handleSelections}></input>
+                </div>)}
+                {/* <select onChange={(e) => handleCategories(e)}>
                   {productCategories &&
                     productCategories.map((category, i) => (
                       <option key={category.id} value={category.name}>
                         {category.name}
                       </option>
                     ))}
-                </select>
+                </select> */}
               </div>
               {errors.categoria && <p className="danger">{errors.categoria}</p>}
               <div>
