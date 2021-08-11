@@ -4,13 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import { validation } from "../components/validation/validation.js";
-
-<<<<<<< HEAD
 import LayoutPrimary from "../layouts/layout-primary.js";
-=======
-import Layout from "../layouts/layout-primary.js";
 
->>>>>>> 718514451d105874f1e49e645cc5c671c291670c
 
 export default function PostProduct(props) {
   const dispatch = useDispatch();
