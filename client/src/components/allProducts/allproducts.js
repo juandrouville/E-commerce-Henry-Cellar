@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllproducts } from "../../actions/index";
+import { getAllproducts, addCart } from "../../actions/index";
 import Product from "../product/Product";
 
-function AllProducts({ products, GetProducts }) {
+function AllProducts({ products, GetProducts, addCart }) {
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
+
+  const addToCart = (id) =>{
+    
+    addCart(id)
+  }
 
   return (
     <div>
@@ -17,7 +22,7 @@ function AllProducts({ products, GetProducts }) {
             return (
               <Link to={`/product-detail/${p.id}`} key={p.id}>
                 <div>
-                  <Product name={p.name} image={p.image} price={p.price} />
+                  <Product name={p.name} image={p.image} price={p.price} addToCart={addToCart} id={p.id}/>
                 </div>
               </Link>
             );
@@ -39,6 +44,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     GetProducts: () => dispatch(getAllproducts()),
+    addCart: (id) => dispatch(addCart(id))
   };
 }
 

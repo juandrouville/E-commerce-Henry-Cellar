@@ -39,6 +39,10 @@ const NavBar = () => {
             </NavLink>
           </>
         ) : null}
+      <NavLink to="/mycart" refresh="true" style={{ textDecoration: "none" }}>
+      <img src={cart2} alt="cartlogo" width="40" height="40" />
+      <h3>Cart</h3>
+      </NavLink>
         <div className="nav__items">
           {" "}
           <SearchBar />
@@ -50,7 +54,3 @@ const NavBar = () => {
 
 export default NavBar;
 
-// <NavLink to="/mycart" refresh="true" style={{ textDecoration: "none" }}>
-// <img src={cart2} alt="cartlogo" width="40" height="40" />
-// <h3>Cart</h3>
-// </NavLink>
