@@ -1,5 +1,5 @@
 import SearchBar from "../SearchBar/SearchBar";
-// import cart2 from "../../assets/images/cart2.png";
+import cart2 from "../../assets/images/cart2.png";
 import { NavLink } from "react-router-dom";
 import home1 from "assets/icons/logo-wine.png";
 
@@ -39,10 +39,10 @@ const NavBar = () => {
             </NavLink>
           </>
         ) : null}
-      <NavLink to="/mycart" refresh="true" style={{ textDecoration: "none" }}>
-      <img src={cart2} alt="cartlogo" width="40" height="40" />
-      <h3>Cart</h3>
-      </NavLink>
+        <NavLink to="/mycart" refresh="true" style={{ textDecoration: "none" }}>
+          <img src={cart2} alt="cartlogo" width="40" height="40" />
+          <h3>Cart</h3>
+        </NavLink>
         <div className="nav__items">
           {" "}
           <SearchBar />
@@ -53,4 +53,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

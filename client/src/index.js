@@ -5,15 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Store from "./Store/index.js";
-import dotenv from "dotenv";
-<<<<<<< HEAD
 import axios from "axios";
-=======
-import Axios from "axios";
->>>>>>> 109859be822518d5094217a739bac7244366a8ba
-dotenv.config();
-
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 //Auth0
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
@@ -28,6 +20,11 @@ import Edit from "components/Edit/Edit";
 import PostProduct from "pages/PostForm.js";
 import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
+
+import dotenv from "dotenv";
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={Store}>
