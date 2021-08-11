@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Store from "./Store/index.js";
 import dotenv from "dotenv";
+import Axios from "axios";
 dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
@@ -22,7 +23,7 @@ import Home from "pages/Home.js";
 import Edit from "components/Edit/Edit";
 import PostProduct from "pages/PostForm.js";
 import profile from "components/Profile/profile.js";
-import Cart from "./components/cart/Cart"
+import Cart from "./components/cart/Cart";
 
 ReactDOM.render(
   <Provider store={Store}>
