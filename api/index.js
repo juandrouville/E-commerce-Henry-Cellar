@@ -10,7 +10,7 @@ conn.sync({ force: true })
 .then(() => {
     SetDataInitial(products);
     console.log("sincroniza servidor 3001")
-    server.listen(3001, () => {
+    server.listen(process.env.PORT || 3001 , () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

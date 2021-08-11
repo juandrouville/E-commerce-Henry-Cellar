@@ -10,22 +10,24 @@ async function editProduct(req, res, next) {
     let productValues = { name: name, description: description, price: price, image: image, stock: stock }
 
     try {
-        let productToEdit = Product.findOne({ where: { id } })
+        let productToEdit = await Product.findOne({ where: { id }})
+        
 
         for (let property in productValues) {
-            productValues[property] ? productToEdit[property] = productValues[property] : null
+            productToEdit[property]=productValues[property]
         }
+        
+        productToEdit.setCategories(null)
+        
+        categories.forEach(async(category)=>{
+           let model=await Categories.findOne({where:{name:category}})
+           productToEdit.addCategories(model)
+        }
+        )
 
-        if (categories) {
-            categories.forEach(async (category) => {
-                const categorie = await Categories.findOne({
-                    where: {
-                        name: category
-                    }
-                });
-                await Product.addCategories(categorie)
-            })
-        }
+
+        await productToEdit.save()
+
         res.send({ msg: "The product was edited successfully." });
 
     } catch (error) {
