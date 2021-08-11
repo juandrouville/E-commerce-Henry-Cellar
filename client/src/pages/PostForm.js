@@ -82,7 +82,7 @@ export default function PostProduct(props) {
         );
     }
 }
-console.log(Object.values(errors))
+
   return (
     <Layout>
       <div className="form__container">

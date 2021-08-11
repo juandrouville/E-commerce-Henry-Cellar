@@ -3,6 +3,7 @@ import { validation } from 'components/validation/validation';
 import React, { useEffect, useState } from 'react'
 // import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
+import Layout from "../../layouts/layout-primary"
 
 export default function Edit({id}) {
 
@@ -77,8 +78,9 @@ export default function Edit({id}) {
     let key=1
     
     return (
+        <Layout>
         <div>
-             <form onSubmit={handleSubmit}>
+             <form onSubmit={handleSubmit} className="form__container">
                 <div>
                     <label>Product Name:</label>
                     <input type="text" name="name" defaultValue={productDetail.name} onChange={handleChange}/>
@@ -116,5 +118,6 @@ export default function Edit({id}) {
                <input type="submit" value="Edit"/>
              </form>
         </div>
+        </Layout>
     )
 }
