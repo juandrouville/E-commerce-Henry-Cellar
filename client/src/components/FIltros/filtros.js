@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
-import {getAllproducts, sortByPrecio, filtroCategoria, filtroBodega, ASC, DESC} from '../../actions/countriesActions';
+import {getAllproducts, sortByPrecio, filtroCategoria, filtroBodega, ASC, DESC} from "../../actions/index"
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-import './Filtros.css';
 
 export const Filtros = (props) => {
     console.log(props)
@@ -36,13 +35,23 @@ export const Filtros = (props) => {
         <div className='sideBar'>
             <ul className='ulFilters'>
                 <li className='filters'>
-                    Filter by Continent
+                    Filter by Category
                     <select className='hide' onChange={(e) => handleChangeCategory(e)}>
                         <option className='filter'>All</option>
+                        <option className='filter'>wines</option>
+                        <option className='filter'>Tinto</option>
+                        <option className='filter'>Merlot</option>
+                        <option className='filter'>Blanco</option>
+                        <option className='filter'>Chardonnay</option>
+                        <option className='filter'>Torrontes</option>
+                        <option className='filter'>Blend</option>
+                        <option className='filter'>Rosado</option>
+                        <option className='filter'>Syrah</option>
+                        <option className='filter'>accessories</option>
                     </select>
                 </li>
                 <li className='filters'>
-                    Population Sort
+                    Filter By price
                     <select className='hide' onChange={(e) => handleChangePrecio(e)}>
                         <option className='filter'>Select</option>
                         <option className='filter'>Ascendant</option>
@@ -50,7 +59,7 @@ export const Filtros = (props) => {
                     </select>
                 </li>
                 <li className='filters'>
-                    Area Sort
+                    Filter by Wineries
                     <select className='hide' onChange={(e) => handleChangeBodega(e)}>
                         <option className='filter'>All</option>
 
@@ -63,7 +72,7 @@ export const Filtros = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        getAllproducts: state.countries,
+        getAllProducts: state.getAllProducts,
     }
 }
 
@@ -75,8 +84,8 @@ const mapDispatchToProps = (dispatch) => {
         filtroCategoria: (categoria) => {
             dispatch(filtroCategoria(categoria))
         },
-        sortByPrecio: (a, b) => {
-            dispatch(sortByPrecio(a, b))
+        sortByPrecio: (precio) => {
+            dispatch(sortByPrecio(precio))
         },
         filtroBodega: (bodega) => {
             dispatch(filtroBodega(bodega))

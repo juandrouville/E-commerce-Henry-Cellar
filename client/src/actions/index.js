@@ -30,6 +30,7 @@ export function getAllCategories() {
   };
 }
 
+
 export function sortByPrecio(order,page) {
   if(!page){page = 0}
   return function (dispatch) {
@@ -44,7 +45,7 @@ export function sortByPrecio(order,page) {
 export function filtroCategoria(categoria) {
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${categoria}`)
+      .get(`http://localhost:3001/allproducts?order=${categoria}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -54,7 +55,7 @@ export function filtroCategoria(categoria) {
 export function filtroBodega(bodega) {
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${bodega}`)
+      .get(`http://localhost:3001/allproducts?order=${bodega}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
