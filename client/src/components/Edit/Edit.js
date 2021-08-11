@@ -1,4 +1,4 @@
-import { clearProductDetail, getAllCategories, getProductDetail } from 'actions';
+import { clearProductDetail, editProduct, getAllCategories, getProductDetail } from 'actions';
 import { validation } from 'components/validation/validation';
 import React, { useEffect, useState } from 'react'
 // import { useForm } from "react-hook-form"
@@ -72,9 +72,10 @@ export default function Edit({id}) {
 
     const handleSubmit=e=>{
         e.preventDefault()
+        dispatch(editProduct({...state}))
+        alert('Product edited!')
     }
 
-    
     let key=1
     
     return (
@@ -109,13 +110,13 @@ export default function Edit({id}) {
                <div>
                    <label>Categories:
                {state.categories.length && allCategories.map(category=>
-               <div key={key}><label>{category.name}</label>
+               <div key={key++}><label>{category.name}</label>
                     <input type="checkbox" value={category.name} defaultChecked={ state.categories && state.categories.includes(category.name)} onClick={handleSelections}></input>
                 </div>)}
                </label>
                {errors.categories && <p className="danger">{errors.categories}</p>}
                </div>
-               <input type="submit" value="Edit"/>
+               <input type="submit" value="Edit" disabled={Object.values(errors).length>0 ? true :false}/>
              </form>
         </div>
         </Layout>

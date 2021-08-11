@@ -4,6 +4,7 @@ export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const GET_ALL_WINERIES = "GET_ALL_WINERIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
 export const POST_PRODUCT = "POST_PRODUCT";
+export const EDIT_PRODUCT="EDIT_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
 export const FILTRO_CATEGORIA = "FILTRO_CATEGORIA";
 export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
@@ -17,38 +18,47 @@ export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 
-
-
 export function getAllproducts(page) {
   if (!page) {
     page = 0;
   }
   return async (dispatch) => {
-    const res = await axios.get(`http://localhost:3001/allproducts?page=${page}`);
+    const res = await axios.get(
+      `/allproducts?page=${page}` ||
+        `http://localhost:3001/allproducts?page=${page}`
+    );
     const V = res.data;
     dispatch({ type: GET_ALL_PRODUCTS, payload: V });
   };
 }
 
-
 export function getAllCategories() {
   return async (dispatch) => {
-    const res = await axios.get(`http://localhost:3001/categories`);
+    const res = await axios.get(
+      `/categories` || `http://localhost:3001/categories`
+    );
     dispatch({ type: GET_ALL_CATEGORIES, payload: res.data });
   };
 }
 export function getAllWineries() {
   return async (dispatch) => {
-    const res = await axios.get(`http://localhost:3001/wineries`);
+    const res = await axios.get(
+      `/wineries` || `http://localhost:3001/wineries`
+    );
     dispatch({ type: GET_ALL_WINERIES, payload: res.data });
   };
 }
-export function sortByPrecio(precio,page) {
-  if(!page){page = 0}
+export function sortByPrecio(precio, page) {
+  if (!page) {
+    page = 0;
+  }
 
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/allproducts?precio=${precio}`)
+      .get(
+        `/allproducts?precio=${precio}` ||
+          `http://localhost:3001/allproducts?precio=${precio}`
+      )
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -58,7 +68,10 @@ export function sortByPrecio(precio,page) {
 export function filtroCategoria(categoria) {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/allproducts?categoria=${categoria}`)
+      .get(
+        `/allproducts?categoria=${categoria}` ||
+          `http://localhost:3001/allproducts?categoria=${categoria}`
+      )
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -68,7 +81,10 @@ export function filtroCategoria(categoria) {
 export function filtroBodega(bodega) {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/allproducts?bodega=${bodega}`)
+      .get(
+        `/allproducts?bodega=${bodega}` ||
+          `http://localhost:3001/allproducts?bodega=${bodega}`
+      )
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -76,7 +92,9 @@ export function filtroBodega(bodega) {
 }
 export function getProductDetail(id) {
   return async (dispatch) => {
-    const res = await axios.get("http://localhost:3001/product/" + id);
+    const res = await axios.get(
+      `/product/` + id || `http://localhost:3001/product/` + id
+    );
     const V = res.data;
     dispatch({ type: PRODUCT_DETAIL, payload: V });
   };
@@ -92,8 +110,19 @@ export function clearProductDetail() {
 export function postProduct(input) {
   return async (dispatch) => {
     try {
-      const res = axios.post("http://localhost:3001/postproduct/", input);
+      const res = await axios.post("http://localhost:3001/postproduct/", input);
       dispatch({ type: POST_PRODUCT, payload: res.data });
+    } catch (err) {
+      alert("HEMOSIDO TIMADO -error en post-");
+    }
+  };
+}
+
+export function editProduct(product){
+  return async (dispatch) => {
+    try {
+      const res = await axios.put(`http://localhost:3001/editProduct/${product.id}`,product);
+      dispatch({ type: EDIT_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
     }
@@ -104,7 +133,8 @@ export function searchProductByName(name) {
   return async (dispatch) => {
     try {
       const products = await axios.get(
-        `http://localhost:3001/productSearch?name=${name}`
+        `/productSearch?name=${name}` ||
+          `http://localhost:3001/productSearch?name=${name}`
       );
       dispatch({ type: SEARCH_PROCUCT_BY_NAME, payload: products.data });
     } catch (error) {
@@ -136,9 +166,11 @@ export function addCart(id) {
   };
 }
 
+
 export function clearCart() {
   return {
     type: CLEAR_CART
     
   };
 }
+
