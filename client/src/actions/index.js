@@ -18,12 +18,15 @@ export function getAllproducts(page) {
   }
   return async (dispatch) => {
     const res = await axios.get(`http://localhost:3001/allproducts?page=${page}`);
-    const V = res.data;
-    dispatch({ type: GET_ALL_PRODUCTS, payload: V });
+    const response = res.data;
+    dispatch({ type: GET_ALL_PRODUCTS, payload: response });
   };
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5d5277301b46c2b81df689e170805b7a0a791fa0
 export function getAllCategories() {
   return async (dispatch) => {
     const res = await axios.get(`http://localhost:3001/categories`);
@@ -31,13 +34,19 @@ export function getAllCategories() {
   };
 }
 
+<<<<<<< HEAD
 export function sortByPrecio(order) {
 =======
 export function sortByPrecio(precio) {
 >>>>>>> Lopez
+=======
+
+export function sortByPrecio(order,page) {
+  if(!page){page = 0}
+>>>>>>> 5d5277301b46c2b81df689e170805b7a0a791fa0
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/allproducts?precio=${precio}`)
+      .get(`"http://localhost:3001/allproducts?order=${order}&page=${page}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -81,7 +90,7 @@ export function clearProductDetail() {
 export function postProduct(input) {
   return async (dispatch) => {
     try {
-      const res = axios.post("http://localhost:3001/postproduct/", input);
+      const res = await axios.post("http://localhost:3001/postproduct/", input);
       dispatch({ type: POST_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
@@ -89,11 +98,12 @@ export function postProduct(input) {
   };
 }
 
-export function searchProductByName(name) {
+export function searchProductByName(name,page) {
+  if (!page){page = 0 }
   return async (dispatch) => {
     try {
       const products = await axios.get(
-        `http://localhost:3001/productSearch?name=${name}`
+        `http://localhost:3001/productSearch?name=${name}&page=${page}`
       );
       dispatch({ type: SEARCH_PROCUCT_BY_NAME, payload: products.data });
     } catch (error) {
