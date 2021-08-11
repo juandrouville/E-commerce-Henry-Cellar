@@ -22,6 +22,7 @@ import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
 
 import dotenv from "dotenv";
+
 dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
