@@ -19,7 +19,7 @@ export function getAllproducts(page) {
     page = 0;
   }
   return async (dispatch) => {
-    const res = await axios.get(`http://localhost:3001/allproducts?page=${page}`);
+    const res = await axios.get(`/allproducts?page=${page}`|| `http://localhost:3001/allproducts?page=${page}`);
     const V = res.data;
     dispatch({ type: GET_ALL_PRODUCTS, payload: V });
   };
