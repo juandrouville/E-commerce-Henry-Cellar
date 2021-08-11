@@ -1,32 +1,33 @@
 import React, {useEffect} from 'react'
 import {getAllproducts, sortByPrecio, filtroCategoria, filtroBodega, ASC, DESC} from "../../actions/index"
-import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDispatch  } from 'react-redux';
 
-export const Filtros = (props) => {
-    console.log(props)
+export const Filtros = () => {
+    
+    var dispatch = useDispatch();
     const handleChangeCategory = (e) => {
         console.log(e.target.value)
         if(e.target.value === 'All'){
-            props.getAllproducts();
+            dispatch(getAllproducts());
         } else {
-            props.filtroCategoria(e.target.value)
+           dispatch(filtroCategoria(e.target.value));
         }
     }
     const handleChangeBodega = (e) => {
         console.log(e.target.value)
         if(e.target.value === 'All'){
-            props.getAllproducts();
+            dispatch(getAllproducts());
         } else {
-            props.filtroBodega(e.target.value)
+            dispatch(filtroBodega(e.target.value));
         }
     }
     const handleChangePrecio = (e) => {
         if(e.target.value === 'Select'){
-            props.getAllproducts();
+            dispatch(getAllproducts());
         }
         if (e.target.value === ASC || e.target.value === DESC) {
-            props.sortByPrecio(e.target.value)
+            dispatch(sortByPrecio(e.target.value))
         }
     }
 
@@ -70,28 +71,8 @@ export const Filtros = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        getAllProducts: state.getAllProducts,
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllproducts: () => {
-            dispatch(getAllproducts())
-        },
-        filtroCategoria: (categoria) => {
-            dispatch(filtroCategoria(categoria))
-        },
-        sortByPrecio: (precio) => {
-            dispatch(sortByPrecio(precio))
-        },
-        filtroBodega: (bodega) => {
-            dispatch(filtroBodega(bodega))
-        }
 
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filtros)
+
+export default Filtros;
