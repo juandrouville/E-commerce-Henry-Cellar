@@ -6,7 +6,7 @@ import wineimage from "assets/images/create-wine-image.jpeg";
 import NavBar from "components/NavBar/NavBar.js";
 import { validation } from "../components/validation/validation.js";
 
-import Layout from "../layout/layout-primary.js";
+import Layout from "../layouts/layout-primary.js";
 
 
 export default function PostProduct() {
