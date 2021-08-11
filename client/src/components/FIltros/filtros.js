@@ -38,7 +38,7 @@ export const Filtros = (props) => {
                     Filter by Category
                     <select className='hide' onChange={(e) => handleChangeCategory(e)}>
                         <option className='filter'>All</option>
-                        <option className='filter'>wines</option>
+                        <option className='filter'>Wine</option>
                         <option className='filter'>Tinto</option>
                         <option className='filter'>Merlot</option>
                         <option className='filter'>Blanco</option>
