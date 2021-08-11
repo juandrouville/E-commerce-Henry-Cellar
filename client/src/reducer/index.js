@@ -7,6 +7,10 @@ import {
   NEXT_PAGE,
   PREVIUS_PAGE,
   GET_ALL_CATEGORIES,
+  ADD_TO_CART,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+  CLEAR_CART,
 } from "../actions/index";
 
 const initialState = {
@@ -16,6 +20,7 @@ const initialState = {
   searchProductByName: [],
   createdProduct: [],
   page: 0,
+  cart: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -67,6 +72,26 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         page: action.payload,
       };
+    }
+    case ADD_TO_CART: {
+      let newItem = state.getAllProducts.find(
+        (product) => product.id === action.payload
+        );
+        console.log(newItem)
+      return{
+        ...state,
+        cart: [...state.cart, newItem],
+      }
+      
+    }
+    case REMOVE_ONE_FROM_CART: {
+      
+    }
+    case REMOVE_ALL_FROM_CART: {
+      
+    }
+    case CLEAR_CART: {
+      
     }
     default: {
       return state;
