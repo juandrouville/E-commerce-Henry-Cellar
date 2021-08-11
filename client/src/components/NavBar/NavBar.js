@@ -1,5 +1,5 @@
 import SearchBar from "../SearchBar/SearchBar";
-import cart2 from "../../assets/images/cart2.png";
+// import cart2 from "../../assets/images/cart2.png";
 import { NavLink } from "react-router-dom";
 import home1 from "assets/icons/logo-wine.png";
 

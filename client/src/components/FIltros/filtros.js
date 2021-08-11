@@ -1,33 +1,43 @@
 import React, {useEffect} from 'react'
-import {getAllproducts, sortByPrecio, filtroCategoria, filtroBodega, ASC, DESC} from '../../actions/countriesActions';
-import {connect} from 'react-redux';
+import {getAllproducts, sortByPrecio,getAllCategories, filtroCategoria, filtroBodega, ASC, DESC, getAllWineries} from "../../actions/index"
 import { Link } from 'react-router-dom';
-import './Filtros.css';
+import { useDispatch, useSelector  } from 'react-redux';
 
-export const Filtros = (props) => {
-    console.log(props)
+export const Filtros = () => {
+    const allWineries=useSelector(state=>state.wineries)
+    const allCategories=useSelector(state=>state.productCategories)
+    const dispatch = useDispatch();
+
+    const [errors, setErrors] = React.useState({});
+
+    useEffect(() => {
+      dispatch(getAllCategories());
+      dispatch(getAllWineries());
+      return function cleanup(){}
+    }, [dispatch]);
+
     const handleChangeCategory = (e) => {
         console.log(e.target.value)
         if(e.target.value === 'All'){
-            props.getAllproducts();
+            dispatch(getAllproducts());
         } else {
-            props.filtroCategoria(e.target.value)
+           dispatch(filtroCategoria(e.target.value));
         }
     }
     const handleChangeBodega = (e) => {
         console.log(e.target.value)
         if(e.target.value === 'All'){
-            props.getAllproducts();
+            dispatch(getAllproducts());
         } else {
-            props.filtroBodega(e.target.value)
+            dispatch(filtroBodega(e.target.value));
         }
     }
     const handleChangePrecio = (e) => {
         if(e.target.value === 'Select'){
-            props.getAllproducts();
+            dispatch(getAllproducts());
         }
         if (e.target.value === ASC || e.target.value === DESC) {
-            props.sortByPrecio(e.target.value)
+            dispatch(sortByPrecio(e.target.value))
         }
     }
 
@@ -36,13 +46,17 @@ export const Filtros = (props) => {
         <div className='sideBar'>
             <ul className='ulFilters'>
                 <li className='filters'>
-                    Filter by Continent
+                    Filter by Category
                     <select className='hide' onChange={(e) => handleChangeCategory(e)}>
                         <option className='filter'>All</option>
+                        {allCategories.length && allCategories.map(category=>(
+                           <option>{category.name}</option>
+                            ))}
+                        
                     </select>
                 </li>
                 <li className='filters'>
-                    Population Sort
+                    Filter By price
                     <select className='hide' onChange={(e) => handleChangePrecio(e)}>
                         <option className='filter'>Select</option>
                         <option className='filter'>Ascendant</option>
@@ -50,39 +64,23 @@ export const Filtros = (props) => {
                     </select>
                 </li>
                 <li className='filters'>
-                    Area Sort
+                    Filter by Wineries
                     <select className='hide' onChange={(e) => handleChangeBodega(e)}>
-                        <option className='filter'>All</option>
-
+                    <option className='filter'>All</option>
+                    {allWineries && allWineries.map(b=>(
+                           <option>{b.name}</option>
+                            ))}
+                        
                     </select>
                 </li>
             </ul>
+            
     </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        getAllproducts: state.countries,
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllproducts: () => {
-            dispatch(getAllproducts())
-        },
-        filtroCategoria: (categoria) => {
-            dispatch(filtroCategoria(categoria))
-        },
-        sortByPrecio: (a, b) => {
-            dispatch(sortByPrecio(a, b))
-        },
-        filtroBodega: (bodega) => {
-            dispatch(filtroBodega(bodega))
-        }
 
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filtros)
+
+export default Filtros;

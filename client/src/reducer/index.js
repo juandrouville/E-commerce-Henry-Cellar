@@ -7,10 +7,14 @@ import {
   NEXT_PAGE,
   PREVIUS_PAGE,
   GET_ALL_CATEGORIES,
+
   ADD_TO_CART,
   REMOVE_ONE_FROM_CART,
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
+
+  GET_ALL_WINERIES
+
 } from "../actions/index";
 
 const initialState = {
@@ -37,6 +41,12 @@ const rootReducer = (state = initialState, action) => {
         productCategories: action.payload,
       };
     }
+    case GET_ALL_WINERIES: {
+      return {
+        ...state,
+        wineries: action.payload,
+      };
+    }
     case SORT_BY_PRECIO: {
       return {
         ...state,
@@ -58,9 +68,10 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH_PROCUCT_BY_NAME: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        searchProductByName: action.payload,
       };
     }
+
     case NEXT_PAGE: {
       return {
         ...state,

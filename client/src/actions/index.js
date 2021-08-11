@@ -1,6 +1,7 @@
 import axios from "axios";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
+export const GET_ALL_WINERIES = "GET_ALL_WINERIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
 export const POST_PRODUCT = "POST_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
@@ -16,6 +17,8 @@ export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 
+
+
 export function getAllproducts(page) {
   if (!page) {
     page = 0;
@@ -27,17 +30,25 @@ export function getAllproducts(page) {
   };
 }
 
+
 export function getAllCategories() {
   return async (dispatch) => {
     const res = await axios.get(`http://localhost:3001/categories`);
     dispatch({ type: GET_ALL_CATEGORIES, payload: res.data });
   };
 }
+export function getAllWineries() {
+  return async (dispatch) => {
+    const res = await axios.get(`http://localhost:3001/wineries`);
+    dispatch({ type: GET_ALL_WINERIES, payload: res.data });
+  };
+}
+export function sortByPrecio(precio,page) {
+  if(!page){page = 0}
 
-export function sortByPrecio(order) {
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${order}`)
+      .get(`http://localhost:3001/allproducts?precio=${precio}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -47,7 +58,7 @@ export function sortByPrecio(order) {
 export function filtroCategoria(categoria) {
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${categoria}`)
+      .get(`http://localhost:3001/allproducts?categoria=${categoria}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -57,7 +68,7 @@ export function filtroCategoria(categoria) {
 export function filtroBodega(bodega) {
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${bodega}`)
+      .get(`http://localhost:3001/allproducts?bodega=${bodega}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });

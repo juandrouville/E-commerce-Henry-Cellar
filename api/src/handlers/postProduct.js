@@ -35,9 +35,9 @@ const postProduct = async (req,res,next) => {
             })
         }   
         if (addProduct[1]===true) {
-            return res.status(200).json({messege:'Successfully created product'})
+            return res.status(200).json({message:'Successfully created product'})
         }else{
-            return res.status(200).json({messege:'The product already exists'})
+            return res.status(200).json({message:'The product already exists'})
         }
        
     } catch (error) {
