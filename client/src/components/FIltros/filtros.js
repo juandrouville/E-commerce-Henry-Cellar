@@ -1,11 +1,19 @@
 import React, {useEffect} from 'react'
-import {getAllproducts, sortByPrecio, filtroCategoria, filtroBodega, ASC, DESC} from "../../actions/index"
+import {getAllproducts, sortByPrecio,getAllCategories, filtroCategoria, filtroBodega, ASC, DESC} from "../../actions/index"
 import { Link } from 'react-router-dom';
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 
 export const Filtros = () => {
-    
-    var dispatch = useDispatch();
+    const allCategories=useSelector(state=>state.productCategories)
+    const dispatch = useDispatch();
+
+    const [errors, setErrors] = React.useState({});
+
+    useEffect(() => {
+      dispatch(getAllCategories());
+      return function cleanup(){}
+    }, [dispatch]);
+
     const handleChangeCategory = (e) => {
         console.log(e.target.value)
         if(e.target.value === 'All'){
@@ -39,16 +47,10 @@ export const Filtros = () => {
                     Filter by Category
                     <select className='hide' onChange={(e) => handleChangeCategory(e)}>
                         <option className='filter'>All</option>
-                        <option className='filter'>Wine</option>
-                        <option className='filter'>Tinto</option>
-                        <option className='filter'>Merlot</option>
-                        <option className='filter'>Blanco</option>
-                        <option className='filter'>Chardonnay</option>
-                        <option className='filter'>Torrontes</option>
-                        <option className='filter'>Blend</option>
-                        <option className='filter'>Rosado</option>
-                        <option className='filter'>Syrah</option>
-                        <option className='filter'>accessories</option>
+                        {allCategories.length && allCategories.map(category=>(
+                           <option>{category.name}</option>
+                            ))}
+                        
                     </select>
                 </li>
                 <li className='filters'>
@@ -67,6 +69,7 @@ export const Filtros = () => {
                     </select>
                 </li>
             </ul>
+            
     </div>
     )
 }
