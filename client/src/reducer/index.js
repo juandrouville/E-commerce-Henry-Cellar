@@ -56,6 +56,7 @@ const rootReducer = (state = initialState, action) => {
         searchProductByName: action.payload,
       };
     }
+
     case NEXT_PAGE: {
       return {
         ...state,

@@ -18,10 +18,11 @@ export function getAllproducts(page) {
   }
   return async (dispatch) => {
     const res = await axios.get(`http://localhost:3001/allproducts?page=${page}`);
-    const response = res.data;
-    dispatch({ type: GET_ALL_PRODUCTS, payload: response });
+    const V = res.data;
+    dispatch({ type: GET_ALL_PRODUCTS, payload: V });
   };
 }
+
 
 export function getAllCategories() {
   return async (dispatch) => {
@@ -30,11 +31,12 @@ export function getAllCategories() {
   };
 }
 
-export function sortByPrecio(order,page) {
+export function sortByPrecio(precio,page) {
   if(!page){page = 0}
+
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${order}&page=${page}`)
+      .get(`http://localhost:3001/allproducts?precio=${precio}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -44,7 +46,7 @@ export function sortByPrecio(order,page) {
 export function filtroCategoria(categoria) {
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${categoria}`)
+      .get(`http://localhost:3001/allproducts?order=${categoria}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -54,7 +56,7 @@ export function filtroCategoria(categoria) {
 export function filtroBodega(bodega) {
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${bodega}`)
+      .get(`http://localhost:3001/allproducts?order=${bodega}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -86,12 +88,11 @@ export function postProduct(input) {
   };
 }
 
-export function searchProductByName(name,page) {
-  if (!page){page = 0 }
+export function searchProductByName(name) {
   return async (dispatch) => {
     try {
       const products = await axios.get(
-        `http://localhost:3001/productSearch?name=${name}&page=${page}`
+        `http://localhost:3001/productSearch?name=${name}`
       );
       dispatch({ type: SEARCH_PROCUCT_BY_NAME, payload: products.data });
     } catch (error) {
