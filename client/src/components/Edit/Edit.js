@@ -72,7 +72,7 @@ export default function Edit({id}) {
 
     const handleSubmit=e=>{
         e.preventDefault()
-        dispatch(editProduct({...state,id:id}))
+        dispatch(editProduct({...state}))
         alert('Product edited!')
     }
 
