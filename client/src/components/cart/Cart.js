@@ -21,7 +21,7 @@ const Cart = () => {
                         return (
                             
                             <div>
-                                <CartItem key={item} data={item} delFromCart={delFromCart} name={item.name} price={item.price} />
+                                <CartItem key={item} delFromCart={delFromCart} name={item.name} price={item.price} quantity={item.quantity}/>
                              </div>
                         
                         );
