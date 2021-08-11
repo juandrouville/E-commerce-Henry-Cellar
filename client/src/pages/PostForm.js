@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import { validation } from "../components/validation/validation.js";
-
-import Layout from "../layouts/layout-primary.js";
+import LayoutPrimary from "../layouts/layout-primary.js";
 
 
 export default function PostProduct(props) {
@@ -84,7 +83,7 @@ export default function PostProduct(props) {
 }
 
   return (
-    <Layout>
+    <LayoutPrimary>
       <div className="form__container">
         <Link to={`/`}>
           <button>home</button>
@@ -175,6 +174,6 @@ export default function PostProduct(props) {
           </form>
         </div>
       </div>
-    </Layout>
+    </LayoutPrimary>
   );
 }
