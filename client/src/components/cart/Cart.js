@@ -1,14 +1,20 @@
 import react from "react"
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../CartItem/CartItem"
-import {clearCart} from "../../actions/index"
+import { clearCart, removeOneProduct, removeAllProduct } from "../../actions/index"
 
 const Cart = () => {
     const dispatch = useDispatch();
 
     const cart = useSelector((state) => state.cart);
 
-    const delFromCart = () => {
+    const delFromCart = (id, all = false) => {
+        if (all) {
+            dispatch(removeAllProduct(id));
+        } else {
+            dispatch(removeOneProduct(id));
+        }
+    
     }
 
     const clearcart = () => {
@@ -22,11 +28,11 @@ const Cart = () => {
                 {cart ? (
                     cart.map((item, index) => {
                         return (
-                            
+
                             <div>
-                                <CartItem key={item} delFromCart={delFromCart} name={item.name} price={item.price} quantity={item.quantity}/>
-                             </div>
-                        
+                                <CartItem key={item} id={item.id} delFromCart={delFromCart} name={item.name} price={item.price} quantity={item.quantity} />
+                            </div>
+
                         );
                     })
                 ) : (
