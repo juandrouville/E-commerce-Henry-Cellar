@@ -1,32 +1,37 @@
-import React from "react";
-import { validation } from "../components/validation/validation.js";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { postProduct } from "../actions";
-import wineimage from "assets/images/create-wine-image.jpeg";
-import NavBar from "components/NavBar/NavBar.js";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { postProduct, getAllCategories } from "../actions";
+import wineimage from "assets/images/create-wine-image.jpeg";
+import { validation } from "../components/validation/validation.js";
 
-export default function PostProduct() {
+import Layout from "../layouts/layout-primary.js";
+
+
+export default function PostProduct(props) {
   const dispatch = useDispatch();
+  const allCategories=useSelector(state=>state.productCategories)
   //linkear categorias ???
 
   const [input, setInput] = React.useState({
     name: "",
-    img: "",
+    image: wineimage,
     description: "",
-    bodega: "",
-    precio: 0,
-    stock: 0,
-    harvest: 0,
-    categoria: "",
+    winery: "",
+    price: "",
+    stock: "",
+    categories:[],
   });
+
+  // const [category, setCategory] = React.useState([]);
 
   const [errors, setErrors] = React.useState({});
 
   useEffect(() => {
-    setInput({ ...input });
-  });
+    dispatch(getAllCategories());
+    return function cleanup(){}
+  }, [dispatch]);
+
 
   const handleInputChange = function (e) {
     setInput({
@@ -46,109 +51,130 @@ export default function PostProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      alert("Item successfully created!");
-      dispatch(postProduct(input));
+      dispatch(postProduct(input))
+      alert("Item successfully created!"); // ver como usar un toast que es mas estetico
+      props.history.push("/")
       console.log(input);
     } catch (err) {
       console.log("error en el submit", err);
     }
   };
 
+  // const handleCategories = (e) => {
+  //   if (category.length < 1) {
+  //     if (!category.includes(e.target.value)) {
+  //       setCategory([...category, e.target.value]);
+  //     }
+  //   }
+  // };
+
+  const handleSelections=e=>{
+    if(input.categories.includes(e.target.value)){
+        let oldCategories=input.categories
+        let newCategories=oldCategories.filter(category=>category!==e.target.value)
+        setInput({...input,categories:newCategories})
+        setErrors(validation({...input,categories:newCategories}))
+    } else {
+        let newCategories=input.categories
+        newCategories.push(e.target.value)
+        setInput({...input,categories:newCategories})
+        setErrors(validation({...input,categories:newCategories})
+        );
+    }
+}
+
   return (
-    <div className="form__container">
-      <NavBar />
-      <Link to={`/`}>
-        <button>home</button>
-      </Link>
-      <div className="form">
-        <img src={wineimage} alt="post photo" width="50%" />
-        <form className="table" onSubmit={handleSubmit}>
-          <div className="form__inputs">
-            <div>
-              <label>Product name</label>
-              <input
-                className={errors.name && "danger"}
-                type="text"
-                name="name"
-                onChange={handleInputChange}
-                value={input.name}
-              />
-              {errors.name && <p className="danger">{errors.name}</p>}
+    <Layout>
+      <div className="form__container">
+        <Link to={`/`}>
+          <button>home</button>
+        </Link>
+        <div className="form">
+          <img src={wineimage} alt="post wine" width="50%" />
+          <form className="table" onSubmit={handleSubmit}>
+            <div className="form__inputs">
+              <div>
+                <label>Product name</label>
+                <input
+                  className={errors.name && "danger"}
+                  type="text"
+                  name="name"
+                  onChange={handleInputChange}
+                  value={input.name}
+                />
+                {errors.name && <p className="danger">{errors.name}</p>}
+              </div>
+              <div>
+                <label>Winery</label>
+                <input
+                  className={errors.winery && "danger"}
+                  type="text"
+                  name="winery"
+                  onChange={handleInputChange}
+                  value={input.winery}
+                  />{" "}
+                {errors.winery && <p className="danger">{errors.winery}</p>}
+              </div>
+              <div>
+                <label>Price</label>
+                <input
+                  className={errors.price && "danger"}
+                  type="number"
+                  name="price"
+                  onChange={handleInputChange}
+                  value={input.price}
+                  />
+                {errors.price && <p className="danger">{errors.price}</p>}
+              </div>
+              <div>
+                <label>Description</label>
+                <input
+                  className={errors.description && "danger"}
+                  type="text"
+                  name="description"
+                  onChange={handleInputChange}
+                  value={input.description}
+                  />
+                {errors.description && (
+                  <p className="danger">{errors.description}</p>
+                )}
+              </div>
+              <div>
+                <label>Stock</label>
+                <input
+                  className={errors.stock && "danger"}
+                  type="number"
+                  name="stock"
+                  onChange={handleInputChange}
+                  value={input.stock}
+                  min={0}
+                  max={255}
+                  />
+                {errors.stock && <p className="danger">{errors.stock}</p>}
+              </div>
+              <div>
+                <label>Categories</label>
+                    {allCategories.length && allCategories.map(category=>
+                 <div key={category.id}><label>{category.name}</label>
+                        <input type="checkbox" value={category.name} onClick={handleSelections}></input>
+                 </div>)}
+                    {/* <select onChange={(e) => handleCategories(e)}>
+                      {productCategories &&
+                        productCategories.map((category, i) => (
+                          <option key={category.id} value={category.name}>
+                            {category.name}
+                          </option>
+                        ))}
+                    </select> */}
+                  {errors.categories && <p className="danger">{errors.categories}</p>}
+              </div>
             </div>
-            <div>
-              <label>Categoría</label>
-              <input
-                className={errors.categoria && "danger"}
-                type="text"
-                name="categoria"
-                onChange={handleInputChange}
-                value={input.categoria}
-              />
-            </div>
-            {errors.categoria && <p className="danger">{errors.categoria}</p>}
-            <div>
-              <label>Bodega</label>
-              <input
-                className={errors.bodega && "danger"}
-                type="text"
-                name="bodega"
-                onChange={handleInputChange}
-                value={input.bodega}
-              />{" "}
-              {errors.bodega && <p className="danger">{errors.bodega}</p>}
-            </div>
-            <div>
-              <label>Cosecha</label>
-              <input
-                className={errors.harvest && "danger"}
-                type="text"
-                name="harvest"
-                onChange={handleInputChange}
-                value={input.harvest}
-              />
-              {errors.harvest && <p className="danger">{errors.harvest}</p>}
-            </div>
-            <div>
-              <label>Precio</label>
-              <input
-                className={errors.price && "danger"}
-                type="number"
-                name="price"
-                onChange={handleInputChange}
-                value={input.price}
-              />
-              {errors.price && <p className="danger">{errors.price}</p>}
-            </div>
-            <div>
-              <label>Descripción</label>
-              <input
-                className={errors.description && "danger"}
-                type="text"
-                name="description"
-                onChange={handleInputChange}
-                value={input.description}
-              />
-              {errors.description && (
-                <p className="danger">{errors.description}</p>
-              )}
-            </div>
-            <div>
-              <label>Stock</label>
-              <input
-                className={errors.stock && "danger"}
-                type="number"
-                name="stock"
-                onChange={handleInputChange}
-                value={input.stock}
-              />
-              {errors.stock && <p className="danger">{errors.stock}</p>}
-            </div>
-          </div>
-          <button className="btn1" type="submit">
-            Create!
-          </button>
-        </form>
+            <button className="btn1" type="submit" disabled={Object.values(errors).length>0 ? true : false}>
+              Create!
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }

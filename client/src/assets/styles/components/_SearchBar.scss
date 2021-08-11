@@ -9,6 +9,7 @@
     height: 50px;
     border-radius: 20px;
     padding: 5px;
+    outline: none;
 
     @include response(medium) {
       width: 200px;

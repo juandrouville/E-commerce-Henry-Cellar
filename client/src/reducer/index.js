@@ -6,10 +6,11 @@ import {
   SEARCH_PROCUCT_BY_NAME,
   NEXT_PAGE,
   PREVIUS_PAGE,
+  GET_ALL_CATEGORIES,
 } from "../actions/index";
 
 const initialState = {
-  prueba: [],
+  productCategories: [],
   getAllProducts: [],
   productDetail: [],
   searchProductByName: [],
@@ -23,6 +24,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         getAllProducts: action.payload,
+      };
+    }
+    case GET_ALL_CATEGORIES: {
+      return {
+        ...state,
+        productCategories: action.payload,
       };
     }
     case SORT_BY_PRECIO: {
@@ -46,20 +53,21 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH_PROCUCT_BY_NAME: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        searchProductByName: action.payload,
       };
     }
+
     case NEXT_PAGE: {
       return {
         ...state,
         page: action.payload,
-      }
-    };
+      };
+    }
     case PREVIUS_PAGE: {
       return {
         ...state,
         page: action.payload,
-      }
+      };
     }
     default: {
       return state;
