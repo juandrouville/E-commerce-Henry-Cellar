@@ -53,9 +53,10 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH_PROCUCT_BY_NAME: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        searchProductByName: action.payload,
       };
     }
+
     case NEXT_PAGE: {
       return {
         ...state,
