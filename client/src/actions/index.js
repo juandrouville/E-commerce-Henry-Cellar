@@ -174,3 +174,17 @@ export function clearCart() {
   };
 }
 
+export function removeOneProduct(id) {
+  return {
+    type: REMOVE_ONE_FROM_CART,
+    payload: id,
+  };
+}
+
+export function removeAllProduct(id) {
+  return {
+    type: REMOVE_ALL_FROM_CART,
+    payload: id,
+  };
+}
+

@@ -104,7 +104,20 @@ const rootReducer = (state = initialState, action) => {
 
     }
     case REMOVE_ONE_FROM_CART: {
+      let itemToDelete = state.cart.find((item) => item.id === action.payload);
 
+      return itemToDelete.quantity > 1
+        ? {
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === action.payload
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          ),
+        } : {
+          ...state,
+          cart: state.cart.filter((item) => item.id !== action.payload)
+        };
     }
     case REMOVE_ALL_FROM_CART: {
 
@@ -114,7 +127,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         cart: []
       }
-      
     }
     default: {
       return state;
