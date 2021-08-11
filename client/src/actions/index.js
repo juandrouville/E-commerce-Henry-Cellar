@@ -1,6 +1,7 @@
 import axios from "axios";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
+export const GET_ALL_WINERIES = "GET_ALL_WINERIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
 export const POST_PRODUCT = "POST_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
@@ -32,7 +33,12 @@ export function getAllCategories() {
     dispatch({ type: GET_ALL_CATEGORIES, payload: res.data });
   };
 }
-
+export function getAllWineries() {
+  return async (dispatch) => {
+    const res = await axios.get(`http://localhost:3001/wineries`);
+    dispatch({ type: GET_ALL_WINERIES, payload: res.data });
+  };
+}
 export function sortByPrecio(precio,page) {
   if(!page){page = 0}
 

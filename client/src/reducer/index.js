@@ -7,6 +7,7 @@ import {
   NEXT_PAGE,
   PREVIUS_PAGE,
   GET_ALL_CATEGORIES,
+  GET_ALL_WINERIES
 } from "../actions/index";
 
 const initialState = {
@@ -30,6 +31,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         productCategories: action.payload,
+      };
+    }
+    case GET_ALL_WINERIES: {
+      return {
+        ...state,
+        wineries: action.payload,
       };
     }
     case SORT_BY_PRECIO: {

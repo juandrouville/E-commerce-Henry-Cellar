@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react'
-import {getAllproducts, sortByPrecio,getAllCategories, filtroCategoria, filtroBodega, ASC, DESC} from "../../actions/index"
+import {getAllproducts, sortByPrecio,getAllCategories, filtroCategoria, filtroBodega, ASC, DESC, getAllWineries} from "../../actions/index"
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector  } from 'react-redux';
 
 export const Filtros = () => {
+    const allWineries=useSelector(state=>state.wineries)
     const allCategories=useSelector(state=>state.productCategories)
     const dispatch = useDispatch();
 
@@ -11,6 +12,7 @@ export const Filtros = () => {
 
     useEffect(() => {
       dispatch(getAllCategories());
+      dispatch(getAllWineries());
       return function cleanup(){}
     }, [dispatch]);
 
@@ -64,8 +66,11 @@ export const Filtros = () => {
                 <li className='filters'>
                     Filter by Wineries
                     <select className='hide' onChange={(e) => handleChangeBodega(e)}>
-                        <option className='filter'>All</option>
-
+                    <option className='filter'>All</option>
+                    {allWineries && allWineries.map(b=>(
+                           <option>{b.name}</option>
+                            ))}
+                        
                     </select>
                 </li>
             </ul>
