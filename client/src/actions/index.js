@@ -135,3 +135,10 @@ export function addCart(id) {
     payload: id,
   };
 }
+
+export function clearCart() {
+  return {
+    type: CLEAR_CART
+    
+  };
+}
