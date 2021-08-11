@@ -12,6 +12,8 @@ export const PREVIUS_PAGE = "PREVIUS_PAGE";
 export const ASC = "Ascendant";
 export const DESC = "Descendant";
 
+
+
 export function getAllproducts(page) {
   if (!page) {
     page = 0;
@@ -46,7 +48,7 @@ export function sortByPrecio(precio,page) {
 export function filtroCategoria(categoria) {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/allproducts?order=${categoria}`)
+      .get(`http://localhost:3001/allproducts?categoria=${categoria}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -56,7 +58,7 @@ export function filtroCategoria(categoria) {
 export function filtroBodega(bodega) {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/allproducts?order=${bodega}`)
+      .get(`http://localhost:3001/allproducts?bodega=${bodega}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });

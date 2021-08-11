@@ -3,7 +3,7 @@ import Pagination from "../components/pagination/pagination";
 
 import Wine from "assets/images/backgrond-wine.jpeg";
 import Layout from "layouts/layout-primary";
-import filtros from "components/FIltros/filtros";
+import Filtros from "components/FIltros/filtros";
 
 const Home = () => {
   return (
