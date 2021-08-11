@@ -18,10 +18,11 @@ export function getAllproducts(page) {
   }
   return async (dispatch) => {
     const res = await axios.get(`http://localhost:3001/allproducts?page=${page}`);
-    const response = res.data;
-    dispatch({ type: GET_ALL_PRODUCTS, payload: response });
+    const V = res.data;
+    dispatch({ type: GET_ALL_PRODUCTS, payload: V });
   };
 }
+
 
 export function getAllCategories() {
   return async (dispatch) => {
@@ -30,12 +31,12 @@ export function getAllCategories() {
   };
 }
 
-
-export function sortByPrecio(order,page) {
+export function sortByPrecio(precio,page) {
   if(!page){page = 0}
+
   return function (dispatch) {
     axios
-      .get(`"http://localhost:3001/allproducts?order=${order}&page=${page}`)
+      .get(`http://localhost:3001/allproducts?precio=${precio}`)
       .then((res) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
@@ -79,7 +80,7 @@ export function clearProductDetail() {
 export function postProduct(input) {
   return async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:3001/postproduct/", input);
+      const res = axios.post("http://localhost:3001/postproduct/", input);
       dispatch({ type: POST_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
@@ -87,12 +88,11 @@ export function postProduct(input) {
   };
 }
 
-export function searchProductByName(name,page) {
-  if (!page){page = 0 }
+export function searchProductByName(name) {
   return async (dispatch) => {
     try {
       const products = await axios.get(
-        `http://localhost:3001/productSearch?name=${name}&page=${page}`
+        `http://localhost:3001/productSearch?name=${name}`
       );
       dispatch({ type: SEARCH_PROCUCT_BY_NAME, payload: products.data });
     } catch (error) {
