@@ -10,7 +10,9 @@ const postProduct=require("./postProduct");
 const editProduct=require('./editProduct');
 const getAllCategories  = require('./getAllCategories');
 const getAllWineries  = require('./getAllWineries');
+const editOrderLine=require('./editOrderLine')
 const postUser = require('../handlers/postUser');
+
 
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product",productDetail);
@@ -20,6 +22,7 @@ router.use("/editProduct",editProduct);
 router.use("/categories",getAllCategories);
 router.use("/wineries",getAllWineries);
 router.use("/createuser",postUser);
+router.use('/editOrderLine',editOrderLine)
 
 
 
