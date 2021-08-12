@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getAllproducts, addCart } from "../../actions/index";
 import Product from "../product/Product";
+import Pagination from "components/pagination/pagination";
 
 function AllProducts({ products, GetProducts, addCart }) {
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
-  const addToCart = (id) =>{
-    
-    addCart(id)
-  }
+  const addToCart = (id) => {
+    addCart(id);
+  };
 
   return (
     <div>
@@ -22,7 +22,14 @@ function AllProducts({ products, GetProducts, addCart }) {
             return (
               <Link to={`/product-detail/${p.id}`} key={p.id}>
                 <div>
-                  <Product name={p.name} image={p.image} price={p.price} addToCart={addToCart} id={p.id}/>
+                  <Product
+                    name={p.name}
+                    image={p.image}
+                    price={p.price}
+                    addToCart={addToCart}
+                    id={p.id}
+                  />
+                  <Pagination />
                 </div>
               </Link>
             );
@@ -44,7 +51,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     GetProducts: () => dispatch(getAllproducts()),
-    addCart: (id) => dispatch(addCart(id))
+    addCart: (id) => dispatch(addCart(id)),
   };
 }
 

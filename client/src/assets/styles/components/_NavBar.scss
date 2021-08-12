@@ -1,36 +1,30 @@
-.nav-bar {
-  padding: 20px 20px;
-  border-bottom: 1px solid rgb(126, 33, 33);
+.nav__brand {
+  padding: 0px 20px 0px 20px;
+  background-color: black;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
-  flex-wrap: wrap;
-  white-space: nowrap;
-
-  .wine {
-    display: flex;
-    align-items: center;
-    h1 {
-      color: rgb(126, 33, 33);
-    }
+  @include response(medium) {
+    flex-direction: row;
   }
 
-  .nav__brand {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    @include response(medium) {
-      flex-direction: row;
-    }
-
-    img {
-      margin-right: 20px;
-    }
+  img {
+    margin-right: 20px;
   }
-
-  .nav__items {
-    // position: absolute;
-    top: 1;
-    right: 0;
+}
+.wine {
+  display: flex;
+  align-items: center;
+  h1 {
+    color: white;
   }
+}
+.nav__items {
+  top: 1;
+  right: 0;
 }
