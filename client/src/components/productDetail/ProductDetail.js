@@ -7,6 +7,7 @@ import {
   addCart
 } from "../../actions/index";
 import NavBar from "../NavBar/NavBar";
+import cart2 from "../../assets/images/cart2.png";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export default function ProductDetail() {
             <p className="data__description"> {productDetail.description} </p>
             <p>Stock: {productDetail.stock} unidades</p>
           </div>
-          <button onClick={() => addToCart(productDetail.id)}>Cart</button>
+          <button onClick={() => addToCart(productDetail.id)}>cart</button>
         </div>
       ) : (
         <p>Cargando...</p>
