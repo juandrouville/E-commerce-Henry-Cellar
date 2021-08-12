@@ -25,7 +25,7 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
-  cart: [],
+ // cart: [],
   user:{},
 
   setPagination:{
