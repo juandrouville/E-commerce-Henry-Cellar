@@ -22,6 +22,10 @@ const Cart = () => {
         dispatch(clearCart())
     }
 
+    let total = cart.reduce(function(acc, curr){
+        return acc + curr.quantity * curr.price;
+    },0);
+
     return (
         <div>
             <NavBar />
@@ -34,7 +38,7 @@ const Cart = () => {
                             <div>
                                 <CartItem key={item} id={item.id} delFromCart={delFromCart} name={item.name} price={item.price} quantity={item.quantity} />
                             </div>
-
+                            
                         );
                     })
                 ) : (
@@ -42,7 +46,10 @@ const Cart = () => {
                 )}
 
             </div>
-            <h3>Cart</h3>
+            <h3>TOTAL:${total}</h3>
+            <div>
+                
+            </div>
             <button onClick={(e) => clearcart(e)}>Clear Cart</button>
         </div>
     );
