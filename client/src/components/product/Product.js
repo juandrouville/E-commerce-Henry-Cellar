@@ -1,7 +1,7 @@
 import React from "react";
 import cart2 from "../../assets/images/cart2.png";
 
-const Product = ({ image, name, price, stock, addToCart, id }) => {
+const Product = ({ image, name, price, stock }) => {
   return (
     <div className="row center">
       <div key={name} className="product">
@@ -13,7 +13,6 @@ const Product = ({ image, name, price, stock, addToCart, id }) => {
           <br />
           <p className="product__stock">Stock</p>
           <div> 
-          <button onClick={() => addToCart(id)}>Cart</button>
           </div>
         </div>
       </div>

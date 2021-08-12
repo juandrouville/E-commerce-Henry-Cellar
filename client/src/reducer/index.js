@@ -3,28 +3,37 @@ import {
   SORT_BY_PRECIO,
   PRODUCT_DETAIL,
   POST_PRODUCT,
-  SEARCH_PROCUCT_BY_NAME,
+  SEARCH_PRODUCT_BY_NAME,
   NEXT_PAGE,
   PREVIUS_PAGE,
   GET_ALL_CATEGORIES,
-
   ADD_TO_CART,
   REMOVE_ONE_FROM_CART,
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
-
-  GET_ALL_WINERIES
-
+  GET_ALL_WINERIES,
+  SET_PAGINATION,
 } from "../actions/index";
+
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
 const initialState = {
   productCategories: [],
   getAllProducts: [],
   productDetail: [],
-  searchProductByName: [],
+  // searchProductByName: [],
   createdProduct: [],
   page: 0,
-  cart: [],
+
+  setPagination:{
+    filter:'',
+    valueFilter:'',
+  },
+  
+
+  //cart: [cartFromLocalStorage],
+  cart: cartFromLocalStorage,
+
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -65,10 +74,10 @@ const rootReducer = (state = initialState, action) => {
         productDetail: action.payload,
       };
     }
-    case SEARCH_PROCUCT_BY_NAME: {
+    case SEARCH_PRODUCT_BY_NAME: {
       return {
         ...state,
-        searchProductByName: action.payload,
+        getAllProducts: action.payload,
       };
     }
 
@@ -84,37 +93,60 @@ const rootReducer = (state = initialState, action) => {
         page: action.payload,
       };
     }
+    case SET_PAGINATION:{
+      return {
+        ...state,
+        setPagination:action.payload,
+      };
+    };
     case ADD_TO_CART: {
       let newItem = state.getAllProducts.find(
         (product) => product.id === action.payload
       );
-      let itemInCart = state.cart.find(item => item.id === newItem.id)
+      let itemInCart = state.cart.find((item) => item.id === newItem.id);
 
       return itemInCart
         ? {
-          ...state,
-          cart: state.cart.map((item) => item.id === newItem.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-          ),
-        } : {
-          ...state,
-          cart: [...state.cart, { ...newItem, quantity: 1 }]
-        }
-
+            ...state,
+            cart: state.cart.map((item) =>
+              item.id === newItem.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            cart: [...state.cart, { ...newItem, quantity: 1 }],
+          };
     }
     case REMOVE_ONE_FROM_CART: {
+      let itemToDelete = state.cart.find((item) => item.id === action.payload);
 
+      return itemToDelete.quantity > 1
+        ? {
+            ...state,
+            cart: state.cart.map((item) =>
+              item.id === action.payload
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            cart: state.cart.filter((item) => item.id !== action.payload),
+          };
     }
     case REMOVE_ALL_FROM_CART: {
-
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload),
+      };
     }
     case CLEAR_CART: {
       return {
         ...state,
-        cart: []
-      }
-      
+        cart: [],
+      };
     }
     default: {
       return state;

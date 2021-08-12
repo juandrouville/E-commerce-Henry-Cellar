@@ -60,10 +60,12 @@ export default function Edit({id}) {
             let oldCategories=state.categories
             let newCategories=oldCategories.filter(category=>category!==e.target.value)
             setState({...state,categories:newCategories})
+            setErrors(validation({...state,categories:newCategories}))
         } else {
             let newCategories=state.categories
             newCategories.push(e.target.value)
             setState({...state,categories:newCategories})
+            setErrors(validation({...state,categories:newCategories}))
         }
     }
    
@@ -72,7 +74,7 @@ export default function Edit({id}) {
 
     const handleSubmit=e=>{
         e.preventDefault()
-        dispatch(editProduct({...state}))
+        dispatch(editProduct({...state,id:id}))
         alert('Product edited!')
     }
 
@@ -108,12 +110,19 @@ export default function Edit({id}) {
                    {errors.stock && <p className="danger">{errors.stock}</p>}
                </div>
                <div>
-                   <label>Categories:
-               {state.categories.length && allCategories.map(category=>
-               <div key={key++}><label>{category.name}</label>
+                  { state.categories.length && allCategories.length ? 
+                 <label>Categories:
+                   {  allCategories.map(category=>
+                     <div key={key++}><label>{category.name}</label>
                     <input type="checkbox" value={category.name} defaultChecked={ state.categories && state.categories.includes(category.name)} onClick={handleSelections}></input>
-                </div>)}
-               </label>
+                    </div>)}
+               </label> : <label>Categories:
+                   {  allCategories.map(category=>
+                     <div key={key++}><label>{category.name}</label>
+                    <input type="checkbox" value={category.name} onClick={handleSelections}></input>
+                    </div>)}</label>
+                  }
+                  
                {errors.categories && <p className="danger">{errors.categories}</p>}
                </div>
                <input type="submit" value="Edit" disabled={Object.values(errors).length>0 ? true :false}/>

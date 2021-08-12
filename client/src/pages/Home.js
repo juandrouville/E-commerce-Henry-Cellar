@@ -1,9 +1,14 @@
 import AllProducts from "../components/allProducts/allproducts";
+
+import Pagination from "../components/pagination/pagination";
+import React from 'react';
+import Wine from "assets/images/backgrond-wine.jpeg";
 import Layout from "layouts/layout-primary";
 import Filtros from "components/Filtros/filtros";
 import background from "assets/images/background-definitivo.jpeg";
 
 const Home = () => {
+  
   return (
     <Layout>
       <div className="catalogo__container">
