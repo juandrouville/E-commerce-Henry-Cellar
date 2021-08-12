@@ -6,7 +6,7 @@ const LayoutPrimary = ({ children }) => {
   return (
     <div>
       <NavBar />
-      <React.Fragment>{children}</React.Fragment>;
+      <React.Fragment>{children}</React.Fragment>
     </div>
   );
 };
