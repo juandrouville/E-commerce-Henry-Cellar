@@ -1,4 +1,5 @@
 import React from "react";
+import Layout from "layouts/layout-primary";
 
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -7,6 +8,7 @@ const Profile = () => {
   const { name, given_name, family_name, picture, email } = user;
 
   return (
+    <Layout>
     <div>
       <div>
         <div>
@@ -29,6 +31,7 @@ const Profile = () => {
         </pre>
       </div> */}
     </div>
+    </Layout>
   );
 };
 
