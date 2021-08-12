@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Profile = () => {
   const { user } = useAuth0();
   const { name, given_name, family_name, picture, email } = user;
-
+  console.log(user)
   return (
     <Layout>
     <div>
@@ -25,11 +25,11 @@ const Profile = () => {
           <p>E-mail: {email}</p>
         </div>
       </div>
-      {/* <div >
+      <div >
         <pre >
           {JSON.stringify(user, null, 2)}
         </pre>
-      </div> */}
+      </div>
     </div>
     </Layout>
   );
