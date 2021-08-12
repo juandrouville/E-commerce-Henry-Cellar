@@ -12,6 +12,7 @@ import {
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
   GET_ALL_WINERIES,
+  SET_PAGINATION,
 } from "../actions/index";
 
 const initialState = {
@@ -21,6 +22,10 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
+  setPagination:{
+    filter:'',
+    valueFilter:'',
+  },
   cart: [],
 };
 
@@ -81,6 +86,12 @@ const rootReducer = (state = initialState, action) => {
         page: action.payload,
       };
     }
+    case SET_PAGINATION:{
+      return {
+        ...state,
+        setPagination:action.payload,
+      };
+    };
     case ADD_TO_CART: {
       let newItem = state.getAllProducts.find(
         (product) => product.id === action.payload
