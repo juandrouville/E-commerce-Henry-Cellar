@@ -17,21 +17,87 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
-export const GET_USER="GET_USER"
+export const GET_USER="GET_USER";
+export const SET_PAGINATION = "SET_PAGINATION";
 
-export function getAllproducts(page) {
+
+
+
+export function sortByPrecio( page, order) {
+  if (!page) {
+    page = 0;
+  };
+
+  return function (dispatch) {
+    axios
+      .get(
+        `/allproducts?precio=${order}&page=${page}` ||
+          `http://localhost:3001/allproducts?precio=${order}&page=${page}`
+      )
+      .then((res) => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
+  };
+}
+
+export function filtroCategoria(page,categoria) {
+  if (!page) {
+    page = 0;
+  };
+  return function (dispatch) {
+    axios
+      .get(
+        `/allproducts?categoria=${categoria}&page=${page}` ||
+          `http://localhost:3001/allproducts?categoria=${categoria}&page=${page}`
+      )
+      .then((res) => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
+  };
+};
+
+export function filtroBodega(page,bodega) {
   if (!page) {
     page = 0;
   }
-  return async (dispatch) => {
-    const res = await axios.get(
-      `/allproducts?page=${page}` ||
-        `http://localhost:3001/allproducts?page=${page}`
-    );
-    const V = res.data;
-    dispatch({ type: GET_ALL_PRODUCTS, payload: V });
+  return function (dispatch) {
+    axios
+      .get(
+        `/allproducts?bodega=${bodega}&page=${page}` ||
+          `http://localhost:3001/allproducts?bodega=${bodega}&page=${page}`
+      )
+      .then((res) => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
   };
-}
+};
+
+export function getAllproducts(page,filter,valuefilter) {
+  if (!page) {
+    page = 0;
+  }
+  console.log(filter,valuefilter);
+  if (filter === 'precio'){
+    return sortByPrecio(page, valuefilter);
+  };
+  if (filter === 'categoria'){
+    return filtroCategoria(page,valuefilter);
+  };
+  if (filter === 'bodega'){
+    return filtroBodega(page,valuefilter);
+  }
+  if(!filter){
+    return async (dispatch) => {
+      const res = await axios.get(
+        `/allproducts?page=${page}` ||
+          `http://localhost:3001/allproducts?page=${page}`
+      );
+      const V = res.data;
+      dispatch({ type: GET_ALL_PRODUCTS, payload: V });
+    };
+  }
+};
+
 
 export function getAllCategories() {
   return async (dispatch) => {
@@ -49,48 +115,7 @@ export function getAllWineries() {
     dispatch({ type: GET_ALL_WINERIES, payload: res.data });
   };
 }
-export function sortByPrecio(precio, page) {
-  if (!page) {
-    page = 0;
-  }
 
-  return function (dispatch) {
-    axios
-      .get(
-        `/allproducts?precio=${precio}` ||
-          `http://localhost:3001/allproducts?precio=${precio}`
-      )
-      .then((res) => {
-        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
-      });
-  };
-}
-
-export function filtroCategoria(categoria) {
-  return function (dispatch) {
-    axios
-      .get(
-        `/allproducts?categoria=${categoria}` ||
-          `http://localhost:3001/allproducts?categoria=${categoria}`
-      )
-      .then((res) => {
-        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
-      });
-  };
-}
-
-export function filtroBodega(bodega) {
-  return function (dispatch) {
-    axios
-      .get(
-        `/allproducts?bodega=${bodega}` ||
-          `http://localhost:3001/allproducts?bodega=${bodega}`
-      )
-      .then((res) => {
-        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
-      });
-  };
-}
 export function getProductDetail(id) {
   return async (dispatch) => {
     const res = await axios.get(
@@ -207,3 +232,13 @@ export function getUser(userData){
     }
   };
 }
+
+export function setPagination(filter,valueFilter){
+  return {
+    type: SET_PAGINATION,
+    payload:{
+      filter,
+      valueFilter,
+    },
+  };
+};

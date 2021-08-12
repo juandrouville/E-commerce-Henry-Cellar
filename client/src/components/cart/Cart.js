@@ -1,13 +1,18 @@
-import react from "react"
+import { useEffect }  from "react"
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../CartItem/CartItem"
 import { clearCart, removeOneProduct, removeAllProduct } from "../../actions/index"
 import NavBar from "../NavBar/NavBar";
 
+
 const Cart = () => {
     const dispatch = useDispatch();
 
-    const cart = useSelector((state) => state.cart);
+    let cart = useSelector((state) => state.cart);
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart])
 
     const delFromCart = (id, all = false) => {
         if (all) {

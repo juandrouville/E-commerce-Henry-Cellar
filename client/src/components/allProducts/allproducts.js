@@ -5,15 +5,14 @@ import { getAllproducts, addCart } from "../../actions/index";
 import Product from "../product/Product";
 import cart2 from "../../assets/images/cart2.png";
 
-function AllProducts({ products, GetProducts, addCart }) {
+function AllProducts({ products, GetProducts, addCart,  }) {
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
   const addToCart = (id) => {
-
     addCart(id)
-  }
+  };
 
   return (
     <div>
@@ -42,6 +41,7 @@ function AllProducts({ products, GetProducts, addCart }) {
 function mapStateToProps(state) {
   return {
     products: state.getAllProducts,
+    cart: state.cart
   };
 }
 
