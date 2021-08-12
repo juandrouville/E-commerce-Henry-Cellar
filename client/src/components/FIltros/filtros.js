@@ -39,7 +39,6 @@ export const Filtros = (state) => {
             dispatch(getAllproducts(null,'precio',e.target.value))
         }
     }
-  };
 
   return (
     <div className="filtros">
