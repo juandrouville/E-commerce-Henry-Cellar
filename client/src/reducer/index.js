@@ -15,6 +15,8 @@ import {
   SET_PAGINATION,
 } from "../actions/index";
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+
 const initialState = {
   productCategories: [],
   getAllProducts: [],
@@ -22,11 +24,16 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
+
   setPagination:{
     filter:'',
     valueFilter:'',
   },
-  cart: [],
+  
+
+  //cart: [cartFromLocalStorage],
+  cart: cartFromLocalStorage,
+
 };
 
 const rootReducer = (state = initialState, action) => {
