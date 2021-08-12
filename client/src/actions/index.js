@@ -4,11 +4,11 @@ export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const GET_ALL_WINERIES = "GET_ALL_WINERIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
 export const POST_PRODUCT = "POST_PRODUCT";
-export const EDIT_PRODUCT="EDIT_PRODUCT";
+export const EDIT_PRODUCT = "EDIT_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
 export const FILTRO_CATEGORIA = "FILTRO_CATEGORIA";
 export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
-export const SEARCH_PROCUCT_BY_NAME = "SEARCH_PROCUCT_BY_NAME";
+export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
 export const NEXT_PAGE = "NEXT_PAGE";
 export const PREVIUS_PAGE = "PREVIUS_PAGE";
 export const ASC = "Ascendant";
@@ -110,7 +110,11 @@ export function clearProductDetail() {
 export function postProduct(input) {
   return async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:3001/postproduct/", input);
+      const res = await axios.post(
+        `/postproduct/`,
+        input || `http://localhost:3001/postproduct/`,
+        input
+      );
       dispatch({ type: POST_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
@@ -118,10 +122,14 @@ export function postProduct(input) {
   };
 }
 
-export function editProduct(product){
+export function editProduct(product) {
   return async (dispatch) => {
     try {
-      const res = await axios.put(`http://localhost:3001/editProduct/${product.id}`,product);
+      const res = await axios.put(
+        `/editProduct/${product.id}`,
+        product || `http://localhost:3001/editProduct/${product.id}`,
+        product
+      );
       dispatch({ type: EDIT_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
@@ -136,7 +144,7 @@ export function searchProductByName(name) {
         `/productSearch?name=${name}` ||
           `http://localhost:3001/productSearch?name=${name}`
       );
-      dispatch({ type: SEARCH_PROCUCT_BY_NAME, payload: products.data });
+      dispatch({ type: SEARCH_PRODUCT_BY_NAME, payload: products.data });
     } catch (error) {
       console.log(error);
     }
@@ -166,11 +174,9 @@ export function addCart(id) {
   };
 }
 
-
 export function clearCart() {
   return {
-    type: CLEAR_CART
-    
+    type: CLEAR_CART,
   };
 }
 
@@ -187,4 +193,3 @@ export function removeAllProduct(id) {
     payload: id,
   };
 }
-
