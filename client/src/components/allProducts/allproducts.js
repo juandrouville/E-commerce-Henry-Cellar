@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getAllproducts, addCart } from "../../actions/index";
 import Product from "../product/Product";
+import cart2 from "../../assets/images/cart2.png";
 
 function AllProducts({ products, GetProducts, addCart }) {
   useEffect(() => {
@@ -26,7 +27,7 @@ function AllProducts({ products, GetProducts, addCart }) {
                     <Product name={p.name} image={p.image} price={p.price} id={p.id} />
                   </div>
                 </Link>
-                <button onClick={() => addToCart(p.id)}>Cart</button>
+                <button onClick={() => addToCart(p.id)}><img src={cart2} alt="cartlogo" width="30" height="30" /></button>
               </div>
             );
           })
