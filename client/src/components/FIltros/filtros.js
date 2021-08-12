@@ -1,3 +1,4 @@
+
 import React, {useEffect} from 'react'
 import {getAllproducts,getAllCategories,ASC, DESC, getAllWineries, setPagination} from "../../actions/index"
 import { useDispatch, useSelector  } from 'react-redux';
@@ -38,47 +39,37 @@ export const Filtros = (state) => {
             dispatch(getAllproducts(null,'precio',e.target.value))
         }
     }
+  };
 
-  
-    return (
-        <div className='sideBar'>
-            <ul className='ulFilters'>
-                <li className='filters'>
-                    Filter by Category
-                    <select className='hide' onChange={(e) => handleChangeCategory(e)}>
-                        <option className='filter'>All</option>
-                        {allCategories.length && allCategories.map(category=>(
-                           <option>{category.name}</option>
-                            ))}
-                        
-                    </select>
-                </li>
-                <li className='filters'>
-                    Filter By price
-                    <select className='hide' onChange={(e) => handleChangePrecio(e)}>
-                        <option className='filter'>Select</option>
-                        <option className='filter'>Ascendant</option>
-                        <option className='filter'>Descendant</option>
-                    </select>
-                </li>
-                <li className='filters'>
-                    Filter by Wineries
-                    <select className='hide' onChange={(e) => handleChangeBodega(e)}>
-                    <option className='filter'>All</option>
-                    {allWineries && allWineries.map(b=>(
-                           <option>{b.name}</option>
-                            ))}
-                        
-                    </select>
-                </li>
-            </ul>
-            
+  return (
+    <div className="filtros">
+      <ul className="filtros__container">
+        <li className="filters">
+          Filter by Category
+          <select className="hide" onChange={(e) => handleChangeCategory(e)}>
+            <option className="filter"></option>
+            {allCategories.length &&
+              allCategories.map((category) => <option>{category.name}</option>)}
+          </select>
+        </li>
+        <li className="filters">
+          Filter X price
+          <select className="hide" onChange={(e) => handleChangePrecio(e)}>
+            <option className="filter">Select</option>
+            <option className="filter">Ascendant</option>
+            <option className="filter">Descendant</option>
+          </select>
+        </li>
+        <li className="filters">
+          Filter by Wineries
+          <select className="hide" onChange={(e) => handleChangeBodega(e)}>
+            <option className="filter"></option>
+            {allWineries && allWineries.map((b) => <option>{b.name}</option>)}
+          </select>
+        </li>
+      </ul>
     </div>
-    )
-}
-
-
-
-
+  );
+};
 
 export default Filtros;
