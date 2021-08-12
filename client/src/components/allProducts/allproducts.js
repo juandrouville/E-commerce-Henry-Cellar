@@ -4,15 +4,14 @@ import { connect } from "react-redux";
 import { getAllproducts, addCart } from "../../actions/index";
 import Product from "../product/Product";
 
-function AllProducts({ products, GetProducts, addCart }) {
+function AllProducts({ products, GetProducts, addCart,  }) {
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
   const addToCart = (id) => {
-
     addCart(id)
-  }
+  };
 
   return (
     <div>
@@ -41,6 +40,7 @@ function AllProducts({ products, GetProducts, addCart }) {
 function mapStateToProps(state) {
   return {
     products: state.getAllProducts,
+    cart: state.cart
   };
 }
 
