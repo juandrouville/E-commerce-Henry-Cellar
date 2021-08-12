@@ -9,8 +9,8 @@ function AllProducts({ products, GetProducts, addCart }) {
     GetProducts();
   }, [GetProducts]);
 
-  const addToCart = (id) =>{
-    
+  const addToCart = (id) => {
+
     addCart(id)
   }
 
@@ -20,11 +20,14 @@ function AllProducts({ products, GetProducts, addCart }) {
         {products ? (
           products.map((p) => {
             return (
-              <Link to={`/product-detail/${p.id}`} key={p.id}>
-                <div>
-                  <Product name={p.name} image={p.image} price={p.price} addToCart={addToCart} id={p.id}/>
-                </div>
-              </Link>
+              <div>
+                <Link to={`/product-detail/${p.id}`} key={p.id}>
+                  <div>
+                    <Product name={p.name} image={p.image} price={p.price} id={p.id} />
+                  </div>
+                </Link>
+                <button onClick={() => addToCart(p.id)}>Cart</button>
+              </div>
             );
           })
         ) : (

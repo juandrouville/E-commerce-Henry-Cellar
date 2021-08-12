@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetail,
   clearProductDetail,
-  // getAllproducts,
+  addCart
 } from "../../actions/index";
 import NavBar from "../NavBar/NavBar";
 
@@ -20,16 +20,16 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
-  // function onClickFiltro() {
-  //   dispatch(getAllproducts());
-  // }
+  const addToCart = (id) =>{  
+    dispatch(addCart(id))
+  }
+
+ 
 
   return (
     <div>
       <NavBar />
-      {/* <Link to={`/`}>
-        <buttom onClick={(e) => onClickFiltro(e)}>home</buttom>
-      </Link> */}
+     
       {productDetail ? (
         <div className="product__detail">
           <img src={productDetail.image} alt="Loading..." width="40%" />
@@ -42,6 +42,7 @@ export default function ProductDetail() {
             <p className="data__description"> {productDetail.description} </p>
             <p>Stock: {productDetail.stock} unidades</p>
           </div>
+          <button onClick={() => addToCart(productDetail.id)}>Cart</button>
         </div>
       ) : (
         <p>Cargando...</p>
