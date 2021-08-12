@@ -18,7 +18,7 @@ const initialState = {
   productCategories: [],
   getAllProducts: [],
   productDetail: [],
-  searchProductByName: [],
+  // searchProductByName: [],
   createdProduct: [],
   page: 0,
   cart: [],
@@ -65,7 +65,7 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH_PRODUCT_BY_NAME: {
       return {
         ...state,
-        searchProductByName: action.payload,
+        getAllProducts: action.payload,
       };
     }
 
