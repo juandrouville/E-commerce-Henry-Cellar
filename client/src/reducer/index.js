@@ -14,6 +14,8 @@ import {
   GET_ALL_WINERIES,
 } from "../actions/index";
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+
 const initialState = {
   productCategories: [],
   getAllProducts: [],
@@ -21,7 +23,8 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
-  cart: [],
+  //cart: [cartFromLocalStorage],
+  cart: cartFromLocalStorage,
 };
 
 const rootReducer = (state = initialState, action) => {
