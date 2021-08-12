@@ -12,6 +12,7 @@ import {
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
   GET_ALL_WINERIES,
+  GET_USER,
   SET_PAGINATION,
 } from "../actions/index";
 
@@ -24,6 +25,8 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
+ // cart: [],
+  user:{},
 
   setPagination:{
     filter:'',
@@ -147,6 +150,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         cart: [],
       };
+    }
+    case GET_USER:{
+      return {
+        ...state,
+        user:action.payload
+      }
     }
     default: {
       return state;

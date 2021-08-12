@@ -17,6 +17,7 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
+export const GET_USER="GET_USER";
 export const SET_PAGINATION = "SET_PAGINATION";
 
 
@@ -217,7 +218,20 @@ export function removeAllProduct(id) {
     type: REMOVE_ALL_FROM_CART,
     payload: id,
   };
-};
+}
+
+export function getUser(userData){
+  return async (dispatch) => {
+    try {
+      const res = await axios.post(
+        `/getUser/${userData.sub}`|| `http://localhost:3001/getUser/${userData.sub}`,userData
+      );
+      dispatch({ type: GET_USER, payload: res.data });
+    } catch (err) {
+      alert("HEMOSIDO TIMADO -error en post-");
+    }
+  };
+}
 
 export function setPagination(filter,valueFilter){
   return {

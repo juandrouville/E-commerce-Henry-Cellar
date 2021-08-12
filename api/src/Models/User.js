@@ -4,6 +4,11 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo de usuario
   sequelize.define("user", {
+    id:{
+      type:DataTypes.STRING,
+      unique:true,
+      primaryKey:true
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,10 +22,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // password: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     email: {
       type: DataTypes.STRING,
       unique: true,
@@ -30,14 +35,17 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    resetPass: {
-      type: DataTypes.STRING,
-      defaultValue: "",
+    image:{
+      type:DataTypes.STRING,
+      allowNull:true
     },
+    // resetPass: {
+    //   type: DataTypes.STRING,
+    //   defaultValue: "",
+    // },
     subscribed: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false,
+      defaultValue: false
     },
     blocked: {
       type: DataTypes.BOOLEAN,
