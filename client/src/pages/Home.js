@@ -33,7 +33,7 @@ const Home = () => {
         <h1>Find the perfect wine for you.</h1>
       </div>
       <div id="catalogo">
-        <h1 className="catalogo__title">Catalogo</h1>
+        <h1 className="catalogo__title">Catalog</h1>
         <div>
           <Filtros />
         </div>
