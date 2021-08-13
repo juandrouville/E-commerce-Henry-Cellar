@@ -1,34 +1,25 @@
-const { Orderline } = require('../db')
 const { Order } = require('../db')
 
-async function edirOrder(req, res, next) {
+async function editOrder(req, res, next) {
 
     const { id } = req.params
 
-    const { name, price, description, image, stock, categories } = req.body;
+    const { paymentMethod, shippingMethod, } = req.body;
 
-    let productValues = { name: name, description: description, price: price, image: image, stock: stock }
+    let orderValues = { paymentMethod: paymentMethod,  shippingMethod: shippingMethod}
 
     try {
-        let productToEdit = await Product.findOne({ where: { id }})
+        let orderToEdit = await Order.findOne({ where: { id }})
         
 
-        for (let property in productValues) {
-            productToEdit[property]=productValues[property]
+        for (let property in orderValues) {
+            orderToEdit[property]=orderValues[property]
         }
         
-        productToEdit.setCategories(null)
-        
-        categories.forEach(async(category)=>{
-           let model=await Categories.findOne({where:{name:category}})
-           productToEdit.addCategories(model)
-        }
-        )
+    
+        await orderToEdit.save()
 
-
-        await productToEdit.save()
-
-        res.send({ msg: "The product was edited successfully." });
+        res.send({ msg: "The order was edited successfully." });
 
     } catch (error) {
 
@@ -40,5 +31,5 @@ async function edirOrder(req, res, next) {
 
 
 module.exports = {
-    editProduct,
+    editOrder,
 }
