@@ -35,10 +35,8 @@ ReactDOM.render(
       <Auth0ProviderWithHistory>
 
         <Route exact path="/prueba" component={Prueba} />
-
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/catalog" component={Home} />
-
         <Route exact path="/create" component={PostProduct} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route
