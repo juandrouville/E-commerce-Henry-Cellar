@@ -15,7 +15,7 @@ const NavBar = () => {
     // Your menu here 👇🏻
     <div className="nav__brand">
       <NavLink
-        to="/"
+        to="/catalog"
         refresh="true"
         className="wine"
         style={{ textDecoration: "none" }}
