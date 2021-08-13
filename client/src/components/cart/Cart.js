@@ -1,14 +1,21 @@
 import { useEffect }  from "react"
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../CartItem/CartItem"
-import { clearCart, removeOneProduct, removeAllProduct } from "../../actions/index"
+import { clearCart, removeOneProduct, removeAllProduct, unifyCarts } from "../../actions/index"
 import NavBar from "../NavBar/NavBar";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const Cart = () => {
     const dispatch = useDispatch();
+    const {isAuthenticated,user}=useAuth0()
 
     let cart = useSelector((state) => state.cart);
+
+    useEffect(()=>{
+        if(isAuthenticated) dispatch(unifyCarts(user.sub,cart))
+    },[isAuthenticated,dispatch,cart,user])
+     
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));

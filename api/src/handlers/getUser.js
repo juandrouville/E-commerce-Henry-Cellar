@@ -18,7 +18,7 @@ async function getUser(req, res,next) {
 
         const userOrder=await Order.findOrCreate({where:{state:"pending",userId:id},
         attributes: { exclude: ["createdAt", "updatedAt"] }})
-
+       
         res.json({...userSearched[0],order:userOrder[0]});
 
     } catch(error){

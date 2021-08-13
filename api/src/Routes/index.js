@@ -12,7 +12,7 @@ const getAllCategories  = require('./getAllCategories');
 const getAllWineries  = require('./getAllWineries');
 const editOrderLine=require('./editOrderLine')
 const getUser=require('./getUser')
-
+const unifyCarts=require('./unifyCarts')
 
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product",productDetail);
@@ -23,7 +23,7 @@ router.use("/categories",getAllCategories);
 router.use("/wineries",getAllWineries);
 router.use("/getUser",getUser);
 router.use('/editOrderLine',editOrderLine)
-
+router.use('/unifyCarts',unifyCarts)
 
 
 module.exports = router;

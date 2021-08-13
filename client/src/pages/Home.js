@@ -9,17 +9,20 @@ import background from "assets/images/background-definitivo.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
-import { getUser } from "actions";
+import { getUser, unifyCarts } from "actions";
 
 const Home = () => {
 
   const dispatch=useDispatch()
   const {user,isAuthenticated}=useAuth0()
-
+  const cart=useSelector(state=>state.cart)
 
   useEffect(() => {
-    if(isAuthenticated) dispatch(getUser(user))
+    if(isAuthenticated) {
+      dispatch(getUser(user))
+    }
   }, [isAuthenticated,dispatch,user])
+
 
   const userDB=useSelector(state=>state.user)
   console.log(userDB)

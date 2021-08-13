@@ -14,6 +14,7 @@ import {
   GET_ALL_WINERIES,
   GET_USER,
   SET_PAGINATION,
+  UNIFY_CARTS_DB_LOCALSTORAGE
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -100,8 +101,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         setPagination:action.payload,
-      };
-    };
+      }
+    }
     case ADD_TO_CART: {
       let newItem = state.getAllProducts.find(
         (product) => product.id === action.payload
@@ -155,6 +156,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         user:action.payload
+      }
+    }
+    case UNIFY_CARTS_DB_LOCALSTORAGE:{
+      return {
+        ...state,
+        cart:action.payload
       }
     }
     default: {
