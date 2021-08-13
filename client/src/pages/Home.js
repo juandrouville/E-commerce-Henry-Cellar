@@ -4,7 +4,7 @@ import Pagination from "../components/pagination/pagination";
 import React from 'react';
 import Wine from "assets/images/backgrond-wine.jpeg";
 import Layout from "layouts/layout-primary";
-import Filtros from "components/Filtros/filtros";
+import Filtros from "../components/FIltros/filtros";
 import background from "assets/images/background-definitivo.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -38,6 +38,9 @@ const Home = () => {
           <Filtros />
         </div>
         <AllProducts />
+      </div>
+      <div>
+      <Pagination />
       </div>
     </Layout>
   );
