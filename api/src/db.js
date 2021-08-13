@@ -70,8 +70,11 @@ Order.belongsTo(User);
 
 Product.hasOne(Orderline);
 
-Product.hasMany(Review)
-Review.belongsTo(Product)
+Product.hasMany(Review);
+Review.belongsTo(Product);
+
+Review.belongsTo(User);
+User.hasMany(Review);
 
 module.exports = {
   ...sequelize.models, 
