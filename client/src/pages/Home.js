@@ -5,7 +5,7 @@ import React from "react";
 import Wine from "assets/images/backgrond-wine.jpeg";
 import Layout from "layouts/layout-primary";
 
-import Filtros from "../components/Filtros/filtros";
+import Filtros from "../components/FIltros/filtros";
 
 
 import { useDispatch, useSelector } from "react-redux";
