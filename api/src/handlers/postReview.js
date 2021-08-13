@@ -13,7 +13,7 @@ async function postReview( req , res ){
                 score:score,
                 commentary:commentary,
         });
-        console.log(review);
+        
         var response = await review.setProduct(product);
         res.json(response);
 
