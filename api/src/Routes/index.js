@@ -12,7 +12,9 @@ const getAllCategories  = require('./getAllCategories');
 const getAllWineries  = require('./getAllWineries');
 const editOrderLine=require('./editOrderLine')
 const getUser=require('./getUser')
-const unifyCarts=require('./unifyCarts')
+const unifyCarts=require('./unifyCarts');
+const postReview = require('./postReview');
+
 
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product",productDetail);
@@ -22,8 +24,14 @@ router.use("/editProduct",editProduct);
 router.use("/categories",getAllCategories);
 router.use("/wineries",getAllWineries);
 router.use("/getUser",getUser);
+<<<<<<< HEAD
 router.use('/editOrderLine',editOrderLine)
 router.use('/unifyCarts',unifyCarts)
+=======
+router.use('/editOrderLine',editOrderLine);
+router.use('/postReview',postReview);
+
+>>>>>>> 77c3c65dc1e8f953f36f7105f214cb7f6f7b2328
 
 
 module.exports = router;
