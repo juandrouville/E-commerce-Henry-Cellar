@@ -4,18 +4,20 @@ import Pagination from "../components/pagination/pagination";
 import React from 'react';
 import Wine from "assets/images/backgrond-wine.jpeg";
 import Layout from "layouts/layout-primary";
-import Filtros from "../components/FIltros/filtros";
+import Filtros from "../components/Filtros/filtros";
 import background from "assets/images/background-definitivo.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { getUser } from "actions";
+import SimpleForm from "../components/SimpleForm/SimpleForm";
+
 
 const Home = () => {
 
   const dispatch=useDispatch()
   const {user,isAuthenticated}=useAuth0()
-
+  
 
   useEffect(() => {
     if(isAuthenticated) dispatch(getUser(user))
@@ -23,6 +25,7 @@ const Home = () => {
 
   const userDB=useSelector(state=>state.user)
   console.log(userDB)
+  
   return (
     <Layout>
       <div className="catalogo__container">
@@ -36,11 +39,13 @@ const Home = () => {
         <h1 className="catalogo__title">Catalog</h1>
         <div>
           <Filtros />
+          <SimpleForm />
         </div>
         <AllProducts />
       </div>
       <div>
       <Pagination />
+      
       </div>
     </Layout>
   );
