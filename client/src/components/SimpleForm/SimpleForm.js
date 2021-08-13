@@ -35,6 +35,11 @@ const SimpleForm = () => {
           {
             id: "intro-user",
             user: true,
+            trigger: '3',
+          },
+          {
+            id: '3',
+            message: 'Hi {previousValue}, nice to meet you!',
             end: true,
           },
         ]}
