@@ -52,7 +52,7 @@ export const Filtros = (state) => {
           </select>
         </li>
         <li className="filters">
-          Filter X price
+          Order by price
           <select className="hide" onChange={(e) => handleChangePrecio(e)}>
             <option className="filter">Select</option>
             <option className="filter">Ascendant</option>
