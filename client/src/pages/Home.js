@@ -4,15 +4,15 @@ import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import React from "react";
 import Layout from "layouts/layout-primary";
 
-import Filtros from "../components/FIltros/filtros";
-
+import Filtros from "../components/Filtros/filtros";
+import background from "../assets/images/background-definitivo.jpeg"
 
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { getUser } from "actions";
 import SimpleForm from "../components/SimpleForm/SimpleForm";
-
+import Pagination from "components/pagination/pagination";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <Layout>
       <div className="catalogo__container">
-        <img src={background} alt="Henry" />
+        {/* <img src={background} alt="Henry" /> */}
         <a className="icon" href="#catalogo">
           <div className="arrow">
             <Arrow />
