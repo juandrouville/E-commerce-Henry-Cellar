@@ -1,8 +1,7 @@
 import AllProducts from "../components/allProducts/allproducts";
+import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 
-import Pagination from "../components/pagination/pagination";
-import React from 'react';
-import Wine from "assets/images/backgrond-wine.jpeg";
+import React from "react";
 import Layout from "layouts/layout-primary";
 import Filtros from "components/Filtros/filtros";
 import background from "assets/images/background-definitivo.jpeg";
@@ -12,23 +11,23 @@ import { useEffect } from "react";
 import { getUser } from "actions";
 
 const Home = () => {
-
-  const dispatch=useDispatch()
-  const {user,isAuthenticated}=useAuth0()
-
+  const dispatch = useDispatch();
+  const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
-    if(isAuthenticated) dispatch(getUser(user))
-  }, [isAuthenticated,dispatch,user])
+    if (isAuthenticated) dispatch(getUser(user));
+  }, [isAuthenticated, dispatch, user]);
 
-  const userDB=useSelector(state=>state.user)
-  console.log(userDB)
+  const userDB = useSelector((state) => state.user);
+  console.log(userDB);
   return (
     <Layout>
       <div className="catalogo__container">
         <img src={background} alt="Henry" />
-        <a className="link" href="#catalogo">
-          Shop now
+        <a className="icon" href="#catalogo">
+          <div className="arrow">
+            <Arrow />
+          </div>
         </a>
         <h1>Find the perfect wine for you.</h1>
       </div>

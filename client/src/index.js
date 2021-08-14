@@ -38,6 +38,7 @@ ReactDOM.render(
           path="/editProduct/:id"
           render={({ match }) => <Edit id={match.params.id} />}
         />
+        <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
         <Route path="/mycart" component={Cart} />
       </Auth0ProviderWithHistory>
