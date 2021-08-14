@@ -44,7 +44,6 @@ export const Filtros = (state) => {
     if (e.target.value === ASC || e.target.value === DESC) {
       dispatch(getAllproducts(null, "precio", e.target.value));
     }
-  };
 
   return (
     <div className="filtros">
@@ -58,7 +57,7 @@ export const Filtros = (state) => {
           </select>
         </li>
         <li className="filters">
-          Filter X price
+          Order by price
           <select className="hide" onChange={(e) => handleChangePrecio(e)}>
             <option className="filter">Select</option>
             <option className="filter">Ascendant</option>

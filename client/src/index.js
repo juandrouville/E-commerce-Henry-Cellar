@@ -16,10 +16,12 @@ import "assets/styles/main.scss";
 // Pages 👇🏻
 import ProductDetail from "./components/productDetail/ProductDetail";
 import Home from "pages/Home.js";
+import LandingPage from "pages/LandingPage.js";
 import Edit from "components/Edit/Edit";
 import PostProduct from "pages/PostForm.js";
 import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
+import Prueba from "../src/pages/PruebaDeComponentes"
 
 import dotenv from "dotenv";
 
@@ -31,7 +33,9 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/prueba" component={Prueba} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/catalog" component={Home} />
         <Route exact path="/create" component={PostProduct} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route

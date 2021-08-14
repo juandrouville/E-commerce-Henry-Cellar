@@ -2,7 +2,6 @@ import SearchBar from "../SearchBar/SearchBar";
 import cart2 from "../../assets/images/cart2.png";
 import { NavLink } from "react-router-dom";
 import home1 from "assets/icons/logo-wine.png";
-import AuthenticationButton from "../authentication-button/authentication-button.js";
 
 //Authentication with Auth0
 import React from "react";
@@ -16,7 +15,7 @@ const NavBar = () => {
     // Your menu here 👇🏻
     <div className="nav__brand">
       <NavLink
-        to="/"
+        to="/catalog"
         refresh="true"
         className="wine"
         style={{ textDecoration: "none" }}

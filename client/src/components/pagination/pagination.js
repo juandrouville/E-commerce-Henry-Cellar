@@ -21,7 +21,6 @@ export default function Pagination() {
                 dispatch(nextPage(page + 1));
                 dispatch(getAllproducts(page + 1,filter,valueFilter))
             }}>next</button>
-            <h6>{filter}-{valueFilter}</h6>
         </div>
     )
 }
