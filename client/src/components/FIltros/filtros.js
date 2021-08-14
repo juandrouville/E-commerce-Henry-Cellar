@@ -1,43 +1,48 @@
-
-import React, {useEffect} from 'react'
-import {getAllproducts,getAllCategories,ASC, DESC, getAllWineries, setPagination} from "../../actions/index"
-import { useDispatch, useSelector  } from 'react-redux';
+import React, { useEffect } from "react";
+import {
+  getAllproducts,
+  getAllCategories,
+  ASC,
+  DESC,
+  getAllWineries,
+  setPagination,
+} from "../../actions/index";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Filtros = (state) => {
-    const allWineries=useSelector(state=>state.wineries)
-    const allCategories=useSelector(state=>state.productCategories)
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-      dispatch(getAllCategories());
-      dispatch(getAllWineries());
-      return function cleanup(){}
-    }, [dispatch]);
-    
-    const handleChangeCategory = (e) => {
-        dispatch(setPagination('categoria',e.target.value));
-        if(e.target.value === 'All'){
-            dispatch(getAllproducts());
-        } else {
-           dispatch(getAllproducts(null,'categoria',e.target.value));
-        }
+  const allWineries = useSelector((state) => state.wineries);
+  const allCategories = useSelector((state) => state.productCategories);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+    dispatch(getAllWineries());
+    return function cleanup() {};
+  }, [dispatch]);
+
+  const handleChangeCategory = (e) => {
+    dispatch(setPagination("categoria", e.target.value));
+    if (e.target.value === "All") {
+      dispatch(getAllproducts());
+    } else {
+      dispatch(getAllproducts(null, "categoria", e.target.value));
     }
-    const handleChangeBodega = (e) => {
-        dispatch(setPagination('bodega',e.target.value));
-        if(e.target.value === 'All'){
-            dispatch(getAllproducts());
-        } else {
-            dispatch(getAllproducts(null,'bodega',e.target.value));
-        }
+  };
+  const handleChangeBodega = (e) => {
+    dispatch(setPagination("bodega", e.target.value));
+    if (e.target.value === "All") {
+      dispatch(getAllproducts());
+    } else {
+      dispatch(getAllproducts(null, "bodega", e.target.value));
     }
-    const handleChangePrecio = (e) => {
-        dispatch(setPagination('precio',e.target.value));
-        if(e.target.value === 'Select'){
-            dispatch(getAllproducts());
-        }
-        if (e.target.value === ASC || e.target.value === DESC) {
-            dispatch(getAllproducts(null,'precio',e.target.value))
-        }
+  };
+  const handleChangePrecio = (e) => {
+    dispatch(setPagination("precio", e.target.value));
+    if (e.target.value === "Select") {
+      dispatch(getAllproducts());
+    }
+    if (e.target.value === ASC || e.target.value === DESC) {
+      dispatch(getAllproducts(null, "precio", e.target.value));
     }
 
   return (
