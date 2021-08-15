@@ -8,16 +8,13 @@ import Pagination from "components/pagination/pagination";
 
 import cart2 from "../../assets/images/cart2.png";
 
-
-function AllProducts({ products, GetProducts, addCart,  }) {
+function AllProducts({ products, GetProducts, addCart }) {
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
   const addToCart = (id) => {
-
     addCart(id);
-
   };
 
   return (
@@ -26,14 +23,18 @@ function AllProducts({ products, GetProducts, addCart,  }) {
         {products ? (
           products.map((p) => {
             return (
-
               <div>
                 <Link to={`/product-detail/${p.id}`} key={p.id}>
-                  <div>
-                    <Product name={p.name} image={p.image} price={p.price} id={p.id} />
-                  </div>
+                  <Product
+                    name={p.name}
+                    image={p.image}
+                    price={p.price}
+                    id={p.id}
+                  />
                 </Link>
-                <button onClick={() => addToCart(p.id)}><img src={cart2} alt="cartlogo" width="30" height="30" /></button>
+                <button onClick={() => addToCart(p.id)}>
+                  <img src={cart2} alt="cartlogo" width="30" height="30" />
+                </button>
               </div>
             );
           })
@@ -48,7 +49,7 @@ function AllProducts({ products, GetProducts, addCart,  }) {
 function mapStateToProps(state) {
   return {
     products: state.getAllProducts,
-    cart: state.cart
+    cart: state.cart,
   };
 }
 
