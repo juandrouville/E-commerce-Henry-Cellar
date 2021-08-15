@@ -1,6 +1,6 @@
 .nav__brand {
   padding: 0px 20px 0px 20px;
-  background-color: #8d99ae;
+  background-color: transparent;
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   h1 {
-    color: white;
+    color: black;
   }
 }
 .nav__items {
