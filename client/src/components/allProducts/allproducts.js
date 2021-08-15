@@ -1,20 +1,24 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllproducts, addCart } from "../../actions/index";
+import { getAllproducts, addCart, addToFavourite } from "../../actions/index";
 import Product from "../product/Product";
 
 import Pagination from "components/pagination/pagination";
 
 import cart2 from "../../assets/images/cart2.png";
 
-function AllProducts({ products, GetProducts, addCart }) {
+function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
   const addToCart = (id) => {
     addCart(id);
+  };
+
+  const addFavourite = (id) =>{
+    addToFavourite(id);
   };
 
   return (
@@ -34,6 +38,9 @@ function AllProducts({ products, GetProducts, addCart }) {
                 </Link>
                 <button onClick={() => addToCart(p.id)}>
                   <img src={cart2} alt="cartlogo" width="30" height="30" />
+                </button>
+                <button onClick={() => addFavourite(p.id)}>
+                  Fav
                 </button>
               </div>
             );
@@ -57,6 +64,7 @@ function mapDispatchToProps(dispatch) {
   return {
     GetProducts: () => dispatch(getAllproducts()),
     addCart: (id) => dispatch(addCart(id)),
+    addToFavourite: (id) => dispatch(addToFavourite(id)),
   };
 }
 
