@@ -45,9 +45,9 @@ const Home = () => {
       >
         <div className="container">
           <h1>we have more than 90 varieties of wines</h1>
-          <p>check out</p>
           <div className="arrow">
-            <Arrow />
+            <p>check out</p>
+            <a href="#catalogo"></a>
           </div>
         </div>
       </div>
