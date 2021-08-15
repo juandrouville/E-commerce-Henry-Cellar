@@ -1,0 +1,13 @@
+.cartItem{
+    display: flex;
+    justify-content: space-evenly; 
+
+    
+    .cartItem_buttons{
+        display: flex;
+        
+    }
+    .cartItem_button{
+        width: 90px;
+    }
+}

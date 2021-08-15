@@ -1,30 +1,36 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CartItem from "../CartItem/CartItem";
-import {
-  clearCart,
-  removeOneProduct,
-  removeAllProduct,
-} from "../../actions/index";
-import Layout from "layouts/layout-primary";
+import CartItem from "../CartItem/CartItem"
+import { clearCart, removeOneProduct, removeAllProduct, unifyCarts } from "../../actions/index"
 import { useAuth0 } from "@auth0/auth0-react";
+import Layout from '../../layouts/layout-primary'
+
 
 const Cart = () => {
-  const dispatch = useDispatch();
-  let cart = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+    const {isAuthenticated,user}=useAuth0()
 
-  // cart sent to LocalStorage
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    let cart = useSelector((state) => state.cart);
 
-  const delFromCart = (id, all = false) => {
-    if (all) {
-      dispatch(removeAllProduct(id));
-    } else {
-      dispatch(removeOneProduct(id));
+    useEffect(()=>{
+        if(isAuthenticated) dispatch(unifyCarts(user.sub,cart))
+    },[isAuthenticated,dispatch,cart,user])
+     
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart])
+
+    const delFromCart = (id, all = false) => {
+        if (all) {
+            dispatch(removeAllProduct(id));
+        } else {
+            dispatch(removeOneProduct(id));
+        }
+    
     }
-  };
+
+  
   const clearcart = () => {
     dispatch(clearCart());
   };
@@ -32,19 +38,17 @@ const Cart = () => {
     return acc + curr.quantity * curr.price;
   }, 0);
 
-  //Authentication
-  const { user } = useAuth0();
-  const { isAuthenticated } = useAuth0();
+  
   const { loginWithRedirect } = useAuth0();
   return (
     <Layout>
-      <div>
+      <div className="cart_container">
         <h2>Shopping Cart</h2>
         <div>
           {cart ? (
             cart.map((item, index) => {
               return (
-                <div>
+                <div className="cart_item">
                   <CartItem
                     key={item}
                     id={item.id}
@@ -61,20 +65,20 @@ const Cart = () => {
           )}
         </div>
         <h3>TOTAL:${total}</h3>
-        <div></div>
+        <div >
         <button onClick={(e) => clearcart(e)}>Clear Cart</button>
-      </div>
-      <div>
         {isAuthenticated ? (
           <>
             <button>Buy</button>
           </>
         ) : (
-          <button onClick={() => loginWithRedirect()}>
+          <button onClick={() => loginWithRedirect()} className="buy_button">
             Must Log In to buy
           </button>
         )}
+        </div>
       </div>
+      
     </Layout>
   );
 };

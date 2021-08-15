@@ -28,7 +28,12 @@
 @import "./components/postProduct";
 @import "./components/filtros"; // Pages
 @import "./screens/catalogo";
+
+@import "./components/form";
+
 @import "./components/ratingStar";
+@import "./components//cart";
+@import "./components/CartItem";
 
 body {
   font-family: Recisive,

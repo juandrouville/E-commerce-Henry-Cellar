@@ -1,5 +1,6 @@
 import React from "react";
 import cart2 from "../../assets/images/cart2.png";
+import { addCart } from "../../actions/index";
 
 const Product = ({ image, name, price, stock }) => {
   return (
@@ -12,8 +13,7 @@ const Product = ({ image, name, price, stock }) => {
           <p>${price}</p>
           <br />
           <p className="product__stock">Stock</p>
-          <div> 
-          </div>
+          <div></div>
         </div>
       </div>
     </div>

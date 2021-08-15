@@ -19,7 +19,9 @@ export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 export const GET_USER="GET_USER";
 export const SET_PAGINATION = "SET_PAGINATION";
-
+export const UNIFY_CARTS_DB_LOCALSTORAGE="UNIFY_CARTS_DB_LOCALSTORAGE"
+export const ADD_TO_FAVOURITE="ADD_TO_FAVOURITE";
+export const REMOVE_TO_FAVOURITE="REMOVE_TO_FAVOURITE"
 
 
 
@@ -242,3 +244,29 @@ export function setPagination(filter,valueFilter){
     },
   };
 };
+
+export function unifyCarts(userId,localStorageCart){
+  return async (dispatch) => {
+    try {
+      const res = await axios.post(
+        `/unifyCarts/${userId}`|| `http://localhost:3001/unifyCarts/${userId}`,localStorageCart
+      );
+      dispatch({ type: UNIFY_CARTS_DB_LOCALSTORAGE, payload: res.data });
+    } catch (err) {
+      alert("HEMOSIDO TIMADO -error en post-");
+    }
+  };
+}
+
+export function addToFavourite(id){
+  return{
+    type: ADD_TO_FAVOURITE, 
+    payload: id
+  };
+}
+
+export function removeToFavourite(payload){
+  return{
+    type: REMOVE_TO_FAVOURITE, payload
+  };
+}
