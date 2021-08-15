@@ -74,6 +74,15 @@ const NavBar = () => {
         <h3>Cart</h3>
       </NavLink>
 
+      <NavLink
+        className="item"
+        to="/favourite"
+        refresh="true"
+        style={{ textDecoration: "none" }}
+      >
+        <h3>FAV</h3>
+      </NavLink>
+
       <div className="nav__items item">
         <SearchBar />
       </div>

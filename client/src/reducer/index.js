@@ -14,7 +14,9 @@ import {
   GET_ALL_WINERIES,
   GET_USER,
   SET_PAGINATION,
-  UNIFY_CARTS_DB_LOCALSTORAGE
+  UNIFY_CARTS_DB_LOCALSTORAGE,
+  ADD_TO_FAVOURITE,
+  REMOVE_TO_FAVOURITE
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -26,8 +28,8 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
- // cart: [],
   user:{},
+  productFavourite: [],
 
   setPagination:{
     filter:'',
@@ -162,6 +164,21 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         cart:action.payload
+      }
+    }
+    case ADD_TO_FAVOURITE:{
+      let newItem = state.getAllProducts.find(
+        (product) => product.id === action.payload
+      );
+      return{
+        ...state,
+        productFavourite: [...state.productFavourite, { ...newItem}]
+      }
+    }
+    case REMOVE_TO_FAVOURITE:{
+      return{
+        ...state,
+        productFavourite: state.productFavourite.filter((p) => p.id !== action.payload)
       }
     }
     default: {
