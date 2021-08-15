@@ -1,0 +1,33 @@
+.cart_container{
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 100px 50px 0px 50px;
+  
+  @include response(medium) {
+    
+    border: 1px solid rgb(113, 43, 43);
+  }
+
+  .cart_item{
+    border: 1px solid rgb(133, 14, 14);
+    border-radius: 15px;
+    max-width: 600px;
+    padding: 40px;
+  }
+
+  .buy_button{
+    height: 30px;
+    width: 90px;
+    background-color: rgb(140, 33, 33);
+    border: 0;
+    border-radius: 24px;
+    color: white;
+    font-weight: 700;
+    &:hover {
+      background-color: white;
+      color: rgb(140, 33, 33);
+      border: 1px solid rgb(140, 33, 33);
+  }
+  }         
+}
