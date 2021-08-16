@@ -24,6 +24,7 @@ import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
 import dotenv from "dotenv";
+import ErrorBoundary from "../components/Error-Boundary/ErrorBoundary.js";
 
 dotenv.config();
 
@@ -33,18 +34,20 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
-        <Route exact path="/favourite" component={Favourtie} />
-        <Route exact path="/prueba" component={Prueba} />
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/create" component={PostProduct} />
-        <Route exact path="/product-detail/:id" component={ProductDetail} />
-        <Route
-          path="/editProduct/:id"
-          render={({ match }) => <Edit id={match.params.id} />}
-        />
-        <Route path="/edit" component={Edit} />
-        <Route path="/profile" component={profile} />
+        <ErrorBoundary>
+          <Route exact path="/favourite" component={Favourtie} />
+          <Route exact path="/prueba" component={Prueba} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/create" component={PostProduct} />
+          <Route exact path="/product-detail/:id" component={ProductDetail} />
+          <Route
+            path="/editProduct/:id"
+            render={({ match }) => <Edit id={match.params.id} />}
+          />
+          <Route path="/edit" component={Edit} />
+          <Route path="/profile" component={profile} />
+        </ErrorBoundary>
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,
