@@ -1,8 +1,7 @@
-
 .cart__container {
   color: white;
   height: 100%;
-  width: 1px;
+  width: 10px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -46,7 +45,7 @@
       }
     }
   }
-  .buy_button{
+  .buy_button {
     height: 30px;
     width: 90px;
     background-color: rgb(140, 33, 33);
@@ -58,7 +57,6 @@
       background-color: white;
       color: rgb(140, 33, 33);
       border: 1px solid rgb(140, 33, 33);
-  }
+    }
   }
 }
-
