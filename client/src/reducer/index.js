@@ -20,6 +20,7 @@ import {
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+const favouriteFromLocalStorage = JSON.parse(localStorage.getItem("productsFavourite") || "[]");
 
 const initialState = {
   productCategories: [],
@@ -29,15 +30,12 @@ const initialState = {
   createdProduct: [],
   page: 0,
   user:{},
-  productFavourite: [],
+  productFavourite: favouriteFromLocalStorage,
 
   setPagination:{
     filter:'',
     valueFilter:'',
   },
-  
-
-  //cart: [cartFromLocalStorage],
   cart: cartFromLocalStorage,
 
 };
@@ -170,15 +168,24 @@ const rootReducer = (state = initialState, action) => {
       let newItem = state.getAllProducts.find(
         (product) => product.id === action.payload
       );
-      return{
-        ...state,
-        productFavourite: [...state.productFavourite, { ...newItem}]
+      let itemInFavourites = state.productFavourite.find((item) => item.id === newItem.id);
+
+      if(itemInFavourites){
+        return{
+          ...state
+        }
+      }else{
+        
+        return{
+          ...state,
+          productFavourite: [...state.productFavourite, { ...newItem}]
+        }
       }
     }
     case REMOVE_TO_FAVOURITE:{
       return{
         ...state,
-        productFavourite: state.productFavourite.filter((p) => p.id !== action.payload)
+        productFavourite: state.productFavourite.filter((p) => p.id !== action.payload),
       }
     }
     default: {

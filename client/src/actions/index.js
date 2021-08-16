@@ -264,10 +264,12 @@ export function addToFavourite(id) {
   };
 }
 
-export function removeToFavourite(payload) {
-  return {
-    type: REMOVE_TO_FAVOURITE,
-    payload
+
+export function removeToFavourite(id){
+  return{
+    type: REMOVE_TO_FAVOURITE, 
+    payload: id,
+
   };
 }
 
