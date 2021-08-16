@@ -3,6 +3,7 @@ import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import { useDispatch } from "react-redux";
 
+
 const CardFavorite = ({ image, name, price, id, delFromFavourite }) => {
 
   const dispatch = useDispatch();
@@ -10,12 +11,11 @@ const CardFavorite = ({ image, name, price, id, delFromFavourite }) => {
   const addToCart = (id) => {
     dispatch(addCart(id));
   };
-  const addFavourite = (id) => {
-    dispatch(addToFavourite(id));
-  };
+
 
   return (
     <div className="row center">
+       
       <div key={name} className="product">
         <img src={`${image}`} alt="Henry" width="246" height="246" />
         <div className="product__data">
