@@ -5,7 +5,7 @@ const { User } = require("../db");
 
 async function unifyCarts(req, res, next) {
   try {
-    const { userId } = req.body;
+    const { userId } = req.params;
     const localStorageCart = req.body;
 
     const orderOpenOfUser = await Order.findOne({
