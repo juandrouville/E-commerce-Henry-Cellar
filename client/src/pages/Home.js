@@ -12,7 +12,7 @@ import LayoutPrimary from "layouts/layout-primary";
 //COMPONENTS
 import SimpleForm from "../components/SimpleForm/SimpleForm";
 import Pagination from "components/pagination/pagination";
-import Filtros from "../components/Filtros/filtros";
+import Filtros from "../components/FIltros/filtros";
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
@@ -23,7 +23,7 @@ import { getUser } from "actions";
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
 
-const Home = (props) => {
+const Home = props => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
@@ -31,7 +31,7 @@ const Home = (props) => {
     if (isAuthenticated) dispatch(getUser(user));
   }, [isAuthenticated, dispatch, user]);
 
-  const userDB = useSelector((state) => state.user);
+  const userDB = useSelector(state => state.user);
 
   return (
     <LayoutPrimary>
@@ -41,7 +41,7 @@ const Home = (props) => {
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",
           width: "100%",
-          backgroundSize: "cover",
+          backgroundSize: "cover"
         }}
       >
         <div className="container">
