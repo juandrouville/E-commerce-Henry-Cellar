@@ -20,6 +20,7 @@ import {
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+const favouriteFromLocalStorage = JSON.parse(localStorage.getItem("productsFavourite") || "[]");
 
 const initialState = {
   productCategories: [],
@@ -29,15 +30,12 @@ const initialState = {
   createdProduct: [],
   page: 0,
   user:{},
-  productFavourite: [],
+  productFavourite: favouriteFromLocalStorage,
 
   setPagination:{
     filter:'',
     valueFilter:'',
   },
-  
-
-  //cart: [cartFromLocalStorage],
   cart: cartFromLocalStorage,
 
 };
