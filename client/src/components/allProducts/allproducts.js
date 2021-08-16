@@ -1,11 +1,13 @@
+//REACT
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
+//REDUX
 import { connect } from "react-redux";
+
+//COMPONENTS
 import { getAllproducts, addCart } from "../../actions/index";
 import Product from "../product/Product";
-
-import Pagination from "components/pagination/pagination";
-
 import cart2 from "../../assets/images/cart2.png";
 
 function AllProducts({ products, GetProducts, addCart }) {
@@ -16,7 +18,6 @@ function AllProducts({ products, GetProducts, addCart }) {
   const addToCart = (id) => {
     addCart(id);
   };
-
   return (
     <div>
       <div className="catalogo">

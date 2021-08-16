@@ -21,7 +21,7 @@ import Edit from "components/Edit/Edit";
 import PostProduct from "pages/PostForm.js";
 import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
-import Prueba from "../src/pages/PruebaDeComponentes"
+import Prueba from "../src/pages/PruebaDeComponentes";
 
 import dotenv from "dotenv";
 
@@ -44,7 +44,6 @@ ReactDOM.render(
         />
         <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
-        <Route path="/mycart" component={Cart} />
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,

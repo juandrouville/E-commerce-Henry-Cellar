@@ -7,12 +7,13 @@ import { NavLink } from "react-router-dom";
 
 //ICON
 import home1 from "assets/icons/logo-wine.png";
+import Cart from "components/cart/Cart";
 
 //Authentication with Auth0
 import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const NavBar = () => {
+const NavBar = (props) => {
   //Este estado es para el menu mobile
   const [activo, setActivo] = useState(false);
   //Estos son los span del menu mobile que cambian
@@ -77,6 +78,7 @@ const NavBar = () => {
       <div className="nav__items item">
         <SearchBar />
       </div>
+
       <div
         className={
           activo ? "menu__content menu__content--activo" : "menu__content "
