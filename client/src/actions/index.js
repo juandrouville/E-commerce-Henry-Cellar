@@ -253,7 +253,7 @@ export function unifyCarts(userId, localStorageCart) {
       );
       dispatch({ type: UNIFY_CARTS_DB_LOCALSTORAGE, payload: res.data });
     } catch (err) {
-      alert("HEMOSIDO TIMADO -error en post-");
+      alert("Dejenlo, ya está muerto -error en userid/localstorage-");
     }
   };
 }
