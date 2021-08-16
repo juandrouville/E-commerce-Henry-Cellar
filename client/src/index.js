@@ -24,7 +24,7 @@ import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
 import dotenv from "dotenv";
-import ErrorBoundary from "/components/ErrorBoundary/ErrorBoundary.js";
+import ErrorBoundary from "components/ErrorBoundary/ErrorBoundary.js";
 
 dotenv.config();
 
