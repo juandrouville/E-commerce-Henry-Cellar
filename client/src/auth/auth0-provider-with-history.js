@@ -9,7 +9,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
   const history = useHistory();
 
   const onRedirectCallback = () => {
-    history.push('/catalog');
+    history.push("/home");
   };
 
   return (
