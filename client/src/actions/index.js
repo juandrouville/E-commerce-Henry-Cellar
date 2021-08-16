@@ -265,9 +265,10 @@ export function addToFavourite(id){
   };
 }
 
-export function removeToFavourite(payload){
+export function removeToFavourite(id){
   return{
-    type: REMOVE_TO_FAVOURITE, payload
+    type: REMOVE_TO_FAVOURITE, 
+    payload: id,
   };
 }
 

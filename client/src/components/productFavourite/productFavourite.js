@@ -1,8 +1,8 @@
 import react, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Product from "../product/Product";
+import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
-import {addCart} from "../../actions/index";
+import { addCart, removeToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 
 const ProductFavourite = () => {
@@ -11,7 +11,12 @@ const ProductFavourite = () => {
 
     const addToCart = (id) => {
         dispatch(addCart(id));
-      };
+    };
+
+    const delFromFavourite = (id) => {
+
+        dispatch(removeToFavourite(id));
+    };
 
     // useEffect(() => {
     //     productsFavourite();
@@ -26,14 +31,15 @@ const ProductFavourite = () => {
                         return (
                             <div>
                                 
-                                    <Product
-                                        name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
-                                        image={p.image}
-                                        price={p.price}
-                                        id={p.id}
-                                    />
-                                
-                                
+                                <CardFavorite
+                                    name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
+                                    image={p.image}
+                                    price={p.price}
+                                    id={p.id}
+                                    delFromFavourite={delFromFavourite}
+                                />
+
+
                             </div>
                         );
                     })
