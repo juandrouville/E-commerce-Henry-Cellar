@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
@@ -7,7 +7,8 @@ import cart2 from "../../assets/images/cart2.png";
 
 const ProductFavourite = () => {
     let productsFavourite = useSelector((state) => state.productFavourite);
-    const dispatch = useDispatch();
+
+  const dispatch = useDispatch();
 
     const addToCart = (id) => {
         dispatch(addCart(id));
@@ -17,6 +18,10 @@ const ProductFavourite = () => {
 
         dispatch(removeToFavourite(id));
     };
+   useEffect(() => {
+        localStorage.setItem("favourite", JSON.stringify(productsFavourite));
+      }, [productsFavourite]);
+
 
     // useEffect(() => {
     //     productsFavourite();
