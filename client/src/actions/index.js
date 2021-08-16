@@ -136,8 +136,7 @@ export function postProduct(input) {
   return async dispatch => {
     try {
       const res = await axios.post(
-        `/postproduct/`,
-        input || `http://localhost:3001/postproduct/`,
+        `/postproduct/` || `http://localhost:3001/postproduct/`,
         input
       );
       dispatch({ type: POST_PRODUCT, payload: res.data });
@@ -151,8 +150,8 @@ export function editProduct(product) {
   return async dispatch => {
     try {
       const res = await axios.put(
-        `/editProduct/${product.id}`,
-        product || `http://localhost:3001/editProduct/${product.id}`,
+        `/editProduct/${product.id}` ||
+          `http://localhost:3001/editProduct/${product.id}`,
         product
       );
       dispatch({ type: EDIT_PRODUCT, payload: res.data });
@@ -219,15 +218,14 @@ export function removeAllProduct(id) {
   };
 }
 
-export function getUser(userData) {
+export function getUser(user) {
   return async dispatch => {
     try {
       const res = await axios.post(
-        `/getUser/${userData.sub}` ||
-          `http://localhost:3001/getUser/${userData.sub}`,
+        `/getUser/${user.sub}` || `http://localhost:3001/getUser/${user.sub}`,
         userData
       );
-      await dispatch({ type: GET_USER, payload: res.data });
+      dispatch({ type: GET_USER, payload: res.data });
     } catch (err) {
       alert("Pero keapasao -error en get user-");
     }
