@@ -27,7 +27,7 @@ const NavBar = () => {
     <div className={activo ? "menu menu--activo" : "menu"} id="navbar">
       <div className="example">
         <NavLink
-          to="/catalog"
+          to="/home"
           refresh="true"
           className="wine"
           style={{ textDecoration: "none" }}
