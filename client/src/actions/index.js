@@ -227,7 +227,7 @@ export function getUser(userData){
       const res = await axios.post(
         `/getUser/${userData.sub}`|| `http://localhost:3001/getUser/${userData.sub}`,userData
       );
-      dispatch({ type: GET_USER, payload: res.data });
+      await dispatch({ type: GET_USER, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
     }
@@ -255,4 +255,14 @@ export function unifyCarts(userId,localStorageCart){
       alert("HEMOSIDO TIMADO -error en post-");
     }
   };
+}
+
+export async function addProductToDBCart(productId,userId){
+    try {
+      await axios.post(
+        `/addProductToDBCart/${userId}`|| `http://localhost:3001/addProductToDBCart/${userId}`,{productId:productId})
+      
+    } catch (error) {
+      alert('ERROR EN AGREGAR PRODUCTO A LA DB')
+    }
 }

@@ -161,7 +161,7 @@ const rootReducer = (state = initialState, action) => {
     case UNIFY_CARTS_DB_LOCALSTORAGE:{
       return {
         ...state,
-        cart:action.payload
+        cartDB:action.payload
       }
     }
     default: {

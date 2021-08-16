@@ -17,7 +17,7 @@ import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 
 //ACTIONS
-import { getUser } from "actions";
+import { clearCart, getUser, unifyCarts } from "actions";
 
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
@@ -26,11 +26,22 @@ const Home = () => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  useEffect(() => {
-    if (isAuthenticated) dispatch(getUser(user));
-  }, [isAuthenticated, dispatch, user]);
+  const cart=useSelector(state=>state.cart)
+  const userDB=useSelector(state=>state.user)
 
-  const userDB = useSelector((state) => state.user);
+  useEffect(() => {
+    if (isAuthenticated){
+      dispatch(getUser(user))
+      };
+  }, [isAuthenticated, dispatch]);
+
+  useEffect(()=>{
+   if(isAuthenticated && cart.length) {
+     dispatch(unifyCarts(user.sub,cart))
+     dispatch(clearCart())
+     alert('Agregamos los productos de tu carrito !')
+    }
+  },[userDB])
 
   return (
     <Layout>
