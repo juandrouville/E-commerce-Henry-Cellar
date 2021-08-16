@@ -19,9 +19,9 @@ async function unifyCarts(req, res, next) {
         where: { id: item.id },
       });
 
-      itemOrderLine.setProducts(productOfOrderline);
+      itemOrderLine.setProduct(productOfOrderline);
 
-      itemOrderLine.setOrders(orderOpenOfUser);
+      itemOrderLine.setOrder(orderOpenOfUser);
 
       // result.push(itemOrderLine)
     });
