@@ -23,7 +23,6 @@ import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
-
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -46,7 +45,6 @@ ReactDOM.render(
         />
         <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
-        <Route path="/mycart" component={Cart} />
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,

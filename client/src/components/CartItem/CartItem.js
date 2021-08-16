@@ -1,6 +1,5 @@
-
-
 const CartItem = ({ name, price, delFromCart, quantity, id }) => {
+
 
     return (
         <div>
@@ -18,4 +17,4 @@ const CartItem = ({ name, price, delFromCart, quantity, id }) => {
     );
 };
 
-export default CartItem
+export default CartItem;

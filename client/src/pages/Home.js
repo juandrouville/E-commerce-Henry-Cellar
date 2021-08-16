@@ -15,6 +15,7 @@ import Pagination from "components/pagination/pagination";
 import Filtros from "../components/FIltros/filtros";
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
+import Cart from "components/cart/Cart";
 
 //ACTIONS
 import { getUser } from "actions";
@@ -22,13 +23,14 @@ import { getUser } from "actions";
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
 
-const Home = () => {
+const Home = (props) => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
     if (isAuthenticated) dispatch(getUser(user));
   }, [isAuthenticated, dispatch, user]);
+
 
   const userDB = useSelector(state => state.user);
 
@@ -59,9 +61,11 @@ const Home = () => {
         </div>
         <AllProducts />
       </div>
-      <div>
+      <div className="paginacion">
         <Pagination />
       </div>
+      <Cart />
+
     </LayoutPrimary>
   );
 };
