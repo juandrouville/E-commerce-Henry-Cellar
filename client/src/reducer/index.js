@@ -168,9 +168,18 @@ const rootReducer = (state = initialState, action) => {
       let newItem = state.getAllProducts.find(
         (product) => product.id === action.payload
       );
-      return{
-        ...state,
-        productFavourite: [...state.productFavourite, { ...newItem}]
+      let itemInFavourites = state.productFavourite.find((item) => item.id === newItem.id);
+
+      if(itemInFavourites){
+        return{
+          ...state
+        }
+      }else{
+        
+        return{
+          ...state,
+          productFavourite: [...state.productFavourite, { ...newItem}]
+        }
       }
     }
     case REMOVE_TO_FAVOURITE:{
