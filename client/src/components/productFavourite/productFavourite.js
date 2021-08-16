@@ -25,14 +25,14 @@ const ProductFavourite = () => {
                     productsFavourite.map((p) => {
                         return (
                             <div>
-                                <Link to={`/product-detail/${p.id}`} key={p.id}>
+                                
                                     <Product
-                                        name={p.name}
+                                        name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
                                         image={p.image}
                                         price={p.price}
                                         id={p.id}
                                     />
-                                </Link>
+                                
                                 <button onClick={() => addToCart(p.id)}>
                                     <img src={cart2} alt="cartlogo" width="30" height="30" />
                                 </button>

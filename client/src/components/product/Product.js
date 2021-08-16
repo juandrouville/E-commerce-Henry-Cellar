@@ -1,10 +1,13 @@
 import React from "react";
-import { addCart } from "../../actions/index";
+import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 
 const Product = ({ image, name, price, stock }) => {
   const addToCart = (id) => {
     addCart(id);
+  };
+  const addFavourite = (id) =>{
+    addToFavourite(id);
   };
 
   return (
@@ -21,6 +24,9 @@ const Product = ({ image, name, price, stock }) => {
             <button onClick={() => addToCart()}>
               <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
+            <button onClick={() => addFavourite()}>
+                  Fav
+                </button>
           </div>
         </div>
       </div>
