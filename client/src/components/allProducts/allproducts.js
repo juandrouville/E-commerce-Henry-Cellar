@@ -1,6 +1,11 @@
+//REACT
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
+//REDUX
 import { connect } from "react-redux";
+
+//COMPONENTS
 import { getAllproducts, addCart, addToFavourite } from "../../actions/index";
 import Product from "../product/Product";
 import cart2 from "../../assets/images/cart2.png";

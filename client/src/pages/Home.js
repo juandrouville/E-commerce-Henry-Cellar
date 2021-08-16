@@ -12,9 +12,14 @@ import LayoutPrimary from "layouts/layout-primary";
 //COMPONENTS
 import SimpleForm from "../components/SimpleForm/SimpleForm";
 import Pagination from "components/pagination/pagination";
+<<<<<<< HEAD
 import Filtros from "../components/FIltros/filtros.js";
+=======
+import Filtros from "../components/FIltros/filtros";
+>>>>>>> f28676087da4c0bb89a95d89e7f6b589f04a9811
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
+import Cart from "components/cart/Cart";
 
 //ACTIONS
 import { getUser } from "actions";
@@ -22,13 +27,14 @@ import { getUser } from "actions";
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
 
-const Home = () => {
+const Home = (props) => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
     if (isAuthenticated) dispatch(getUser(user));
   }, [isAuthenticated, dispatch, user]);
+
 
   const userDB = useSelector(state => state.user);
 
@@ -59,9 +65,11 @@ const Home = () => {
         </div>
         <AllProducts />
       </div>
-      <div>
+      <div className="paginacion">
         <Pagination />
       </div>
+      <Cart />
+
     </LayoutPrimary>
   );
 };
