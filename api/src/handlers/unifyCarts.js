@@ -8,15 +8,23 @@ async function unifyCarts(req , res,next){
        const {userId}=req.params
        const localStorageCart=req.body
 
-       const orderOpenOfUser=await Order.findOne({where:{state:"pending",userId:userId}})      
-
+       const orderOpenOfUser=await Order.findOne({where:{state:"pending",userId:userId}})
+       
        localStorageCart.forEach(async(item)=>{
 
-       let itemOrderLine=await Orderline.create({amount:item.quantity,productId:item.id})
+       let itemOrderLine=await Orderline.create({amount:item.quantity})
+
+       let productOfOrderline=await Product.findOne({where:{id:item.id}})
+
+       itemOrderLine.setProduct(productOfOrderline)
 
        itemOrderLine.setOrder(orderOpenOfUser)
-       console.log(itemOrderLine)
+
+      // result.push(itemOrderLine)
+       
        })
+
+       //res.json(result)
        
     } catch (error){
        next(error)
