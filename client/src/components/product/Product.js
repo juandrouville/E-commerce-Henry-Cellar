@@ -2,10 +2,11 @@ import { React, useEffect } from "react";
 import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import { useDispatch, useSelector } from "react-redux";
+import { FaStar } from "react-icons/fa";
 
 
 const Product = ({ image, name, price, id, delFromFavourite }) => {
-let productsFavourite = useSelector((state) => state.productFavourite);
+  let productsFavourite = useSelector((state) => state.productFavourite);
 
   const dispatch = useDispatch();
 
@@ -34,7 +35,12 @@ let productsFavourite = useSelector((state) => state.productFavourite);
               <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
             <button onClick={() => addFavourite(id)}>
-              Fav
+              Fav <FaStar
+                className="star"
+                color="#ffc107"
+
+                size={15}
+              />
             </button>
           </div>
         </div>
