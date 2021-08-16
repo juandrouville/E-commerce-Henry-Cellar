@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getAllproducts, addCart, addToFavourite } from "../../actions/index";
 import Product from "../product/Product";
-
-import Pagination from "components/pagination/pagination";
-
 import cart2 from "../../assets/images/cart2.png";
 
 function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
@@ -28,14 +25,14 @@ function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
           products.map((p) => {
             return (
               <div>
-                <Link to={`/product-detail/${p.id}`} key={p.id}>
+                
                   <Product
-                    name={p.name}
+                    name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
                     image={p.image}
                     price={p.price}
                     id={p.id}
                   />
-                </Link>
+                
                 <button onClick={() => addToCart(p.id)}>
                   <img src={cart2} alt="cartlogo" width="30" height="30" />
                 </button>
