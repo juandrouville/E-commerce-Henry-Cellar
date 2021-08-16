@@ -14,6 +14,7 @@ const editOrderLine=require('./editOrderLine')
 const getUser=require('./getUser')
 const unifyCarts=require('./unifyCarts');
 const postReview = require('./postReview');
+const addProductToDBCart=require('./addProductToDBCart')
 
 
 router.use("/allproducts", getAllProductsRouter);
@@ -27,6 +28,7 @@ router.use("/getUser",getUser);
 router.use('/unifyCarts',unifyCarts)
 router.use('/editOrderLine',editOrderLine);
 router.use('/postReview',postReview);
+router.use('/addProductToDBCart',addProductToDBCart)
 
 
 

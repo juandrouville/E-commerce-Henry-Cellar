@@ -1,22 +1,24 @@
 //REACT
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
-//REDUX
 import { connect } from "react-redux";
-
-//COMPONENTS
-import { getAllproducts, addCart, addToFavourite } from "../../actions/index";
+import { getAllproducts, addCart, addProductToDBCart, addToFavourite } from "../../actions/index";
 import Product from "../product/Product";
+import Pagination from "components/pagination/pagination";
 import cart2 from "../../assets/images/cart2.png";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
+
+  const {isAuthenticated,user}=useAuth0()
+
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
   const addToCart = (id) => {
-    addCart(id);
+    if(isAuthenticated) addProductToDBCart(id,user.sub)
+    else addCart(id);
   };
 
   const addFavourite = (id) =>{
