@@ -218,11 +218,12 @@ export function removeAllProduct(id) {
   };
 }
 
-export function getUser(user) {
+export function getUser(userData) {
   return async dispatch => {
     try {
       const res = await axios.post(
-        `/getUser/${user.sub}` || `http://localhost:3001/getUser/${user.sub}`,
+        `/getUser/${userData.sub}` ||
+          `http://localhost:3001/getUser/${userData.sub}`,
         userData
       );
       dispatch({ type: GET_USER, payload: res.data });
