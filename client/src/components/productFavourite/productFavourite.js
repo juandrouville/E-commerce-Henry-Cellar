@@ -1,17 +1,16 @@
-import react, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../product/Product";
 import { Link } from "react-router-dom";
-import {addCart} from "../../actions/index";
-import cart2 from "../../assets/images/cart2.png";
+
 
 const ProductFavourite = () => {
     let productsFavourite = useSelector((state) => state.productFavourite);
-    const dispatch = useDispatch();
-
-    const addToCart = (id) => {
-        dispatch(addCart(id));
-      };
+    
+    
+      useEffect(() => {
+        localStorage.setItem("favourite", JSON.stringify(productsFavourite));
+      }, [productsFavourite]);
 
     // useEffect(() => {
     //     productsFavourite();

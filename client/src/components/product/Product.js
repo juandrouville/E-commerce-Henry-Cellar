@@ -1,10 +1,10 @@
-import React from "react";
+import { React, useEffect } from "react";
 import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Product = ({ image, name, price, id }) => {
- 
+  let productsFavourite = useSelector((state) => state.productFavourite);
   const dispatch = useDispatch();
  
   const addToCart = (id) => {
@@ -13,6 +13,9 @@ const Product = ({ image, name, price, id }) => {
   const addFavourite = (id) =>{
     dispatch(addToFavourite(id));
   };
+  useEffect(() => {
+    localStorage.setItem("favourite", JSON.stringify(productsFavourite));
+  }, [productsFavourite]);
 
   return (
     <div className="row center">
