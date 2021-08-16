@@ -12,7 +12,7 @@ import LayoutPrimary from "layouts/layout-primary";
 //COMPONENTS
 import SimpleForm from "../components/SimpleForm/SimpleForm";
 import Pagination from "components/pagination/pagination";
-import Filtros from "../components/FIltros/filtros";
+import Filtros from "../components/FIltros/filtros.js";
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 
