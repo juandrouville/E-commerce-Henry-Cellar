@@ -33,9 +33,7 @@ const ProductFavourite = () => {
                                         id={p.id}
                                     />
                                 
-                                <button onClick={() => addToCart(p.id)}>
-                                    <img src={cart2} alt="cartlogo" width="30" height="30" />
-                                </button>
+                                
                             </div>
                         );
                     })

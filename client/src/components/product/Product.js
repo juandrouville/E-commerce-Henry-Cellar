@@ -1,13 +1,17 @@
 import React from "react";
 import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
+import { useDispatch } from "react-redux";
 
-const Product = ({ image, name, price, stock }) => {
+const Product = ({ image, name, price, id }) => {
+ 
+  const dispatch = useDispatch();
+ 
   const addToCart = (id) => {
-    addCart(id);
+    dispatch(addCart(id));
   };
   const addFavourite = (id) =>{
-    addToFavourite(id);
+    dispatch(addToFavourite(id));
   };
 
   return (
@@ -21,10 +25,10 @@ const Product = ({ image, name, price, stock }) => {
           <br />
           <p className="product__stock">Stock</p>
           <div>
-            <button onClick={() => addToCart()}>
+            <button onClick={() => addToCart(id)}>
               <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
-            <button onClick={() => addFavourite()}>
+            <button onClick={() => addFavourite(id)}>
                   Fav
                 </button>
           </div>
