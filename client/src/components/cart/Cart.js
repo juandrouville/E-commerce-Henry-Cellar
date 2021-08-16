@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import CartItem from "../CartItem/CartItem"
-import { clearCart, removeOneProduct, removeAllProduct, unifyCarts } from "../../actions/index"
+import CartItem from "../CartItem/CartItem";
+import {
+  clearCart,
+  removeOneProduct,
+  removeAllProduct,
+  unifyCarts,
+} from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Cart = () => {
@@ -77,9 +82,7 @@ const Cart = () => {
           })
         ) : (
           <p>Cargando...</p>
-
         )}
-        </div>
       </div>
 
       <div className="total">
