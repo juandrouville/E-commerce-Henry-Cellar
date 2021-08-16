@@ -1,11 +1,9 @@
-import { React, useEffect } from "react";
+import React from "react";
 import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-
-const Product = ({ image, name, price, id, delFromFavourite }) => {
-let productsFavourite = useSelector((state) => state.productFavourite);
+const CardFavorite = ({ image, name, price, id, delFromFavourite }) => {
 
   const dispatch = useDispatch();
 
@@ -15,9 +13,6 @@ let productsFavourite = useSelector((state) => state.productFavourite);
   const addFavourite = (id) => {
     dispatch(addToFavourite(id));
   };
-  useEffect(() => {
-    localStorage.setItem("favourite", JSON.stringify(productsFavourite));
-  }, [productsFavourite]);
 
   return (
     <div className="row center">
@@ -33,8 +28,8 @@ let productsFavourite = useSelector((state) => state.productFavourite);
             <button onClick={() => addToCart(id)}>
               <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
-            <button onClick={() => addFavourite(id)}>
-              Fav
+            <button onClick={() => delFromFavourite(id)}>
+              x
             </button>
           </div>
         </div>
@@ -43,4 +38,4 @@ let productsFavourite = useSelector((state) => state.productFavourite);
   );
 };
 
-export default Product;
+export default CardFavorite;

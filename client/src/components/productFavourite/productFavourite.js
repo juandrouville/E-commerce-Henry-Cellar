@@ -1,16 +1,27 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Product from "../product/Product";
+import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
-
+import { addCart, removeToFavourite } from "../../actions/index";
+import cart2 from "../../assets/images/cart2.png";
 
 const ProductFavourite = () => {
     let productsFavourite = useSelector((state) => state.productFavourite);
-    
-    
-      useEffect(() => {
+
+  const dispatch = useDispatch();
+
+    const addToCart = (id) => {
+        dispatch(addCart(id));
+    };
+
+    const delFromFavourite = (id) => {
+
+        dispatch(removeToFavourite(id));
+    };
+   useEffect(() => {
         localStorage.setItem("favourite", JSON.stringify(productsFavourite));
       }, [productsFavourite]);
+
 
     // useEffect(() => {
     //     productsFavourite();
@@ -25,14 +36,15 @@ const ProductFavourite = () => {
                         return (
                             <div>
                                 
-                                    <Product
-                                        name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
-                                        image={p.image}
-                                        price={p.price}
-                                        id={p.id}
-                                    />
-                                
-                                
+                                <CardFavorite
+                                    name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
+                                    image={p.image}
+                                    price={p.price}
+                                    id={p.id}
+                                    delFromFavourite={delFromFavourite}
+                                />
+
+
                             </div>
                         );
                     })

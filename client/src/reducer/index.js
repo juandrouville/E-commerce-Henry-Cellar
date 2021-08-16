@@ -176,7 +176,7 @@ const rootReducer = (state = initialState, action) => {
     case REMOVE_TO_FAVOURITE:{
       return{
         ...state,
-        productFavourite: state.productFavourite.filter((p) => p.id !== action.payload)
+        productFavourite: state.productFavourite.filter((p) => p.id !== action.payload),
       }
     }
     default: {
