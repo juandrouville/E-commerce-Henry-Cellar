@@ -248,8 +248,7 @@ export function unifyCarts(userId, localStorageCart) {
   return async dispatch => {
     try {
       const res = await axios.post(
-        `/unifyCarts/${userId}`,
-        localStorageCart || `http://localhost:3001/unifyCarts/${userId}`,
+        `/unifyCarts/${userId}` || `http://localhost:3001/unifyCarts/${userId}`,
         localStorageCart
       );
       dispatch({ type: UNIFY_CARTS_DB_LOCALSTORAGE, payload: res.data });
