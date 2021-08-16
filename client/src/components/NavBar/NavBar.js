@@ -28,7 +28,7 @@ const NavBar = (props) => {
     <div className={activo ? "menu menu--activo" : "menu"} id="navbar">
       <div className="example">
         <NavLink
-          to="/catalog"
+          to="/home"
           refresh="true"
           className="wine"
           style={{ textDecoration: "none" }}
@@ -73,6 +73,15 @@ const NavBar = (props) => {
       >
         <img src={cart2} alt="cartlogo" width="40" height="40" />
         <h3>Cart</h3>
+      </NavLink>
+
+      <NavLink
+        className="item"
+        to="/favourite"
+        refresh="true"
+        style={{ textDecoration: "none" }}
+      >
+        <h3>FAV</h3>
       </NavLink>
 
       <div className="nav__items item">

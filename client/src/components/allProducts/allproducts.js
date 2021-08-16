@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 //COMPONENTS
-import { getAllproducts, addCart } from "../../actions/index";
+import { getAllproducts, addCart, addToFavourite } from "../../actions/index";
 import Product from "../product/Product";
 import cart2 from "../../assets/images/cart2.png";
 
-function AllProducts({ products, GetProducts, addCart }) {
+function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
@@ -18,6 +18,11 @@ function AllProducts({ products, GetProducts, addCart }) {
   const addToCart = (id) => {
     addCart(id);
   };
+
+  const addFavourite = (id) =>{
+    addToFavourite(id);
+  };
+
   return (
     <div>
       <div className="catalogo">
@@ -25,17 +30,20 @@ function AllProducts({ products, GetProducts, addCart }) {
           products.map((p) => {
             return (
               <div>
-                <Link to={`/product-detail/${p.id}`} key={p.id}>
+                
                   <Product
-                    name={p.name}
+                    name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
                     image={p.image}
                     price={p.price}
                     id={p.id}
                   />
-                </Link>
-                <button onClick={() => addToCart(p.id)}>
+                
+                {/* <button onClick={() => addToCart(p.id)}>
                   <img src={cart2} alt="cartlogo" width="30" height="30" />
                 </button>
+                <button onClick={() => addFavourite(p.id)}>
+                  Fav
+                </button> */}
               </div>
             );
           })
@@ -58,6 +66,7 @@ function mapDispatchToProps(dispatch) {
   return {
     GetProducts: () => dispatch(getAllproducts()),
     addCart: (id) => dispatch(addCart(id)),
+    addToFavourite: (id) => dispatch(addToFavourite(id)),
   };
 }
 
