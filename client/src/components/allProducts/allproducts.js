@@ -33,12 +33,12 @@ function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
                     id={p.id}
                   />
                 
-                <button onClick={() => addToCart(p.id)}>
+                {/* <button onClick={() => addToCart(p.id)}>
                   <img src={cart2} alt="cartlogo" width="30" height="30" />
                 </button>
                 <button onClick={() => addFavourite(p.id)}>
                   Fav
-                </button>
+                </button> */}
               </div>
             );
           })
