@@ -39,9 +39,7 @@ const Home = props => {
   useEffect(() => {
     if (isAuthenticated && cart.length) {
       dispatch(unifyCarts(user.sub, cart));
-      return () => {
-        dispatch(clearCart());
-      };
+      dispatch(clearCart());
       alert("Agregamos los productos de tu carrito !");
     }
   }, [userDB]);
