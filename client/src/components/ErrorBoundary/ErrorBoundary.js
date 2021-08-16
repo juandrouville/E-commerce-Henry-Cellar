@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 export default class ErrorBoundary extends React.Component {
   state = { hasError: false, error: null };
