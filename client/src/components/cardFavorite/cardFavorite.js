@@ -3,7 +3,7 @@ import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import { useDispatch } from "react-redux";
 
-const Product = ({ image, name, price, id, delFromFavourite }) => {
+const CardFavorite = ({ image, name, price, id, delFromFavourite }) => {
 
   const dispatch = useDispatch();
 
@@ -28,8 +28,8 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
             <button onClick={() => addToCart(id)}>
               <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
-            <button onClick={() => addFavourite(id)}>
-              Fav
+            <button onClick={() => delFromFavourite(id)}>
+              x
             </button>
           </div>
         </div>
@@ -38,4 +38,4 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
   );
 };
 
-export default Product;
+export default CardFavorite;
