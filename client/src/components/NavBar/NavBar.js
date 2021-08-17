@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 //ICON
 import home1 from "assets/icons/logo-wine.png";
 import Cart from "components/cart/Cart";
-
+import { FaStar } from "react-icons/fa";
 //Authentication with Auth0
 import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -50,9 +50,9 @@ const NavBar = (props) => {
       <div className="item">
         <AuthNav />
         {isAuthenticated &&
-        (user.sub === "google-oauth2|102669847324725021364" ||
-          user.sub === "google-oauth2|109028710743016612481" ||
-          user.sub === "google-oauth2|110496112430074927748") ? (
+          (user.sub === "google-oauth2|102669847324725021364" ||
+            user.sub === "google-oauth2|109028710743016612481" ||
+            user.sub === "google-oauth2|110496112430074927748") ? (
           <>
             <NavLink
               to="/create"
@@ -65,7 +65,7 @@ const NavBar = (props) => {
         ) : null}
       </div>
 
-      <NavLink
+      {/* <NavLink
         className="item"
         to="/mycart"
         refresh="true"
@@ -73,7 +73,7 @@ const NavBar = (props) => {
       >
         <img src={cart2} alt="cartlogo" width="40" height="40" />
         <h3>Cart</h3>
-      </NavLink>
+      </NavLink> */}
 
       <NavLink
         className="item"
@@ -81,7 +81,12 @@ const NavBar = (props) => {
         refresh="true"
         style={{ textDecoration: "none" }}
       >
-        <h3>FAV</h3>
+        <h3>FAV <FaStar
+          className="star"
+          color="#ffc107"
+
+          size={20}
+        /></h3>
       </NavLink>
 
       <div className="nav__items item">
@@ -97,9 +102,9 @@ const NavBar = (props) => {
           <div className="item">
             <AuthNav />
             {isAuthenticated &&
-            (user.sub === "google-oauth2|102669847324725021364" ||
-              user.sub === "google-oauth2|109028710743016612481" ||
-              user.sub === "google-oauth2|110496112430074927748") ? (
+              (user.sub === "google-oauth2|102669847324725021364" ||
+                user.sub === "google-oauth2|109028710743016612481" ||
+                user.sub === "google-oauth2|110496112430074927748") ? (
               <>
                 <NavLink
                   to="/create"
