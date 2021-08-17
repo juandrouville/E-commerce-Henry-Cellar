@@ -8,8 +8,8 @@ const Auth0ProviderWithHistory = ({ children }) => {
 
   const history = useHistory();
 
-  const onRedirectCallback = (appState) => {
-    history.push(appState?.returnTo || window.location.pathname);
+  const onRedirectCallback = () => {
+    history.push("/home");
   };
 
   return (

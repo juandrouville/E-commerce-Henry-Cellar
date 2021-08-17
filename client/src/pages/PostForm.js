@@ -6,10 +6,9 @@ import wineimage from "assets/images/create-wine-image.jpeg";
 import { validation } from "../components/validation/validation.js";
 import LayoutPrimary from "../layouts/layout-primary.js";
 
-
 export default function PostProduct(props) {
   const dispatch = useDispatch();
-  const allCategories=useSelector(state=>state.productCategories)
+  const allCategories = useSelector((state) => state.productCategories);
   //linkear categorias ???
 
   const [input, setInput] = React.useState({
@@ -19,18 +18,15 @@ export default function PostProduct(props) {
     winery: "",
     price: "",
     stock: "",
-    categories:[],
+    categories: [],
   });
-
-  // const [category, setCategory] = React.useState([]);
 
   const [errors, setErrors] = React.useState({});
 
   useEffect(() => {
     dispatch(getAllCategories());
-    return function cleanup(){}
+    return function cleanup() {};
   }, [dispatch]);
-
 
   const handleInputChange = function (e) {
     setInput({
@@ -50,9 +46,9 @@ export default function PostProduct(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(postProduct(input))
+      dispatch(postProduct(input));
       alert("Item successfully created!"); // ver como usar un toast que es mas estetico
-      props.history.push("/")
+      props.history.push("/");
       console.log(input);
     } catch (err) {
       console.log("error en el submit", err);
@@ -67,20 +63,21 @@ export default function PostProduct(props) {
   //   }
   // };
 
-  const handleSelections=e=>{
-    if(input.categories.includes(e.target.value)){
-        let oldCategories=input.categories
-        let newCategories=oldCategories.filter(category=>category!==e.target.value)
-        setInput({...input,categories:newCategories})
-        setErrors(validation({...input,categories:newCategories}))
+  const handleSelections = (e) => {
+    if (input.categories.includes(e.target.value)) {
+      let oldCategories = input.categories;
+      let newCategories = oldCategories.filter(
+        (category) => category !== e.target.value
+      );
+      setInput({ ...input, categories: newCategories });
+      setErrors(validation({ ...input, categories: newCategories }));
     } else {
-        let newCategories=input.categories
-        newCategories.push(e.target.value)
-        setInput({...input,categories:newCategories})
-        setErrors(validation({...input,categories:newCategories})
-        );
+      let newCategories = input.categories;
+      newCategories.push(e.target.value);
+      setInput({ ...input, categories: newCategories });
+      setErrors(validation({ ...input, categories: newCategories }));
     }
-}
+  };
 
   return (
     <LayoutPrimary>
@@ -111,7 +108,7 @@ export default function PostProduct(props) {
                   name="winery"
                   onChange={handleInputChange}
                   value={input.winery}
-                  />{" "}
+                />{" "}
                 {errors.winery && <p className="danger">{errors.winery}</p>}
               </div>
               <div>
@@ -122,7 +119,7 @@ export default function PostProduct(props) {
                   name="price"
                   onChange={handleInputChange}
                   value={input.price}
-                  />
+                />
                 {errors.price && <p className="danger">{errors.price}</p>}
               </div>
               <div>
@@ -133,7 +130,7 @@ export default function PostProduct(props) {
                   name="description"
                   onChange={handleInputChange}
                   value={input.description}
-                  />
+                />
                 {errors.description && (
                   <p className="danger">{errors.description}</p>
                 )}
@@ -148,16 +145,23 @@ export default function PostProduct(props) {
                   value={input.stock}
                   min={0}
                   max={255}
-                  />
+                />
                 {errors.stock && <p className="danger">{errors.stock}</p>}
               </div>
               <div>
                 <label>Categories</label>
-                    {allCategories.length && allCategories.map(category=>
-                 <div key={category.id}><label>{category.name}</label>
-                        <input type="checkbox" value={category.name} onClick={handleSelections}></input>
-                 </div>)}
-                    {/* <select onChange={(e) => handleCategories(e)}>
+                {allCategories.length &&
+                  allCategories.map((category) => (
+                    <div key={category.id}>
+                      <label>{category.name}</label>
+                      <input
+                        type="checkbox"
+                        value={category.name}
+                        onClick={handleSelections}
+                      ></input>
+                    </div>
+                  ))}
+                {/* <select onChange={(e) => handleCategories(e)}>
                       {productCategories &&
                         productCategories.map((category, i) => (
                           <option key={category.id} value={category.name}>
@@ -165,10 +169,16 @@ export default function PostProduct(props) {
                           </option>
                         ))}
                     </select> */}
-                  {errors.categories && <p className="danger">{errors.categories}</p>}
+                {errors.categories && (
+                  <p className="danger">{errors.categories}</p>
+                )}
               </div>
             </div>
-            <button className="btn1" type="submit" disabled={Object.values(errors).length>0 ? true : false}>
+            <button
+              className="btn1"
+              type="submit"
+              disabled={Object.values(errors).length > 0 ? true : false}
+            >
               Create!
             </button>
           </form>

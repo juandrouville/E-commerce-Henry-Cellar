@@ -11,12 +11,17 @@ import {
   REMOVE_ONE_FROM_CART,
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
+  CLEAR_USER,
   GET_ALL_WINERIES,
   GET_USER,
   SET_PAGINATION,
+  UNIFY_CARTS_DB_LOCALSTORAGE,
+  ADD_TO_FAVOURITE,
+  REMOVE_TO_FAVOURITE
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+const favouriteFromLocalStorage = JSON.parse(localStorage.getItem("productsFavourite") || "[]");
 
 const initialState = {
   productCategories: [],
@@ -25,16 +30,13 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
- // cart: [],
-  user:{},
+  user:undefined,
+  productFavourite: favouriteFromLocalStorage,
 
   setPagination:{
     filter:'',
     valueFilter:'',
   },
-  
-
-  //cart: [cartFromLocalStorage],
   cart: cartFromLocalStorage,
 
 };
@@ -100,8 +102,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         setPagination:action.payload,
-      };
-    };
+      }
+    }
     case ADD_TO_CART: {
       let newItem = state.getAllProducts.find(
         (product) => product.id === action.payload
@@ -155,6 +157,42 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         user:action.payload
+      }
+    }
+    case UNIFY_CARTS_DB_LOCALSTORAGE:{
+      return {
+        ...state,
+        cartDB:action.payload
+      }
+    }
+    case ADD_TO_FAVOURITE:{
+      let newItem = state.getAllProducts.find(
+        (product) => product.id === action.payload
+      );
+      let itemInFavourites = state.productFavourite.find((item) => item.id === newItem.id);
+
+      if(itemInFavourites){
+        return{
+          ...state
+        }
+      }else{
+        
+        return{
+          ...state,
+          productFavourite: [...state.productFavourite, { ...newItem}]
+        }
+      }
+    }
+    case REMOVE_TO_FAVOURITE:{
+      return{
+        ...state,
+        productFavourite: state.productFavourite.filter((p) => p.id !== action.payload),
+      }
+    }
+    case CLEAR_USER:{
+      return {
+        ...state,
+        user:undefined
       }
     }
     default: {
