@@ -4,16 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetail,
   clearProductDetail,
-  addCart
+  addCart,
+  addProductToDBCart
 } from "../../actions/index";
 import NavBar from "../NavBar/NavBar";
 import cart2 from "../../assets/images/cart2.png";
+import Review from "../Review/Review";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const { id } = useParams();
-
+  const {isAuthenticated,user}=useAuth0()
   useEffect(() => {
     dispatch(getProductDetail(id));
     return () => {
@@ -21,16 +24,17 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
-  const addToCart = (id) =>{  
-    dispatch(addCart(id))
-  }
+  const addToCart = (id) => {
+    if(isAuthenticated) dispatch(addProductToDBCart(id,user.sub))
+    else dispatch(addCart(id));
+  };
 
- 
+
 
   return (
     <div>
       <NavBar />
-     
+
       {productDetail ? (
         <div className="product__detail">
           <img src={productDetail.image} alt="Loading..." width="40%" />
@@ -43,11 +47,14 @@ export default function ProductDetail() {
             <p className="data__description"> {productDetail.description} </p>
             <p>Stock: {productDetail.stock} unidades</p>
           </div>
-          
+          <button onClick={() => addToCart(productDetail.id)}>
+              cart
+            </button>
         </div>
       ) : (
         <p>Cargando...</p>
       )}
+      <Review />
     </div>
   );
 }
