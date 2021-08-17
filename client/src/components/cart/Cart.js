@@ -6,6 +6,8 @@ import {
   removeOneProduct,
   removeAllProduct,
   unifyCarts,
+  addProductToDBCart,
+  getOrderlines,
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import LayoutPrimary from "layouts/layout-primary";
@@ -15,6 +17,16 @@ const Cart = () => {
   const { isAuthenticated, user } = useAuth0();
 
   let cart = useSelector((state) => state.cart);
+  let userDB=useSelector(state=>state.user)
+  let orderlines=useSelector(state=>state.orderlines)
+
+  // useEffect(()=>{
+  //   if(isAuthenticated && userDB){
+  //      dispatch(getOrderlines(userDB.order.id))
+  //   }
+  // },[dispatch,isAuthenticated])
+
+  console.log(orderlines)
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -32,9 +44,7 @@ const Cart = () => {
     dispatch(clearCart());
   };
 
-  let total = cart.reduce(function(acc, curr) {
-    return acc + curr.quantity * curr.price;
-  }, 0);
+  
 
   const { loginWithRedirect } = useAuth0();
 
@@ -44,17 +54,25 @@ const Cart = () => {
   //   setOpen(!open);
   // };
 
+  let result =[]
+
+  isAuthenticated && orderlines.length ? result=orderlines : result=cart
+
+  let total = result.reduce(function(acc, curr) {
+    return acc + curr.quantity * curr.price;
+  }, 0);
+ 
   return (
     <LayoutPrimary>
     <div>
       <h2 className="cart__title">Shopping Cart</h2>
       <div>
-        {cart ? (
-          cart.map((item, index) => {
+        {result ? (
+          result.map((item, index) => {
             return (
               <div className="cart__item">
                 <CartItem
-                  key={item}
+                  key={index}
                   id={item.id}
                   delFromCart={delFromCart}
                   name={item.name}

@@ -18,7 +18,7 @@ import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
 
 //ACTIONS
-import { clearCart, getUser, unifyCarts } from "actions";
+import { addProductToDBCart, clearCart, getOrderlines, getUser, unifyCarts } from "actions";
 
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
@@ -29,9 +29,11 @@ const Home = props => {
 
   const cart=useSelector(state=>state.cart)
   const userDB=useSelector(state=>state.user)
+  const cartDB=useSelector(state=>state.cartDB)
+  const addProductLogged=useSelector(state=>state.addProductToDB)
 
   useEffect(() => {
-    if (isAuthenticated){
+    if (isAuthenticated && !userDB){
       dispatch(getUser(user))}
   }, [isAuthenticated, dispatch]);
 
@@ -42,6 +44,12 @@ const Home = props => {
          dispatch(clearCart())
     }
   },[userDB])
+
+  useEffect(()=>{
+    if(isAuthenticated && userDB && cartDB){
+       dispatch(getOrderlines(userDB.order.id))
+    }
+  },[cartDB,addProductLogged])
 
 
   return (

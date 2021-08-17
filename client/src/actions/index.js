@@ -23,6 +23,9 @@ export const SET_PAGINATION = "SET_PAGINATION";
 export const UNIFY_CARTS_DB_LOCALSTORAGE = "UNIFY_CARTS_DB_LOCALSTORAGE";
 export const ADD_TO_FAVOURITE = "ADD_TO_FAVOURITE";
 export const REMOVE_TO_FAVOURITE = "REMOVE_TO_FAVOURITE";
+export const GET_DB_ORDERLINES="GET_DB_ORDERLINES";
+export const ADD_PRODUCT_TO_DB_CART="ADD_PRODUCT_TO_DB_CART"
+
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -274,20 +277,38 @@ export function removeToFavourite(id){
   };
 }
 
-export async function addProductToDBCart(productId, userId) {
+export function addProductToDBCart(productId, userId) {
+  return async dispatch => {  
   try {
-    await axios.post(
+    const res=await axios.post(
       `/addProductToDBCart/${userId}` ||
         `http://localhost:3001/addProductToDBCart/${userId}`,
       { productId: productId }
-    );
+      );
+      dispatch({type:ADD_PRODUCT_TO_DB_CART,payload:res.data})
+
   } catch (error) {
     alert("ERROR EN AGREGAR PRODUCTO A LA DB");
   }
+ };
 }
 
 export function clearUser(){
   return {
     type:CLEAR_USER,
   }
+}
+
+export function getOrderlines(cartId){
+  return async dispatch => {
+  try {
+    const res=await axios.get(
+      `/getOrderlines/${cartId}` ||
+        `http://localhost:3001/getOrderlines/${cartId}`
+    );
+    dispatch({ type: GET_DB_ORDERLINES, payload: res.data });
+  } catch (error) {
+    alert("ERROR EN OBTENER LAS ORDERLINES DE LA DB");
+  }
+ };
 }
