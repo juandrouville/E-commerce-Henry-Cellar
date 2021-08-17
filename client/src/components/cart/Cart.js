@@ -38,27 +38,14 @@ const Cart = () => {
 
   const { loginWithRedirect } = useAuth0();
 
-  const [open, setOpen] = useState();
+  // const [open, setOpen] = useState();
 
-  const OpenCart = () => {
-    setOpen(!open);
-  };
+  // const OpenCart = () => {
+  //   setOpen(!open);
+  // };
 
   return (
-    <div
-      className={
-        open ? "cart__container cart__container--open" : "cart__container"
-      }
-    >
-      <div className="ejemplo">
-        <a
-          onClick={() => {
-            OpenCart();
-          }}
-        >
-          x
-        </a>
-      </div>
+    <div>
       <h2 className="cart__title">Shopping Cart</h2>
       <div>
         {cart ? (
