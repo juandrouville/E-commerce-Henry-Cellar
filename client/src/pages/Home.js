@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
 //LAYOUT
-import LayoutPrimary from "layouts/layout-primary";
+import LayoutPrimary from "../layouts/layout-primary";
 
 //COMPONENTS
 import SimpleForm from "../components/SimpleForm/SimpleForm";
@@ -27,22 +27,22 @@ const Home = props => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const cart=useSelector(state=>state.cart)
-  const userDB=useSelector(state=>state.user)
+  const cart = useSelector(state => state.cart);
+  const userDB = useSelector(state => state.user);
 
   useEffect(() => {
-    if (isAuthenticated){
-      dispatch(getUser(user))}
+    if (isAuthenticated) {
+      dispatch(getUser(user));
+    }
   }, [isAuthenticated, dispatch]);
 
-  useEffect(()=>{
-    if(isAuthenticated && cart.length && userDB){
-       dispatch(unifyCarts(user.sub,cart))
-         alert('Agregamos los productos de tu carrito !')
-         dispatch(clearCart())
+  useEffect(() => {
+    if (isAuthenticated && cart.length && userDB) {
+      dispatch(unifyCarts(user.sub, cart));
+      alert("Agregamos los productos de tu carrito !");
+      dispatch(clearCart());
     }
-  },[userDB])
-
+  }, [userDB]);
 
   return (
     <LayoutPrimary>
