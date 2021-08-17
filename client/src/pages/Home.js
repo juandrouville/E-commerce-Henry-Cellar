@@ -70,7 +70,7 @@ const Home = props => {
       <div className="paginacion">
         <Pagination />
       </div>
-      <Cart />
+     
     </LayoutPrimary>
   );
 };
