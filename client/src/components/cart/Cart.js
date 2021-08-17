@@ -17,10 +17,6 @@ const Cart = () => {
   let cart = useSelector((state) => state.cart);
 
   useEffect(() => {
-    if (isAuthenticated) dispatch(unifyCarts(user.sub, cart));
-  }, [isAuthenticated, dispatch, cart, user]);
-
-  useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
