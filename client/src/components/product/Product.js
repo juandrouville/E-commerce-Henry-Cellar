@@ -31,9 +31,6 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
           <br />
           <p className="product__stock">Stock</p>
           <div>
-            <button onClick={() => addToCart(id)}>
-              <img src={cart2} alt="cartlogo" width="30" height="30" />
-            </button>
             <button onClick={() => addFavourite(id)}>
               Fav <FaStar
                 className="star"
@@ -41,6 +38,10 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
 
                 size={15}
               />
+            </button>
+            
+            <button onClick={() => addToCart(id)}>
+              <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
           </div>
         </div>

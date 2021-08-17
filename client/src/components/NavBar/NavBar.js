@@ -65,7 +65,7 @@ const NavBar = (props) => {
         ) : null}
       </div>
 
-      <NavLink
+      {/* <NavLink
         className="item"
         to="/mycart"
         refresh="true"
@@ -73,7 +73,7 @@ const NavBar = (props) => {
       >
         <img src={cart2} alt="cartlogo" width="40" height="40" />
         <h3>Cart</h3>
-      </NavLink>
+      </NavLink> */}
 
       <NavLink
         className="item"
