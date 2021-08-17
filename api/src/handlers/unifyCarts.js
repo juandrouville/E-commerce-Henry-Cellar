@@ -9,10 +9,32 @@ async function unifyCarts(req, res, next) {
     const localStorageCart = req.body;
 
     const orderOpenOfUser = await Order.findOne({
-      where: { state: "pending", userId: userId },
+      where: { state: "pending", userId: userId }, include:[Orderline]
     });
 
+
     localStorageCart.forEach(async (item) => {
+
+      let estado="No esta"
+
+      orderOpenOfUser.orderlines.forEach(async(orderline)=>{
+        if(orderline.productId===item.id){
+            const orderlineWithThatProduct=await Orderline.findOne({where:{id:orderline.id}})
+            let oldAmount=orderlineWithThatProduct.amount
+            orderlineWithThatProduct["amount"]=oldAmount+1
+            await orderlineWithThatProduct.save()
+        }
+      })
+
+      for(let i=0;i<orderOpenOfUser.orderlines.length;i++){
+        for(let j=0;j<localStorageCart.length;j++){
+          if(orderOpenOfUser.orderlines[i].productId===localStorageCart[j].id){
+            estado="Si esta"
+          }
+        }
+      }
+
+      if(estado==="No esta"){
       let itemOrderLine = await Orderline.create({ amount: item.quantity });
 
       let productOfOrderline = await Product.findOne({
@@ -22,11 +44,12 @@ async function unifyCarts(req, res, next) {
       itemOrderLine.setProduct(productOfOrderline);
 
       itemOrderLine.setOrder(orderOpenOfUser);
+       }
 
       // result.push(itemOrderLine)
     });
 
-    //res.json(result)
+    res.send('Actualizamos tu carrito')
   } catch (error) {
     next(error);
   }

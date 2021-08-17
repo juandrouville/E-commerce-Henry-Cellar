@@ -18,6 +18,7 @@ export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 export const GET_USER = "GET_USER";
+export const CLEAR_USER="CLEAR_USER";
 export const SET_PAGINATION = "SET_PAGINATION";
 export const UNIFY_CARTS_DB_LOCALSTORAGE = "UNIFY_CARTS_DB_LOCALSTORAGE";
 export const ADD_TO_FAVOURITE = "ADD_TO_FAVOURITE";
@@ -282,5 +283,11 @@ export async function addProductToDBCart(productId, userId) {
     );
   } catch (error) {
     alert("ERROR EN AGREGAR PRODUCTO A LA DB");
+  }
+}
+
+export function clearUser(){
+  return {
+    type:CLEAR_USER,
   }
 }

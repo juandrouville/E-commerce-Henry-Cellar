@@ -11,6 +11,7 @@ import {
   REMOVE_ONE_FROM_CART,
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
+  CLEAR_USER,
   GET_ALL_WINERIES,
   GET_USER,
   SET_PAGINATION,
@@ -29,7 +30,7 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
-  user:{},
+  user:undefined,
   productFavourite: favouriteFromLocalStorage,
 
   setPagination:{
@@ -186,6 +187,12 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         productFavourite: state.productFavourite.filter((p) => p.id !== action.payload),
+      }
+    }
+    case CLEAR_USER:{
+      return {
+        ...state,
+        user:undefined
       }
     }
     default: {

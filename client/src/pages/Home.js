@@ -27,22 +27,22 @@ const Home = props => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const cart = useSelector(state => state.cart);
-  const userDB = useSelector(state => state.user);
+  const cart=useSelector(state=>state.cart)
+  const userDB=useSelector(state=>state.user)
 
   useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(getUser(user));
-    }
+    if (isAuthenticated){
+      dispatch(getUser(user))}
   }, [isAuthenticated, dispatch]);
 
-  useEffect(() => {
-    if (isAuthenticated && cart.length) {
-      dispatch(unifyCarts(user.sub, cart));
-      dispatch(clearCart());
-      alert("Agregamos los productos de tu carrito !");
+  useEffect(()=>{
+    if(isAuthenticated && cart.length && userDB){
+       dispatch(unifyCarts(user.sub,cart))
+         alert('Agregamos los productos de tu carrito !')
+         dispatch(clearCart())
     }
-  }, [userDB]);
+  },[userDB])
+
 
   return (
     <LayoutPrimary>
