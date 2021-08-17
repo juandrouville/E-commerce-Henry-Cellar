@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import CartItem from "../CartItem/CartItem";
 import {
   clearCart,
@@ -9,6 +8,7 @@ import {
   unifyCarts,
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
+import LayoutPrimary from "layouts/layout-primary";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -45,6 +45,7 @@ const Cart = () => {
   // };
 
   return (
+    <LayoutPrimary>
     <div>
       <h2 className="cart__title">Shopping Cart</h2>
       <div>
@@ -84,6 +85,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
+    </LayoutPrimary>
   );
 };
 
