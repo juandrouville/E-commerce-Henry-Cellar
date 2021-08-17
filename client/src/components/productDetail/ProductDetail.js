@@ -9,6 +9,7 @@ import {
 import NavBar from "../NavBar/NavBar";
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
+import PostReview from "components/PostReview/PostReview";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ export default function ProductDetail() {
         <p>Cargando...</p>
       )}
       <Review />
+      <PostReview productId={productDetail.id}/>
     </div>
   );
 }
