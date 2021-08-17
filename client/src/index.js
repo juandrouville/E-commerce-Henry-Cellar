@@ -33,6 +33,7 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
+        <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
         <Route exact path="/prueba" component={Prueba} />
         <Route exact path="/" component={LandingPage} />
