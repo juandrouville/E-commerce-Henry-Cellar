@@ -8,6 +8,7 @@ import {
 } from "../../actions/index";
 import NavBar from "../NavBar/NavBar";
 import cart2 from "../../assets/images/cart2.png";
+import Review from "../Review/Review";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -21,16 +22,16 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
-  const addToCart = (id) =>{  
+  const addToCart = (id) => {
     dispatch(addCart(id))
   }
 
- 
+
 
   return (
     <div>
       <NavBar />
-     
+
       {productDetail ? (
         <div className="product__detail">
           <img src={productDetail.image} alt="Loading..." width="40%" />
@@ -48,6 +49,7 @@ export default function ProductDetail() {
       ) : (
         <p>Cargando...</p>
       )}
+      <Review />
     </div>
   );
 }
