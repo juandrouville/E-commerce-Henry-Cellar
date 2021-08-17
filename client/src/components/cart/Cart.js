@@ -11,6 +11,7 @@ import {
   getOrderlines,
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
+import LayoutPrimary from "layouts/layout-primary";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -18,14 +19,13 @@ const Cart = () => {
 
   let cart = useSelector((state) => state.cart);
   let userDB=useSelector(state=>state.user)
-  let cartDB=useSelector(state=>state.cartDB)
   let orderlines=useSelector(state=>state.orderlines)
 
-  useEffect(()=>{
-    if(isAuthenticated && userDB && cartDB){
-       dispatch(getOrderlines(userDB.order.id))
-    }
-  },[cartDB,userDB])
+  // useEffect(()=>{
+  //   if(isAuthenticated && userDB){
+  //      dispatch(getOrderlines(userDB.order.id))
+  //   }
+  // },[dispatch,isAuthenticated])
 
   console.log(orderlines)
 
@@ -45,9 +45,7 @@ const Cart = () => {
     dispatch(clearCart());
   };
 
-  let total = cart.reduce(function(acc, curr) {
-    return acc + curr.quantity * curr.price;
-  }, 0);
+  
 
   const { loginWithRedirect } = useAuth0();
 
@@ -60,10 +58,14 @@ const Cart = () => {
   let result =[]
 
   isAuthenticated && orderlines.length ? result=orderlines : result=cart
-  
+
+  let total = result.reduce(function(acc, curr) {
+    return acc + curr.quantity * curr.price;
+  }, 0);
  
   return (
-    <div>
+    <LayoutPrimary>
+          <div>
       <h2 className="cart__title">Shopping Cart</h2>
       <div>
         {result ? (
@@ -102,6 +104,8 @@ const Cart = () => {
         </div>
       </div>
     </div>
+    </LayoutPrimary>
+
   );
 };
 

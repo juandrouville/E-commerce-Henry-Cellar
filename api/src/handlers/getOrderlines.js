@@ -7,28 +7,19 @@ async function getOrderlines(req , res, next){
 
         const {cartId}=req.params
 
-        var orderOfUser = await Order.findByPk(cartId,{include:[Orderline]})
-
-        console.log(orderOfUser.orderlines)
+        var orderlinesOfOrder = await Orderline.findAll({where:{orderId:cartId},include:[Product]})
 
         // paso los datos de la estructura de la BD a la del front:
             
-       let result =[]
+   let result =[]
 
-       orderOfUser.orderlines.forEach(async (orderline)=>{
-
-        let prod=await Product.findOne({where:{id:orderline.dataValues.productId}})
-
-        console.log(prod)
-        let obj={
-            id:prod.dataValues.id,
-            name:prod.dataValues.name,
-            price:prod.dataValues.price,
-            quantity:prod.dataValues.amount,
-        }
-
-        result.push(obj)
-
+      orderlinesOfOrder.forEach(orderline=>{
+        result.push({
+            id:orderline.product.id,
+            name:orderline.product.name,
+            price:orderline.product.price,
+            quantity:orderline.amount,
+        })
        })
 
        res.json(result)
