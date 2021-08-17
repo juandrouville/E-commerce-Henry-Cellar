@@ -36,7 +36,7 @@ const Home = props => {
   }, [isAuthenticated, dispatch]);
 
   useEffect(()=>{
-    if(isAuthenticated && cart.length){
+    if(isAuthenticated && cart.length && userDB){
        dispatch(unifyCarts(user.sub,cart))
          alert('Agregamos los productos de tu carrito !')
          dispatch(clearCart())
