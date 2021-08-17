@@ -6,7 +6,7 @@ import {
   clearCart,
   removeOneProduct,
   removeAllProduct,
-  unifyCarts,
+  unifyCarts
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -14,7 +14,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useAuth0();
 
-  let cart = useSelector((state) => state.cart);
+  let cart = useSelector(state => state.cart);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -84,7 +84,7 @@ const Cart = () => {
       <div className="total">
         <h3>TOTAL:${total}</h3>
         <div className="log__buttons">
-          <button onClick={(e) => clearcart(e)}>Clear Cart</button>
+          <button onClick={e => clearCart(e)}>Clear Cart</button>
           <div>
             {isAuthenticated ? (
               <>
