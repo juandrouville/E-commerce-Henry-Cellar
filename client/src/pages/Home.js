@@ -57,10 +57,6 @@ const Home = props => {
       >
         <div className="container">
           <h1>we have more than 90 varieties of wines</h1>
-          <div className="arrow">
-            <p>check out</p>
-            <a href="#catalogo"></a>
-          </div>
         </div>
       </div>
       <div id="catalogo">
