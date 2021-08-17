@@ -1,0 +1,11 @@
+.profile{
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 100px 50px 0px 50px;
+
+  @include response(medium) {
+    flex-direction: row;
+    border: 1px solid rgb(113, 43, 43);
+  }
+}

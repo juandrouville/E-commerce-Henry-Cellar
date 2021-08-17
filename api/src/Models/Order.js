@@ -20,6 +20,18 @@ module.exports = (sequelize) => {
         type:DataTypes.STRING,
         allowNull:false,
         defaultValue:"No specified yet"
+    },
+    paymentid: {
+      type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    paymentstatus: {
+      type: DataTypes.STRING,
+        defaultValue: ""
+    },
+    merchantorderid: {
+      type: DataTypes.STRING,
+        defaultValue: 0
     }
   });
 };

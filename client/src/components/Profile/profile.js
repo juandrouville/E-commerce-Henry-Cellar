@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "layouts/layout-primary";
-
+import ContactUs  from "components/ContactUs/ContactUs";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Profile = () => {
@@ -30,6 +30,7 @@ const Profile = () => {
           {JSON.stringify(user, null, 2)}
         </pre>
       </div>
+      <ContactUs />
     </div>
     </Layout>
   );

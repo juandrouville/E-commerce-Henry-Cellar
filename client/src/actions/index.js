@@ -17,77 +17,78 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
-export const GET_USER="GET_USER";
+export const GET_USER = "GET_USER";
+export const CLEAR_USER="CLEAR_USER";
 export const SET_PAGINATION = "SET_PAGINATION";
+export const UNIFY_CARTS_DB_LOCALSTORAGE = "UNIFY_CARTS_DB_LOCALSTORAGE";
+export const ADD_TO_FAVOURITE = "ADD_TO_FAVOURITE";
+export const REMOVE_TO_FAVOURITE = "REMOVE_TO_FAVOURITE";
 
-
-
-
-export function sortByPrecio( page, order) {
+export function sortByPrecio(page, order) {
   if (!page) {
     page = 0;
-  };
+  }
 
-  return function (dispatch) {
+  return function(dispatch) {
     axios
       .get(
         `/allproducts?precio=${order}&page=${page}` ||
           `http://localhost:3001/allproducts?precio=${order}&page=${page}`
       )
-      .then((res) => {
+      .then(res => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
   };
 }
 
-export function filtroCategoria(page,categoria) {
+export function filtroCategoria(page, categoria) {
   if (!page) {
     page = 0;
-  };
-  return function (dispatch) {
+  }
+  return function(dispatch) {
     axios
       .get(
         `/allproducts?categoria=${categoria}&page=${page}` ||
           `http://localhost:3001/allproducts?categoria=${categoria}&page=${page}`
       )
-      .then((res) => {
+      .then(res => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
   };
-};
+}
 
-export function filtroBodega(page,bodega) {
+export function filtroBodega(page, bodega) {
   if (!page) {
     page = 0;
   }
-  return function (dispatch) {
+  return function(dispatch) {
     axios
       .get(
         `/allproducts?bodega=${bodega}&page=${page}` ||
           `http://localhost:3001/allproducts?bodega=${bodega}&page=${page}`
       )
-      .then((res) => {
+      .then(res => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
       });
   };
-};
+}
 
-export function getAllproducts(page,filter,valuefilter) {
+export function getAllproducts(page, filter, valuefilter) {
   if (!page) {
     page = 0;
   }
-  console.log(filter,valuefilter);
-  if (filter === 'precio'){
+  console.log(filter, valuefilter);
+  if (filter === "precio") {
     return sortByPrecio(page, valuefilter);
-  };
-  if (filter === 'categoria'){
-    return filtroCategoria(page,valuefilter);
-  };
-  if (filter === 'bodega'){
-    return filtroBodega(page,valuefilter);
   }
-  if(!filter){
-    return async (dispatch) => {
+  if (filter === "categoria") {
+    return filtroCategoria(page, valuefilter);
+  }
+  if (filter === "bodega") {
+    return filtroBodega(page, valuefilter);
+  }
+  if (!filter) {
+    return async dispatch => {
       const res = await axios.get(
         `/allproducts?page=${page}` ||
           `http://localhost:3001/allproducts?page=${page}`
@@ -96,11 +97,10 @@ export function getAllproducts(page,filter,valuefilter) {
       dispatch({ type: GET_ALL_PRODUCTS, payload: V });
     };
   }
-};
-
+}
 
 export function getAllCategories() {
-  return async (dispatch) => {
+  return async dispatch => {
     const res = await axios.get(
       `/categories` || `http://localhost:3001/categories`
     );
@@ -108,7 +108,7 @@ export function getAllCategories() {
   };
 }
 export function getAllWineries() {
-  return async (dispatch) => {
+  return async dispatch => {
     const res = await axios.get(
       `/wineries` || `http://localhost:3001/wineries`
     );
@@ -117,7 +117,7 @@ export function getAllWineries() {
 }
 
 export function getProductDetail(id) {
-  return async (dispatch) => {
+  return async dispatch => {
     const res = await axios.get(
       `/product/` + id || `http://localhost:3001/product/` + id
     );
@@ -128,13 +128,13 @@ export function getProductDetail(id) {
 export function clearProductDetail() {
   return {
     type: PRODUCT_DETAIL,
-    payload: [],
+    payload: []
   };
 }
 
 //try catch para determinar si el error está en esta acción
 export function postProduct(input) {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const res = await axios.post(
         `/postproduct/`,
@@ -149,7 +149,7 @@ export function postProduct(input) {
 }
 
 export function editProduct(product) {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const res = await axios.put(
         `/editProduct/${product.id}`,
@@ -158,13 +158,13 @@ export function editProduct(product) {
       );
       dispatch({ type: EDIT_PRODUCT, payload: res.data });
     } catch (err) {
-      alert("HEMOSIDO TIMADO -error en post-");
+      alert("khe -error en edit product-");
     }
   };
 }
 
 export function searchProductByName(name) {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const products = await axios.get(
         `/productSearch?name=${name}` ||
@@ -182,63 +182,113 @@ export function searchProductByName(name) {
 export function nextPage(page) {
   return {
     type: NEXT_PAGE,
-    payload: page,
+    payload: page
   };
 }
 
 export function prevPage(page) {
   return {
     type: PREVIUS_PAGE,
-    payload: page,
+    payload: page
   };
 }
 
 export function addCart(id) {
   return {
     type: ADD_TO_CART,
-    payload: id,
+    payload: id
   };
 }
 
 export function clearCart() {
   return {
-    type: CLEAR_CART,
+    type: CLEAR_CART
   };
 }
 
 export function removeOneProduct(id) {
   return {
     type: REMOVE_ONE_FROM_CART,
-    payload: id,
+    payload: id
   };
 }
 
 export function removeAllProduct(id) {
   return {
     type: REMOVE_ALL_FROM_CART,
-    payload: id,
+    payload: id
   };
 }
 
-export function getUser(userData){
-  return async (dispatch) => {
+export function getUser(userData) {
+  return async dispatch => {
     try {
       const res = await axios.post(
-        `/getUser/${userData.sub}`|| `http://localhost:3001/getUser/${userData.sub}`,userData
+        `/getUser/${userData.sub}` ||
+          `http://localhost:3001/getUser/${userData.sub}`,
+        userData
       );
       dispatch({ type: GET_USER, payload: res.data });
     } catch (err) {
-      alert("HEMOSIDO TIMADO -error en post-");
+      alert("Pero keapasao -error en get user-");
     }
   };
 }
 
-export function setPagination(filter,valueFilter){
+export function setPagination(filter, valueFilter) {
   return {
     type: SET_PAGINATION,
-    payload:{
+    payload: {
       filter,
-      valueFilter,
-    },
+      valueFilter
+    }
   };
-};
+}
+
+export function unifyCarts(userId, localStorageCart) {
+  return async dispatch => {
+    try {
+      const res = await axios.post(
+        `/unifyCarts/${userId}` || `http://localhost:3001/unifyCarts/${userId}`,
+        localStorageCart
+      );
+      dispatch({ type: UNIFY_CARTS_DB_LOCALSTORAGE, payload: res.data });
+    } catch (err) {
+      alert("Error epicardo -error en unify carts-");
+    }
+  };
+}
+
+export function addToFavourite(id) {
+  return {
+    type: ADD_TO_FAVOURITE,
+    payload: id
+  };
+}
+
+
+export function removeToFavourite(id){
+  return{
+    type: REMOVE_TO_FAVOURITE, 
+    payload: id,
+
+  };
+}
+
+export async function addProductToDBCart(productId, userId) {
+  try {
+    await axios.post(
+      `/addProductToDBCart/${userId}` ||
+        `http://localhost:3001/addProductToDBCart/${userId}`,
+      { productId: productId }
+    );
+  } catch (error) {
+    alert("ERROR EN AGREGAR PRODUCTO A LA DB");
+  }
+}
+
+export function clearUser(){
+  return {
+    type:CLEAR_USER,
+  }
+}

@@ -14,7 +14,8 @@ const SearchBar = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    dispatch(searchProductByName(name));
+    if (name === "") alert("You have to type something!");
+    else dispatch(searchProductByName(name));
   };
 
   return (
