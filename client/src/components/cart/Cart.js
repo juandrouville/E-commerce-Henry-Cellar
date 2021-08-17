@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import CartItem from "../CartItem/CartItem";
 import {
   clearCart,
@@ -65,7 +64,7 @@ const Cart = () => {
  
   return (
     <LayoutPrimary>
-          <div>
+    <div>
       <h2 className="cart__title">Shopping Cart</h2>
       <div>
         {result ? (
@@ -105,7 +104,6 @@ const Cart = () => {
       </div>
     </div>
     </LayoutPrimary>
-
   );
 };
 
