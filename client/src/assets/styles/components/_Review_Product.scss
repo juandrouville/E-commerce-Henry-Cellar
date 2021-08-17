@@ -1,0 +1,25 @@
+.containerReview{
+    display:flex;
+    flex-direction: column;
+    height: 100px;
+    width: 70%;
+    margin:100px;
+
+    img{
+        width: 80px;
+        height: 80px;
+        margin-right: 5%;
+    }
+
+    .contentReview{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .comentaryArea{
+        border: solid 1px rgb(214, 213, 213);
+        width: 100%;
+        padding: 20px;
+        padding-left: 10px;
+    }
+}
