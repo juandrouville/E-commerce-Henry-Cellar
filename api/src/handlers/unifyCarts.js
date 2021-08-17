@@ -26,7 +26,7 @@ async function unifyCarts(req, res, next) {
       // result.push(itemOrderLine)
     });
 
-    //res.json(result)
+    res.send('Actualizamos tu carrito')
   } catch (error) {
     next(error);
   }

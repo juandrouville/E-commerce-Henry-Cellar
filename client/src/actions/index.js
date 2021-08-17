@@ -227,7 +227,7 @@ export function getUser(userData) {
           `http://localhost:3001/getUser/${userData.sub}`,
         userData
       );
-      await dispatch({ type: GET_USER, payload: res.data });
+      dispatch({ type: GET_USER, payload: res.data });
     } catch (err) {
       alert("Pero keapasao -error en get user-");
     }
