@@ -24,6 +24,7 @@ import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
 import AdminPanel from "../src/pages/AdminPanel"
+import AuthNav from "../src/components/auth-Nav/auth-nav"
 import dotenv from "dotenv";
 
 
@@ -41,6 +42,7 @@ ReactDOM.render(
         <Route exact path="/prueba" component={Prueba} />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/AuthNav" component={AuthNav} />
         <Route exact path="/create" component={PostProduct} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route

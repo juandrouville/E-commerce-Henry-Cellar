@@ -7,6 +7,7 @@ import * as IoIcons from "react-icons/io";
 import { SideBarData } from "../sidebarData/sidebarData"
 import { IconContext } from "react-icons";
 import SearchBar from "../SearchBar/SearchBar";
+import AuthNav from "../auth-Nav/auth-nav";
 
 const NuevaNavBar = () => {
     const [sidebar, setSidebar] = useState(false);
@@ -42,8 +43,9 @@ const NuevaNavBar = () => {
                         
                         )
                     })}
+                    <AuthNav />
                 </ul>
-                
+                <h2>contactUS</h2>
             </nav>
         </IconContext.Provider>
         </>

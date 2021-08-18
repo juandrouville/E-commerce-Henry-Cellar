@@ -2,19 +2,15 @@ import react from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-import * as MdIcons from "react-icons/md"
+import * as MdIcons from "react-icons/md";
+import * as BiIcons from "react-icons/bi";
+
 
 export const SideBarData = [
     {
         title: "Home",
         path: "/home",
         icon: <AiIcons.AiFillHome />,
-        cName: "nav-text"
-    },
-    {
-        title: "PostForm",
-        path: "/create",
-        icon: <IoIcons.IoIosCreate />,
         cName: "nav-text"
     },
     {
@@ -27,6 +23,12 @@ export const SideBarData = [
         title: "Fav",
         path: "/favourite",
         icon: <MdIcons.MdFavorite />,
+        cName: "nav-text"
+    },
+    {
+        title: "PostForm",
+        path: "/create",
+        icon: <IoIcons.IoIosCreate />,
         cName: "nav-text"
     },
 ]
