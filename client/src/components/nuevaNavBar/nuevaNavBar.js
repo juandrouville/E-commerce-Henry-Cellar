@@ -5,14 +5,10 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-<<<<<<< HEAD
-import { GrUserAdmin } from "react-icons/gr";
-import {AiOutlineMail} from "react-icons/ai";
-=======
 import * as RiIcons from "react-icons/ri";
->>>>>>> ff7612ea095ad6dfc36c2558d7fd5caef77bd2d9
 import { SideBarData } from "../sidebarData/sidebarData";
 import { IconContext } from "react-icons";
+import { AiOutlineMail } from "react-icons/ai";
 import SearchBar from "../SearchBar/SearchBar";
 import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
