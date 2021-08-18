@@ -12,20 +12,27 @@ const SearchBar = () => {
     setName(event.target.value);
   };
 
-  const handleClick = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (name === "") alert("You have to type something!");
-    else dispatch(searchProductByName(name));
+    else {
+      dispatch(searchProductByName(name));
+      setName("")
+    }
   };
 
   return (
     <div className="search-box">
-      <input
+      <form onSubmit={handleSubmit}>
+        <input
+        value={name}
         type="search"
         placeholder="Search for products"
         onChange={(e) => handleInputChange(e)}
       />
-      <button onClick={(e) => handleClick(e)}>Find</button>
+      <button type="submit">Find</button>
+      </form>
+      
     </div>
   );
 };
