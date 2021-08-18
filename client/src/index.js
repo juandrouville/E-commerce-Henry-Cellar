@@ -26,6 +26,7 @@ import Favourtie from "../src/pages/Favourite";
 import AdminPanel from "../src/pages/AdminPanel"
 import dotenv from "dotenv";
 
+
 dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
@@ -33,6 +34,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
+    
       <Auth0ProviderWithHistory>
         <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
@@ -51,6 +53,7 @@ ReactDOM.render(
         <Route path="/AdminPanel" component={AdminPanel} />
 
       </Auth0ProviderWithHistory>
+    
     </Router>
   </Provider>,
   document.getElementById("root")

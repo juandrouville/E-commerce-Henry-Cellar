@@ -2,7 +2,7 @@ import react from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-import * as GrIcons from "react-icons/gr"
+import * as MdIcons from "react-icons/md"
 
 export const SideBarData = [
     {
@@ -26,7 +26,7 @@ export const SideBarData = [
     {
         title: "Fav",
         path: "/favourite",
-        icon: <GrIcons.GrFavorite />,
+        icon: <MdIcons.MdFavorite />,
         cName: "nav-text"
     },
 ]
