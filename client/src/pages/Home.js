@@ -78,6 +78,7 @@ const Home = props => {
       <div className="paginacion">
         <Pagination />
       </div>
+       
     </LayoutPrimary>
   );
 };

@@ -71,7 +71,7 @@ const Cart = () => {
  
   return (
     <LayoutPrimary>
-    <div>
+    <div className="cart__container">
       <h2 className="cart__title">Shopping Cart</h2>
       <div>
         {result ? (
