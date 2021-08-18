@@ -10,7 +10,11 @@ import {
 import NavBar from "../NavBar/NavBar";
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
+
+import PostReview from "components/PostReview/PostReview";
+
 import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -29,8 +33,6 @@ export default function ProductDetail() {
     else dispatch(addCart(id));
   };
 
-
-
   return (
     <div>
       <NavBar />
@@ -47,14 +49,32 @@ export default function ProductDetail() {
             <p className="data__description"> {productDetail.description} </p>
             <p>Stock: {productDetail.stock} unidades</p>
           </div>
+
+
+
           <button onClick={() => addToCart(productDetail.id)}>
               cart
             </button>
+
         </div>
       ) : (
         <p>Cargando...</p>
       )}
-      <Review />
+      { productDetail.reviews ? 
+        productDetail.reviews.map(ele => {
+          return (
+            <Review review={{ ...ele }} />
+          )
+        }) : (
+          <p>Sin Comentarios </p>
+        )
+      }
+
+
+
+      <PostReview productId={productDetail.id} />
     </div>
   );
 }
+
+
