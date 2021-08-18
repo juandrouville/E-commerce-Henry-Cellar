@@ -22,11 +22,13 @@ import {
   GET_DB_ORDERLINES,
   ADD_PRODUCT_TO_DB_CART,
   REMOVE_ORDERLINE_FROM_DB,
-  CLEAR_CART_OF_DB
+  CLEAR_CART_OF_DB,
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
-const favouriteFromLocalStorage = JSON.parse(localStorage.getItem("productsFavourite") || "[]");
+const favouriteFromLocalStorage = JSON.parse(
+  localStorage.getItem("productsFavourite") || "[]"
+);
 
 const initialState = {
   productCategories: [],
@@ -35,18 +37,18 @@ const initialState = {
   // searchProductByName: [],
   createdProduct: [],
   page: 0,
-  user:undefined,
+  user: undefined,
   productFavourite: favouriteFromLocalStorage,
 
-  setPagination:{
-    filter:'',
-    valueFilter:'',
+  setPagination: {
+    filter: "",
+    valueFilter: "",
   },
   cart: cartFromLocalStorage,
-  orderlines:[],
-  addProductToDB:undefined,
-  orderlineRemoved:undefined,
-  clearCartOfDB:0
+  orderlines: [],
+  addProductToDB: undefined,
+  orderlineRemoved: undefined,
+  clearCartOfDB: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -87,7 +89,7 @@ const rootReducer = (state = initialState, action) => {
         productDetail: action.payload,
       };
     }
-    case POST_REVIEW : {
+    case POST_REVIEW: {
       return {
         ...state,
         productDetail: action.payload,
@@ -112,11 +114,11 @@ const rootReducer = (state = initialState, action) => {
         page: action.payload,
       };
     }
-    case SET_PAGINATION:{
+    case SET_PAGINATION: {
       return {
         ...state,
-        setPagination:action.payload,
-      }
+        setPagination: action.payload,
+      };
     }
     case ADD_TO_CART: {
       let newItem = state.getAllProducts.find(
@@ -167,71 +169,74 @@ const rootReducer = (state = initialState, action) => {
         cart: [],
       };
     }
-    case GET_USER:{
+    case GET_USER: {
       return {
         ...state,
-        user:action.payload
-      }
+        user: action.payload,
+      };
     }
-    case UNIFY_CARTS_DB_LOCALSTORAGE:{
+    case UNIFY_CARTS_DB_LOCALSTORAGE: {
       return {
         ...state,
-        cartDB:action.payload
-      }
+        cartDB: action.payload,
+      };
     }
-    case ADD_TO_FAVOURITE:{
+    case ADD_TO_FAVOURITE: {
       let newItem = state.getAllProducts.find(
         (product) => product.id === action.payload
       );
-      let itemInFavourites = state.productFavourite.find((item) => item.id === newItem.id);
+      let itemInFavourites = state.productFavourite.find(
+        (item) => item.id === newItem.id
+      );
 
-      if(itemInFavourites){
-        return{
-          ...state
-        }
-      }else{
-        
-        return{
+      if (itemInFavourites) {
+        return {
           ...state,
-          productFavourite: [...state.productFavourite, { ...newItem}]
-        }
+        };
+      } else {
+        return {
+          ...state,
+          productFavourite: [...state.productFavourite, { ...newItem }],
+        };
       }
     }
-    case REMOVE_TO_FAVOURITE:{
-      return{
-        ...state,
-        productFavourite: state.productFavourite.filter((p) => p.id !== action.payload),
-      }
-    }
-    case CLEAR_USER:{
+    case REMOVE_TO_FAVOURITE: {
       return {
         ...state,
-        user:undefined
-      }
+        productFavourite: state.productFavourite.filter(
+          (p) => p.id !== action.payload
+        ),
+      };
     }
-    case GET_DB_ORDERLINES:{
+    case CLEAR_USER: {
       return {
         ...state,
-        orderlines:action.payload
-      }
+        user: undefined,
+      };
     }
-    case ADD_PRODUCT_TO_DB_CART:{
+    case GET_DB_ORDERLINES: {
       return {
         ...state,
-        addProductToDB:action.payload
-      }
+        orderlines: action.payload,
+      };
     }
-    case REMOVE_ORDERLINE_FROM_DB:{
+    case ADD_PRODUCT_TO_DB_CART: {
       return {
         ...state,
-        orderlineRemoved:action.payload
-      }
+        addProductToDB: action.payload,
+      };
     }
-    case CLEAR_CART_OF_DB:{
+    case REMOVE_ORDERLINE_FROM_DB: {
       return {
         ...state,
-        clearCartOfDB:state.clearCartOfDB+1
-      }
+        orderlineRemoved: action.payload,
+      };
+    }
+    case CLEAR_CART_OF_DB: {
+      return {
+        ...state,
+        clearCartOfDB: state.clearCartOfDB + 1,
+      };
     }
     default: {
       return state;
