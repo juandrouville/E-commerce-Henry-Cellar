@@ -5,10 +5,10 @@ import * as BiIcons from "react-icons/bi";
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   return (
-    <li className="button-log">
+    <li className="button-text">
       
       <BiIcons.BiLogIn />
-      <button  onClick={() => loginWithRedirect()}>
+      <button  onClick={() => loginWithRedirect()} >
         Log In
       </button>
       
