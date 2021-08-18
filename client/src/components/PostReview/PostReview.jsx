@@ -1,15 +1,19 @@
 import React from 'react';
-import RatingStar from 'components/ratingStar/ratingStar';
 import { useState } from 'react';
 import { FaStar } from "react-icons/fa";
-
+import { postReview } from "../../actions/index";
+import { useDispatch } from 'react-redux';
 
 
 
 function PostReview (productId){
 
+    productId = productId.productId;
+
+    const dispatch = useDispatch();
+
     const [review , setReview ] = useState({
-        comentary:'',
+        commentary:'',
         score:0,
         productId:'',
     });
@@ -18,10 +22,11 @@ function PostReview (productId){
     const [hover, setHover]= useState(null);
 
     
-
     function changeComentary(e){
         setReview({
-            comentary:e.target.value,
+            ...review,
+            productId:productId,
+            commentary:e.target.value,
         });
     }
 
@@ -29,8 +34,9 @@ function PostReview (productId){
         setReview({
             ...review,
             score:rating,
-            productId:productId,
         })
+        console.log({...review});
+        dispatch(postReview(review));
     }
 
     return (
@@ -46,7 +52,10 @@ function PostReview (productId){
                         type="radio" 
                         name="rating" 
                         value={ratingValue}
-                        onClick={() => setRating(ratingValue)}
+                        onClick={() => {setReview({
+                            ...review,
+                            score:ratingValue});
+                            setRating(ratingValue)}}
                         />
                         <FaStar 
                         className="star" 

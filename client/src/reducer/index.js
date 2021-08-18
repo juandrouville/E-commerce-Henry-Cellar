@@ -17,7 +17,8 @@ import {
   SET_PAGINATION,
   UNIFY_CARTS_DB_LOCALSTORAGE,
   ADD_TO_FAVOURITE,
-  REMOVE_TO_FAVOURITE
+  REMOVE_TO_FAVOURITE,
+  POST_REVIEW,
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -74,6 +75,12 @@ const rootReducer = (state = initialState, action) => {
       };
     }
     case PRODUCT_DETAIL: {
+      return {
+        ...state,
+        productDetail: action.payload,
+      };
+    }
+    case POST_REVIEW : {
       return {
         ...state,
         productDetail: action.payload,

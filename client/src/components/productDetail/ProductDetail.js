@@ -27,8 +27,6 @@ export default function ProductDetail() {
     dispatch(addCart(id))
   }
 
-
-
   return (
     <div>
       <NavBar />
@@ -45,13 +43,26 @@ export default function ProductDetail() {
             <p className="data__description"> {productDetail.description} </p>
             <p>Stock: {productDetail.stock} unidades</p>
           </div>
-          
+
         </div>
       ) : (
         <p>Cargando...</p>
       )}
-      <Review />
-      <PostReview productId={productDetail.id}/>
+      { productDetail.reviews ? 
+        productDetail.reviews.map(ele => {
+          return (
+            <Review review={{ ...ele }} />
+          )
+        }) : (
+          <p>Sin Comentarios </p>
+        )
+      }
+
+
+
+      <PostReview productId={productDetail.id} />
     </div>
   );
 }
+
+
