@@ -51,7 +51,7 @@ const ProductFavourite = () => {
                     })
                 ) : (
                     <p>Cargando...</p>
-                ) : (<h2>There are no items if favorites</h2>) }
+                ) : (<h2>There are no items in favorites</h2>) }
             </div>
         </div>
     );
