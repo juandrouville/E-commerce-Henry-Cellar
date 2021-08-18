@@ -24,7 +24,7 @@ const CardFavorite = ({ image, name, price, id, delFromFavourite }) => {
           <p>${price}</p>
           <br />
           <p className="product__stock">Stock</p>
-          <div>
+          <div className="cartButton">
             <button onClick={() => addToCart(id)}>
               <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>

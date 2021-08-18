@@ -19,6 +19,10 @@ import {
   ADD_TO_FAVOURITE,
   REMOVE_TO_FAVOURITE,
   POST_REVIEW,
+  GET_DB_ORDERLINES,
+  ADD_PRODUCT_TO_DB_CART,
+  REMOVE_ORDERLINE_FROM_DB,
+  CLEAR_CART_OF_DB
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -39,7 +43,10 @@ const initialState = {
     valueFilter:'',
   },
   cart: cartFromLocalStorage,
-
+  orderlines:[],
+  addProductToDB:undefined,
+  orderlineRemoved:undefined,
+  clearCartOfDB:0
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -200,6 +207,30 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         user:undefined
+      }
+    }
+    case GET_DB_ORDERLINES:{
+      return {
+        ...state,
+        orderlines:action.payload
+      }
+    }
+    case ADD_PRODUCT_TO_DB_CART:{
+      return {
+        ...state,
+        addProductToDB:action.payload
+      }
+    }
+    case REMOVE_ORDERLINE_FROM_DB:{
+      return {
+        ...state,
+        orderlineRemoved:action.payload
+      }
+    }
+    case CLEAR_CART_OF_DB:{
+      return {
+        ...state,
+        clearCartOfDB:state.clearCartOfDB+1
       }
     }
     default: {

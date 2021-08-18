@@ -22,16 +22,17 @@ const ProductFavourite = () => {
         localStorage.setItem("favourite", JSON.stringify(productsFavourite));
       }, [productsFavourite]);
 
-
+ console.log(productsFavourite);
     // useEffect(() => {
     //     productsFavourite();
     // }, [productsFavourite]);
 
     return (
         <div>
-            <h2>Fav Products</h2>
+            <h2>.</h2>
             <div className="catalogo">
-                {productsFavourite ? (
+                {productsFavourite.length !== 0 ?
+                productsFavourite ? (
                     productsFavourite.map((p) => {
                         return (
                             <div>
@@ -50,7 +51,7 @@ const ProductFavourite = () => {
                     })
                 ) : (
                     <p>Cargando...</p>
-                )}
+                ) : (<h2>There are no items if favorites</h2>) }
             </div>
         </div>
     );
