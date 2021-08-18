@@ -9,7 +9,7 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
   return (
     <div>
-      <BiIcons.BiLogOut />
+      
       <button
         onClick={() => {
           dispatch(clearUser());
@@ -18,7 +18,7 @@ const LogoutButton = () => {
           });
         }}
       >
-        Log Out
+        {<BiIcons.BiLogOut />}  Log Out
       </button>
     </div>
   );

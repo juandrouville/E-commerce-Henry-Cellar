@@ -7,9 +7,8 @@ const LoginButton = () => {
   return (
     <li className="button-log">
       
-      <BiIcons.BiLogIn />
       <button  onClick={() => loginWithRedirect()}>
-        Log In
+        {<BiIcons.BiLogIn />}  Log In
       </button>
       
     </li>

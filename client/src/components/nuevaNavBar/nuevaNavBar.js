@@ -6,6 +6,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import { GrUserAdmin } from "react-icons/gr";
+import {AiOutlineMail} from "react-icons/ai";
 import { SideBarData } from "../sidebarData/sidebarData";
 import { IconContext } from "react-icons";
 import SearchBar from "../SearchBar/SearchBar";
@@ -54,7 +55,7 @@ const NuevaNavBar = () => {
                 user.sub === "google-oauth2|109028710743016612481" ||
                 user.sub === "google-oauth2|110496112430074927748") ? (
                 
-                <li className="nav-text">
+                <li className="nav-text a">
                   <NavLink to="/AdminPanel" refresh="true">
                     <GrUserAdmin />
                     <h3 >AdminPanel</h3>
@@ -65,6 +66,7 @@ const NuevaNavBar = () => {
             
             <li className="nav-text">
               <NavLink to="/ContactUs" refresh="true">
+                <AiOutlineMail/>
                 <h3>Contact Us</h3>
               </NavLink>
             </li>
