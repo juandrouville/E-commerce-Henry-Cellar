@@ -16,7 +16,15 @@ async function postReview( req , res ){
         });
         
         await review.setUser(user);
-        var response = await review.setProduct(product);
+        await review.setProduct(product);
+        var response = await Product.findOne({
+            where:{
+                id:productId,
+            },
+            include:{
+                model:Review,
+            }
+        })
         res.json(response);
 
 

@@ -1,4 +1,4 @@
-const CartItem = ({ name, price, delFromCart, quantity, id }) => {
+const CartItem = ({ name, price, delFromCart, quantity, id, orderlineId }) => {
   return (
     <div>
       {/* <div className="cartItem"> */}
@@ -8,11 +8,11 @@ const CartItem = ({ name, price, delFromCart, quantity, id }) => {
       </h4>
 
       <div className="cartItem_buttons">
-        <button onClick={() => delFromCart(id)} className="cartItem_button">
+        <button onClick={() => delFromCart(id,false,orderlineId)} className="cartItem_button">
           delete one
         </button>
         <button
-          onClick={() => delFromCart(id, true)}
+          onClick={() => delFromCart(id, true,orderlineId)}
           className="cartItem_button"
         >
           delete all

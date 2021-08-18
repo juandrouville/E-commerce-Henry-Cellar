@@ -18,7 +18,7 @@ import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
 
 //ACTIONS
-import { addProductToDBCart, clearCart, getOrderlines, getUser, unifyCarts } from "actions";
+import { addProductToDBCart, clearAddedProductToDB, clearCart, getOrderlines, getUser, unifyCarts } from "actions";
 
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
@@ -38,7 +38,7 @@ const Home = props => {
   }, [isAuthenticated, dispatch]);
 
   useEffect(()=>{
-    if(isAuthenticated && cart.length && userDB){
+    if(isAuthenticated  && userDB && cart.length){
        dispatch(unifyCarts(user.sub,cart))
          alert('Agregamos los productos de tu carrito !')
          dispatch(clearCart())
@@ -46,10 +46,10 @@ const Home = props => {
   },[userDB])
 
   useEffect(()=>{
-    if(isAuthenticated && userDB && cartDB){
+    if(isAuthenticated && userDB ){
        dispatch(getOrderlines(userDB.order.id))
     }
-  },[cartDB,addProductLogged])
+  },[cartDB,addProductLogged,userDB])
 
 
   return (

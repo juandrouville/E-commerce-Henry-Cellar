@@ -23,9 +23,12 @@ export const SET_PAGINATION = "SET_PAGINATION";
 export const UNIFY_CARTS_DB_LOCALSTORAGE = "UNIFY_CARTS_DB_LOCALSTORAGE";
 export const ADD_TO_FAVOURITE = "ADD_TO_FAVOURITE";
 export const REMOVE_TO_FAVOURITE = "REMOVE_TO_FAVOURITE";
+export const POST_REVIEW = "POST_REVIEW";
+export const POST_REVIEW = "POST_REVIEW";
 export const GET_DB_ORDERLINES="GET_DB_ORDERLINES";
 export const ADD_PRODUCT_TO_DB_CART="ADD_PRODUCT_TO_DB_CART"
-
+export const REMOVE_ORDERLINE_FROM_DB="REMOVE_ORDERLINE_FROM_DB"
+export const CLEAR_CART_OF_DB="CLEAR_CART_OF_DB"
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -297,7 +300,23 @@ export function clearUser(){
   return {
     type:CLEAR_USER,
   }
-}
+};
+
+export function postReview(review){
+  
+    return (dispatch) => {
+    axios.post(
+      `/postReview` || 
+      `http://localhost:3001/postReview`,{...review})
+      .then(res => {
+        dispatch({type:POST_REVIEW,payload:res.data})
+      })
+      .catch(error => {
+        alert("ERROR AL CREAR REVIEW")
+      }) 
+    } 
+ 
+};
 
 export function getOrderlines(cartId){
   return async dispatch => {
@@ -312,3 +331,33 @@ export function getOrderlines(cartId){
   }
  };
 }
+
+
+export function removeOrderline(orderlineId,deleteAll=false){
+  return async dispatch => {
+  try {
+    const res=await axios.delete(
+      `/removeOrderline/${orderlineId}` ||
+        `http://localhost:3001/removeOrderline/${orderlineId}`, {deleteAll:deleteAll}
+    );
+    dispatch({ type: REMOVE_ORDERLINE_FROM_DB, payload: res.data });
+  } catch (error) {
+    alert("ERROR AL ELIMNAR LA ORDERLINE DE LA DB");
+  }
+ };
+}
+
+export function clearCartOfDB(orderId){
+  return async dispatch => {
+  try {
+    const res=await axios.delete(
+      `/clearCart/${orderId}` ||
+        `http://localhost:3001/clearCart/${orderId}`
+    );
+    dispatch({ type: CLEAR_CART_OF_DB, payload: res.data });
+  } catch (error) {
+    alert("ERROR AL LIMPIAR EL CARRITO EN LA BASE DE DATOS");
+  }
+ };
+}
+
