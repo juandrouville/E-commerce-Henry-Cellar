@@ -10,13 +10,17 @@ import {
 import NavBar from "../NavBar/NavBar";
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
+
+import PostReview from "components/PostReview/PostReview";
+
 import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const { id } = useParams();
-  const {isAuthenticated,user}=useAuth0()
+  const { isAuthenticated, user } = useAuth0()
   useEffect(() => {
     dispatch(getProductDetail(id));
     return () => {
@@ -25,11 +29,9 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const addToCart = (id) => {
-    if(isAuthenticated) dispatch(addProductToDBCart(id,user.sub))
+    if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub))
     else dispatch(addCart(id));
   };
-
-
 
   return (
     <div>
@@ -48,13 +50,28 @@ export default function ProductDetail() {
             <p>Stock: {productDetail.stock} unidades</p>
           </div>
           <button onClick={() => addToCart(productDetail.id)}>
-              cart
-            </button>
+            cart
+          </button>
+
         </div>
       ) : (
         <p>Cargando...</p>
       )}
-      <Review />
+      {productDetail.reviews ?
+        productDetail.reviews.map(ele => {
+          return (
+            <Review review={{ ...ele }} />
+          )
+        }) : (
+          <p>Sin Comentarios </p>
+        )
+      }
+
+
+
+      <PostReview productId={productDetail.id} />
     </div>
   );
 }
+
+
