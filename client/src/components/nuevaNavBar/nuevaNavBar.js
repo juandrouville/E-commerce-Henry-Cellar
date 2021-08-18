@@ -1,5 +1,5 @@
-import react, { useState } from "react";
-import "boxicons";
+import React, { useState } from "react";
+import 'boxicons';
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
