@@ -25,10 +25,4 @@ export const SideBarData = [
         icon: <MdIcons.MdFavorite />,
         cName: "nav-text"
     },
-    {
-        title: "PostForm",
-        path: "/create",
-        icon: <IoIcons.IoIosCreate />,
-        cName: "nav-text"
-    },
 ]
