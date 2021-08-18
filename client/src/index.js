@@ -25,6 +25,7 @@ import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
 import AdminPanel from "../src/pages/AdminPanel"
 import AuthNav from "../src/components/auth-Nav/auth-nav"
+import ContactUs from "../src/components/ContactUs/ContactUs"
 import dotenv from "dotenv";
 
 
@@ -44,6 +45,7 @@ ReactDOM.render(
         <Route exact path="/home" component={Home} />
         <Route exact path="/AuthNav" component={AuthNav} />
         <Route exact path="/create" component={PostProduct} />
+        <Route exact path="/ContactUs" component={ContactUs} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route
           path="/editProduct/:id"

@@ -1,15 +1,18 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import * as BiIcons from "react-icons/bi";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   return (
-    <button
-    className="nav-text"
-      onClick={() => loginWithRedirect()}
-    >
-      Log In
-    </button>
+    <li className="button-log">
+      
+      <BiIcons.BiLogIn />
+      <button  onClick={() => loginWithRedirect()}>
+        Log In
+      </button>
+      
+    </li>
   );
 };
 

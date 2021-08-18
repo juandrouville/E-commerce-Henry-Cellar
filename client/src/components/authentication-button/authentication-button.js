@@ -10,9 +10,9 @@ const AuthenticationButton = () => {
   const { user } = useAuth0();
 
   return isAuthenticated ? <div className="nav-text"> 
-  <p>Bienvenido, 
+  {/* <p>Bienvenido, 
     <NavLink to="/profile"> {user.given_name}</NavLink>
-    </p>
+    </p> */}
   <LogoutButton /> </div>: <LoginButton />;
 };
 
