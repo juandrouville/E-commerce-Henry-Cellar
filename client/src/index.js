@@ -23,7 +23,10 @@ import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
+import AdminPanel from "../src/pages/AdminPanel"
+import AuthNav from "../src/components/auth-Nav/auth-nav"
 import dotenv from "dotenv";
+
 
 dotenv.config();
 
@@ -32,11 +35,14 @@ axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
+    
       <Auth0ProviderWithHistory>
+        <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
         <Route exact path="/prueba" component={Prueba} />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/AuthNav" component={AuthNav} />
         <Route exact path="/create" component={PostProduct} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route
@@ -45,7 +51,11 @@ ReactDOM.render(
         />
         <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
+        
+        <Route path="/AdminPanel" component={AdminPanel} />
+
       </Auth0ProviderWithHistory>
+    
     </Router>
   </Provider>,
   document.getElementById("root")

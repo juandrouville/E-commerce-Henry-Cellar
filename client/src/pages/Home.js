@@ -18,7 +18,7 @@ import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
 
 //ACTIONS
-import { clearCart, getUser, unifyCarts } from "actions";
+import { addProductToDBCart, clearAddedProductToDB, clearCart, getOrderlines, getUser, unifyCarts } from "actions";
 
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
@@ -29,19 +29,27 @@ const Home = props => {
 
   const cart=useSelector(state=>state.cart)
   const userDB=useSelector(state=>state.user)
+  const cartDB=useSelector(state=>state.cartDB)
+  const addProductLogged=useSelector(state=>state.addProductToDB)
 
   useEffect(() => {
-    if (isAuthenticated){
+    if (isAuthenticated && !userDB){
       dispatch(getUser(user))}
   }, [isAuthenticated, dispatch]);
 
   useEffect(()=>{
-    if(isAuthenticated && cart.length && userDB){
+    if(isAuthenticated  && userDB && cart.length){
        dispatch(unifyCarts(user.sub,cart))
          alert('Agregamos los productos de tu carrito !')
          dispatch(clearCart())
     }
   },[userDB])
+
+  useEffect(()=>{
+    if(isAuthenticated && userDB ){
+       dispatch(getOrderlines(userDB.order.id))
+    }
+  },[cartDB,addProductLogged,userDB])
 
 
   return (
@@ -70,7 +78,7 @@ const Home = props => {
       <div className="paginacion">
         <Pagination />
       </div>
-      <Cart />
+       
     </LayoutPrimary>
   );
 };
