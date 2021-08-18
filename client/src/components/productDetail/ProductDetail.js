@@ -11,6 +11,7 @@ import NavBar from "../NavBar/NavBar";
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
 import { useAuth0 } from "@auth0/auth0-react";
+import Layout from "layouts/layout-primary";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -32,9 +33,8 @@ export default function ProductDetail() {
 
 
   return (
+    <Layout>
     <div>
-      <NavBar />
-
       {productDetail ? (
         <div className="product__detail">
           <img src={productDetail.image} alt="Loading..." width="40%" />
@@ -56,5 +56,6 @@ export default function ProductDetail() {
       )}
       <Review />
     </div>
+    </Layout>
   );
 }

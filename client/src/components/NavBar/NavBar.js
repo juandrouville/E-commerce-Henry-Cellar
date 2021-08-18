@@ -55,11 +55,11 @@ const NavBar = (props) => {
             user.sub === "google-oauth2|110496112430074927748") ? (
           <>
             <NavLink
-              to="/create"
+              to="/AdminPanel"
               refresh="true"
               style={{ textDecoration: "none" }}
             >
-              <h3>PostForm</h3>
+              <h3>AdminPanel</h3>
             </NavLink>
           </>
         ) : null}
