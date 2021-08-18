@@ -16,7 +16,7 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
   const { isAuthenticated, user } = useAuth0();
 
   const addToCart = (id) => {
-    if (isAuthenticated) addProductToDBCart(id, user.sub);
+    if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub)) ;
     else dispatch(addCart(id));
   };
 

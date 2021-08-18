@@ -28,12 +28,14 @@
 @import "./components/postProduct";
 @import "./components/filtros"; // Pages
 @import "./screens/catalogo";
+@import "./screens/landing";
 @import "./components/Review_Product";
 @import "./components/form";
 @import "./components/ratingStar";
 @import "./components/cart";
 @import "./components/CartItem";
 @import "./components/_profile.scss";
+@import "./components/nuevaNavBar";
 
 body {
   font-family: Recisive,

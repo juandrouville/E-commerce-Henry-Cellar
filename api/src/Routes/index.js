@@ -10,12 +10,13 @@ const postProduct=require("./postProduct");
 const editProduct=require('./editProduct');
 const getAllCategories  = require('./getAllCategories');
 const getAllWineries  = require('./getAllWineries');
-const editOrderLine=require('./editOrderLine')
+const clearCart=require('./clearCart')
 const getUser=require('./getUser')
 const unifyCarts=require('./unifyCarts');
 const postReview = require('./postReview');
 const addProductToDBCart=require('./addProductToDBCart')
-
+const getOrderlines=require('./getOrderlines')
+const removeOrderline=require('./removeOrderline')
 
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product",productDetail);
@@ -26,10 +27,11 @@ router.use("/categories",getAllCategories);
 router.use("/wineries",getAllWineries);
 router.use("/getUser",getUser);
 router.use('/unifyCarts',unifyCarts)
-router.use('/editOrderLine',editOrderLine);
 router.use('/postReview',postReview);
 router.use('/addProductToDBCart',addProductToDBCart)
-
+router.use('/getOrderlines',getOrderlines)
+router.use('/removeOrderline',removeOrderline)
+router.use('/clearCart',clearCart)
 
 
 module.exports = router;

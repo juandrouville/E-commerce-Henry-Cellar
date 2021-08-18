@@ -1,9 +1,9 @@
 import react from "react";
-import RatingStar from "../components/ratingStar/ratingStar"
+import NuevaNavBar from "../components/nuevaNavBar/nuevaNavBar"
 const Prueba = () => {
 
     return (
-        <div><RatingStar/></div>
+        <div><NuevaNavBar/></div>
     );
   };
   
