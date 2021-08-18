@@ -5,8 +5,12 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+<<<<<<< HEAD
 import { GrUserAdmin } from "react-icons/gr";
 import {AiOutlineMail} from "react-icons/ai";
+=======
+import * as RiIcons from "react-icons/ri";
+>>>>>>> ff7612ea095ad6dfc36c2558d7fd5caef77bd2d9
 import { SideBarData } from "../sidebarData/sidebarData";
 import { IconContext } from "react-icons";
 import SearchBar from "../SearchBar/SearchBar";
@@ -55,15 +59,18 @@ const NuevaNavBar = () => {
                 user.sub === "google-oauth2|109028710743016612481" ||
                 user.sub === "google-oauth2|110496112430074927748") ? (
                 
-                <li className="nav-text a">
+                
                   <NavLink to="/AdminPanel" refresh="true">
-                    <GrUserAdmin />
+                    <RiIcons.RiAdminLine />
                     <h3 >AdminPanel</h3>
                   </NavLink>
-                  </li>
+                
               ) : null}
               </li>
-            
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
             <li className="nav-text">
               <NavLink to="/ContactUs" refresh="true">
                 <AiOutlineMail/>
