@@ -20,7 +20,7 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const { id } = useParams();
-  const {isAuthenticated,user}=useAuth0()
+  const { isAuthenticated, user } = useAuth0()
   useEffect(() => {
     dispatch(getProductDetail(id));
     return () => {
@@ -29,7 +29,7 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const addToCart = (id) => {
-    if(isAuthenticated) dispatch(addProductToDBCart(id,user.sub))
+    if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub))
     else dispatch(addCart(id));
   };
 
@@ -49,17 +49,15 @@ export default function ProductDetail() {
             <p className="data__description"> {productDetail.description} </p>
             <p>Stock: {productDetail.stock} unidades</p>
           </div>
-
-
           <button onClick={() => addToCart(productDetail.id)}>
-              cart
-            </button>
+            cart
+          </button>
 
         </div>
       ) : (
         <p>Cargando...</p>
       )}
-      { productDetail.reviews ? 
+      {productDetail.reviews ?
         productDetail.reviews.map(ele => {
           return (
             <Review review={{ ...ele }} />
