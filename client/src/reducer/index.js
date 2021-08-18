@@ -18,14 +18,11 @@ import {
   UNIFY_CARTS_DB_LOCALSTORAGE,
   ADD_TO_FAVOURITE,
   REMOVE_TO_FAVOURITE,
-
   POST_REVIEW,
-
   GET_DB_ORDERLINES,
   ADD_PRODUCT_TO_DB_CART,
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB
-
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
