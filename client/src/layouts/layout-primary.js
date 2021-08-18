@@ -1,11 +1,12 @@
 //React
 import React from "react";
-import NavBar from "../components/NavBar/NavBar.js";
+import NuevaNavBar from "../components/nuevaNavBar/nuevaNavBar"
 
 const LayoutPrimary = ({ children }) => {
   return (
     <div>
-      <NavBar />
+      <NuevaNavBar/>
+     
       <React.Fragment>{children}</React.Fragment>
     </div>
   );
