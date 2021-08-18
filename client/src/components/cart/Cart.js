@@ -8,6 +8,8 @@ import {
   unifyCarts,
   addProductToDBCart,
   getOrderlines,
+  removeOrderline,
+  clearCartOfDB,
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import LayoutPrimary from "layouts/layout-primary";
@@ -19,12 +21,14 @@ const Cart = () => {
   let cart = useSelector((state) => state.cart);
   let userDB=useSelector(state=>state.user)
   let orderlines=useSelector(state=>state.orderlines)
+  let orderlineRemoved=useSelector(state=>state.orderlineRemoved)
+  let clearCartOfDataBase=useSelector(state=>state.clearCartOfDB)
 
-  // useEffect(()=>{
-  //   if(isAuthenticated && userDB){
-  //      dispatch(getOrderlines(userDB.order.id))
-  //   }
-  // },[dispatch,isAuthenticated])
+  useEffect(()=>{
+    if(isAuthenticated && userDB && orderlineRemoved){
+       dispatch(getOrderlines(userDB.order.id))
+    }
+  },[orderlineRemoved,clearCartOfDataBase])
 
   console.log(orderlines)
 
@@ -32,16 +36,19 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const delFromCart = (id, all = false) => {
+  const delFromCart = (id, all = false, orderlineId =false) => {
     if (all) {
-      dispatch(removeAllProduct(id));
+      if(isAuthenticated) dispatch(removeOrderline(orderlineId,true))
+      else dispatch(removeAllProduct(id));
     } else {
-      dispatch(removeOneProduct(id));
+      if(isAuthenticated) dispatch(removeOrderline(orderlineId,false))
+      else dispatch(removeOneProduct(id));
     }
   };
 
   const clearcart = () => {
-    dispatch(clearCart());
+    if(isAuthenticated) dispatch(clearCartOfDB(userDB.order.id))
+    else dispatch(clearCart());
   };
 
   
@@ -78,6 +85,7 @@ const Cart = () => {
                   name={item.name}
                   price={item.price}
                   quantity={item.quantity}
+                  orderlineId={item.orderlineId || null}
                 />
               </div>
             );
@@ -88,7 +96,7 @@ const Cart = () => {
       </div>
 
       <div className="total">
-        <h3>TOTAL:${total}</h3>
+        <h3>TOTAL: $ {total.toFixed(2)}</h3>
         <div className="log__buttons">
           <button onClick={(e) => clearcart(e)}>Clear Cart</button>
           <div>
