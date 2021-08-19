@@ -28,6 +28,13 @@ function PostReview (productId){
             productId:productId,
             commentary:e.target.value,
         });
+    };
+
+    function cleanForm(){
+        setRating("");
+        setHover("");
+        document.getElementById("textarea").value = "";
+    
     }
 
     function submitPost(e){
@@ -35,13 +42,15 @@ function PostReview (productId){
             ...review,
             score:rating,
         })
-        console.log({...review});
         dispatch(postReview(review));
+        cleanForm();
     }
 
     return (
-        <div>
-            <div>
+        <div className = "containerPostReview">
+            <h1>Thanks for trust !</h1>
+            <h3>Your opinion is important</h3>
+            <div className = "containerStars">
             {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
                 return (
@@ -59,10 +68,10 @@ function PostReview (productId){
                         />
                         <FaStar 
                         className="star" 
-                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                        color={ratingValue <= (hover || rating) ? "#e6b567" : "#e4e5e9"}
                         onMouseEnter={() => setHover(ratingValue)}
                         onMouseLeave={() => setHover(null)}
-                        size={15} 
+                        size={20} 
                         />
 
                     </label>
@@ -70,8 +79,8 @@ function PostReview (productId){
                 )
             })}
         </div>
-            <input type="submit" onClick={submitPost} />
-            <textarea onChange={changeComentary} />
+            <textarea className = "comentaryArea" id="textarea" placeholder="Your Opinion" onChange={changeComentary} />
+            <input className = "submit" type="submit" onClick={submitPost} />
         </div>
 
     )
