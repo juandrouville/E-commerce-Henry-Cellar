@@ -47,7 +47,7 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
             <button onClick={() => addFavourite(id)}>
               Fav <FaStar className="star" color="#ffc107" size={15} />
             </button>
-
+            <pre>  </pre>
             <button onClick={() => addToCart(id)}>
               <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
