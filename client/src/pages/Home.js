@@ -52,6 +52,10 @@ const Home = props => {
     }
   },[cartDB,addProductLogged,userDB])
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
 
   return (
     <LayoutPrimary>
