@@ -8,11 +8,11 @@ const CartItem = ({ name, price, delFromCart, quantity, id, orderlineId }) => {
       </h4>
 
       <div>
-        <button className="buy_button" onClick={() => delFromCart(id,false,orderlineId)} >
+        <button className="buy_button" onClick={() => delFromCart(id,false,orderlineId,name)} >
           delete one
         </button>
         <button className="buy_button"
-          onClick={() => delFromCart(id, true,orderlineId)}
+          onClick={() => delFromCart(id, true,orderlineId,name)}
           
         >
           delete all

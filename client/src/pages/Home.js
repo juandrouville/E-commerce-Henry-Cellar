@@ -22,6 +22,7 @@ import { addProductToDBCart, clearAddedProductToDB, clearCart, getOrderlines, ge
 
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
+import toast, { Toaster } from "react-hot-toast";
 
 const Home = props => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const Home = props => {
   useEffect(()=>{
     if(isAuthenticated  && userDB && cart.length){
        dispatch(unifyCarts(user.sub,cart))
-         alert('Agregamos los productos de tu carrito !')
+         toast.success('Products of your cart were successfully added !')
          dispatch(clearCart())
     }
   },[userDB])
@@ -54,6 +55,7 @@ const Home = props => {
 
   return (
     <LayoutPrimary>
+      <div><Toaster/></div>
       <div
         className="catalogo__container"
         style={{
