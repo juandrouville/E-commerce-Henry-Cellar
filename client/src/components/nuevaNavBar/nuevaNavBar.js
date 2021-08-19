@@ -23,7 +23,7 @@ const NuevaNavBar = () => {
   const { isAuthenticated } = useAuth0();
   const { user } = useAuth0();
   return (
-    <>
+    <div className="fixed">
       <IconContext.Provider value={{ color: "#fff" }}>
         <div className="newNav">
           <Link to="#" className="menu-bars">
@@ -93,7 +93,7 @@ const NuevaNavBar = () => {
           </ul>
         </nav>
       </IconContext.Provider>
-    </>
+    </div>
   );
 };
 
