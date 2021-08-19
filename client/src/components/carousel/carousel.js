@@ -30,7 +30,7 @@ const Carousel = () => {
     return (
 
         <div >
-            <h2> Fav Prodcuts</h2>
+            {productsFavourite.length !== 0 ? <h1>FAVORITES</h1> : null}
             <Slider className="catalogo" {...settings}>
                 
                     {productsFavourite.length !== 0 ?
@@ -53,7 +53,7 @@ const Carousel = () => {
                             })
                         ) : (
                             <p>Cargando...</p>
-                        ) : (<h2>There are no items in favorites</h2>)}
+                        ) : null}
                
             </Slider>
         </div>

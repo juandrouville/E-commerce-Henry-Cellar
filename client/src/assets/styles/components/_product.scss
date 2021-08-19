@@ -50,3 +50,18 @@
     }
   }
 }
+
+
+.cartButton button:active {
+    transform: scale(1.2);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    background-color: green;
+    border:0
+
+}
+
+
+.product h3:hover{
+ cursor: pointer;
+ font-weight:500;
+}

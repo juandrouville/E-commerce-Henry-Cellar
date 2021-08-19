@@ -17,6 +17,7 @@ const postReview = require('./postReview');
 const addProductToDBCart=require('./addProductToDBCart')
 const getOrderlines=require('./getOrderlines')
 const removeOrderline=require('./removeOrderline')
+const getAllUsers=require('./getAllUsers')
 
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product",productDetail);
@@ -32,6 +33,7 @@ router.use('/addProductToDBCart',addProductToDBCart)
 router.use('/getOrderlines',getOrderlines)
 router.use('/removeOrderline',removeOrderline)
 router.use('/clearCart',clearCart)
+router.use('/getAllUsers',getAllUsers)
 
 
 module.exports = router;

@@ -35,15 +35,11 @@ export default function ProductDetail() {
     if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub));
     else dispatch(addCart(id));
   };
-
-  
-
- 
    return (
-
     <Layout>
       <div>
         {productDetail ? (
+          <>
           <div className="product__detail">
             <img src={productDetail.image} alt="Loading..." width="40%" />
             <div className="product__data">
@@ -53,12 +49,16 @@ export default function ProductDetail() {
               </div>
               <p className="data__description"> {productDetail.description} </p>
               <p>Stock: {productDetail.stock} unidades</p>
-              <button onClick={() => addFavourite(id)}>
-                Fav <FaStar className="star" color="#ffc107" size={15} />
-              </button>
-              <button onClick={() => addToCart(id)}>Buy</button>
-            </div>
+           </div>
           </div>
+          <button onClick={() => addToCart(productDetail.id)}>
+            cart
+          </button>
+          <button onClick={() => addFavourite(productDetail.id)}>
+              Fav <FaStar className="star" color="#ffc107" size={15} />
+            </button>
+          </>
+
       ) : (
       <p>Cargando...</p>
       )}
