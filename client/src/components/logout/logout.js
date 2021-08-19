@@ -8,7 +8,7 @@ const LogoutButton = () => {
   const dispatch = useDispatch();
   const { logout } = useAuth0();
   return (
-    <li className="li">
+    <li>
 
       
       <button className="li"
