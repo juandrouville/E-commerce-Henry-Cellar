@@ -70,6 +70,12 @@
       color: rgb(140, 33, 33);
       border: 1px solid rgb(140, 33, 33);
     }
+    &:active{
+      transform: scale(1.1);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+      background-color: red;
+      border:0
+    }
   }
   .cart_buttons{
     display: flex;

@@ -9,14 +9,13 @@ const CartItem = ({ name, price, delFromCart, quantity, id, orderlineId }) => {
 
       <div>
         <button className="buy_button" onClick={() => delFromCart(id,false,orderlineId,name)} >
-          delete one
+          {quantity>1 ? "Delete one" : "Delete"}
         </button>
-        <button className="buy_button"
-          onClick={() => delFromCart(id, true,orderlineId,name)}
-          
-        >
-          delete all
-        </button>
+        <pre> </pre>
+        {quantity>1 ?<button className="buy_button"
+          onClick={() => delFromCart(id, true,orderlineId,name)}>
+          Delete all
+        </button>:null}
       </div>
       {/* </div> */}
     </div>
