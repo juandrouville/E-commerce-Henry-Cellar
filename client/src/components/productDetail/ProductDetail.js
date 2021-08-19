@@ -49,8 +49,7 @@ export default function ProductDetail() {
               </div>
               <p className="data__description"> {productDetail.description} </p>
               <p>Stock: {productDetail.stock} unidades</p>
-              
-            </div>
+           </div>
           </div>
           <button onClick={() => addToCart(productDetail.id)}>
             cart
@@ -59,9 +58,9 @@ export default function ProductDetail() {
               Fav <FaStar className="star" color="#ffc107" size={15} />
             </button>
           </>
-           
+
       ) : (
-        <p>Cargando...</p>
+      <p>Cargando...</p>
       )}
       
       {productDetail.reviews ?
@@ -73,7 +72,7 @@ export default function ProductDetail() {
           <p>Sin Comentarios </p>
         )}
 
-        <PostReview productId={productDetail.id} />
+      <PostReview productId={productDetail.id} />
       </div>
     </Layout>
   );
