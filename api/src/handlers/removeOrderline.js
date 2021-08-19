@@ -6,11 +6,11 @@ async function removeOrderline(req , res, next){
         
         const {orderlineId}=req.params
 
-        const {removeAll}=req.body
+        const deleteAll=req.query.all
 
         const orderlineToRemove=await Orderline.findByPk(orderlineId)
         
-        if(removeAll){
+        if(deleteAll==="true"){
 
             await orderlineToRemove.destroy();
 
