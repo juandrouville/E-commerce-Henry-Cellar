@@ -332,12 +332,12 @@ export function getOrderlines(cartId){
 }
 
 
-export function removeOrderline(orderlineId,deleteAll=false){
+export function removeOrderline(orderlineId,deleteAll = false){
   return async dispatch => {
   try {
     const res=await axios.delete(
-      `/removeOrderline/${orderlineId}` ||
-        `http://localhost:3001/removeOrderline/${orderlineId}`, {deleteAll:deleteAll}
+      `/removeOrderline/${orderlineId}?all=${deleteAll}` ||
+        `http://localhost:3001/removeOrderline/${orderlineId}?all=${deleteAll}`,
     );
     dispatch({ type: REMOVE_ORDERLINE_FROM_DB, payload: res.data });
   } catch (error) {

@@ -12,44 +12,35 @@ async function unifyCarts(req, res, next) {
       where: { state: "pending", userId: userId }, include:[Orderline]
     });
 
-
-    localStorageCart.forEach(async (item) => {
+    for(let i=0;i<localStorageCart.length;i++){
 
       let estado="No esta"
 
-      orderOpenOfUser.orderlines.forEach(async(orderline)=>{
-        if(orderline.productId===item.id){
-            const orderlineWithThatProduct=await Orderline.findOne({where:{id:orderline.id}})
-            let oldAmount=orderlineWithThatProduct.amount
-            orderlineWithThatProduct["amount"]=oldAmount+1
-            await orderlineWithThatProduct.save()
-        }
-      })
+      for(let j=0;j<orderOpenOfUser.orderlines.length;j++){
 
-      for(let i=0;i<orderOpenOfUser.orderlines.length;i++){
-        for(let j=0;j<localStorageCart.length;j++){
-          if(orderOpenOfUser.orderlines[i].productId===localStorageCart[j].id){
-            estado="Si esta"
-          }
+        if(localStorageCart[i].id===orderOpenOfUser.orderlines[j].productId){
+           estado="Si esta"
+           let oldAmount=orderOpenOfUser.orderlines[j].amount
+           orderOpenOfUser.orderlines[j]["amount"]=oldAmount+1
+           await orderOpenOfUser.orderlines[j].save()
         }
       }
+      if(estado==="No esta") {
 
-      if(estado==="No esta"){
-      let itemOrderLine = await Orderline.create({ amount: item.quantity });
+        let itemOrderLine = await Orderline.create({ amount: localStorageCart[i].quantity });
 
-      let productOfOrderline = await Product.findOne({
-        where: { id: item.id },
-      });
-
-      itemOrderLine.setProduct(productOfOrderline);
-
-      itemOrderLine.setOrder(orderOpenOfUser);
-       }
-
-      // result.push(itemOrderLine)
-    });
+        let productOfOrderline = await Product.findOne({
+        where: { id: localStorageCart[i].id },
+        });
+        
+        itemOrderLine.setProduct(productOfOrderline);
+        
+        itemOrderLine.setOrder(orderOpenOfUser);
+      }
+    }
 
     res.send('Actualizamos tu carrito')
+
   } catch (error) {
     next(error);
   }

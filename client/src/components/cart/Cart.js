@@ -13,6 +13,7 @@ import {
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import LayoutPrimary from "layouts/layout-primary";
+import toast, { Toaster } from "react-hot-toast";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -30,25 +31,23 @@ const Cart = () => {
     }
   },[orderlineRemoved,clearCartOfDataBase])
 
-  console.log(orderlines)
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  const delFromCart = (id, all = false, orderlineId =false) => {
+  const delFromCart = (id, all = false, orderlineId =false,name=undefined) => {
     if (all) {
       if(isAuthenticated) dispatch(removeOrderline(orderlineId,true))
       else dispatch(removeAllProduct(id));
+      toast.error(`All "${name}" were successfully removed from your cart`)
     } else {
       if(isAuthenticated) dispatch(removeOrderline(orderlineId,false))
       else dispatch(removeOneProduct(id));
+      toast.error(`One "${name}" successfully removed from your cart`)
     }
   };
 
   const clearcart = () => {
     if(isAuthenticated) dispatch(clearCartOfDB(userDB.order.id))
-    else dispatch(clearCart());
+    else dispatch(clearCart())
+    toast.success(`Your cart is now empty !`)
   };
 
   
@@ -71,6 +70,7 @@ const Cart = () => {
  
   return (
     <LayoutPrimary>
+    <div><Toaster/></div>
     <div className="cart__container">
       <h2 className="cart__title">Shopping Cart</h2>
       <div>
@@ -97,15 +97,15 @@ const Cart = () => {
 
       <div className="total">
         <h3>TOTAL: $ {total.toFixed(2)}</h3>
-        <div className="log__buttons">
-          <button onClick={(e) => clearcart(e)}>Clear Cart</button>
+        <div className="cart_buttons">
+          <button className="buy_button" onClick={(e) => clearcart(e)}>Clear Cart</button>
           <div>
             {isAuthenticated ? (
               <>
-                <button>Buy</button>
+                <button className="buy_button" >Buy</button>
               </>
             ) : (
-              <button onClick={() => loginWithRedirect()}>Login to buy</button>
+              <button className="buy_button" onClick={() => loginWithRedirect()}>Login to buy</button>
             )}
           </div>
         </div>
