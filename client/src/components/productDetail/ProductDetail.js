@@ -49,10 +49,7 @@ export default function ProductDetail() {
               </div>
               <p className="data__description"> {productDetail.description} </p>
               <p>Stock: {productDetail.stock} unidades</p>
-              <button onClick={() => addFavourite(id)}>
-                Fav <FaStar className="star" color="#ffc107" size={15} />
-              </button>
-              <button onClick={() => addToCart(id)}>Buy</button>
+              
             </div>
           </div>
           <button onClick={() => addToCart(productDetail.id)}>
