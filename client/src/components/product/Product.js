@@ -11,7 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import toast from "react-hot-toast";
 import {  useHistory } from "react-router-dom";
 
-const Product = ({ image, name, price, id, delFromFavourite }) => {
+const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   let productsFavourite = useSelector((state) => state.productFavourite);
 
   const dispatch = useDispatch();
