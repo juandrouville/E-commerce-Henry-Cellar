@@ -35,7 +35,12 @@ export default function ProductDetail() {
     if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub));
     else dispatch(addCart(id));
   };
+
+  
+
+ 
    return (
+
     <Layout>
       <div>
         {productDetail ? (
@@ -54,17 +59,8 @@ export default function ProductDetail() {
               </button>
               <button onClick={() => addToCart(id)}>Buy</button>
             </div>
-          </div>
-          <button onClick={() => addToCart(productDetail.id)}>
-            cart
-          </button>
-          <button onClick={() => addFavourite(productDetail.id)}>
-              Fav <FaStar className="star" color="#ffc107" size={15} />
-            </button>
-          </>
-           
       ) : (
-        <p>Cargando...</p>
+      <p>Cargando...</p>
       )}
       
       {productDetail.reviews ?
@@ -76,7 +72,7 @@ export default function ProductDetail() {
           <p>Sin Comentarios </p>
         )}
 
-        <PostReview productId={productDetail.id} />
+      <PostReview productId={productDetail.id} />
       </div>
     </Layout>
   );
