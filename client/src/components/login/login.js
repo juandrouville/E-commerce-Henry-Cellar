@@ -8,7 +8,7 @@ const LoginButton = () => {
     <li className="li">
       
       <BiIcons.BiLogIn />
-      <button  onClick={() => loginWithRedirect()}>
+      <button  className="li" onClick={() => loginWithRedirect()}>
         Log In
       </button>
       

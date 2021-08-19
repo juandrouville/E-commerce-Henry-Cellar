@@ -7,13 +7,13 @@ const CartItem = ({ name, price, delFromCart, quantity, id, orderlineId }) => {
         ${price} x {quantity} = ${price * quantity}
       </h4>
 
-      <div className="cartItem_buttons">
-        <button onClick={() => delFromCart(id,false,orderlineId)} className="cartItem_button">
+      <div>
+        <button className="buy_button" onClick={() => delFromCart(id,false,orderlineId,name)} >
           delete one
         </button>
-        <button
-          onClick={() => delFromCart(id, true,orderlineId)}
-          className="cartItem_button"
+        <button className="buy_button"
+          onClick={() => delFromCart(id, true,orderlineId,name)}
+          
         >
           delete all
         </button>

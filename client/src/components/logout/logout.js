@@ -11,7 +11,7 @@ const LogoutButton = () => {
     <li className="li">
 
       <BiIcons.BiLogOut />
-      <button
+      <button className="li"
         onClick={() => {
           dispatch(clearUser());
           logout({
