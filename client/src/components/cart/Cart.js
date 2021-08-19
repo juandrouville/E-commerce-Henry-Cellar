@@ -31,11 +31,6 @@ const Cart = () => {
     }
   },[orderlineRemoved,clearCartOfDataBase])
 
-  console.log(orderlines)
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
 
   const delFromCart = (id, all = false, orderlineId =false,name=undefined) => {
     if (all) {
