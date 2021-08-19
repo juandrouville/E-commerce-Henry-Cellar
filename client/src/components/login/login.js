@@ -7,9 +7,9 @@ const LoginButton = () => {
   return (
     <li className="li">
       
-      <BiIcons.BiLogIn />
+      
       <button  className="li" onClick={() => loginWithRedirect()}>
-        Log In
+      <BiIcons.BiLogIn className="svglogin"/>  Log In
       </button>
       
     </li>
