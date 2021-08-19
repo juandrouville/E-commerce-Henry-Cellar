@@ -5,14 +5,15 @@ import {
   getProductDetail,
   clearProductDetail,
   addCart,
-  addProductToDBCart
+  addProductToDBCart,
+  addToFavourite,
 } from "../../actions/index";
 import NavBar from "../NavBar/NavBar";
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
 
 import PostReview from "components/PostReview/PostReview";
-
+import { FaStar } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "layouts/layout-primary";
 
@@ -28,6 +29,10 @@ export default function ProductDetail() {
       dispatch(clearProductDetail());
     };
   }, [dispatch, id]);
+
+  const addFavourite = (id) => {
+    dispatch(addToFavourite(id));
+  };
 
   const addToCart = (id) => {
     if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub))
@@ -52,6 +57,9 @@ export default function ProductDetail() {
           <button onClick={() => addToCart(productDetail.id)}>
             cart
           </button>
+          <button onClick={() => addFavourite(productDetail.id)}>
+              Fav <FaStar className="star" color="#ffc107" size={15} />
+            </button>
 
         </div>
       ) : (
