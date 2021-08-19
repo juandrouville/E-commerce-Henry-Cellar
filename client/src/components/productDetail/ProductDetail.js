@@ -12,7 +12,6 @@ import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
 import { FaStar } from "react-icons/fa";
 import PostReview from "components/PostReview/PostReview";
-import { FaStar } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "layouts/layout-primary";
 
@@ -36,9 +35,7 @@ export default function ProductDetail() {
     if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub));
     else dispatch(addCart(id));
   };
-  const addFavourite = (id) => {
-    dispatch(addToFavourite(id));
-  };
+  
 
   return (
     <Layout>
@@ -59,17 +56,9 @@ export default function ProductDetail() {
               </button>
               <button onClick={() => addToCart(id)}>Buy</button>
             </div>
-          </div>
-          <button onClick={() => addToCart(productDetail.id)}>
-            cart
-          </button>
-          <button onClick={() => addFavourite(productDetail.id)}>
-              Fav <FaStar className="star" color="#ffc107" size={15} />
-            </button>
-
-        </div>
+      </div>
       ) : (
-        <p>Cargando...</p>
+      <p>Cargando...</p>
       )}
       {productDetail.reviews ?
         productDetail.reviews.map(ele => {
@@ -80,7 +69,7 @@ export default function ProductDetail() {
           <p>Sin Comentarios </p>
         )}
 
-        <PostReview productId={productDetail.id} />
+      <PostReview productId={productDetail.id} />
       </div>
     </Layout>
   );
