@@ -1,5 +1,6 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
+import LayoutPrimary from "layouts/layout-primary";
 
 export default function ContactUs() {
 
@@ -15,6 +16,7 @@ export default function ContactUs() {
   }
 
   return (
+    <LayoutPrimary>
     <form className="contact-form" onSubmit={sendEmail}>
       <input type="hidden" name="contact_number" />
       <label>Name</label>
@@ -25,5 +27,6 @@ export default function ContactUs() {
       <textarea name="message" />
       <input type="submit" value="Send" />
     </form>
+    </LayoutPrimary>
   );
 }

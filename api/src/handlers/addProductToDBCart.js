@@ -23,6 +23,7 @@ async function addProductToDBCart(req , res,next){
             let oldAmount=orderlineWithThatProduct.amount
             orderlineWithThatProduct["amount"]=oldAmount+1
             await orderlineWithThatProduct.save()
+            res.json(orderlineWithThatProduct)
         }
     })
 
@@ -42,9 +43,10 @@ async function addProductToDBCart(req , res,next){
     
         itemOrderLine.setOrder(orderOfUser)
 
+        res.json(itemOrderLine)
     }
  
-   res.send("Product successfully added to your cart on our database.")
+   
        
     } catch (error){
 

@@ -82,9 +82,7 @@ export default function PostProduct(props) {
   return (
     <LayoutPrimary>
       <div className="form__container">
-        <Link to={`/`}>
-          <button>home</button>
-        </Link>
+      <h2>.</h2>
         <div className="form">
           <img src={wineimage} alt="post wine" width="50%" />
           <form className="table" onSubmit={handleSubmit}>
