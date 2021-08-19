@@ -13,7 +13,7 @@ import LayoutPrimary from "../layouts/layout-primary";
 import SimpleForm from "../components/SimpleForm/SimpleForm";
 import Pagination from "components/pagination/pagination";
 import Filtros from "../components/FIltros/filtros";
-import ReverseFilter from "../components/FIltros/filtros";
+import ReverseFilter from "../components/FIltros/ReverseFilter";
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
