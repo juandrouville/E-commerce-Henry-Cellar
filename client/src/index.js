@@ -27,6 +27,7 @@ import AdminPanel from "../src/pages/AdminPanel";
 import AuthNav from "../src/components/auth-Nav/auth-nav";
 import ContactUs from "../src/components/ContactUs/ContactUs";
 import dotenv from "dotenv";
+import Carousel from "../src/components/carousel/carousel"
 
 dotenv.config();
 
@@ -38,7 +39,7 @@ ReactDOM.render(
       <Auth0ProviderWithHistory>
         <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
-        <Route exact path="/prueba" component={Prueba} />
+        <Route exact path="/prueba" component={Carousel} />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/AuthNav" component={AuthNav} />

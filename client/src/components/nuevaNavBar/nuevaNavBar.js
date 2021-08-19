@@ -8,6 +8,7 @@ import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 import { SideBarData } from "../sidebarData/sidebarData";
 import { IconContext } from "react-icons";
+import { AiOutlineMail } from "react-icons/ai";
 import SearchBar from "../SearchBar/SearchBar";
 import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -71,6 +72,7 @@ const NuevaNavBar = () => {
             <br></br>
             <li className="nav-text">
               <NavLink to="/ContactUs" refresh="true">
+                <AiOutlineMail/>
                 <h3>Contact Us</h3>
               </NavLink>
             </li>

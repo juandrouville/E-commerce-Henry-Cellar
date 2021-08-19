@@ -17,6 +17,7 @@ import ReverseFilter from "../components/FIltros/ReverseFilter";
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
+import Carousel from "../components/carousel/carousel"
 
 //ACTIONS
 import {
@@ -78,11 +79,12 @@ const Home = props => {
           width: "100%",
           backgroundSize: "cover"
         }}
-      >
+        >
         <div className="container">
           <h1>we have more than 90 varieties of wines</h1>
         </div>
       </div>
+        <div><Carousel  /></div>
       <div id="catalogo">
         <h1 className="catalogo__title">Catalog</h1>
         <div>

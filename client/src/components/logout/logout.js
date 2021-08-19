@@ -10,7 +10,7 @@ const LogoutButton = () => {
   return (
     <li className="li">
 
-      <BiIcons.BiLogOut />
+      
       <button className="li"
         onClick={() => {
           dispatch(clearUser());
@@ -19,7 +19,7 @@ const LogoutButton = () => {
           });
         }}
       >
-        Log Out
+        <BiIcons.BiLogOut className="svglogin"/>Log Out
       </button>
 
     </li>
