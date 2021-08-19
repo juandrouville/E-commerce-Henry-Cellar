@@ -46,26 +46,29 @@ const NuevaNavBar = () => {
               );
             })}
             <li className="button-text">
-              <AuthNav />
-              </li>
-              <li className="nav-text">
+              <Link>
+                <AuthNav />
+              </Link>
+
+            </li>
+            <li className="nav-text">
               {isAuthenticated &&
-              (user.sub === "google-oauth2|102669847324725021364" ||
-                user.sub === "google-oauth2|109028710743016612481" ||
-                user.sub === "google-oauth2|110496112430074927748") ? (
-                
-                
-                  <NavLink to="/AdminPanel" refresh="true">
-                    <RiIcons.RiAdminLine />
-                    <h3 >AdminPanel</h3>
-                  </NavLink>
-                
+                (user.sub === "google-oauth2|102669847324725021364" ||
+                  user.sub === "google-oauth2|109028710743016612481" ||
+                  user.sub === "google-oauth2|110496112430074927748") ? (
+
+
+                <NavLink to="/AdminPanel" refresh="true">
+                  <RiIcons.RiAdminLine />
+                  <h3 >AdminPanel</h3>
+                </NavLink>
+
               ) : null}
-              </li>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+            </li>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <li className="nav-text">
               <NavLink to="/ContactUs" refresh="true">
                 <h3>Contact Us</h3>

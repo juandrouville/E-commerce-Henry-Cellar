@@ -20,6 +20,11 @@
 }
 
 
-.button-text:hover{
+.button-text a:hover{
     background-color: #1a83ff;
+}
+
+.li{
+    display: flex;
+    align-items: center;
 }
