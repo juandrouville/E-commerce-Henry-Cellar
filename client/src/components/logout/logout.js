@@ -19,7 +19,7 @@ const LogoutButton = () => {
           });
         }}
       >
-        Log Out
+        {<BiIcons.BiLogOut />}  Log Out
       </button>
 
     </li>
