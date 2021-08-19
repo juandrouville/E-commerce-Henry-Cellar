@@ -38,6 +38,7 @@ function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
                     image={p.image}
                     price={p.price}
                     id={p.id}
+                    stock={p.stock}
                   />
                 
                 {/* <button onClick={() => addToCart(p.id)}>

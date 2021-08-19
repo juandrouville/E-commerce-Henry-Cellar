@@ -87,8 +87,8 @@ export default function Edit({ id }) {
 
   return (
     <Layout>
-      <div>
-        <form onSubmit={handleSubmit} className="form__container">
+      <div className="form_container">
+        <form onSubmit={handleSubmit} className="form_edit">
           <div>
             <label>Product Name:</label>
             <input
