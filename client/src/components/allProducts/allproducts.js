@@ -31,10 +31,10 @@ function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
         {products ? (
           products.map((p) => {
             return (
-              <div>
+              <div key={p.id}>
                 
                   <Product
-                    name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
+                    name={p.name}
                     image={p.image}
                     price={p.price}
                     id={p.id}
