@@ -23,11 +23,12 @@ import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
-import AdminPanel from "../src/pages/AdminPanel"
-import AuthNav from "../src/components/auth-Nav/auth-nav"
-import ContactUs from "../src/components/ContactUs/ContactUs"
+import AdminPanel from "../src/pages/AdminPanel";
+import AuthNav from "../src/components/auth-Nav/auth-nav";
+import ContactUs from "../src/components/ContactUs/ContactUs";
+import AboutUs from "../src/components/AboutUs/AboutUs";
 import dotenv from "dotenv";
-import Carousel from "../src/components/carousel/carousel"
+import Carousel from "../src/components/carousel/carousel";
 
 
 dotenv.config();
@@ -54,6 +55,7 @@ ReactDOM.render(
         />
         <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
+        <Route path="/aboutUs" component={AboutUs} />
         
         <Route path="/AdminPanel" component={AdminPanel} />
 

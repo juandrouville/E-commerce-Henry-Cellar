@@ -9,6 +9,8 @@ import * as RiIcons from "react-icons/ri";
 import { SideBarData } from "../sidebarData/sidebarData";
 import { IconContext } from "react-icons";
 import { AiOutlineMail } from "react-icons/ai";
+import { FcAbout } from "react-icons/fc";
+import { GrInstagram } from "react-icons/gr";
 import SearchBar from "../SearchBar/SearchBar";
 import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -71,10 +73,22 @@ const NuevaNavBar = () => {
             <br></br>
             <br></br>
             <li className="nav-text">
+              <NavLink to="/aboutUs" refresh="true">
+                <FcAbout/>
+                <h3 className="h3">About Us</h3>
+              </NavLink>
+            </li>
+            <li className="nav-text">
               <NavLink to="/ContactUs" refresh="true">
                 <AiOutlineMail/>
                 <h3 className="h3">Contact Us</h3>
               </NavLink>
+            </li>
+            <li className="nav-text">
+              <a href="https://instagram.com/" target="instagram">
+              <GrInstagram/>
+                {/* <h3 className="h3">Contact Us</h3> */}
+              </a>
             </li>
           </ul>
         </nav>
