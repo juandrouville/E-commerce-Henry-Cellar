@@ -97,15 +97,15 @@ const Cart = () => {
 
       <div className="total">
         <h3>TOTAL: $ {total.toFixed(2)}</h3>
-        <div className="log__buttons">
-          <button onClick={(e) => clearcart(e)}>Clear Cart</button>
+        <div className="cart_buttons">
+          <button className="buy_button" onClick={(e) => clearcart(e)}>Clear Cart</button>
           <div>
             {isAuthenticated ? (
               <>
-                <button>Buy</button>
+                <button className="buy_button" >Buy</button>
               </>
             ) : (
-              <button onClick={() => loginWithRedirect()}>Login to buy</button>
+              <button className="buy_button" onClick={() => loginWithRedirect()}>Login to buy</button>
             )}
           </div>
         </div>
