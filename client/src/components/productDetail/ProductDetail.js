@@ -44,7 +44,6 @@ export default function ProductDetail() {
     <Layout>
       <div>
         {productDetail ? (
-          <>
           <div className="product__detail">
             <img src={productDetail.image} alt="Loading..." width="40%" />
             <div className="product__data">
@@ -59,6 +58,7 @@ export default function ProductDetail() {
               </button>
               <button onClick={() => addToCart(id)}>Buy</button>
             </div>
+          </div>
       ) : (
       <p>Cargando...</p>
       )}
