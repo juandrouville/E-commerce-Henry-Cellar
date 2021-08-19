@@ -61,7 +61,7 @@ const NuevaNavBar = () => {
 
                 <NavLink to="/AdminPanel" refresh="true">
                   <RiIcons.RiAdminLine />
-                  <h3 >AdminPanel</h3>
+                  <h3 className="h3" >AdminPanel</h3>
                 </NavLink>
 
               ) : null}
@@ -73,7 +73,7 @@ const NuevaNavBar = () => {
             <li className="nav-text">
               <NavLink to="/ContactUs" refresh="true">
                 <AiOutlineMail/>
-                <h3>Contact Us</h3>
+                <h3 className="h3">Contact Us</h3>
               </NavLink>
             </li>
           </ul>
