@@ -75,7 +75,7 @@ const Home = props => {
         </div>
         <AllProducts />
       </div>
-      <div className="paginacion">
+      <div className="cartButton">
         <Pagination />
       </div>
        
