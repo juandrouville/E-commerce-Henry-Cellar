@@ -8,6 +8,7 @@ import cart2 from "../../assets/images/cart2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
+import toast from "react-hot-toast";
 
 const Product = ({ image, name, price, id, delFromFavourite }) => {
   let productsFavourite = useSelector((state) => state.productFavourite);
@@ -16,12 +17,14 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
   const { isAuthenticated, user } = useAuth0();
 
   const addToCart = (id) => {
-    if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub)) ;
+    if (isAuthenticated)dispatch(addProductToDBCart(id, user.sub))
     else dispatch(addCart(id));
+    toast.success(`One product was added to your cart !`)
   };
 
   const addFavourite = (id) => {
     dispatch(addToFavourite(id));
+    toast.success(`One product was added to your favorites list !`)
   };
 
   useEffect(() => {
