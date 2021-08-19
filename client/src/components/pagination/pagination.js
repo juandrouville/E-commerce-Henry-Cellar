@@ -9,7 +9,7 @@ export default function Pagination() {
   var dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="cart_buttons">
       <button
         onClick={() => {
           if (page > 0) {
