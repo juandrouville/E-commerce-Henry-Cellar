@@ -20,7 +20,7 @@ const ReverseFilter = state => {
     if (e.target.value === "All") {
       dispatch(getAllproducts());
     } else {
-      dispatch(getAllproducts(null, "categoria", !e.target.value));
+      dispatch(getAllproducts(null, "categoria", e.target.value));
     }
   };
 
