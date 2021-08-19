@@ -29,7 +29,7 @@ const ProductFavourite = () => {
 
     return (
         <div>
-            <h2>.</h2>
+            
             <div className="catalogo">
                 {productsFavourite.length !== 0 ?
                 productsFavourite ? (
