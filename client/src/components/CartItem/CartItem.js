@@ -1,22 +1,29 @@
-const CartItem = ({ name, price, delFromCart, quantity, id, orderlineId }) => {
-  return (
-    <div>
-      {/* <div className="cartItem"> */}
-      <h3>{name}</h3>
-      <h4>
-        ${price} x {quantity} = ${price * quantity}
-      </h4>
+import { useHistory } from "react-router-dom";
 
-      <div>
-        <button className="buy_button" onClick={() => delFromCart(id,false,orderlineId,name)} >
-          {quantity>1 ? "Delete one" : "Delete"}
+const CartItem = ({ name, price, delFromCart, quantity, id, orderlineId,image }) => {
+  const history=useHistory()
+  return (
+    <div className="cartItem">
+      {/* <div > */}
+      <img src={image} alt="prod img"/>
+      <h3 className="prod_name" onClick={()=>history.push(`/product-detail/${id}`)}>{name}</h3>
+      <h4>
+        $<pre>  </pre><strong>{price}</strong> 
+      </h4>
+      <h4>
+         x {quantity}
+         <div>
+        <button className="button_menos" onClick={() => delFromCart(id,false,orderlineId,name)} >
+           - 
         </button>
         <pre> </pre>
-        {quantity>1 ?<button className="buy_button"
-          onClick={() => delFromCart(id, true,orderlineId,name)}>
-          Delete all
-        </button>:null}
+        
       </div>
+      </h4>
+      <h3>$ {price*quantity} <pre>  </pre><button 
+          onClick={() => delFromCart(id, true,orderlineId,name)}>
+<svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"/></svg>    
+        </button></h3>
       {/* </div> */}
     </div>
   );
