@@ -28,6 +28,7 @@ export const GET_DB_ORDERLINES = "GET_DB_ORDERLINES";
 export const ADD_PRODUCT_TO_DB_CART = "ADD_PRODUCT_TO_DB_CART";
 export const REMOVE_ORDERLINE_FROM_DB = "REMOVE_ORDERLINE_FROM_DB";
 export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
+export const GET_DB_ORDER = "GET_DB_ORDER";
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -351,3 +352,13 @@ export function clearCartOfDB(orderId) {
     }
   };
 }
+
+export function getDbOrder() {
+  return async dispatch => {
+    const res = await axios.get(
+      `http://localhost:3001/getorder`
+    );
+    dispatch({ type: GET_DB_ORDER, payload: res.data });
+  };
+}
+

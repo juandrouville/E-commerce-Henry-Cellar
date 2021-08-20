@@ -23,6 +23,7 @@ import {
   ADD_PRODUCT_TO_DB_CART,
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB,
+  GET_DB_ORDER,
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -49,6 +50,7 @@ const initialState = {
   addProductToDB: undefined,
   orderlineRemoved: undefined,
   clearCartOfDB: 0,
+  order: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -236,6 +238,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         clearCartOfDB: state.clearCartOfDB + 1,
+      };
+    }
+    case GET_DB_ORDER: {
+      return {
+        ...state,
+        order: action.payload,
       };
     }
     default: {

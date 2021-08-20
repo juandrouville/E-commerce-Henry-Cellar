@@ -1,9 +1,9 @@
 import react from "react";
-import NuevaNavBar from "../components/nuevaNavBar/nuevaNavBar"
+import HistoryUser from "../components/historyUser/historyUser"
 const Prueba = () => {
 
     return (
-        <div><NuevaNavBar/></div>
+        <div><HistoryUser/></div>
     );
   };
   
