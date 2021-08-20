@@ -18,16 +18,16 @@ export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 export const GET_USER = "GET_USER";
-export const CLEAR_USER="CLEAR_USER";
+export const CLEAR_USER = "CLEAR_USER";
 export const SET_PAGINATION = "SET_PAGINATION";
 export const UNIFY_CARTS_DB_LOCALSTORAGE = "UNIFY_CARTS_DB_LOCALSTORAGE";
 export const EDIT_FAVORITES = "EDIT_FAVORITES";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const POST_REVIEW = "POST_REVIEW";
-export const GET_DB_ORDERLINES="GET_DB_ORDERLINES";
-export const ADD_PRODUCT_TO_DB_CART="ADD_PRODUCT_TO_DB_CART";
-export const REMOVE_ORDERLINE_FROM_DB="REMOVE_ORDERLINE_FROM_DB";
-export const CLEAR_CART_OF_DB="CLEAR_CART_OF_DB";
+export const GET_DB_ORDERLINES = "GET_DB_ORDERLINES";
+export const ADD_PRODUCT_TO_DB_CART = "ADD_PRODUCT_TO_DB_CART";
+export const REMOVE_ORDERLINE_FROM_DB = "REMOVE_ORDERLINE_FROM_DB";
+export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -296,83 +296,76 @@ export function getFavorites(userId){
 }
 
 export function addProductToDBCart(productId, userId) {
-  return async dispatch => {  
-  try {
-    const res=await axios.post(
-      `/addProductToDBCart/${userId}` ||
-        `http://localhost:3001/addProductToDBCart/${userId}`,
-      { productId: productId }
+  return async dispatch => {
+    try {
+      const res = await axios.post(
+        `/addProductToDBCart/${userId}` ||
+          `http://localhost:3001/addProductToDBCart/${userId}`,
+        { productId: productId }
       );
-      dispatch({type:ADD_PRODUCT_TO_DB_CART,payload:res.data})
-
-  } catch (error) {
-    alert("ERROR EN AGREGAR PRODUCTO A LA DB");
-  }
- };
+      dispatch({ type: ADD_PRODUCT_TO_DB_CART, payload: res.data });
+    } catch (error) {
+      alert("ERROR EN AGREGAR PRODUCTO A LA DB");
+    }
+  };
 }
 
-export function clearUser(){
+export function clearUser() {
   return {
-    type:CLEAR_USER,
-  }
-};
+    type: CLEAR_USER
+  };
+}
 
-export function postReview(review){
-  
-    return (dispatch) => {
-    axios.post(
-      `/postReview` || 
-      `http://localhost:3001/postReview`,{...review})
+export function postReview(review) {
+  return dispatch => {
+    axios
+      .post(`/postReview` || `http://localhost:3001/postReview`, { ...review })
       .then(res => {
-        dispatch({type:POST_REVIEW,payload:res.data})
+        dispatch({ type: POST_REVIEW, payload: res.data });
       })
       .catch(error => {
-        alert("ERROR AL CREAR REVIEW")
-      }) 
-    } 
- 
-};
-
-export function getOrderlines(cartId){
-  return async dispatch => {
-  try {
-    const res=await axios.get(
-      `/getOrderlines/${cartId}` ||
-        `http://localhost:3001/getOrderlines/${cartId}`
-    );
-    dispatch({ type: GET_DB_ORDERLINES, payload: res.data });
-  } catch (error) {
-    alert("ERROR EN OBTENER LAS ORDERLINES DE LA DB");
-  }
- };
+        alert("ERROR AL CREAR REVIEW");
+      });
+  };
 }
 
-
-export function removeOrderline(orderlineId,deleteAll = false){
+export function getOrderlines(cartId) {
   return async dispatch => {
-  try {
-    const res=await axios.delete(
-      `/removeOrderline/${orderlineId}?all=${deleteAll}` ||
-        `http://localhost:3001/removeOrderline/${orderlineId}?all=${deleteAll}`,
-    );
-    dispatch({ type: REMOVE_ORDERLINE_FROM_DB, payload: res.data });
-  } catch (error) {
-    alert("ERROR AL ELIMNAR LA ORDERLINE DE LA DB");
-  }
- };
+    try {
+      const res = await axios.get(
+        `/getOrderlines/${cartId}` ||
+          `http://localhost:3001/getOrderlines/${cartId}`
+      );
+      dispatch({ type: GET_DB_ORDERLINES, payload: res.data });
+    } catch (error) {
+      alert("ERROR EN OBTENER LAS ORDERLINES DE LA DB");
+    }
+  };
 }
 
-export function clearCartOfDB(orderId){
+export function removeOrderline(orderlineId, deleteAll = false) {
   return async dispatch => {
-  try {
-    const res=await axios.delete(
-      `/clearCart/${orderId}` ||
-        `http://localhost:3001/clearCart/${orderId}`
-    );
-    dispatch({ type: CLEAR_CART_OF_DB, payload: res.data });
-  } catch (error) {
-    alert("ERROR AL LIMPIAR EL CARRITO EN LA BASE DE DATOS");
-  }
- };
+    try {
+      const res = await axios.delete(
+        `/removeOrderline/${orderlineId}?all=${deleteAll}` ||
+          `http://localhost:3001/removeOrderline/${orderlineId}?all=${deleteAll}`
+      );
+      dispatch({ type: REMOVE_ORDERLINE_FROM_DB, payload: res.data });
+    } catch (error) {
+      alert("ERROR AL ELIMNAR LA ORDERLINE DE LA DB");
+    }
+  };
 }
 
+export function clearCartOfDB(orderId) {
+  return async dispatch => {
+    try {
+      const res = await axios.delete(
+        `/clearCart/${orderId}` || `http://localhost:3001/clearCart/${orderId}`
+      );
+      dispatch({ type: CLEAR_CART_OF_DB, payload: res.data });
+    } catch (error) {
+      alert("ERROR AL LIMPIAR EL CARRITO EN LA BASE DE DATOS");
+    }
+  };
+}

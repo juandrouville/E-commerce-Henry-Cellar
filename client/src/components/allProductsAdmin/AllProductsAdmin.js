@@ -1,65 +1,62 @@
 //REACT
-import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getAllproducts, addCart, addProductToDBCart } from "../../actions/index";
-import Product from "../product/Product";
+import { getAllproducts } from "../../actions/index";
+import ProductsAdmin from "../productsAdmin/ProductsAdmin";
+import Pagination from "components/pagination/pagination";
+import LayoutPrimary from "layouts/layout-primary";
 
-function AllProducts({ products, GetProducts, addCart }) {
 
+function AllProductsAdmin({ products, GetProducts }) {
 
-  const {user,isAuthenticated}=useAuth0()
-   useEffect(() => {
+  useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
-  const addToCart = (id) => {
-    if(isAuthenticated) addProductToDBCart(id,user.sub)
-    else addCart(id);
-  };
-
-
   return (
-    <div>
-      <div className="catalogo">
+    <LayoutPrimary>
+    <div className="all_products_container">
+      <div >
         {products ? (
           products.map((p) => {
             return (
               <div key={p.id}>
                 
-                  <Product
-                  id={p.id}
+                  <ProductsAdmin
+                    id={p.id}
                     name={p.name}
                     image={p.image}
-                    price={p.price}
                     description={p.description}
+                    price={p.price}
                     stock={p.stock}
                   />
                 
-                
+               
               </div>
+            
             );
           })
         ) : (
           <p>Cargando...</p>
         )}
       </div>
+      <Pagination />
     </div>
+    </LayoutPrimary>
   );
 }
 
 function mapStateToProps(state) {
   return {
     products: state.getAllProducts,
-    cart: state.cart,
-  };
+      };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     GetProducts: () => dispatch(getAllproducts()),
-    addCart: (id) => dispatch(addCart(id)),
+    
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);
+export default connect(mapStateToProps, mapDispatchToProps)(AllProductsAdmin);

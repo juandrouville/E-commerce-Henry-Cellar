@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
 //LAYOUT
-import LayoutPrimary from "layouts/layout-primary";
+import LayoutPrimary from "../layouts/layout-primary";
 
 //COMPONENTS
 import SimpleForm from "../components/SimpleForm/SimpleForm";
@@ -16,10 +16,16 @@ import Filtros from "../components/FIltros/filtros";
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
-import Carousel from "../components/carousel/carousel"
+import Carousel from "../components/carousel/carousel";
 
 //ACTIONS
-import { addProductToDBCart, clearAddedProductToDB, clearCart, getFavorites, getOrderlines, getUser, unifyCarts } from "actions";
+import {
+  clearCart,
+  getFavorites,
+  getOrderlines,
+  getUser,
+  unifyCarts
+} from "actions";
 
 //BACKGROUND
 import background from "assets/images/vendimia.jpeg";
@@ -49,13 +55,13 @@ const Home = props => {
          toast.success('Products of your cart were successfully added !')
          dispatch(clearCart())
     }
-  },[userDB])
+  }, [userDB]);
 
-  useEffect(()=>{
-    if(isAuthenticated && userDB ){
-       dispatch(getOrderlines(userDB.order.id))
+  useEffect(() => {
+    if (isAuthenticated && userDB) {
+      dispatch(getOrderlines(userDB.order.id));
     }
-  },[cartDB,addProductLogged,userDB])
+  }, [cartDB, addProductLogged, userDB]);
 
   useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
@@ -63,10 +69,11 @@ const Home = props => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-
   return (
     <LayoutPrimary>
-      <div><Toaster/></div>
+      <div>
+        <Toaster />
+      </div>
       <div
         className="catalogo__container"
         style={{
@@ -75,7 +82,7 @@ const Home = props => {
           width: "100%",
           backgroundSize: "cover"
         }}
-        >
+      >
         <div className="container">
           <h1>we have more than 90 varieties of wines</h1>
         </div>
@@ -92,7 +99,6 @@ const Home = props => {
       <div className="cartButton">
         <Pagination />
       </div>
-       
     </LayoutPrimary>
   );
 };

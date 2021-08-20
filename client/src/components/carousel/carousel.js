@@ -25,47 +25,47 @@ const Carousel = () => {
     
     useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
-    const settings = {
-        dots: true,
-        fade: true,
-        arrows: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    }
-    return (
 
-        
-        <div>
-            {productsFavourite.length !== 0 ? <h1>FAVORITES</h1> : null}
-            <Slider className="catalogo" {...settings}>
-                
-                    {productsFavourite.length !== 0 ?
-                        productsFavourite ? (
-                            productsFavourite.map((p) => {
-                                return (
-                                    <div >
+  const settings = {
+    dots: false,
 
-                                        <CardFavorite className="slides"
-                                            name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
-                                            image={p.image}
-                                            price={p.price}
-                                            id={p.id}
-                                            delFromFavourite={delFromFavourite}
-                                        />
+    infinite: productsFavourite.length > 3,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  };
 
-
-                                    </div>
-                                );
-                            })
-                        ) : (
-                            <p>Cargando...</p>
-                        ) : null}
-               
-            </Slider>
-        </div>
-    )
-}
+  return (
+    <div className="containerCarousel">
+      {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
+      <Slider className="show" {...settings}>
+        {productsFavourite.length !== 0 ? (
+          productsFavourite ? (
+            productsFavourite.map(p => {
+              return (
+                <div>
+                  <CardFavorite
+                    name={
+                      <Link to={`/product-detail/${p.id}`} key={p.id}>
+                        {p.name}
+                      </Link>
+                    }
+                    image={p.image}
+                    price={p.price}
+                    id={p.id}
+                    delFromFavourite={delFromFavourite}
+                    stock={p.stock}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <p>Cargando...</p>
+          )
+        ) : null}
+      </Slider>
+    </div>
+  );
+};
 
 export default Carousel;

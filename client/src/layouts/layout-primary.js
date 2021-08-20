@@ -4,7 +4,7 @@ import NuevaNavBar from "../components/nuevaNavBar/nuevaNavBar"
 
 const LayoutPrimary = ({ children }) => {
   return (
-    <div>
+    <div className="layout">
       <NuevaNavBar/>
      
       <React.Fragment>{children}</React.Fragment>

@@ -3,6 +3,7 @@ import {
   addCart,
   addProductToDBCart,
   editFavorites,
+  editProduct,
 } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,6 +36,11 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   //   localStorage.setItem("favourite", JSON.stringify(productsFavourite));
   // }, [productsFavourite]);
 
+  const edit_Product = (id) => {
+    console.log(id);
+    dispatch(editProduct(id));
+  };
+
   return (
     <div className="row center">
       <div key={name} className="product">
@@ -55,16 +61,18 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
             user.sub === "google-oauth2|109028710743016612481" ||
             user.sub === "google-oauth2|110496112430074927748") ? (
             <div className="cartButton">
-              <button>Edit Product</button>
+              <button onClick={() => edit_Product(id)}>Edit Product</button>
               <button>Delete Product</button>
             </div>
           ) : (
             <div className="cartButton">
-              <button onClick={() => addFavourite(id)}>
+              {isAuthenticated ? (<button onClick={() => addFavourite(id)}>
                 Fav <FaStar className="star" color="#ffc107" size={15} />
-              </button>
+              </button>) : null}
+              
               <pre> </pre>
-              <button onClick={(e) => {addToCart(id);e.target.disabled=true}}>
+              
+              <button onClick={() => addToCart(id)}>
                 <img src={cart2} alt="cartlogo" width="30" height="30" />
               </button>
             </div>
