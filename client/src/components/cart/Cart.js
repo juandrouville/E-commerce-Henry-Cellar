@@ -72,7 +72,14 @@ const Cart = () => {
     <LayoutPrimary>
     <div><Toaster/></div>
     <div className="cart__container">
-      <h2 className="cart__title">Shopping Cart</h2>
+      <h2 className="cart__title">Shopping Cart ({result.length} items)</h2>
+      <div className="cart__subtitles">
+        <h2>Image</h2>
+        <h2>Name</h2>
+        <h2>Unit Price</h2>
+        <h2>Quantity</h2>
+        <h2>Subtotal</h2>
+      </div>
       <div>
         {result ? (
           result.map((item, index) => {
@@ -86,6 +93,7 @@ const Cart = () => {
                   price={item.price}
                   quantity={item.quantity}
                   orderlineId={item.orderlineId || null}
+                  image={item.image}
                 />
               </div>
             );
@@ -96,19 +104,19 @@ const Cart = () => {
       </div>
 
       <div className="total">
-        <h3>TOTAL: $ {total.toFixed(2)}</h3>
+        
         <div className="cart_buttons">
           <button className="buy_button" onClick={(e) => clearcart(e)}>Clear Cart</button>
-          <div>
-            {isAuthenticated ? (
-              <>
-                <button className="buy_button" >Buy</button>
-              </>
-            ) : (
-              <button className="buy_button" onClick={() => loginWithRedirect()}>Login to buy</button>
-            )}
-          </div>
         </div>
+            {isAuthenticated ? (
+              <div>
+                <button className="buy_button" >Buy</button>
+                <pre>  </pre>
+              </div>
+            ) : (
+              <div><button className="buy_button" onClick={() => loginWithRedirect()}>Login to buy</button></div>
+            )}
+          <h2>TOTAL: $ {total.toFixed(2)}</h2>
       </div>
     </div>
     </LayoutPrimary>
