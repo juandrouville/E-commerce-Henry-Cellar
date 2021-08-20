@@ -11,7 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import toast from "react-hot-toast";
 import {  useHistory } from "react-router-dom";
 
-const Product = ({ image, name, price, id, delFromFavourite }) => {
+const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   let productsFavourite = useSelector((state) => state.productFavourite);
 
   const dispatch = useDispatch();
@@ -42,7 +42,9 @@ const Product = ({ image, name, price, id, delFromFavourite }) => {
           <br />
           <p>${price}</p>
           <br />
-          <p className="product__stock">Stock</p>
+          {stock ? (
+          <p className="product__stock">Stock : {stock} unidades</p> ) : (
+          <p className="product_nostock">No stock</p> )}
           <div className="cartButton">
             <button onClick={() => addFavourite(id)}>
               Fav <FaStar className="star" color="#ffc107" size={15} />

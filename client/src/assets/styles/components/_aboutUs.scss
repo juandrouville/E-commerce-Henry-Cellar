@@ -1,6 +1,7 @@
-.admin_container{
+.aboutUs_container{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    
     align-items: center;
     border: 4px solid #420000;
     border-radius: 2rem;
