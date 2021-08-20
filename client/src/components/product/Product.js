@@ -42,7 +42,9 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
           <br />
           <p>${price}</p>
           <br />
-          <p className="product__stock">Stock</p>
+          {stock ? (
+          <p className="product__stock">Stock : {stock} unidades</p> ) : (
+          <p className="product_nostock">No stock</p> )}
           <div className="cartButton">
             <button onClick={() => addFavourite(id)}>
               Fav <FaStar className="star" color="#ffc107" size={15} />
