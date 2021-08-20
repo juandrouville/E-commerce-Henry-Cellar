@@ -29,6 +29,7 @@ const NuevaNavBar = () => {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          {isAuthenticated ? (<h3 className="welcome">Welcome, {user.given_name}</h3>) : null}
           <SearchBar />
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
