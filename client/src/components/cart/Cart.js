@@ -36,11 +36,11 @@ const Cart = () => {
     if (all) {
       if(isAuthenticated) dispatch(removeOrderline(orderlineId,true))
       else dispatch(removeAllProduct(id));
-      toast.error(`All "${name}" were successfully removed from your cart`)
+      toast.error(`All "${name}" were successfully removed`)
     } else {
       if(isAuthenticated) dispatch(removeOrderline(orderlineId,false))
       else dispatch(removeOneProduct(id));
-      toast.error(`One "${name}" successfully removed from your cart`)
+      toast.error(`"${name}" successfully removed`)
     }
   };
 
@@ -81,7 +81,7 @@ const Cart = () => {
         <h2>Subtotal</h2>
       </div>
       <div>
-        {result ? (
+        {result.length ? (
           result.map((item, index) => {
             return (
               <div className="cart__item">
@@ -99,18 +99,19 @@ const Cart = () => {
             );
           })
         ) : (
-          <p>Cargando...</p>
+          <h2 className="empty_cart"> Oups  &#x1F613; ... your cart is empty !</h2>
         )}
       </div>
 
       <div className="total">
         
         <div className="cart_buttons">
-          <button className="buy_button" onClick={(e) => clearcart(e)}>Clear Cart</button>
+          <button className="buy_button" disabled={result.length===0?true:false} 
+          onClick={(e) => clearcart(e)}>Clear Cart</button>
         </div>
             {isAuthenticated ? (
               <div>
-                <button className="buy_button" >Buy</button>
+                <button className="buy_button" disabled={result.length===0?true:false} >Buy</button>
                 <pre>  </pre>
               </div>
             ) : (
