@@ -8,61 +8,54 @@ import { Link } from "react-router-dom";
 import { addCart, removeToFavourite } from "../../actions/index";
 
 const Carousel = () => {
+  let productsFavourite = useSelector(state => state.productFavourite);
 
-    let productsFavourite = useSelector((state) => state.productFavourite);
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const delFromFavourite = id => {
+    dispatch(removeToFavourite(id));
+  };
 
-    const delFromFavourite = (id) => {
+  const settings = {
+    dots: false,
 
-        dispatch(removeToFavourite(id));
-    };
+    infinite: productsFavourite.length > 3,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  };
 
-    
-
-    const settings = {
-
-        dots: false,
-
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      };
-
-    return (
-
-        
-        <div className="containerCarousel">
-            {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
-            <Slider className="show"  {...settings}>
-                
-                    {productsFavourite.length !== 0 ?
-                        productsFavourite ? (
-                            productsFavourite.map((p) => {
-                                return (
-                                    <div >
-
-                                        <CardFavorite
-                                            name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
-                                            image={p.image}
-                                            price={p.price}
-                                            id={p.id}
-                                            delFromFavourite={delFromFavourite}
-                                            stock={p.stock}
-                                        />
-
-
-                                    </div>
-                                );
-                            })
-                        ) : (
-                            <p>Cargando...</p>
-                        ) : null}
-               
-            </Slider>
-        </div>
-    )
-}
+  return (
+    <div className="containerCarousel">
+      {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
+      <Slider className="show" {...settings}>
+        {productsFavourite.length !== 0 ? (
+          productsFavourite ? (
+            productsFavourite.map(p => {
+              return (
+                <div>
+                  <CardFavorite
+                    name={
+                      <Link to={`/product-detail/${p.id}`} key={p.id}>
+                        {p.name}
+                      </Link>
+                    }
+                    image={p.image}
+                    price={p.price}
+                    id={p.id}
+                    delFromFavourite={delFromFavourite}
+                    stock={p.stock}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <p>Cargando...</p>
+          )
+        ) : null}
+      </Slider>
+    </div>
+  );
+};
 
 export default Carousel;
