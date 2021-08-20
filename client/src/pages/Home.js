@@ -13,11 +13,10 @@ import LayoutPrimary from "../layouts/layout-primary";
 import SimpleForm from "../components/SimpleForm/SimpleForm";
 import Pagination from "components/pagination/pagination";
 import Filtros from "../components/FIltros/filtros";
-import ReverseFilter from "../components/FIltros/ReverseFilter";
 import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
-import Carousel from "../components/carousel/carousel"
+import Carousel from "../components/carousel/carousel";
 
 //ACTIONS
 import {
@@ -79,7 +78,7 @@ const Home = props => {
           width: "100%",
           backgroundSize: "cover"
         }}
-        >
+      >
         <div className="container">
           <h1>we have more than 90 varieties of wines</h1>
         </div>
@@ -89,7 +88,6 @@ const Home = props => {
         <h1 className="catalogo__title">Catalog</h1>
         <div>
           <Filtros />
-          <ReverseFilter />
           <SimpleForm />
         </div>
         <AllProducts />
