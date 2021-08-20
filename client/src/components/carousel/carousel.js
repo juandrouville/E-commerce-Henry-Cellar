@@ -21,7 +21,9 @@ const Carousel = () => {
     
 
     const settings = {
+
         dots: false,
+
         infinite: true,
         speed: 500,
         slidesToShow: 3,
@@ -41,7 +43,7 @@ const Carousel = () => {
                                 return (
                                     <div >
 
-                                        <CardFavorite className="slides"
+                                        <CardFavorite
                                             name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
                                             image={p.image}
                                             price={p.price}
