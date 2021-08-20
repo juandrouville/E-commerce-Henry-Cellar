@@ -69,11 +69,20 @@ export default function ProductDetail() {
           <p>Cargando...</p>
         )}
 
-        {productDetail.reviews ? (
-          productDetail.reviews.map((ele) => {
-            return <Review review={{ ...ele }} />;
-          })
-        ) : (
+
+      ) : (
+      <p>Cargando...</p>
+      )}
+      
+      {productDetail.reviews ?
+        productDetail.reviews.map(ele => {
+          return (
+            <div className="containerReviews">
+            <Review review={{ ...ele }} />
+            </div>
+          )
+        }) : (
+
           <p>Sin Comentarios </p>
         )}
 
