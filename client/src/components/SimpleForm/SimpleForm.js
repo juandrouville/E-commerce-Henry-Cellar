@@ -3,6 +3,7 @@ import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import SearchBar from "../SearchBar/SearchBar";
 import Filtros from "../FIltros/filtros";
+import chatbotSprite from "../../assets/images/ChatbotSprite.jpg";
 
 // all available theme props
 const theme = {
@@ -28,6 +29,7 @@ const SimpleForm = () => {
   return (
     <ThemeProvider theme={theme}>
       <ChatBot
+        botAvatar={chatbotSprite}
         steps={[
           {
             id: "1",
