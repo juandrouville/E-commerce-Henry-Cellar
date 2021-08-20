@@ -22,6 +22,8 @@ const Carousel = () => {
 
     const settings = {
         dots: true,
+        fade: true,
+        arrows: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -29,7 +31,8 @@ const Carousel = () => {
     }
     return (
 
-        <div >
+        
+        <div>
             {productsFavourite.length !== 0 ? <h1>FAVORITES</h1> : null}
             <Slider className="catalogo" {...settings}>
                 
@@ -37,9 +40,9 @@ const Carousel = () => {
                         productsFavourite ? (
                             productsFavourite.map((p) => {
                                 return (
-                                    <div>
+                                    <div >
 
-                                        <CardFavorite
+                                        <CardFavorite className="slides"
                                             name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
                                             image={p.image}
                                             price={p.price}

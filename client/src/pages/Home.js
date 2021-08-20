@@ -74,7 +74,7 @@ const Home = props => {
           <h1>we have more than 90 varieties of wines</h1>
         </div>
       </div>
-        <div><Carousel  /></div>
+      <Carousel />
       <div id="catalogo">
         <h1 className="catalogo__title">Catalog</h1>
         <div>
