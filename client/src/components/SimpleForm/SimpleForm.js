@@ -88,11 +88,8 @@ const SimpleForm = () => {
           },
           {
             id: "9 English",
-            options: [
-              { value: 1, label: "Red", trigger: "10 English" },
-              { value: 2, label: "White", trigger: "10 English" },
-              { value: 3, label: "Pink", trigger: "10 English" }
-            ]
+            component: <Filtros />,
+            trigger: "10 English"
           },
           {
             id: "10 English",
