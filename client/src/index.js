@@ -30,7 +30,6 @@ import AboutUs from "../src/components/AboutUs/AboutUs";
 import dotenv from "dotenv";
 import Carousel from "../src/components/carousel/carousel";
 
-
 dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
@@ -38,7 +37,6 @@ axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 ReactDOM.render(
   <Provider store={Store}>
     <Router>
-    
       <Auth0ProviderWithHistory>
         <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
@@ -56,11 +54,9 @@ ReactDOM.render(
         <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
         <Route path="/aboutUs" component={AboutUs} />
-        
-        <Route path="/AdminPanel" component={AdminPanel} />
 
+        <Route path="/AdminPanel" component={AdminPanel} />
       </Auth0ProviderWithHistory>
-    
     </Router>
   </Provider>,
   document.getElementById("root")
