@@ -2,30 +2,26 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
-import { addCart, removeToFavourite } from "../../actions/index";
+import { addCart, editFavorites, getFavorites } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ProductFavourite = () => {
     let productsFavourite = useSelector((state) => state.productFavourite);
 
-  const dispatch = useDispatch();
+    const {user,isAuthenticated}=useAuth0()
 
-    const addToCart = (id) => {
-        dispatch(addCart(id));
-    };
+  const dispatch = useDispatch();
+  const editFavoritesState=useSelector(state=>state.editFavorites)
+  
+  useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
     const delFromFavourite = (id) => {
-
-        dispatch(removeToFavourite(id));
+        dispatch(editFavorites(id,user.sub,true));
     };
-   useEffect(() => {
-        localStorage.setItem("favourite", JSON.stringify(productsFavourite));
-      }, [productsFavourite]);
+    
+    useEffect(()=>{},[])
 
- console.log(productsFavourite);
-    // useEffect(() => {
-    //     productsFavourite();
-    // }, [productsFavourite]);
 
     return (
         <div>

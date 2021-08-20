@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import {
   addCart,
   addProductToDBCart,
-  addToFavourite,
+  editFavorites,
 } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,13 +25,15 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   };
 
   const addFavourite = (id) => {
-    dispatch(addToFavourite(id));
-    toast.success(`One product was added to your favorites list !`);
+    if(isAuthenticated){
+      dispatch(editFavorites(id,user.sub,false));
+      toast.success(`One product was added to your favorites list !`);
+}
   };
 
-  useEffect(() => {
-    localStorage.setItem("favourite", JSON.stringify(productsFavourite));
-  }, [productsFavourite]);
+  // useEffect(() => {
+  //   localStorage.setItem("favourite", JSON.stringify(productsFavourite));
+  // }, [productsFavourite]);
 
   return (
     <div className="row center">
@@ -62,7 +64,7 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
                 Fav <FaStar className="star" color="#ffc107" size={15} />
               </button>
               <pre> </pre>
-              <button onClick={() => addToCart(id)}>
+              <button onClick={(e) => {addToCart(id);e.target.disabled=true}}>
                 <img src={cart2} alt="cartlogo" width="30" height="30" />
               </button>
             </div>

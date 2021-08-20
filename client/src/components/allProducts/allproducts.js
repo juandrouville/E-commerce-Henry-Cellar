@@ -2,13 +2,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllproducts, addCart, addProductToDBCart, addToFavourite } from "../../actions/index";
+import { getAllproducts, addCart, addProductToDBCart, editFavorites } from "../../actions/index";
 import Product from "../product/Product";
 import Pagination from "components/pagination/pagination";
 import cart2 from "../../assets/images/cart2.png";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
+function AllProducts({ products, GetProducts, addCart }) {
 
   const {isAuthenticated,user}=useAuth0()
 
@@ -21,9 +21,6 @@ function AllProducts({ products, GetProducts, addCart, addToFavourite }) {
     else addCart(id);
   };
 
-  const addFavourite = (id) =>{
-    addToFavourite(id);
-  };
 
   return (
     <div>
@@ -69,7 +66,6 @@ function mapDispatchToProps(dispatch) {
   return {
     GetProducts: () => dispatch(getAllproducts()),
     addCart: (id) => dispatch(addCart(id)),
-    addToFavourite: (id) => dispatch(addToFavourite(id)),
   };
 }
 

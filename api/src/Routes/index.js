@@ -19,6 +19,9 @@ const getOrderlines=require('./getOrderlines');
 const removeOrderline=require('./removeOrderline');
 const getAllUsers=require('./getAllUsers');
 const getOrder=require("./getOrder");
+const getFavorites=require('./getFavorites')
+const editFavorites=require('./editFavorites')
+
 
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product",productDetail);
@@ -36,6 +39,7 @@ router.use('/removeOrderline',removeOrderline);
 router.use('/clearCart',clearCart);
 router.use('/getAllUsers',getAllUsers);
 router.use("/getorder",getOrder);
-
+router.use("/getFavorites",getFavorites);
+router.use('/editFavorites',editFavorites)
 
 module.exports = router;

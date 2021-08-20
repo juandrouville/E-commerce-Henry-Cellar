@@ -5,20 +5,25 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDispatch, useSelector } from "react-redux";
 import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
-import { addCart, removeToFavourite } from "../../actions/index";
+import { addCart, editFavorites, getFavorites } from "../../actions/index";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Carousel = () => {
 
+    const {user,isAuthenticated}=useAuth0()
+
     let productsFavourite = useSelector((state) => state.productFavourite);
+    const editFavoritesState=useSelector(state=>state.editFavorites)
 
     const dispatch = useDispatch();
 
     const delFromFavourite = (id) => {
 
-        dispatch(removeToFavourite(id));
+        dispatch(editFavorites(id,user.sub,true));
     };
 
     
+    useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
     const settings = {
         dots: true,

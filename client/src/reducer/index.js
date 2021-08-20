@@ -16,8 +16,8 @@ import {
   GET_USER,
   SET_PAGINATION,
   UNIFY_CARTS_DB_LOCALSTORAGE,
-  ADD_TO_FAVOURITE,
-  REMOVE_TO_FAVOURITE,
+  EDIT_FAVORITES,
+  GET_FAVORITES,
   POST_REVIEW,
   GET_DB_ORDERLINES,
   ADD_PRODUCT_TO_DB_CART,
@@ -26,9 +26,7 @@ import {
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
-const favouriteFromLocalStorage = JSON.parse(
-  localStorage.getItem("productsFavourite") || "[]"
-);
+
 
 const initialState = {
   productCategories: [],
@@ -38,8 +36,8 @@ const initialState = {
   createdProduct: [],
   page: 0,
   user: undefined,
-  productFavourite: favouriteFromLocalStorage,
-
+  productFavourite: [],
+  editFavorites:undefined,
   setPagination: {
     filter: "",
     valueFilter: "",
@@ -181,32 +179,17 @@ const rootReducer = (state = initialState, action) => {
         cartDB: action.payload,
       };
     }
-    case ADD_TO_FAVOURITE: {
-      let newItem = state.getAllProducts.find(
-        (product) => product.id === action.payload
-      );
-      let itemInFavourites = state.productFavourite.find(
-        (item) => item.id === newItem.id
-      );
-
-      if (itemInFavourites) {
-        return {
-          ...state,
-        };
-      } else {
-        return {
-          ...state,
-          productFavourite: [...state.productFavourite, { ...newItem }],
-        };
-      }
-    }
-    case REMOVE_TO_FAVOURITE: {
+    case EDIT_FAVORITES: {
       return {
         ...state,
-        productFavourite: state.productFavourite.filter(
-          (p) => p.id !== action.payload
-        ),
-      };
+        editFavorites:action.payload
+      }
+    }
+    case GET_FAVORITES:{
+      return {
+        ...state,
+        productFavourite:action.payload
+      }
     }
     case CLEAR_USER: {
       return {
