@@ -21,18 +21,21 @@ const Carousel = () => {
     
 
     const settings = {
-        dots: true,
+
+        dots: false,
+
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    }
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      };
+
     return (
 
         
-        <div>
-            {productsFavourite.length !== 0 ? <h1>FAVORITES</h1> : null}
-            <Slider className="catalogo" {...settings}>
+        <div className="containerCarousel">
+            {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
+            <Slider className="show"  {...settings}>
                 
                     {productsFavourite.length !== 0 ?
                         productsFavourite ? (
@@ -46,6 +49,7 @@ const Carousel = () => {
                                             price={p.price}
                                             id={p.id}
                                             delFromFavourite={delFromFavourite}
+                                            stock={p.stock}
                                         />
 
 
