@@ -11,7 +11,7 @@ async function getFavorites(req, res, next) {
             attributes: { exclude: ["createdAt", "updatedAt"] }
         });
 
-      console.log(userSearched)
+      
      res.send(userSearched.Favorites)
 
     } catch (error) {
