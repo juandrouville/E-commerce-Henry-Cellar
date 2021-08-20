@@ -12,11 +12,12 @@ const AdminPanel = () => {
         <NavLink to="/create" refresh="true" style={{ textDecoration: "none" }}>
           <h3>Post New Product</h3>
         </NavLink>
-        <NavLink to="/edit" refresh="true" style={{ textDecoration: "none" }}>
-          <h3>Edit Product</h3>
-        </NavLink>
-          <h3>Users</h3>
-        <NavLink to="/" refresh="true" style={{ textDecoration: "none" }}></NavLink>
+        <h3>Users</h3>
+        <NavLink
+          to="/"
+          refresh="true"
+          style={{ textDecoration: "none" }}
+        ></NavLink>
       </div>
     </Layout>
   );

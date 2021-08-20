@@ -35,29 +35,40 @@ export default function ProductDetail() {
     if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub));
     else dispatch(addCart(id));
   };
-   return (
+  return (
     <Layout>
       <div>
         {productDetail ? (
           <>
-          <div className="product__detail">
-            <img src={productDetail.image} alt="Loading..." width="40%" />
-            <div className="product__data">
-              <div className="name__price">
-                <h1>{productDetail.name}</h1>
-                <h1>$ {productDetail.price}</h1>
+            <div className="product__detail">
+              <img src={productDetail.image} alt="Loading..." width="40%" />
+              <div className="product__data">
+                <div className="name__price">
+                  <h1>{productDetail.name}</h1>
+                  <h1>$ {productDetail.price}</h1>
+                </div>
+                <p className="data__description">
+                  {" "}
+                  {productDetail.description}{" "}
+                </p>
+                <p>Stock: {productDetail.stock} unidades</p>
               </div>
-              <p className="data__description"> {productDetail.description} </p>
-              <p>Stock: {productDetail.stock} unidades</p>
-           </div>
-          </div>
-          <button onClick={() => addToCart(productDetail.id)}>
-            cart
-          </button>
-          <button onClick={() => addFavourite(productDetail.id)}>
-              Fav <FaStar className="star" color="#ffc107" size={15} />
+            </div>
+            <div className="buyFavButtons">
+            <button onClick={() => addToCart(productDetail.id)}>
+              <img src={cart2} alt="cartlogo" width="30" height="30" />
             </button>
+            {isAuthenticated ? (
+              <button onClick={() => addFavourite(productDetail.id)}>
+                Fav <FaStar className="star" color="#ffc107" size={15} />
+              </button>
+            ) : null}
+            </div>
           </>
+        ) : (
+          <p>Cargando...</p>
+        )}
+
 
       ) : (
       <p>Cargando...</p>
@@ -71,10 +82,11 @@ export default function ProductDetail() {
             </div>
           )
         }) : (
+
           <p>Sin Comentarios </p>
         )}
 
-      <PostReview productId={productDetail.id} />
+        <PostReview productId={productDetail.id} />
       </div>
     </Layout>
   );
