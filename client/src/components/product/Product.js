@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import {
   addCart,
   addProductToDBCart,
-  addToFavourite,
+  editFavorites,
   editProduct,
 } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
@@ -26,13 +26,15 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   };
 
   const addFavourite = (id) => {
-    dispatch(addToFavourite(id));
-    toast.success(`One product was added to your favorites list !`);
+    if(isAuthenticated){
+      dispatch(editFavorites(id,user.sub,false));
+      toast.success(`One product was added to your favorites list !`);
+}
   };
 
-  useEffect(() => {
-    localStorage.setItem("favourite", JSON.stringify(productsFavourite));
-  }, [productsFavourite]);
+  // useEffect(() => {
+  //   localStorage.setItem("favourite", JSON.stringify(productsFavourite));
+  // }, [productsFavourite]);
 
   const edit_Product = (id) => {
     console.log(id);

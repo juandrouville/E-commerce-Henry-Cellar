@@ -20,9 +20,8 @@ import Carousel from "../components/carousel/carousel";
 
 //ACTIONS
 import {
-  addProductToDBCart,
-  clearAddedProductToDB,
   clearCart,
+  getFavorites,
   getOrderlines,
   getUser,
   unifyCarts
@@ -36,22 +35,25 @@ const Home = props => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const cart = useSelector(state => state.cart);
-  const userDB = useSelector(state => state.user);
-  const cartDB = useSelector(state => state.cartDB);
-  const addProductLogged = useSelector(state => state.addProductToDB);
+  const cart=useSelector(state=>state.cart)
+  const userDB=useSelector(state=>state.user)
+  const cartDB=useSelector(state=>state.cartDB)
+  const addProductLogged=useSelector(state=>state.addProductToDB)
+  const editFavoritesState=useSelector(state=>state.editFavorites)
 
   useEffect(() => {
-    if (isAuthenticated && !userDB) {
-      dispatch(getUser(user));
+    if (isAuthenticated && !userDB){
+      dispatch(getUser(user))
     }
   }, [isAuthenticated, dispatch]);
 
-  useEffect(() => {
-    if (isAuthenticated && userDB && cart.length) {
-      dispatch(unifyCarts(user.sub, cart));
-      toast.success("Products of your cart were successfully added !");
-      dispatch(clearCart());
+  useEffect(()=>{if(isAuthenticated) dispatch(getFavorites(user.sub))},[userDB])
+
+  useEffect(()=>{
+    if(isAuthenticated  && userDB && cart.length){
+       dispatch(unifyCarts(user.sub,cart))
+         toast.success('Products of your cart were successfully added !')
+         dispatch(clearCart())
     }
   }, [userDB]);
 
@@ -60,6 +62,8 @@ const Home = props => {
       dispatch(getOrderlines(userDB.order.id));
     }
   }, [cartDB, addProductLogged, userDB]);
+
+  useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));

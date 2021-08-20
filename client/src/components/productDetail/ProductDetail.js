@@ -7,6 +7,7 @@ import {
   addCart,
   addProductToDBCart,
   addToFavourite,
+  editFavorites,
 } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
@@ -28,7 +29,7 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const addFavourite = (id) => {
-    dispatch(addToFavourite(id));
+    dispatch(editFavorites(id,user.sub,false));
   };
 
   const addToCart = (id) => {
