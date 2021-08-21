@@ -2,7 +2,7 @@ import {
   clearProductDetail,
   editProduct,
   getAllCategories,
-  getProductDetail,
+  getProductDetail
 } from "actions";
 import { validation } from "components/validation/validation";
 import React, { useEffect, useState } from "react";
@@ -10,10 +10,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../layouts/layout-primary";
 
-export default function Edit({ id }) {
+export default function EditProduct({ id }) {
   const dispatch = useDispatch();
-  const productDetail = useSelector((state) => state.productDetail);
-  const allCategories = useSelector((state) => state.productCategories);
+  const productDetail = useSelector(state => state.productDetail);
+  const allCategories = useSelector(state => state.productCategories);
   const [state, setState] = useState({
     name: "",
     price: 0,
@@ -21,7 +21,7 @@ export default function Edit({ id }) {
     stock: 0,
     image: "",
     harvest: undefined,
-    categories: [],
+    categories: []
   });
 
   const [errors, setErrors] = useState({});
@@ -37,7 +37,7 @@ export default function Edit({ id }) {
   useEffect(() => {
     let arr = [];
     if (productDetail.categories)
-      productDetail.categories.map((category) => arr.push(category.name));
+      productDetail.categories.map(category => arr.push(category.name));
     setState({
       name: productDetail.name,
       price: productDetail.price,
@@ -45,25 +45,25 @@ export default function Edit({ id }) {
       stock: productDetail.stock,
       image: productDetail.image,
       harvest: productDetail.harvest,
-      categories: arr,
+      categories: arr
     });
   }, [productDetail]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
     setErrors(
       validation({
         ...state,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       })
     );
   };
 
-  const handleSelections = (e) => {
+  const handleSelections = e => {
     if (state.categories.includes(e.target.value)) {
       let oldCategories = state.categories;
       let newCategories = oldCategories.filter(
-        (category) => category !== e.target.value
+        category => category !== e.target.value
       );
       setState({ ...state, categories: newCategories });
       setErrors(validation({ ...state, categories: newCategories }));
@@ -77,7 +77,7 @@ export default function Edit({ id }) {
 
   // onSubmit este form hace un PUT a la ruta editProduct con los valores que cambio
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(editProduct({ ...state, id: id }));
     alert("Product edited!");
@@ -147,7 +147,7 @@ export default function Edit({ id }) {
             {state.categories.length && allCategories.length ? (
               <label>
                 Categories:
-                {allCategories.map((category) => (
+                {allCategories.map(category => (
                   <div key={key++}>
                     <label>{category.name}</label>
                     <input
@@ -165,7 +165,7 @@ export default function Edit({ id }) {
             ) : (
               <label>
                 Categories:
-                {allCategories.map((category) => (
+                {allCategories.map(category => (
                   <div key={key++}>
                     <label>{category.name}</label>
                     <input
