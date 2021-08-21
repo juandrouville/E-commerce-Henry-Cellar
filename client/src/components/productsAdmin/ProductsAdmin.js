@@ -3,7 +3,7 @@ import { editProduct } from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const ProductAdmin = ({ image, name, price, id, stock, delFromFavourite }) => {
+const ProductAdmin = ({ image, name, price, id, stock, description, delFromFavourite }) => {
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -20,6 +20,7 @@ const ProductAdmin = ({ image, name, price, id, stock, delFromFavourite }) => {
           <td>{id}</td>
           <td><p onClick={() => history.push(`/product-detail/${id}`)}>{name}</p></td>
           <td><img src={`${image}`} alt="Henry" width="50" height="50" /></td>
+          <td>{description}</td>
           <td>${price}</td>
 
           <td>{stock} unidades</td>
