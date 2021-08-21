@@ -7,15 +7,15 @@ import chatbotSprite from "../../assets/images/ChatbotSprite.jpg";
 
 // all available theme props
 const theme = {
-  background: "#f5f8fb",
-  fontFamily: "Helvetica Neue",
-  headerBgColor: "#EF6C00",
-  headerFontColor: "#fff",
+  background: "#023047",
+  fontFamily: "Bookman",
+  headerBgColor: "#219ebc",
+  headerFontColor: "#f1faee",
   headerFontSize: "15px",
-  botBubbleColor: "#EF6C00",
-  botFontColor: "#fff",
-  userBubbleColor: "#fff",
-  userFontColor: "#4a4a4a"
+  botBubbleColor: "#219ebc",
+  botFontColor: "#f1faee",
+  userBubbleColor: "#457b9d",
+  userFontColor: "#f1faee"
 };
 
 // all available config props
