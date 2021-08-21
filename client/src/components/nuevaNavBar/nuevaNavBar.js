@@ -15,7 +15,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
-
+import { CgProfile } from "react-icons/cg";
 const NuevaNavBar = () => {
   const [sidebar, setSidebar] = useState(false);
 
@@ -29,7 +29,19 @@ const NuevaNavBar = () => {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          {isAuthenticated ? (<h3 className="welcome">Welcome, {user.given_name}</h3>) : null}
+          {isAuthenticated ? (
+            <h3 className="welcome">
+              Welcome, 
+              <NavLink
+                to="/Profile"
+                refresh="true"
+                style={{ textDecoration: "none" }}
+              >
+                <p style={{ color: "#ffffff" }}> {user.given_name} <CgProfile /></p>
+              
+              </NavLink>
+            </h3>
+          ) : null}
           <SearchBar />
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -53,41 +65,37 @@ const NuevaNavBar = () => {
               <Link>
                 <AuthNav />
               </Link>
-
             </li>
             <li className="nav-text">
               {isAuthenticated &&
-                (user.sub === "google-oauth2|102669847324725021364" ||
-                  user.sub === "google-oauth2|109028710743016612481" ||
-                  user.sub === "google-oauth2|110496112430074927748") ? (
-
-
+              (user.sub === "google-oauth2|102669847324725021364" ||
+                user.sub === "google-oauth2|109028710743016612481" ||
+                user.sub === "google-oauth2|110496112430074927748") ? (
                 <NavLink to="/AdminPanel" refresh="true">
                   <RiIcons.RiAdminLine />
-                  <h3 className="h3" >AdminPanel</h3>
+                  <h3 className="h3">AdminPanel</h3>
                 </NavLink>
-
               ) : null}
             </li>
             <br></br>
             <br></br>
             <br></br>
-            
+
             <li className="nav-text">
               <NavLink to="/aboutUs" refresh="true">
-                <FcAbout/>
+                <FcAbout />
                 <h3 className="h3">About Us</h3>
               </NavLink>
             </li>
             <li className="nav-text">
               <NavLink to="/ContactUs" refresh="true">
-                <AiOutlineMail/>
+                <AiOutlineMail />
                 <h3 className="h3">Contact Us</h3>
               </NavLink>
             </li>
             <li className="nav-text">
               <a href="https://instagram.com/" target="instagram">
-              <GrInstagram/>
+                <GrInstagram />
                 {/* <h3 className="h3">Contact Us</h3> */}
               </a>
             </li>
