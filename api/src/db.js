@@ -77,6 +77,9 @@ Review.belongsTo(Product);
 Review.belongsTo(User);
 User.hasMany(Review);
 
+User.belongsToMany(Product,{as:"Favorites",through:"users_favorites"})
+Product.belongsToMany(User,{as:"Favorites",through:"users_favorites"})
+
 module.exports = {
   ...sequelize.models, 
   conn: sequelize,     

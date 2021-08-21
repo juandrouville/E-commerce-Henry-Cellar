@@ -13,19 +13,20 @@ const ProductAdmin = ({ image, name, price, id, stock, delFromFavourite }) => {
   };
 
   return (
-    <div className="admin_product_container">
-      
+    <div >
+      <table className="admin_product_container">
         
-          <p>{id}</p>
-          <p onClick={() => history.push(`/product-detail/${id}`)}>{name}</p>
-          <img src={`${image}`} alt="Henry" width="50" height="50" />
-          <p>${price}</p>
+<tr>
+          <td>{id}</td>
+          <td><p onClick={() => history.push(`/product-detail/${id}`)}>{name}</p></td>
+          <td><img src={`${image}`} alt="Henry" width="50" height="50" /></td>
+          <td>${price}</td>
 
-          <p>Stock : {stock} unidades</p>
-          <button onClick={() => edit_Product(id)}>Edit Product</button>
-          <button>Delete Product</button>
-        
-      
+          <td>{stock} unidades</td>
+          <td><button onClick={() => edit_Product(id)}>Edit Product</button></td>
+          <td><button>Delete Product</button></td>
+          </tr>    
+      </table>
     </div>
   );
 };

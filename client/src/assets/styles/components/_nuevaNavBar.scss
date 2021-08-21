@@ -79,5 +79,11 @@ span {
 }
 
 .welcome{
+  display: flex;
+  
   color: white;
+
+  p{
+    padding-left: 8px;
+  }
 }

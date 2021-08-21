@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "layouts/layout-primary";
-import ContactUs  from "components/ContactUs/ContactUs";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Profile = () => {
@@ -9,28 +8,30 @@ const Profile = () => {
   console.log(user)
   return (
     <Layout>
-    <div>
-      <div>
+    <div className="all_products_container">
+      <div className="profile">
         <div>
           <img
             src={picture}
             alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
+            className="imgProfile"
           />
         </div>
-        <div>
-          <h2>{name}</h2>
-          <h3>Nombre: {given_name}</h3>
-          <h3>Apellido: {family_name}</h3>
-          <p>E-mail: {email}</p>
+        <div className="profileData">
+          <h2 className="h3Profile">{name}</h2>
+          <h3 className="h3Profile">Nombre: {given_name}</h3>
+          <h3 className="h3Profile">Apellido: {family_name}</h3>
+          <p className="h3Profile">E-mail: {email}</p>
+          <p className="h3Profile">Address: </p>
+          <p className="h3Profile">Phone Number: </p>
         </div>
       </div>
-      <div >
+      {/* <div >
         <pre >
           {JSON.stringify(user, null, 2)}
         </pre>
-      </div>
-      <ContactUs />
+      </div> */}
+      
     </div>
     </Layout>
   );
