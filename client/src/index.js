@@ -30,6 +30,7 @@ import AboutUs from "../src/components/AboutUs/AboutUs";
 import dotenv from "dotenv";
 import Carousel from "../src/components/carousel/carousel";
 import AllProductsAdmin from "components/allProductsAdmin/AllProductsAdmin";
+import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
 
 dotenv.config();
 
@@ -53,6 +54,7 @@ ReactDOM.render(
           render={({ match }) => <Edit id={match.params.id} />}
         />
         <Route exact path="/admin/products" component={AllProductsAdmin} /> 
+        <Route exact path="/admin/users" component={AllUsersAdmin} />
         <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
         <Route path="/aboutUs" component={AboutUs} />
