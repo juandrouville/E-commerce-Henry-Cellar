@@ -16,7 +16,17 @@ function AllProductsAdmin({ products, GetProducts }) {
   return (
     <LayoutPrimary>
     <div className="all_products_container">
-      <div >
+      
+    <table>
+        <tr>
+          <th scope="row">ID</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
         {products ? (
           products.map((p) => {
             return (
@@ -39,7 +49,7 @@ function AllProductsAdmin({ products, GetProducts }) {
         ) : (
           <p>Cargando...</p>
         )}
-      </div>
+      </table>
       <Pagination />
     </div>
     </LayoutPrimary>
