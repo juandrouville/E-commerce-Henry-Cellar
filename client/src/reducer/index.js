@@ -23,6 +23,7 @@ import {
   ADD_PRODUCT_TO_DB_CART,
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB,
+  GET_ALL_USERS,
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -219,6 +220,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         clearCartOfDB: state.clearCartOfDB + 1,
+      };
+    }
+    case GET_ALL_USERS: {
+      return {
+        ...state,
+        getAllUsers: action.payload,
       };
     }
     default: {

@@ -18,6 +18,7 @@ export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 export const GET_USER = "GET_USER";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CLEAR_USER = "CLEAR_USER";
 export const SET_PAGINATION = "SET_PAGINATION";
 export const UNIFY_CARTS_DB_LOCALSTORAGE = "UNIFY_CARTS_DB_LOCALSTORAGE";
@@ -102,6 +103,16 @@ export function getAllproducts(page, filter, valuefilter) {
       dispatch({ type: GET_ALL_PRODUCTS, payload: V });
     };
   }
+}
+
+export function getAllUsers() {
+  return async dispatch => {
+    const res = await axios.get(
+      `getAllUsers` || `http://localhost:3001/getAllUsers`
+    );
+    const V = res.data;
+    dispatch({ type: GET_ALL_USERS, payload: V });
+  };
 }
 
 export function getAllCategories() {

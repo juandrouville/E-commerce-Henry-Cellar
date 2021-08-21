@@ -1,12 +1,6 @@
-//REACT
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getAllproducts } from "../../actions/index";
-
-import { useHistory } from "react-router-dom";
-
-//import ProductsAdmin from "../productsAdmin/ProductsAdmin";
-
+import { getAllUsers } from "../../actions/index";
 import Pagination from "components/pagination/pagination";
 import LayoutPrimary from "layouts/layout-primary";
 import Materialtable from "material-table";
@@ -15,80 +9,60 @@ import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import Edit from "@material-ui/icons/Edit";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 
+
 const tableIcons = {
   Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
   Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
   ArrowDownward: forwardRef((props, ref) => (
     <ArrowDownward {...props} ref={ref} />
-
-  ))
+  )),
 };
 
-function AllProductsAdmin({ products, GetProducts }) {
-  const history = useHistory();
-
+function AllUsersAdmin({ users, GetUsers }) {
+  
   const columns = [
-    { title: "Id", field: "id" },
-    {
-      title: "Image",
-      field: "image",
-
-      render: rowData => (
-        <img src={rowData.image} style={{ width: 40, borderRadius: "50%" }} />
-      )
-
-    },
-    { title: "Name", field: "name" },
-    // { title: "Description", field: "description" },
-    { title: "Price", field: "price", type: "numeric" },
-    { title: "Stock", field: "stock", type: "numeric" }
-  ];
+    // { title: "Id", field: "id" },
+    // {
+    //   title: "Image",
+    //   field: "image",
+    //   render: (rowData) => (
+    //     <img
+    //       src={rowData.image}
+    //       alt=""
+    //       style={{ width: 40, borderRadius: "50%" }}
+    //     />
+    //   ),
+    // },
+    { title: "First Name", field: "firstName" },
+    { title: "Last Name", field: "lastName" },
+    { title: "User Name", field: "userName"},
+    { title: "E-mail", field: "email" },
+    { title: "Admin", field: "admin" },
+    { title: "Subscribed", field: "subscribed" },
+    { title: "Blocked", field: "blocked" },
+];    
 
   useEffect(() => {
-    GetProducts();
-  }, [GetProducts]);
+    GetUsers();
+  }, [GetUsers]);
 
+console.log(users);
   return (
     <LayoutPrimary>
       <div className="all_products_container">
         <Materialtable
-          title="All Products"
+          title="Users"
           columns={columns}
-          data={products}
+          data={users}
           icons={tableIcons}
-          detailPanel={[
-            {
-              icon: ArrowDownward,
-              tooltip: "Show description",
-
-              render: rowData => {
-
-                return (
-                  <div
-                    style={{
-                      fontSize: 20,
-                      textAlign: "center",
-                      color: "white",
-
-                      backgroundColor: "#43A047"
-
-                    }}
-                  >
-                    {rowData.description}
-                  </div>
-                );
-
-              }
-            }
-
-          ]}
           actions={[
             {
               icon: Edit,
               tooltip: "Edit Product",
               onClick: (event, rowData) => {
-                history.push(`/Edit/${rowData.id}`);
-              }
+                alert("You clicked edit on row with id: " + rowData.id);
+                
+              },
             },
             {
               icon: DeleteOutline,
@@ -98,8 +72,8 @@ function AllProductsAdmin({ products, GetProducts }) {
                   "Are you sure you want to delete on row with id: " +
                     rowData.id
                 );
-              }
-            }
+              },
+            },
           ]}
           options={{
             actionsColumnIndex: -1,
@@ -107,9 +81,8 @@ function AllProductsAdmin({ products, GetProducts }) {
             headerStyle: {
               backgroundColor: "#420000",
               color: "#FFF",
-              zIndex: "1"
+              zIndex: "1",
             },
-
             pageSize: 9,
           }}
           components={{
@@ -118,7 +91,6 @@ function AllProductsAdmin({ products, GetProducts }) {
                 <Pagination />
               </div>
             ),
-
           }}
         />
       </div>
@@ -128,14 +100,14 @@ function AllProductsAdmin({ products, GetProducts }) {
 
 function mapStateToProps(state) {
   return {
-    products: state.getAllProducts
+    users: state.getAllUsers,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    GetProducts: () => dispatch(getAllproducts())
+    GetUsers: () => dispatch(getAllUsers()),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllProductsAdmin);
+export default connect(mapStateToProps, mapDispatchToProps)(AllUsersAdmin);
