@@ -2,12 +2,36 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getAllproducts } from "../../actions/index";
-import ProductsAdmin from "../productsAdmin/ProductsAdmin";
+//import ProductsAdmin from "../productsAdmin/ProductsAdmin";
 import Pagination from "components/pagination/pagination";
 import LayoutPrimary from "layouts/layout-primary";
+import Materialtable from "material-table";
+import { forwardRef } from "react";
+import DeleteOutline from "@material-ui/icons/DeleteOutline";
+import Edit from "@material-ui/icons/Edit";
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
 
+const tableIcons = {
+  Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
+  Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
+  ArrowDownward: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
+};
 
 function AllProductsAdmin({ products, GetProducts }) {
+  const columns = [
+    { title: "Id", field: "id" },
+    {
+      title: "Image",
+      field: "image",
+      render: (rowData) => (
+        <img src={rowData.image} style={{ width: 40, borderRadius: "50%" }} />
+      ),
+    },
+    { title: "Name", field: "name" },
+    // { title: "Description", field: "description" },
+    { title: "Price", field: "price", type: "numeric" },
+    { title: "Stock", field: "stock", type: "numeric" },
+  ];
 
   useEffect(() => {
     GetProducts();
@@ -15,43 +39,71 @@ function AllProductsAdmin({ products, GetProducts }) {
 
   return (
     <LayoutPrimary>
-    <div className="all_products_container">
-      
-    <table>
-        <tr>
-          <th scope="row">ID</th>
-          <th>Name</th>
-          <th>Image</th>
-          <th>Price</th>
-          <th>Stock</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-        {products ? (
-          products.map((p) => {
-            return (
-              <div key={p.id}>
-                
-                  <ProductsAdmin
-                    id={p.id}
-                    name={p.name}
-                    image={p.image}
-                    description={p.description}
-                    price={p.price}
-                    stock={p.stock}
-                  />
-                
-               
-              </div>
+      <div className="all_products_container">
+        <Materialtable
+          title="All Products"
+          columns={columns}
+          data={products}
+          icons={tableIcons}
+          detailPanel={[
+            {
+              icon: ArrowDownward,
+              tooltip: 'Show description',
+              render: rowData => {
+                return (
+                  <div
+                    style={{
+                      fontSize: 20,
+                      textAlign: 'center',
+                      color: 'white',
+                      backgroundColor: '#43A047',
+                    }}
+                  >
+                    {rowData.description}
+                  </div>
+                )
+              },
+            },
+          ]}
+          actions={[
+            {
+              icon: Edit,
+              tooltip: "Edit Product",
+              onClick: (event, rowData) => {
+                alert("You clicked edit on row with id: " + rowData.id);
+              },
+            },
+            {
+              icon: DeleteOutline,
+              tooltip: "Delete Product",
+              onClick: (event, rowData) => {
+                window.confirm(
+                  "Are you sure you want to delete on row with id: " +
+                    rowData.id
+                );
+              },
+            },
+          ]}
+          options={{
+            actionsColumnIndex: -1,
+            detailPanelIndex:-1,
+            headerStyle: {
+              backgroundColor: "#01579b",
+              color: "#FFF",
+              zIndex: "1",
+            },
+            pageSize: 9,
             
-            );
-          })
-        ) : (
-          <p>Cargando...</p>
-        )}
-      </table>
-      <Pagination />
-    </div>
+        }}
+        components={{
+          Pagination: props => (
+              <div style={{ backgroundColor: '#e8eaf5' }}>
+                   <Pagination />
+              </div>
+          )
+      }}
+        />
+      </div>
     </LayoutPrimary>
   );
 }
@@ -59,13 +111,12 @@ function AllProductsAdmin({ products, GetProducts }) {
 function mapStateToProps(state) {
   return {
     products: state.getAllProducts,
-      };
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     GetProducts: () => dispatch(getAllproducts()),
-    
   };
 }
 
