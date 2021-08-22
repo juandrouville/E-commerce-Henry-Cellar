@@ -1,7 +1,7 @@
 //REACT
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getAllproducts } from "../../actions/index";
+import { getAllproducts, getProductDetail } from "../../actions/index";
 
 import { useHistory } from "react-router-dom";
 
@@ -87,7 +87,7 @@ function AllProductsAdmin({ products, GetProducts }) {
               icon: Edit,
               tooltip: "Edit Product",
               onClick: (event, rowData) => {
-                history.push(`/Edit/${rowData.id}`);
+                history.push(`/editProduct/${rowData.id}`);
               }
             },
             {
