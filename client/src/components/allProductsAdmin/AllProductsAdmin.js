@@ -70,7 +70,7 @@ function AllProductsAdmin({ products, GetProducts }) {
                       textAlign: "center",
                       color: "white",
 
-                      backgroundColor: "#43A047"
+                      backgroundColor: "#420000"
 
                     }}
                   >
