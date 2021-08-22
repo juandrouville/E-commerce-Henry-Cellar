@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getAllproducts } from "../../actions/index";
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
 
 import { useHistory } from "react-router-dom";
 
@@ -20,8 +22,7 @@ const tableIcons = {
   Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
   ArrowDownward: forwardRef((props, ref) => (
     <ArrowDownward {...props} ref={ref} />
-
-  ))
+  )),
 };
 
 function AllProductsAdmin({ products, GetProducts }) {
@@ -33,15 +34,14 @@ function AllProductsAdmin({ products, GetProducts }) {
       title: "Image",
       field: "image",
 
-      render: rowData => (
+      render: (rowData) => (
         <img src={rowData.image} style={{ width: 40, borderRadius: "50%" }} />
-      )
-
+      ),
     },
     { title: "Name", field: "name" },
     // { title: "Description", field: "description" },
     { title: "Price", field: "price", type: "numeric" },
-    { title: "Stock", field: "stock", type: "numeric" }
+    { title: "Stock", field: "stock", type: "numeric" },
   ];
 
   useEffect(() => {
@@ -51,6 +51,15 @@ function AllProductsAdmin({ products, GetProducts }) {
   return (
     <LayoutPrimary>
       <div className="all_products_container">
+        <NavLink
+          to="/AdminPanel"
+          refresh="true"
+          className="back_to_admin_panel"
+        >
+          <RiIcons.RiAdminLine />
+
+          <h3 className="h3">Back to AdminPanel</h3>
+        </NavLink>
         <Materialtable
           title="All Products"
           columns={columns}
@@ -61,8 +70,7 @@ function AllProductsAdmin({ products, GetProducts }) {
               icon: ArrowDownward,
               tooltip: "Show description",
 
-              render: rowData => {
-
+              render: (rowData) => {
                 return (
                   <div
                     style={{
@@ -70,17 +78,14 @@ function AllProductsAdmin({ products, GetProducts }) {
                       textAlign: "center",
                       color: "white",
 
-                      backgroundColor: "#420000"
-
+                      backgroundColor: "#420000",
                     }}
                   >
                     {rowData.description}
                   </div>
                 );
-
-              }
-            }
-
+              },
+            },
           ]}
           actions={[
             {
@@ -88,7 +93,7 @@ function AllProductsAdmin({ products, GetProducts }) {
               tooltip: "Edit Product",
               onClick: (event, rowData) => {
                 history.push(`/Edit/${rowData.id}`);
-              }
+              },
             },
             {
               icon: DeleteOutline,
@@ -98,8 +103,8 @@ function AllProductsAdmin({ products, GetProducts }) {
                   "Are you sure you want to delete on row with id: " +
                     rowData.id
                 );
-              }
-            }
+              },
+            },
           ]}
           options={{
             actionsColumnIndex: -1,
@@ -107,7 +112,7 @@ function AllProductsAdmin({ products, GetProducts }) {
             headerStyle: {
               backgroundColor: "#420000",
               color: "#FFF",
-              zIndex: "1"
+              zIndex: "1",
             },
 
             pageSize: 9,
@@ -118,7 +123,6 @@ function AllProductsAdmin({ products, GetProducts }) {
                 <Pagination />
               </div>
             ),
-
           }}
         />
       </div>
@@ -128,13 +132,13 @@ function AllProductsAdmin({ products, GetProducts }) {
 
 function mapStateToProps(state) {
   return {
-    products: state.getAllProducts
+    products: state.getAllProducts,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    GetProducts: () => dispatch(getAllproducts())
+    GetProducts: () => dispatch(getAllproducts()),
   };
 }
 

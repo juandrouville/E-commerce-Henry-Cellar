@@ -8,7 +8,8 @@ import { forwardRef } from "react";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import Edit from "@material-ui/icons/Edit";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
-
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
 
 const tableIcons = {
   Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
@@ -50,6 +51,15 @@ console.log(users);
   return (
     <LayoutPrimary>
       <div className="all_products_container">
+      <NavLink
+          to="/AdminPanel"
+          refresh="true"
+          className="back_to_admin_panel"
+        >
+          <RiIcons.RiAdminLine />
+
+          <h3 className="h3">Back to AdminPanel</h3>
+        </NavLink>
         <Materialtable
           title="Users"
           columns={columns}
