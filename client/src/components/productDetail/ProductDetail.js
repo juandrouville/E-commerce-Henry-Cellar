@@ -29,7 +29,7 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const addFavourite = (id) => {
-    dispatch(editFavorites(id,user.sub,false));
+    dispatch(editFavorites(id, user.sub, false));
   };
 
   const addToCart = (id) => {
@@ -56,37 +56,29 @@ export default function ProductDetail() {
               </div>
             </div>
             <div className="buyFavButtons">
-            <button onClick={() => addToCart(productDetail.id)}>
-              <img src={cart2} alt="cartlogo" width="30" height="30" />
-            </button>
-            {isAuthenticated ? (
-              <button onClick={() => addFavourite(productDetail.id)}>
-                Fav <FaStar className="star" color="#ffc107" size={15} />
+              <button onClick={() => addToCart(productDetail.id)}>
+                <img src={cart2} alt="cartlogo" width="30" height="30" />
               </button>
-            ) : null}
+              {isAuthenticated ? (
+                <button onClick={() => addFavourite(productDetail.id)}>
+                  Fav <FaStar className="star" color="#ffc107" size={15} />
+                </button>
+              ) : null}
             </div>
           </>
         ) : (
           <p>Cargando...</p>
         )}
 
-
-      ) : (
-      <p>Cargando...</p>
-      )}
-      
-      {productDetail.reviews ?
-        productDetail.reviews.map(ele => {
-          return (
-            <div className="containerReviews">
-            <Review review={{ ...ele }} />
-            </div>
-          )
-        }) : (
-
-          <p>Sin Comentarios </p>
-        )}
-
+        {productDetail.reviews
+          ? productDetail.reviews.map((ele) => {
+              return (
+                <div className="containerReviews">
+                  <Review review={{ ...ele }} />
+                </div>
+              );
+            })
+          : null}
         <PostReview productId={productDetail.id} />
       </div>
     </Layout>
