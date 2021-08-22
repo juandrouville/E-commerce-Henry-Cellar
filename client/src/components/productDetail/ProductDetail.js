@@ -68,12 +68,13 @@ export default function ProductDetail() {
               
               </div>
             </div>
-            
+
             </div>
           </>
         ) : (
           <p>Cargando...</p>
         )}
+
 
         {productDetail.reviews ?
           productDetail.reviews.map(ele => {
@@ -87,6 +88,7 @@ export default function ProductDetail() {
             <p>No reviews </p>
             </div>
           )}
+
 
         <PostReview productId={productDetail.id} />
       </div>
