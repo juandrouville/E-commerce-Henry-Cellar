@@ -23,11 +23,8 @@ import {
   ADD_PRODUCT_TO_DB_CART,
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB,
-<<<<<<< HEAD
   GET_DB_ORDER,
-=======
   GET_ALL_USERS,
->>>>>>> ec73c3c96316325b99c1a37280c4e7f529127c00
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
