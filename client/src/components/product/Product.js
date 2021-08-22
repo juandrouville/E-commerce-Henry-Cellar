@@ -73,7 +73,7 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
               <pre> </pre>
               
               <button onClick={() => addToCart(id)}>
-                <img src={cart2} alt="cartlogo" width="30" height="30" />
+                <img src={cart2} alt="cartlogo"/>
               </button>
             </div>
           )}
