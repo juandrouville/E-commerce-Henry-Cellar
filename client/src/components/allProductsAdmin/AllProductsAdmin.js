@@ -5,6 +5,7 @@ import { getAllproducts } from "../../actions/index";
 import { NavLink } from "react-router-dom";
 import * as RiIcons from "react-icons/ri";
 
+
 import { useHistory } from "react-router-dom";
 
 //import ProductsAdmin from "../productsAdmin/ProductsAdmin";
@@ -92,8 +93,10 @@ function AllProductsAdmin({ products, GetProducts }) {
               icon: Edit,
               tooltip: "Edit Product",
               onClick: (event, rowData) => {
+
                 history.push(`/Edit/${rowData.id}`);
               },
+
             },
             {
               icon: DeleteOutline,
