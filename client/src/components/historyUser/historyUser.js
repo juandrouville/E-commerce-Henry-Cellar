@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
     getDbOrder
 } from "../../actions/index";
@@ -8,10 +9,20 @@ import {
 export default function HistoryUser() {
     const dispatch = useDispatch();
     const order = useSelector((state) => state.order);
-    console.log(order.ordelines)
+
+
+    // const { isAuthenticated } = useAuth0();
+    
+ 
+
     useEffect(() => {
+        
         dispatch(getDbOrder())
+
     }, [dispatch])
+
+    const orderline = [];
+
 
     return (
         <div>
@@ -20,22 +31,24 @@ export default function HistoryUser() {
            
             <div>
                 {order.length ? (
-                    order.map((i) => {
-                        return (
+                    order.map((i)=>{
+                        return(
+
                             <div>
                               <h2>state:{i.state}</h2>
                               <h2>total:{i.total}</h2>
-                              <h2>amount:{i.amount}</h2>
-                              {/* {order.orderlines.map((a)=>{
-                                  return(
-                                    <h2>amount:{a.amount}</h2>
-                                  )
-                              })} */}
+                              {i.orderlines.length ? 
+                               i.orderlines.map((i) => {
+                                <h2>{i.amount}</h2>
+                               }) : null }
+                              
                             </div>
-                        );
+                        )
                     })
+                        
+                    
                 ) : (
-                    <h2 className="empty_cart"> Oups  &#x1F613; ... your cart is empty !</h2>
+                    <h2 className="empty_cart"> cargando... </h2>
                 )}
             </div>
         </div>

@@ -17,7 +17,7 @@ import { ReactComponent as Arrow } from "assets/images/arrow.svg";
 import AllProducts from "../components/allProducts/allproducts";
 import Cart from "components/cart/Cart";
 import Carousel from "../components/carousel/carousel";
-
+import HistoryUser from "../components/historyUser/historyUser"
 //ACTIONS
 import {
   clearCart,
@@ -35,25 +35,25 @@ const Home = props => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const cart=useSelector(state=>state.cart)
-  const userDB=useSelector(state=>state.user)
-  const cartDB=useSelector(state=>state.cartDB)
-  const addProductLogged=useSelector(state=>state.addProductToDB)
-  const editFavoritesState=useSelector(state=>state.editFavorites)
+  const cart = useSelector(state => state.cart)
+  const userDB = useSelector(state => state.user)
+  const cartDB = useSelector(state => state.cartDB)
+  const addProductLogged = useSelector(state => state.addProductToDB)
+  const editFavoritesState = useSelector(state => state.editFavorites)
 
   useEffect(() => {
-    if (isAuthenticated && !userDB){
+    if (isAuthenticated && !userDB) {
       dispatch(getUser(user))
     }
   }, [isAuthenticated, dispatch]);
 
-  useEffect(()=>{if(isAuthenticated) dispatch(getFavorites(user.sub))},[userDB])
+  useEffect(() => { if (isAuthenticated) dispatch(getFavorites(user.sub)) }, [userDB])
 
-  useEffect(()=>{
-    if(isAuthenticated  && userDB && cart.length){
-       dispatch(unifyCarts(user.sub,cart))
-         toast.success('Products of your cart were successfully added !')
-         dispatch(clearCart())
+  useEffect(() => {
+    if (isAuthenticated && userDB && cart.length) {
+      dispatch(unifyCarts(user.sub, cart))
+      toast.success('Products of your cart were successfully added !')
+      dispatch(clearCart())
     }
   }, [userDB]);
 
@@ -63,7 +63,7 @@ const Home = props => {
     }
   }, [cartDB, addProductLogged, userDB]);
 
-  useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
+  useEffect(() => { if (isAuthenticated) dispatch(getFavorites(user.sub)) }, [editFavoritesState])
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -88,6 +88,10 @@ const Home = props => {
         </div>
       </div>
       <Carousel />
+      {isAuthenticated ?
+        <div><HistoryUser /></div>
+        : null}
+
       <div id="catalogo">
         <h1 className="catalogo__title">Catalog</h1>
         <div>

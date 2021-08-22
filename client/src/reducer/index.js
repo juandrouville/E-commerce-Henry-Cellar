@@ -226,7 +226,10 @@ const rootReducer = (state = initialState, action) => {
     }
 
     case GET_DB_ORDER: {
+      
       return {
+        
+        
         ...state,
         order: action.payload,
       }  
