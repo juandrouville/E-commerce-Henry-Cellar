@@ -18,11 +18,12 @@ export const REMOVE_ONE_FROM_CART = "REMOVE_ONE_FROM_CART";
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 export const GET_USER = "GET_USER";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const CLEAR_USER = "CLEAR_USER";
 export const SET_PAGINATION = "SET_PAGINATION";
 export const UNIFY_CARTS_DB_LOCALSTORAGE = "UNIFY_CARTS_DB_LOCALSTORAGE";
-export const ADD_TO_FAVOURITE = "ADD_TO_FAVOURITE";
-export const REMOVE_TO_FAVOURITE = "REMOVE_TO_FAVOURITE";
+export const EDIT_FAVORITES = "EDIT_FAVORITES";
+export const GET_FAVORITES = "GET_FAVORITES";
 export const POST_REVIEW = "POST_REVIEW";
 export const GET_DB_ORDERLINES = "GET_DB_ORDERLINES";
 export const ADD_PRODUCT_TO_DB_CART = "ADD_PRODUCT_TO_DB_CART";
@@ -103,6 +104,16 @@ export function getAllproducts(page, filter, valuefilter) {
       dispatch({ type: GET_ALL_PRODUCTS, payload: V });
     };
   }
+}
+
+export function getAllUsers() {
+  return async dispatch => {
+    const res = await axios.get(
+      `getAllUsers` || `http://localhost:3001/getAllUsers`
+    );
+    const V = res.data;
+    dispatch({ type: GET_ALL_USERS, payload: V });
+  };
 }
 
 export function getAllCategories() {
@@ -264,18 +275,36 @@ export function unifyCarts(userId, localStorageCart) {
   };
 }
 
-export function addToFavourite(id) {
-  return {
-    type: ADD_TO_FAVOURITE,
-    payload: id
-  };
+export function editFavorites(productId,userId,remove=false) {
+  return async dispatch => {  
+    try {
+      const res=await axios.post(
+        `/editFavorites/${userId}` ||
+          `http://localhost:3001/editFavorites/${userId}`,
+        { productId: productId , remove:remove}
+        );
+        dispatch({type:EDIT_FAVORITES,payload:res.data})
+  
+    } catch (error) {
+      alert("ERROR AL EDITAR PRODUCTOS FAVORITOS");
+    }
+   };
 }
 
-export function removeToFavourite(id) {
-  return {
-    type: REMOVE_TO_FAVOURITE,
-    payload: id
-  };
+
+export function getFavorites(userId){
+  return async dispatch => {  
+    try {
+      const res=await axios.get(
+        `/getFavorites/${userId}` ||
+          `http://localhost:3001/getFavorites/${userId}`
+        );
+        dispatch({type:GET_FAVORITES,payload:res.data})
+  
+    } catch (error) {
+      alert("ERROR AL OBTENER PRODUCTOS FAVORITOS");
+    }
+   };
 }
 
 export function addProductToDBCart(productId, userId) {

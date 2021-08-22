@@ -1,15 +1,6 @@
-//REACT
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getAllproducts } from "../../actions/index";
-import { NavLink } from "react-router-dom";
-import * as RiIcons from "react-icons/ri";
-
-
-import { useHistory } from "react-router-dom";
-
-//import ProductsAdmin from "../productsAdmin/ProductsAdmin";
-
+import { getAllUsers } from "../../actions/index";
 import Pagination from "components/pagination/pagination";
 import LayoutPrimary from "layouts/layout-primary";
 import Materialtable from "material-table";
@@ -17,6 +8,8 @@ import { forwardRef } from "react";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import Edit from "@material-ui/icons/Edit";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
 
 const tableIcons = {
   Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
@@ -26,33 +19,39 @@ const tableIcons = {
   )),
 };
 
-function AllProductsAdmin({ products, GetProducts }) {
-  const history = useHistory();
-
+function AllUsersAdmin({ users, GetUsers }) {
+  
   const columns = [
-    { title: "Id", field: "id" },
-    {
-      title: "Image",
-      field: "image",
-
-      render: (rowData) => (
-        <img src={rowData.image} style={{ width: 40, borderRadius: "50%" }} />
-      ),
-    },
-    { title: "Name", field: "name" },
-    // { title: "Description", field: "description" },
-    { title: "Price", field: "price", type: "numeric" },
-    { title: "Stock", field: "stock", type: "numeric" },
-  ];
+    // { title: "Id", field: "id" },
+    // {
+    //   title: "Image",
+    //   field: "image",
+    //   render: (rowData) => (
+    //     <img
+    //       src={rowData.image}
+    //       alt=""
+    //       style={{ width: 40, borderRadius: "50%" }}
+    //     />
+    //   ),
+    // },
+    { title: "First Name", field: "firstName" },
+    { title: "Last Name", field: "lastName" },
+    { title: "User Name", field: "userName"},
+    { title: "E-mail", field: "email" },
+    { title: "Admin", field: "admin" },
+    { title: "Subscribed", field: "subscribed" },
+    { title: "Blocked", field: "blocked" },
+];    
 
   useEffect(() => {
-    GetProducts();
-  }, [GetProducts]);
+    GetUsers();
+  }, [GetUsers]);
 
+console.log(users);
   return (
     <LayoutPrimary>
       <div className="all_products_container">
-        <NavLink
+      <NavLink
           to="/AdminPanel"
           refresh="true"
           className="back_to_admin_panel"
@@ -62,41 +61,18 @@ function AllProductsAdmin({ products, GetProducts }) {
           <h3 className="h3">Back to AdminPanel</h3>
         </NavLink>
         <Materialtable
-          title="All Products"
+          title="Users"
           columns={columns}
-          data={products}
+          data={users}
           icons={tableIcons}
-          detailPanel={[
-            {
-              icon: ArrowDownward,
-              tooltip: "Show description",
-
-              render: (rowData) => {
-                return (
-                  <div
-                    style={{
-                      fontSize: 20,
-                      textAlign: "center",
-                      color: "white",
-
-                      backgroundColor: "#420000",
-                    }}
-                  >
-                    {rowData.description}
-                  </div>
-                );
-              },
-            },
-          ]}
           actions={[
             {
               icon: Edit,
               tooltip: "Edit Product",
               onClick: (event, rowData) => {
-
-                history.push(`/Edit/${rowData.id}`);
+                alert("You clicked edit on row with id: " + rowData.id);
+                
               },
-
             },
             {
               icon: DeleteOutline,
@@ -117,7 +93,6 @@ function AllProductsAdmin({ products, GetProducts }) {
               color: "#FFF",
               zIndex: "1",
             },
-
             pageSize: 9,
           }}
           components={{
@@ -135,14 +110,14 @@ function AllProductsAdmin({ products, GetProducts }) {
 
 function mapStateToProps(state) {
   return {
-    products: state.getAllProducts,
+    users: state.getAllUsers,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    GetProducts: () => dispatch(getAllproducts()),
+    GetUsers: () => dispatch(getAllUsers()),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllProductsAdmin);
+export default connect(mapStateToProps, mapDispatchToProps)(AllUsersAdmin);

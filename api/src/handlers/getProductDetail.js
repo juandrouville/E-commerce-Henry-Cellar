@@ -15,7 +15,7 @@ async function getProductDetail(req, res, next) {
                     attributes: []
                 },
             },
-            include: Review,
+            //include: Review,
         });
             
 

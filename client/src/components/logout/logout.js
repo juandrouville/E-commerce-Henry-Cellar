@@ -9,19 +9,19 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
   return (
     <li>
-
-      
-      <button className="li"
+      <button
+        className="li"
         onClick={() => {
           dispatch(clearUser());
           logout({
-            returnTo: window.location.origin,
+            returnTo:
+              "https://*.vercel.app/home" || "http://localhost:3000/home"
           });
         }}
       >
-        <BiIcons.BiLogOut className="svglogin"/>Log Out
+        <BiIcons.BiLogOut className="svglogin" />
+        Log Out
       </button>
-
     </li>
   );
 };

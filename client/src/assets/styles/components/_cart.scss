@@ -58,11 +58,12 @@
       border:0
     }
   }
-  .cart_buttons{
-   display:flex;
-   justify-content: space-between;
-  }
+  
 }
+.cart_buttons{
+  display:flex;
+  justify-content: center;
+ }
 
 .cart__subtitles{
   display:grid;
