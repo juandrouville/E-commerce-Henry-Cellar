@@ -75,23 +75,24 @@ export default function ProductDetail() {
           <p>Cargando...</p>
         )}
 
-
+      
         {productDetail.reviews ?
           productDetail.reviews.map(ele => {
             return (
-              <div className="containerReviews">
                 <Review review={{ ...ele }} />
-              </div>
             )
           }) : (
             <div className="sinComentarios">
             <p>No reviews </p>
-            </div>
+          </div>
           )}
-
-
-        <PostReview productId={productDetail.id} />
       </div>
+        <PostReview productId={productDetail.id} />
+      
     </Layout>
   );
 }
+              
+              
+
+
