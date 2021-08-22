@@ -38,24 +38,25 @@ export default function ProductDetail() {
   };
   return (
     <Layout>
-      <div>
+      <div className="page_productDetail">
         {productDetail ? (
           <>
             <div className="product__detail">
-              <img src={productDetail.image} alt="Loading..." width="40%" />
+              <img src={productDetail.image} alt="Loading..." className="productImage"/>
               <div className="product__data">
                 <div className="name__price">
-                  <h1>{productDetail.name}</h1>
-                  <h1>$ {productDetail.price}</h1>
+                  <h1 className="productName">{productDetail.name}</h1>
+                  <p className="stock">Stock: {productDetail.stock} unidades</p>
+                  <h1 className="productPrice">$ {productDetail.price}</h1>
                 </div>
-                <p className="data__description">
-                  {" "}
-                  {productDetail.description}{" "}
-                </p>
-                <p>Stock: {productDetail.stock} unidades</p>
-              </div>
-            </div>
-            <div className="buyFavButtons">
+                <div className="containerDescription">
+                  <h2>Description : </h2>
+                  <p className="data__description">
+                    {" "}
+                    {productDetail.description}{" "}
+                  </p>
+                </div>
+                <div className="buyFavButtons">
               <button onClick={() => addToCart(productDetail.id)}>
                 <img src={cart2} alt="cartlogo" width="30" height="30" />
               </button>
@@ -64,21 +65,31 @@ export default function ProductDetail() {
                   Fav <FaStar className="star" color="#ffc107" size={15} />
                 </button>
               ) : null}
+              
+              </div>
+            </div>
+
             </div>
           </>
         ) : (
           <p>Cargando...</p>
         )}
 
-        {productDetail.reviews
-          ? productDetail.reviews.map((ele) => {
-              return (
-                <div className="containerReviews">
-                  <Review review={{ ...ele }} />
-                </div>
-              );
-            })
-          : null}
+
+        {productDetail.reviews ?
+          productDetail.reviews.map(ele => {
+            return (
+              <div className="containerReviews">
+                <Review review={{ ...ele }} />
+              </div>
+            )
+          }) : (
+            <div className="sinComentarios">
+            <p>No reviews </p>
+            </div>
+          )}
+
+
         <PostReview productId={productDetail.id} />
       </div>
     </Layout>
