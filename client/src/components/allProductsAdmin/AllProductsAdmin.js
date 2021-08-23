@@ -53,85 +53,73 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
   }, [DeleteProduct]);
 
   return (
-    <LayoutPrimary>
-      <div className="all_products_container">
-        <NavLink
-          to="/AdminPanel"
-          refresh="true"
-          className="back_to_admin_panel"
-        >
-          <RiIcons.RiAdminLine />
+    <div className="all_products_container">
+      <Materialtable
+        title="All Products"
+        columns={columns}
+        data={products}
+        icons={tableIcons}
+        detailPanel={[
+          {
+            icon: ArrowDownward,
+            tooltip: "Show description",
 
-          <h3 className="h3">Back to AdminPanel</h3>
-        </NavLink>
-        <Materialtable
-          title="All Products"
-          columns={columns}
-          data={products}
-          icons={tableIcons}
-          detailPanel={[
-            {
-              icon: ArrowDownward,
-              tooltip: "Show description",
+            render: rowData => {
+              return (
+                <div
+                  style={{
+                    fontSize: 20,
+                    textAlign: "center",
+                    color: "white",
 
-              render: rowData => {
-                return (
-                  <div
-                    style={{
-                      fontSize: 20,
-                      textAlign: "center",
-                      color: "white",
-
-                      backgroundColor: "#420000"
-                    }}
-                  >
-                    {rowData.description}
-                  </div>
-                );
-              }
+                    backgroundColor: "#420000"
+                  }}
+                >
+                  {rowData.description}
+                </div>
+              );
             }
-          ]}
-          actions={[
-            {
-              icon: Edit,
-              tooltip: "Edit Product",
-              onClick: (event, rowData) => {
-                history.push(`/editProduct/${rowData.id}`);
-              }
-            },
-            {
-              icon: DeleteOutline,
-              tooltip: "Delete Product",
-              onClick: (event, rowData) => {
-                window.confirm(
-                  "Are you sure you want to delete on row with id: " +
-                    rowData.id,
-                  DeleteProduct(rowData.id)
-                );
-              }
+          }
+        ]}
+        actions={[
+          {
+            icon: Edit,
+            tooltip: "Edit Product",
+            onClick: (event, rowData) => {
+              history.push(`/editProduct/${rowData.id}`);
             }
-          ]}
-          options={{
-            actionsColumnIndex: -1,
-            detailPanelIndex: -1,
-            headerStyle: {
-              backgroundColor: "#420000",
-              color: "#FFF",
-              zIndex: "1"
-            },
+          },
+          {
+            icon: DeleteOutline,
+            tooltip: "Delete Product",
+            onClick: (event, rowData) => {
+              window.confirm(
+                "Are you sure you want to delete on row with id: " + rowData.id,
+                DeleteProduct(rowData.id)
+              );
+            }
+          }
+        ]}
+        options={{
+          actionsColumnIndex: -1,
+          detailPanelIndex: -1,
+          headerStyle: {
+            backgroundColor: "#420000",
+            color: "#FFF",
+            zIndex: "1"
+          },
 
-            pageSize: 9
-          }}
-          components={{
-            Pagination: props => (
-              <div style={{ backgroundColor: "#e8eaf5" }}>
-                <Pagination />
-              </div>
-            )
-          }}
-        />
-      </div>
-    </LayoutPrimary>
+          pageSize: 9
+        }}
+        components={{
+          Pagination: props => (
+            <div style={{ backgroundColor: "#e8eaf5" }}>
+              <Pagination />
+            </div>
+          )
+        }}
+      />
+    </div>
   );
 }
 
