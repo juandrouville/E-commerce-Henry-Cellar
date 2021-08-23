@@ -50,7 +50,7 @@ export default function Orders() {
         <option value="pending">Pending</option>    
         <option value="accepted">Accepted</option>
         <option value="rejected">Rejected</option>
-        <option value="sent">Sent it</option>
+        <option value="sent">Sent</option>
         <option value="recieved">Recieved</option>
         <option value="finished">Finished PRUEBA</option>
         </select>
