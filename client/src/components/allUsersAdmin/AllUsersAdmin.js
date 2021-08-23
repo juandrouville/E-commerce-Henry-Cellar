@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { getAllUsers } from "../../actions/index";
 import Pagination from "components/pagination/pagination";
 import LayoutPrimary from "layouts/layout-primary";
@@ -20,29 +20,26 @@ const tableIcons = {
 };
 
 function AllUsersAdmin({ users, GetUsers }) {
+
+  const dispatch=useDispatch()
+
+  const handleBlockSelect=e=>{
+    dispatch()
+  }
   
   const columns = [
-    // { title: "Id", field: "id" },
-    // {
-    //   title: "Image",
-    //   field: "image",
-    //   render: (rowData) => (
-    //     <img
-    //       src={rowData.image}
-    //       alt=""
-    //       style={{ width: 40, borderRadius: "50%" }}
-    //     />
-    //   ),
-    // },
-    //{ title: "First Name", field: "firstName" },
-    //{ title: "Last Name", field: "lastName" },
     { title: "User Name", field: "userName"},
     { title: "E-mail", field: "email" },
     { title: "Address", field: "adress" },
     { title: "Phone", field: "phone" },
     { title: "Admin", field: "admin" },
     { title: "Subscribed", field: "subscribed" },
-    { title: "Blocked", field: "blocked" },
+    { title: "Blocked", field: "blocked", 
+    render:rowData=>(
+    <select defaultValue={rowData.blocked} onChange={handleBlockSelect}>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>)},
 ];    
 
   useEffect(() => {
