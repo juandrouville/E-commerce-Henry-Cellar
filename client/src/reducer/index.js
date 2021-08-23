@@ -24,10 +24,10 @@ import {
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB,
   GET_ALL_USERS,
+  REMOVE_PRODUCT
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
-
 
 const initialState = {
   productCategories: [],
@@ -38,16 +38,16 @@ const initialState = {
   page: 0,
   user: undefined,
   productFavourite: [],
-  editFavorites:undefined,
+  editFavorites: undefined,
   setPagination: {
     filter: "",
-    valueFilter: "",
+    valueFilter: ""
   },
   cart: cartFromLocalStorage,
   orderlines: [],
   addProductToDB: undefined,
   orderlineRemoved: undefined,
-  clearCartOfDB: 0,
+  clearCartOfDB: 0
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -55,177 +55,182 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_PRODUCTS: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        getAllProducts: action.payload
       };
     }
     case GET_ALL_CATEGORIES: {
       return {
         ...state,
-        productCategories: action.payload,
+        productCategories: action.payload
       };
     }
     case GET_ALL_WINERIES: {
       return {
         ...state,
-        wineries: action.payload,
+        wineries: action.payload
       };
     }
     case SORT_BY_PRECIO: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        getAllProducts: action.payload
       };
     }
     case POST_PRODUCT: {
       return {
         ...state,
-        createdProduct: state.createdProduct.concat(action.payload),
+        createdProduct: state.createdProduct.concat(action.payload)
       };
     }
     case PRODUCT_DETAIL: {
       return {
         ...state,
-        productDetail: action.payload,
+        productDetail: action.payload
       };
     }
     case POST_REVIEW: {
       return {
         ...state,
-        productDetail: action.payload,
+        productDetail: action.payload
       };
     }
     case SEARCH_PRODUCT_BY_NAME: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        getAllProducts: action.payload
       };
     }
 
     case NEXT_PAGE: {
       return {
         ...state,
-        page: action.payload,
+        page: action.payload
       };
     }
     case PREVIUS_PAGE: {
       return {
         ...state,
-        page: action.payload,
+        page: action.payload
       };
     }
     case SET_PAGINATION: {
       return {
         ...state,
-        setPagination: action.payload,
+        setPagination: action.payload
       };
     }
     case ADD_TO_CART: {
       let newItem = state.getAllProducts.find(
-        (product) => product.id === action.payload
+        product => product.id === action.payload
       );
-      let itemInCart = state.cart.find((item) => item.id === newItem.id);
+      let itemInCart = state.cart.find(item => item.id === newItem.id);
 
       return itemInCart
         ? {
             ...state,
-            cart: state.cart.map((item) =>
+            cart: state.cart.map(item =>
               item.id === newItem.id
                 ? { ...item, quantity: item.quantity + 1 }
                 : item
-            ),
+            )
           }
         : {
             ...state,
-            cart: [...state.cart, { ...newItem, quantity: 1 }],
+            cart: [...state.cart, { ...newItem, quantity: 1 }]
           };
     }
     case REMOVE_ONE_FROM_CART: {
-      let itemToDelete = state.cart.find((item) => item.id === action.payload);
+      let itemToDelete = state.cart.find(item => item.id === action.payload);
 
       return itemToDelete.quantity > 1
         ? {
             ...state,
-            cart: state.cart.map((item) =>
+            cart: state.cart.map(item =>
               item.id === action.payload
                 ? { ...item, quantity: item.quantity - 1 }
                 : item
-            ),
+            )
           }
         : {
             ...state,
-            cart: state.cart.filter((item) => item.id !== action.payload),
+            cart: state.cart.filter(item => item.id !== action.payload)
           };
     }
     case REMOVE_ALL_FROM_CART: {
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload),
+        cart: state.cart.filter(item => item.id !== action.payload)
       };
     }
     case CLEAR_CART: {
       return {
         ...state,
-        cart: [],
+        cart: []
       };
     }
     case GET_USER: {
       return {
         ...state,
-        user: action.payload,
+        user: action.payload
       };
     }
     case UNIFY_CARTS_DB_LOCALSTORAGE: {
       return {
         ...state,
-        cartDB: action.payload,
+        cartDB: action.payload
       };
     }
     case EDIT_FAVORITES: {
       return {
         ...state,
-        editFavorites:action.payload
-      }
+        editFavorites: action.payload
+      };
     }
-    case GET_FAVORITES:{
+    case GET_FAVORITES: {
       return {
         ...state,
-        productFavourite:action.payload
-      }
+        productFavourite: action.payload
+      };
     }
     case CLEAR_USER: {
       return {
         ...state,
-        user: undefined,
+        user: undefined
       };
     }
     case GET_DB_ORDERLINES: {
       return {
         ...state,
-        orderlines: action.payload,
+        orderlines: action.payload
       };
     }
     case ADD_PRODUCT_TO_DB_CART: {
       return {
         ...state,
-        addProductToDB: action.payload,
+        addProductToDB: action.payload
       };
     }
     case REMOVE_ORDERLINE_FROM_DB: {
       return {
         ...state,
-        orderlineRemoved: action.payload,
+        orderlineRemoved: action.payload
       };
     }
     case CLEAR_CART_OF_DB: {
       return {
         ...state,
-        clearCartOfDB: state.clearCartOfDB + 1,
+        clearCartOfDB: state.clearCartOfDB + 1
       };
     }
     case GET_ALL_USERS: {
       return {
         ...state,
-        getAllUsers: action.payload,
+        getAllUsers: action.payload
+      };
+    }
+    case REMOVE_PRODUCT: {
+      return {
+        ...state
       };
     }
     default: {

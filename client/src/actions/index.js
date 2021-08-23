@@ -29,6 +29,7 @@ export const GET_DB_ORDERLINES = "GET_DB_ORDERLINES";
 export const ADD_PRODUCT_TO_DB_CART = "ADD_PRODUCT_TO_DB_CART";
 export const REMOVE_ORDERLINE_FROM_DB = "REMOVE_ORDERLINE_FROM_DB";
 export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -274,36 +275,33 @@ export function unifyCarts(userId, localStorageCart) {
   };
 }
 
-export function editFavorites(productId,userId,remove=false) {
-  return async dispatch => {  
+export function editFavorites(productId, userId, remove = false) {
+  return async dispatch => {
     try {
-      const res=await axios.post(
+      const res = await axios.post(
         `/editFavorites/${userId}` ||
           `http://localhost:3001/editFavorites/${userId}`,
-        { productId: productId , remove:remove}
-        );
-        dispatch({type:EDIT_FAVORITES,payload:res.data})
-  
+        { productId: productId, remove: remove }
+      );
+      dispatch({ type: EDIT_FAVORITES, payload: res.data });
     } catch (error) {
       alert("ERROR AL EDITAR PRODUCTOS FAVORITOS");
     }
-   };
+  };
 }
 
-
-export function getFavorites(userId){
-  return async dispatch => {  
+export function getFavorites(userId) {
+  return async dispatch => {
     try {
-      const res=await axios.get(
+      const res = await axios.get(
         `/getFavorites/${userId}` ||
           `http://localhost:3001/getFavorites/${userId}`
-        );
-        dispatch({type:GET_FAVORITES,payload:res.data})
-  
+      );
+      dispatch({ type: GET_FAVORITES, payload: res.data });
     } catch (error) {
       alert("ERROR AL OBTENER PRODUCTOS FAVORITOS");
     }
-   };
+  };
 }
 
 export function addProductToDBCart(productId, userId) {
@@ -377,6 +375,19 @@ export function clearCartOfDB(orderId) {
       dispatch({ type: CLEAR_CART_OF_DB, payload: res.data });
     } catch (error) {
       alert("ERROR AL LIMPIAR EL CARRITO EN LA BASE DE DATOS");
+    }
+  };
+}
+
+export function removeProduct(id) {
+  return async dispatch => {
+    try {
+      const res = await axios.delete(
+        `/removeProduct/${id}` || `http://localhost:3001/removeProduct/${id}`
+      );
+      dispatch({ type: REMOVE_PRODUCT, payload: res.data });
+    } catch (error) {
+      alert("Se chingó el sistema -remove product error-");
     }
   };
 }
