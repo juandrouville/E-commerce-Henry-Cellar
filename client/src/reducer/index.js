@@ -53,7 +53,7 @@ const initialState = {
   orderlines: [],
   addProductToDB: undefined,
   orderlineRemoved: undefined,
-  clearCartOfDB: 0,
+  clearCartOfDB: undefined,
 
   order: [],
   userid: [],
@@ -231,7 +231,7 @@ const rootReducer = (state = initialState, action) => {
     case CLEAR_CART_OF_DB: {
       return {
         ...state,
-        clearCartOfDB: state.clearCartOfDB + 1,
+        clearCartOfDB: action.payload,
       };
     }
 

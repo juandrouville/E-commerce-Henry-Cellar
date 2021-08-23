@@ -375,6 +375,7 @@ export function removeOrderline(orderlineId, deleteAll = false) {
     }
   };
 }
+let id=1
 
 export function clearCartOfDB(orderId) {
   return async dispatch => {
@@ -382,7 +383,7 @@ export function clearCartOfDB(orderId) {
       const res = await axios.delete(
         `/clearCart/${orderId}` || `http://localhost:3001/clearCart/${orderId}`
       );
-      dispatch({ type: CLEAR_CART_OF_DB, payload: res.data });
+      dispatch({ type: CLEAR_CART_OF_DB, payload: id++});
     } catch (error) {
       alert("ERROR AL LIMPIAR EL CARRITO EN LA BASE DE DATOS");
     }
