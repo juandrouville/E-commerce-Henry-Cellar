@@ -86,10 +86,6 @@ const NuevaNavBar = () => {
                 : null}
             </li>
 
-            <br></br>
-            <br></br>
-            <br></br>
-
             <li className="nav-text">
               <NavLink to="/aboutUs" refresh="true">
                 <FcAbout />
