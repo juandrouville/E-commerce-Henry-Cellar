@@ -35,7 +35,8 @@ export const USER_ID = "USER_ID";
 
 export const GET_ALL_ORDERS="GET_ALL_ORDERS"
 export const EDIT_ORDER="EDIT_ORDER"
-
+export const EDIT_USER="EDIT_USER"
+export const CLEAR_ALL_USERS="CLEAR_ALL_USERS"
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -115,7 +116,7 @@ export function getAllproducts(page, filter, valuefilter) {
 export function getAllUsers() {
   return async dispatch => {
     const res = await axios.get(
-      `getAllUsers` || `http://localhost:3001/getAllUsers`
+      `/getAllUsers` || `http://localhost:3001/getAllUsers`
     );
     const V = res.data;
     dispatch({ type: GET_ALL_USERS, payload: V });
@@ -425,7 +426,12 @@ export function editOrder(orderId,newValue){
   return async dispatch => {
     try {
       const res = await axios.put(
-        `/editOrder/${orderId}` || `http://localhost:3001/editOrder/${orderId}`,{state:newValue}
+        `/editOrder/${orderId}` || `http://localhost:3001/editOrder/${orderId}`,
+        {
+          blocked:newValue.blocked,
+          adress:newValue.adress,
+          admin:newValue.admin
+        }
       );
       dispatch({ type: EDIT_ORDER, payload: res.data });
     } catch (error) {
@@ -434,3 +440,22 @@ export function editOrder(orderId,newValue){
   };
 }
 
+export function editUser(userId,newValue){
+  return async dispatch => {
+    try {
+      const res = await axios.put(
+        `/editUser/${userId}` || `http://localhost:3001/editUser/${userId}`,
+        newValue
+      );
+      dispatch({ type: EDIT_USER, payload: res.data });
+    } catch (error) {
+      alert("ERROR AL EDITAR EL USUARIO");
+    }
+  };
+}
+
+export function clearAllUsers(){
+  return {
+    type:CLEAR_ALL_USERS
+  }
+}
