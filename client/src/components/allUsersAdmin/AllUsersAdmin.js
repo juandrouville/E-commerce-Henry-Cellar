@@ -51,18 +51,8 @@ function AllUsersAdmin({ users, GetUsers }) {
 
 console.log(users);
   return (
-    <LayoutPrimary>
-      <div className="all_products_container">
-      <NavLink
-          to="/AdminPanel"
-          refresh="true"
-          className="back_to_admin_panel"
-        >
-          <RiIcons.RiAdminLine />
-
-          <h3 className="h3">Back to AdminPanel</h3>
-        </NavLink>
-        <Materialtable
+      <div>
+      <Materialtable
           title="Users"
           columns={columns}
           data={users}
@@ -128,7 +118,6 @@ console.log(users);
           }}
         />
       </div>
-    </LayoutPrimary>
   );
 }
 

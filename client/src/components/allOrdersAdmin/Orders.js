@@ -9,9 +9,10 @@ import { useHistory } from "react-router-dom";
 import LayoutPrimary from "layouts/layout-primary";
 import Materialtable from "material-table";
 import { forwardRef } from "react";
-import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import Edit from "@material-ui/icons/Edit";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
+import emailjs from "emailjs-com";
+import toast from "react-hot-toast";
 
 const tableIcons = {
     Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
@@ -20,10 +21,10 @@ const tableIcons = {
     ))
   };
 
+
+
 export default function Orders() {
 
-    // FALTA DEFINIR BIEN LOS POSIBLES ESTADOS DE ORDENES EN EL MODELO ORDER.STATE TYPE ARRAY...
-    // FALTA DEFINIR EL TOTAL EN BD CUANDO EL ADMIN APRUEBA COMPRA (EN EL BACK)
 
    const history = useHistory();
    const dispatch = useDispatch()
@@ -32,9 +33,14 @@ export default function Orders() {
 
    useEffect(()=>{dispatch(getAllOrders())},[dispatch])
 
-  const handleStateChange=e=>{
+  const handleStateChange=async(e,rowData)=>{
      dispatch(editOrder(e.target.id,e.target.value))
-
+     try {
+       await emailjs.send('service_7hulls6',"template_jrogisn",rowData,"user_BJC5R9YmSgfq18FKCkmzN")
+       toast.success(`An email was sent to the user ${rowData.user.firstName} ${rowData.user.lastName}`)
+     } catch (error) {
+       console.log(error)
+     }
   }
 
   const columns = [
@@ -45,7 +51,7 @@ export default function Orders() {
 
       render: rowData => (
          
-        <select  onChange={handleStateChange} id={rowData.id} defaultValue={rowData.state} >
+        <select  onChange={(e)=>handleStateChange(e,rowData)} id={rowData.id} defaultValue={rowData.state}>
         <option value="pending">Pending</option>    
         <option value="accepted">Accepted</option>
         <option value="rejected">Rejected</option>
@@ -63,9 +69,8 @@ export default function Orders() {
     ];
 
     return (
-        <div>
-            <LayoutPrimary>
-            <div className="all_orders_container">
+        
+        <div className="all_orders_container">
         <Materialtable
           title="All Orders"
           columns={columns}
@@ -121,8 +126,6 @@ export default function Orders() {
 
           ]}
         />
-      </div>
-            </LayoutPrimary>
-        </div>
+      </div> 
     )
 }
