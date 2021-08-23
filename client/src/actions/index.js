@@ -29,12 +29,11 @@ export const GET_DB_ORDERLINES = "GET_DB_ORDERLINES";
 export const ADD_PRODUCT_TO_DB_CART = "ADD_PRODUCT_TO_DB_CART";
 export const REMOVE_ORDERLINE_FROM_DB = "REMOVE_ORDERLINE_FROM_DB";
 export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
-export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const GET_DB_ORDER = "GET_DB_ORDER";
 export const USER_ID = "USER_ID";
-
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 export const EDIT_ORDER = "EDIT_ORDER";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -439,18 +438,6 @@ export function editOrder(orderId, newValue) {
       dispatch({ type: EDIT_ORDER, payload: res.data });
     } catch (error) {
       alert("ERROR AL EDITAR LA ORDER");
-    }
-  };
-}
-export function removeProduct(id) {
-  return async dispatch => {
-    try {
-      const res = await axios.delete(
-        `/removeProduct/${id}` || `http://localhost:3001/removeProduct/${id}`
-      );
-      dispatch({ type: REMOVE_PRODUCT, payload: res.data });
-    } catch (error) {
-      alert("Se chingó el sistema -remove product error-");
     }
   };
 }

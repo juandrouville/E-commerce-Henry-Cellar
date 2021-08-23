@@ -48,8 +48,7 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
   }, [GetProducts]);
 
   useEffect(() => {
-    DeleteProduct().then(alert("Delete successfull!"));
-    return GetProducts();
+    DeleteProduct();
   }, [DeleteProduct]);
 
   return (
@@ -94,9 +93,11 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
             tooltip: "Delete Product",
             onClick: (event, rowData) => {
               window.confirm(
-                "Are you sure you want to delete on row with id: " + rowData.id,
-                DeleteProduct(rowData.id)
+                "Are you sure you want to delete on row with id: " + rowData.id
               );
+              DeleteProduct(rowData.id);
+              alert("Delete successfull!");
+              GetProducts();
             }
           }
         ]}
