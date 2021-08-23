@@ -92,11 +92,17 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
             icon: DeleteOutline,
             tooltip: "Delete Product",
             onClick: (event, rowData) => {
-              window.confirm(
-                "Are you sure you want to delete on row with id: " + rowData.id
+              var answer = window.confirm(
+                "Are you sure you want to delete the product: " +
+                  rowData.name +
+                  "?"
               );
-              DeleteProduct(rowData.id);
-              alert("Delete successfull!");
+              if (answer) {
+                DeleteProduct(rowData.id);
+                alert("Delete successfull!");
+              } else {
+                return;
+              }
             }
           }
         ]}
