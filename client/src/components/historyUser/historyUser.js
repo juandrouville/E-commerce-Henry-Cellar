@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import {
     getDbOrder,
-    userid
+   
 } from "../../actions/index";
 
 
 export default function HistoryUser() {
     const dispatch = useDispatch();
     const order = useSelector((state) => state.order);
+    const user = useSelector((state) => state.user);
 
 
     // const { isAuthenticated } = useAuth0();
@@ -17,13 +18,10 @@ export default function HistoryUser() {
  
 
     useEffect(() => {
-        dispatch(userid())
+     
         dispatch(getDbOrder())
 
     }, [dispatch])
-
-    const orderline = [];
-
 
     return (
         <div>

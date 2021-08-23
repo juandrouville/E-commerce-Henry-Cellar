@@ -1,6 +1,7 @@
 //REACT
 import React from "react";
 import { useEffect } from "react";
+import {Link} from "react-router-dom"
 
 //REACT-REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -89,7 +90,10 @@ const Home = props => {
       </div>
       <Carousel />
       {isAuthenticated ?
-        <div><HistoryUser /></div>
+      <Link to="/prueba" >
+      <button>historial</button>
+    </Link>
+        // <div><HistoryUser /></div>
         : null}
 
       <div id="catalogo">

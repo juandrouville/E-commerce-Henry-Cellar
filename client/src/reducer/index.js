@@ -40,7 +40,7 @@ const initialState = {
   page: 0,
   user: undefined,
   productFavourite: [],
-  editFavorites:undefined,
+  editFavorites: undefined,
   setPagination: {
     filter: "",
     valueFilter: "",
@@ -131,34 +131,34 @@ const rootReducer = (state = initialState, action) => {
 
       return itemInCart
         ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === newItem.id
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-            ),
-          }
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        }
         : {
-            ...state,
-            cart: [...state.cart, { ...newItem, quantity: 1 }],
-          };
+          ...state,
+          cart: [...state.cart, { ...newItem, quantity: 1 }],
+        };
     }
     case REMOVE_ONE_FROM_CART: {
       let itemToDelete = state.cart.find((item) => item.id === action.payload);
 
       return itemToDelete.quantity > 1
         ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === action.payload
-                ? { ...item, quantity: item.quantity - 1 }
-                : item
-            ),
-          }
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === action.payload
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          ),
+        }
         : {
-            ...state,
-            cart: state.cart.filter((item) => item.id !== action.payload),
-          };
+          ...state,
+          cart: state.cart.filter((item) => item.id !== action.payload),
+        };
     }
     case REMOVE_ALL_FROM_CART: {
       return {
@@ -187,13 +187,13 @@ const rootReducer = (state = initialState, action) => {
     case EDIT_FAVORITES: {
       return {
         ...state,
-        editFavorites:action.payload
+        editFavorites: action.payload
       }
     }
-    case GET_FAVORITES:{
+    case GET_FAVORITES: {
       return {
         ...state,
-        productFavourite:action.payload
+        productFavourite: action.payload
       }
     }
     case CLEAR_USER: {
@@ -228,14 +228,24 @@ const rootReducer = (state = initialState, action) => {
     }
 
     case GET_DB_ORDER: {
-      
-     
-      return {
-        
-        
+
+      const userid = state.user.dataValues.id
+      const userID = [];
+
+      for (var i = 0; i < action.payload.length; i++) {
+        userID.push({ id: action.payload[i].userId });
+      }
+
+      let UserID = userID.find((item) => item.id === userid);
+
+      return UserID ? {
         ...state,
         order: action.payload,
-      }  
+      } : {
+        order: [],
+      }
+
+
     }
     case GET_ALL_USERS: {
       return {
@@ -244,12 +254,12 @@ const rootReducer = (state = initialState, action) => {
 
       };
     }
-    case USER_ID:{
-      return{
-        ...state,
-        userid: [...state.user.dataValues.id],
-      }
-    }
+    // case USER_ID: {
+    //   let idusuario = state.user.length;
+    //   return idusuario
+    //     ? { ...state, userid: [...state.user.dataValues.id] }
+    //     : "error de userid";
+    // }
     default: {
       return state;
     }
