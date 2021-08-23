@@ -390,10 +390,14 @@ export function clearCartOfDB(orderId) {
 
 export function getDbOrder() {
   return async dispatch => {
-    const res = await axios.get(
-      `http://localhost:3001/getorder`
-    );
-    dispatch({ type: GET_DB_ORDER, payload: res.data });
+    try {
+      const res = await axios.get(
+        `/getAllOrders` || `http://localhost:3001/getAllOrders`
+      );
+      dispatch({ type: GET_DB_ORDER, payload: res.data });
+    } catch (error) {
+      alert("ERROR AL OBTENER TODAS LAS ORDENES");
+    }
   };
 }
 

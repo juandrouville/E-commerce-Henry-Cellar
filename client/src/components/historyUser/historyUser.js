@@ -43,10 +43,14 @@ export default function HistoryUser() {
                                     {i.orderlines.length ?
                                         i.orderlines.map((i) => {
                                             return (
-                                                <h3>Product: {i.productId} amount: {i.amount}</h3>
+                                                <h3>Product: {i.product.name} amount: {i.amount} unit price: ${i.product.price} Subtotal: $ {i.product.price*i.amount}</h3>
+
                                             )
-                                        }) : null}
-                                    <h2>Total: ${i.total}</h2>
+                                        }) 
+                                    
+                                    : null}
+                                    <h2>Total: $ {i.orderlines.reduce((a,b)=>a+(b.product.price*b.amount),0)}</h2>
+
 
                                 </div>
                             )
