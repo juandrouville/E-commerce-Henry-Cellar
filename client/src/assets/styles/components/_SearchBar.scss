@@ -1,37 +1,4 @@
-// .search-box {
-//   display: flex;
-//   margin-right: 30px;
-//   align-items: center;
-//   border-radius: 20px;
 
-//   input {
-//     width: 150px;
-//     height: 35px;
-//     border-radius: 20px;
-//     padding: 5px;
-//     outline: none;
-
-//     @include response(medium) {
-//       width: 200px;
-//     }
-//   }
-
-//   button {
-//     cursor: pointer;
-//     height: 35px;
-//     width: 70px;
-//     background-color: rgb(140, 33, 33);
-//     border: 0;
-//     border-radius: 24px;
-//     color: white;
-//     font-weight: 700;
-//     &:hover {
-//       background-color: white;
-//       color: rgb(140, 33, 33);
-//       border: 1px solid rgb(140, 33, 33);
-//     }
-//   }
-// }
 
 .search{
   position:relative;
