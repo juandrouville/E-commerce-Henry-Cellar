@@ -23,8 +23,13 @@ import {
   ADD_PRODUCT_TO_DB_CART,
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB,
+  GET_DB_ORDER,
   GET_ALL_USERS,
+
+  USER_ID,
+
   GET_ALL_ORDERS
+
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -39,7 +44,7 @@ const initialState = {
   page: 0,
   user: undefined,
   productFavourite: [],
-  editFavorites:undefined,
+  editFavorites: undefined,
   setPagination: {
     filter: "",
     valueFilter: "",
@@ -49,7 +54,12 @@ const initialState = {
   addProductToDB: undefined,
   orderlineRemoved: undefined,
   clearCartOfDB: 0,
+
+  order: [],
+  userid: [],
+
   allOrders:[]
+
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -129,34 +139,34 @@ const rootReducer = (state = initialState, action) => {
 
       return itemInCart
         ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === newItem.id
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-            ),
-          }
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        }
         : {
-            ...state,
-            cart: [...state.cart, { ...newItem, quantity: 1 }],
-          };
+          ...state,
+          cart: [...state.cart, { ...newItem, quantity: 1 }],
+        };
     }
     case REMOVE_ONE_FROM_CART: {
       let itemToDelete = state.cart.find((item) => item.id === action.payload);
 
       return itemToDelete.quantity > 1
         ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === action.payload
-                ? { ...item, quantity: item.quantity - 1 }
-                : item
-            ),
-          }
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === action.payload
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          ),
+        }
         : {
-            ...state,
-            cart: state.cart.filter((item) => item.id !== action.payload),
-          };
+          ...state,
+          cart: state.cart.filter((item) => item.id !== action.payload),
+        };
     }
     case REMOVE_ALL_FROM_CART: {
       return {
@@ -185,13 +195,13 @@ const rootReducer = (state = initialState, action) => {
     case EDIT_FAVORITES: {
       return {
         ...state,
-        editFavorites:action.payload
+        editFavorites: action.payload
       }
     }
-    case GET_FAVORITES:{
+    case GET_FAVORITES: {
       return {
         ...state,
-        productFavourite:action.payload
+        productFavourite: action.payload
       }
     }
     case CLEAR_USER: {
@@ -224,18 +234,49 @@ const rootReducer = (state = initialState, action) => {
         clearCartOfDB: state.clearCartOfDB + 1,
       };
     }
+
+    case GET_DB_ORDER: {
+
+      const userid = state.user.dataValues.id
+      const userID = [];
+
+      for (var i = 0; i < action.payload.length; i++) {
+        userID.push({ id: action.payload[i].userId });
+      }
+
+      let UserID = userID.find((item) => item.id === userid);
+
+      return UserID ? {
+        ...state,
+        order: action.payload,
+      } : {
+        order: [],
+      }
+
+
+    }
     case GET_ALL_USERS: {
       return {
         ...state,
         getAllUsers: action.payload,
+
       };
     }
+
+    // case USER_ID: {
+    //   let idusuario = state.user.length;
+    //   return idusuario
+    //     ? { ...state, userid: [...state.user.dataValues.id] }
+    //     : "error de userid";
+    // }
+
     case GET_ALL_ORDERS:{
       return {
         ...state,
         allOrders:action.payload
       }
     }
+
     default: {
       return state;
     }

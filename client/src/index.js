@@ -44,7 +44,7 @@ ReactDOM.render(
       <Auth0ProviderWithHistory>
         <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
-        <Route exact path="/prueba" component={Carousel} />
+        <Route exact path="/prueba" component={Prueba} />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/AuthNav" component={AuthNav} />

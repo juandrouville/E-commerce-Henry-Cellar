@@ -1,19 +1,17 @@
 const { Order } = require('../db')
 const { Orderline } = require('../db');
-const { User }= require("../db");
+const { User } = require("../db");
 
 async function getOrder(req, res, next) {
     try {
 
-        const { id } = req.params
 
-        const order = await Order.findOne({
-            where: { id },
+
+        const order = await Order.findAll({
+
             attributes: { exclude: ["createdAt", "updatedAt"] },
             include: {
                 model: Orderline,
-               
-               
             },
         });
 
