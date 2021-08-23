@@ -5,6 +5,9 @@ async function getUser(req, res, next) {
     try {
         const { id } = req.params
         const { given_name, family_name, nickname, picture, email } = req.body
+        let isAdmin=false
+        if(email==="wineecommerce14@gmail.com") isAdmin=true
+
         var userSearched = await User.findOrCreate({
             where: {
                 id: id,
@@ -13,6 +16,7 @@ async function getUser(req, res, next) {
                 userName: nickname,
                 image: picture,
                 email: email,
+                admin: isAdmin 
             }, attributes: { exclude: ["createdAt", "updatedAt"] }
         });
 

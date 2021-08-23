@@ -51,7 +51,6 @@ export default function Orders() {
         <option value="rejected">Rejected</option>
         <option value="sent">Sent it</option>
         <option value="recieved">Recieved</option>
-        <option value="finished">Finished PRUEBA</option>
         </select>
       )
 
@@ -59,7 +58,8 @@ export default function Orders() {
     { title: "User", field: "user.userName" },
     // { title: "Description", field: "description" },
     { title: "Shipping Method", field: "shippingMethod"},
-    { title: "Payment Method", field: "paymentMethod" }
+    { title: "Payment Method", field: "paymentMethod" },
+    { title: "User adress", field: "user.adress" }
     ];
 
     return (
@@ -88,7 +88,7 @@ export default function Orders() {
               tooltip: "Show description",
 
               render: rowData => {
-
+                let totalOfOrder=rowData.orderlines.reduce((a,b)=>a+(b.product.price*b.amount),0)
                 return (
                   <div
                     style={{
@@ -111,7 +111,7 @@ export default function Orders() {
                 
                     )}
                     </ul><br></br>
-                    <span>Total: $ {rowData.orderlines.reduce((a,b)=>a+(b.product.price*b.amount),0)}</span>
+                    <span>Total: $ {totalOfOrder}</span>
                     </div>:null}
                   </div>
                 );
