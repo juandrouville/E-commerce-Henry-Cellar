@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import LayoutPrimary from "layouts/layout-primary";
 // import { useAuth0 } from "@auth0/auth0-react";
 import {
     getDbOrder,
-   
+
 } from "../../actions/index";
 
 
@@ -14,44 +15,49 @@ export default function HistoryUser() {
 
 
     // const { isAuthenticated } = useAuth0();
-    
- 
+
+
 
     useEffect(() => {
-     
+
         dispatch(getDbOrder())
 
     }, [dispatch])
 
     return (
-        <div>
-            <h2>historial de compras</h2>
-            
-           
-            <div>
-                {order.length ? (
-                    order.map((i)=>{
-                        return(
+        <LayoutPrimary>
 
-                            <div>
-                              <h2>state:{i.state}</h2>
-                              <h2>total:{i.total}</h2>
-                              {i.orderlines.length ? 
-                               i.orderlines.map((i) => {
-                                   return(
-                                    <h2>amount:{i.amount}</h2>   
-                                   )
-                               }) : null }
-                              
-                            </div>
-                        )
-                    })
-                        
-                    
-                ) : (
-                    <h2 className="empty_cart"> cargando... </h2>
-                )}
+            <div className="historyContainer">
+                <h2>my purchase history</h2>
+
+
+                <div >
+                    {order.length ? (
+                        order.map((i) => {
+                            return (
+
+                                <div className="divMap">
+
+                                    <h3>order number: {i.id}</h3>
+                                    <h3>state: {i.state}</h3>
+                                    {i.orderlines.length ?
+                                        i.orderlines.map((i) => {
+                                            return (
+                                                <h3>producto: {i.productId} amount: {i.amount}</h3>
+                                            )
+                                        }) : null}
+                                    <h2>total: ${i.total}</h2>
+
+                                </div>
+                            )
+                        })
+
+
+                    ) : (
+                        <h2 className="empty_cart"> cargando... </h2>
+                    )}
+                </div>
             </div>
-        </div>
+        </LayoutPrimary>
     );
 }
