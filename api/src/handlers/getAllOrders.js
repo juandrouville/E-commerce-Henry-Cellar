@@ -8,7 +8,7 @@ async function getAllOrders(req , res, next){
         var allOrders = await Order.findAll({
         include:
         [
-            {model:User,attributes:{exclude: ["createdAt", "updatedAt"]},where:{admin:false}},
+            {model:User,attributes:{exclude: ["createdAt", "updatedAt"]}},
             {model:Orderline,attributes:{exclude: ["createdAt", "updatedAt"]},include:
                {model:Product,attributes:{exclude: ["createdAt", "updatedAt","description","image","stock","wineryId"]}}}
         ],

@@ -7,7 +7,6 @@ async function getAllUsers(req , res , next){
             attributes: { 
                 exclude: ["createdAt", "updatedAt"] 
             },
-            where:{admin:false}
             }
             );
             
