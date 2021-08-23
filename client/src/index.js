@@ -24,7 +24,8 @@ import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
 import dotenv from "dotenv";
-
+import MercadoPago from "../src/components/mercadopago/MercadoPago"
+import finalcompra from "../src/components/Compra/finalcompra"
 dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
@@ -45,6 +46,8 @@ ReactDOM.render(
         />
         <Route path="/edit" component={Edit} />
         <Route path="/profile" component={profile} />
+        <Route exact path="/user/pagar" component={MercadoPago} />                                                
+        <Route exact path="/user/finalizarcompra" component={finalcompra} />
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,

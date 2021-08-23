@@ -51,5 +51,35 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    googleId: {
+      type: DataTypes.TEXT
+    },
+    calle: {
+      type: DataTypes.TEXT
+    },
+    numero: {
+      type: DataTypes.INTEGER
+    },
+    localidad: {
+      type: DataTypes.TEXT
+    },
+    provincia: {
+      type: DataTypes.TEXT
+    },
+    codigoPostal: {
+      type: DataTypes.INTEGER
+    },
+    numeroDeTarjeta: {
+      type: DataTypes.INTEGER,
+    },
+    nombreT: {
+      type: DataTypes.STRING,
+    },
+    fechaDeExpiracion: {
+      type: DataTypes.STRING,
+    },
+    codigoDeSeguridad: {
+      type: DataTypes.INTEGER,
+    },
   });
 };
