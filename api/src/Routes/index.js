@@ -19,6 +19,8 @@ const getAllUsers = require("./getAllUsers");
 const getOrder = require("./getOrder");
 const getFavorites = require("./getFavorites");
 const editFavorites = require("./editFavorites");
+const getAllOrders = require("./getAllOrders");
+const editOrder = require("./editOrder");
 const removeProduct = require("./removeProduct");
 
 router.use("/allproducts", getAllProductsRouter);
@@ -39,6 +41,8 @@ router.use("/getAllUsers", getAllUsers);
 router.use("/getorder", getOrder);
 router.use("/getFavorites", getFavorites);
 router.use("/editFavorites", editFavorites);
+router.use("/getAllOrders", getAllOrders);
+router.use("/editOrder", editOrder);
 router.use("/removeProduct", removeProduct);
 
 module.exports = router;

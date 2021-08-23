@@ -23,8 +23,11 @@ import {
   ADD_PRODUCT_TO_DB_CART,
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB,
+  GET_DB_ORDER,
   GET_ALL_USERS,
-  REMOVE_PRODUCT
+  USER_ID,
+  REMOVE_PRODUCT,
+  GET_ALL_ORDERS
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -47,7 +50,12 @@ const initialState = {
   orderlines: [],
   addProductToDB: undefined,
   orderlineRemoved: undefined,
-  clearCartOfDB: 0
+  clearCartOfDB: 0,
+
+  order: [],
+  userid: [],
+
+  allOrders: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -222,10 +230,44 @@ const rootReducer = (state = initialState, action) => {
         clearCartOfDB: state.clearCartOfDB + 1
       };
     }
+
+    case GET_DB_ORDER: {
+      const userid = state.user.dataValues.id;
+      const userID = [];
+
+      for (var i = 0; i < action.payload.length; i++) {
+        userID.push({ id: action.payload[i].userId });
+      }
+
+      let UserID = userID.find(item => item.id === userid);
+
+      return UserID
+        ? {
+            ...state,
+            order: action.payload
+          }
+        : {
+            order: []
+          };
+    }
     case GET_ALL_USERS: {
       return {
         ...state,
         getAllUsers: action.payload
+      };
+    }
+
+    // case USER_ID: {
+    //   let idusuario = state.user.length;
+    //   return idusuario
+    //     ? { ...state, userid: [...state.user.dataValues.id] }
+    //     : "error de userid";
+    // }
+
+    case GET_ALL_ORDERS: {
+      return {
+        ...state,
+        allOrders: action.payload
       };
     }
     case REMOVE_PRODUCT: {

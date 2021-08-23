@@ -31,14 +31,14 @@ const NuevaNavBar = () => {
           </Link>
           {isAuthenticated ? (
             <h3 className="welcome">
-              Welcome, 
+              Welcome,
               <NavLink
                 to="/Profile"
                 refresh="true"
                 style={{ textDecoration: "none" }}
               >
                 <p style={{ color: "#ffffff" }}> {user.given_name} <CgProfile /></p>
-              
+
               </NavLink>
             </h3>
           ) : null}
@@ -68,18 +68,23 @@ const NuevaNavBar = () => {
             </li>
             <li className="nav-text">
               {isAuthenticated &&
-              (user.sub === "google-oauth2|102669847324725021364" ||
-                user.sub === "google-oauth2|109028710743016612481" ||
-                user.sub === "google-oauth2|110496112430074927748") ? (
+                (user.sub === "google-oauth2|102669847324725021364" ||
+                  user.sub === "google-oauth2|109028710743016612481" ||
+                  user.sub === "google-oauth2|110496112430074927748") ? (
                 <NavLink to="/AdminPanel" refresh="true">
                   <RiIcons.RiAdminLine />
                   <h3 className="h3">AdminPanel</h3>
                 </NavLink>
               ) : null}
             </li>
-            <br></br>
-            <br></br>
-            <br></br>
+            <li className="nav-text">
+              {isAuthenticated ?
+                <NavLink to="/prueba" refresh="true">
+                  <AiIcons.AiOutlineHistory />
+                  <h3 className="h3">My Shopping</h3>
+                </NavLink>
+                : null}
+            </li>
 
             <li className="nav-text">
               <NavLink to="/aboutUs" refresh="true">

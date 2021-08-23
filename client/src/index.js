@@ -32,6 +32,7 @@ import Carousel from "../src/components/carousel/carousel";
 import AllProductsAdmin from "components/allProductsAdmin/AllProductsAdmin";
 import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
 import EditProduct from "components/Edit/Edit";
+import Orders from "components/allOrdersAdmin/Orders";
 
 dotenv.config();
 
@@ -43,16 +44,18 @@ ReactDOM.render(
       <Auth0ProviderWithHistory>
         <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
-        <Route exact path="/prueba" component={Carousel} />
+        <Route exact path="/prueba" component={Prueba} />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/AuthNav" component={AuthNav} />
-        <Route exact path="/create" component={PostProduct} />
         <Route exact path="/ContactUs" component={ContactUs} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
         <Route path="/editProduct/:id" render={({match})=><EditProduct id={match.params.id}/>}/>
+        <Route path="/admin" component={AdminPanel}/>
+        <Route exact path="/admin/create" component={PostProduct} />
         <Route exact path="/admin/products" component={AllProductsAdmin} /> 
         <Route exact path="/admin/users" component={AllUsersAdmin} />
+        <Route exact path="/admin/orders" component={Orders}/>
         {/* <Route path="/edit" component={Edit} /> */}
         <Route path="/profile" component={profile} />
         <Route path="/aboutUs" component={AboutUs} />

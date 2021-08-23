@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const {getOrder} = require("../handlers/getOrder");
+const { editOrder} = require("../handlers/editOrder")
 const router = Router();
 
-router.get("/", getOrder);
+router.put("/:orderId", editOrder);
 
 
 module.exports = router;
