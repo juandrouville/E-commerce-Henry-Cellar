@@ -45,7 +45,7 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
 
   useEffect(() => {
     GetProducts();
-  }, [GetProducts]);
+  }, [products]);
 
   useEffect(() => {
     DeleteProduct();
@@ -97,7 +97,6 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
               );
               DeleteProduct(rowData.id);
               alert("Delete successfull!");
-              GetProducts();
             }
           }
         ]}
