@@ -89,13 +89,6 @@ const Home = props => {
         </div>
       </div>
       <Carousel />
-      {isAuthenticated ?
-      <Link to="/prueba" >
-      <button>historial</button>
-    </Link>
-        // <div><HistoryUser /></div>
-        : null}
-
       <div id="catalogo">
         <h1 className="catalogo__title">Catalog</h1>
         <div>
