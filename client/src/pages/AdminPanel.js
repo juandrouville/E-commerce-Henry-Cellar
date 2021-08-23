@@ -15,7 +15,9 @@ const AdminPanel = () => {
         <NavLink to="/create" refresh="true" style={{ textDecoration: "none" }}>
           <h3>Post New Product</h3>
         </NavLink>
-        
+        <NavLink to="/admin/orders" refresh="true" style={{ textDecoration: "none" }}>
+          <h3>Orders</h3>
+        </NavLink>
         <NavLink
           to="/admin/users"
           refresh="true"
