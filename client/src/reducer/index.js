@@ -25,7 +25,11 @@ import {
   CLEAR_CART_OF_DB,
   GET_DB_ORDER,
   GET_ALL_USERS,
+
   USER_ID,
+
+  GET_ALL_ORDERS
+
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -50,8 +54,12 @@ const initialState = {
   addProductToDB: undefined,
   orderlineRemoved: undefined,
   clearCartOfDB: 0,
+
   order: [],
   userid: [],
+
+  allOrders:[]
+
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -254,12 +262,21 @@ const rootReducer = (state = initialState, action) => {
 
       };
     }
+
     // case USER_ID: {
     //   let idusuario = state.user.length;
     //   return idusuario
     //     ? { ...state, userid: [...state.user.dataValues.id] }
     //     : "error de userid";
     // }
+
+    case GET_ALL_ORDERS:{
+      return {
+        ...state,
+        allOrders:action.payload
+      }
+    }
+
     default: {
       return state;
     }

@@ -14,8 +14,8 @@ const LogoutButton = () => {
         onClick={() => {
           dispatch(clearUser());
           logout({
-            returnTo:
-              "https://*.vercel.app/home" || "http://localhost:3000/home"
+           
+            returnTo: window.location.origin,
           });
         }}
       >

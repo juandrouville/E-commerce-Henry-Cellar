@@ -29,7 +29,7 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const addFavourite = (id) => {
-    dispatch(editFavorites(id,user.sub,false));
+    dispatch(editFavorites(id, user.sub, false));
   };
 
   const addToCart = (id) => {
@@ -38,57 +38,61 @@ export default function ProductDetail() {
   };
   return (
     <Layout>
-      <div>
+      <div className="page_productDetail">
         {productDetail ? (
           <>
             <div className="product__detail">
-              <img src={productDetail.image} alt="Loading..." width="40%" />
+              <img src={productDetail.image} alt="Loading..." className="productImage"/>
               <div className="product__data">
                 <div className="name__price">
-                  <h1>{productDetail.name}</h1>
-                  <h1>$ {productDetail.price}</h1>
+                  <h1 className="productName">{productDetail.name}</h1>
+                  <p className="stock">Stock: {productDetail.stock} unidades</p>
+                  <h1 className="productPrice">$ {productDetail.price}</h1>
                 </div>
-                <p className="data__description">
-                  {" "}
-                  {productDetail.description}{" "}
-                </p>
-                <p>Stock: {productDetail.stock} unidades</p>
+                <div className="containerDescription">
+                  <h2>Description : </h2>
+                  <p className="data__description">
+                    {" "}
+                    {productDetail.description}{" "}
+                  </p>
+                </div>
+                <div className="buyFavButtons">
+              <button onClick={() => addToCart(productDetail.id)}>
+                <img src={cart2} alt="cartlogo" width="30" height="30" />
+              </button>
+              {isAuthenticated ? (
+                <button onClick={() => addFavourite(productDetail.id)}>
+                  Fav <FaStar className="star" color="#ffc107" size={15} />
+                </button>
+              ) : null}
+              
               </div>
             </div>
-            <div className="buyFavButtons">
-            <button onClick={() => addToCart(productDetail.id)}>
-              <img src={cart2} alt="cartlogo" width="30" height="30" />
-            </button>
-            {isAuthenticated ? (
-              <button onClick={() => addFavourite(productDetail.id)}>
-                Fav <FaStar className="star" color="#ffc107" size={15} />
-              </button>
-            ) : null}
+
             </div>
           </>
         ) : (
           <p>Cargando...</p>
         )}
 
-
-      ) : (
-      <p>Cargando...</p>
-      )}
       
-      {productDetail.reviews ?
-        productDetail.reviews.map(ele => {
-          return (
-            <div className="containerReviews">
-            <Review review={{ ...ele }} />
-            </div>
-          )
-        }) : (
-
-          <p>Sin Comentarios </p>
-        )}
-
-        <PostReview productId={productDetail.id} />
+        {productDetail.reviews ?
+          productDetail.reviews.map(ele => {
+            return (
+                <Review review={{ ...ele }} />
+            )
+          }) : (
+            <div className="sinComentarios">
+            <p>No reviews </p>
+          </div>
+          )}
       </div>
+        <PostReview productId={productDetail.id} />
+      
     </Layout>
   );
 }
+              
+              
+
+

@@ -32,6 +32,7 @@ import Carousel from "../src/components/carousel/carousel";
 import AllProductsAdmin from "components/allProductsAdmin/AllProductsAdmin";
 import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
 import EditProduct from "components/Edit/Edit";
+import Orders from "components/allOrdersAdmin/Orders";
 
 dotenv.config();
 
@@ -53,6 +54,7 @@ ReactDOM.render(
         <Route path="/editProduct/:id" render={({match})=><EditProduct id={match.params.id}/>}/>
         <Route exact path="/admin/products" component={AllProductsAdmin} /> 
         <Route exact path="/admin/users" component={AllUsersAdmin} />
+        <Route exact path="/admin/orders" component={Orders}/>
         {/* <Route path="/edit" component={Edit} /> */}
         <Route path="/profile" component={profile} />
         <Route path="/aboutUs" component={AboutUs} />
