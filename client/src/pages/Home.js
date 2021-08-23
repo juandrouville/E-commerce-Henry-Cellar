@@ -1,7 +1,7 @@
 //REACT
 import React from "react";
 import { useEffect } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 //REACT-REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -88,7 +88,10 @@ const Home = props => {
           <h1>we have more than 90 varieties of wines</h1>
         </div>
       </div>
-      <Carousel />
+      {isAuthenticated ?
+        <Carousel />
+        : null}
+
       <div id="catalogo">
         <h1 className="catalogo__title">Catalog</h1>
         <div>
