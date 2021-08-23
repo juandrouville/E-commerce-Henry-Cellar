@@ -25,6 +25,7 @@ import {
   CLEAR_CART_OF_DB,
   GET_DB_ORDER,
   GET_ALL_USERS,
+  CLEAR_ALL_USERS,
   USER_ID,
   REMOVE_PRODUCT,
   GET_ALL_ORDERS
@@ -50,7 +51,7 @@ const initialState = {
   orderlines: [],
   addProductToDB: undefined,
   orderlineRemoved: undefined,
-  clearCartOfDB: 0,
+  clearCartOfDB: undefined,
 
   order: [],
   userid: [],
@@ -227,7 +228,8 @@ const rootReducer = (state = initialState, action) => {
     case CLEAR_CART_OF_DB: {
       return {
         ...state,
-        clearCartOfDB: state.clearCartOfDB + 1
+        clearCartOfDB: action.payload,
+
       };
     }
 
@@ -253,7 +255,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_USERS: {
       return {
         ...state,
-        getAllUsers: action.payload
+        allUsers: action.payload,
       };
     }
 
@@ -274,6 +276,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       };
+    }
+    case CLEAR_ALL_USERS:{
+      return {
+        ...state,
+        allUsers:[]
+      }
     }
     default: {
       return state;

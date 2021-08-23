@@ -56,15 +56,7 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
             <p className="product_nostock">No stock</p>
           )}
 
-          {isAuthenticated &&
-          (user.sub === "google-oauth2|102669847324725021364" ||
-            user.sub === "google-oauth2|109028710743016612481" ||
-            user.sub === "google-oauth2|110496112430074927748") ? (
-            <div className="cartButton">
-              <button onClick={() => edit_Product(id)}>Edit Product</button>
-              <button>Delete Product</button>
-            </div>
-          ) : (
+          
             <div className="cartButton">
               {isAuthenticated ? (<button onClick={() => addFavourite(id)}>
                 Fav <FaStar className="star" color="#ffc107" size={15} />
@@ -76,7 +68,7 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
                 <img src={cart2} alt="cartlogo"/>
               </button>
             </div>
-          )}
+          
         </div>
       </div>
     </div>

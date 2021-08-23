@@ -99,7 +99,14 @@
       transition: all 0.3s ease;
       box-shadow: 0 6px 6px rgba(0,0,0,0.2);
     }
-  }
+   &:active{
+    background-color: green;
+    transform: scale(1.2);
+    border:0px
+   }
+ }
+
+  
 }
     
 .containerReviews{

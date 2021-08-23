@@ -13,8 +13,8 @@ mercadopago.configure({
 async function mercadop (req, res, next){
     try{
         const id_order = req.params.id; 
-        const carrito = req.body.data;
-        const items_ml = carrito.map((i) => ({
+        const cart = req.body.data;
+        const items_ml = cart.map((i) => ({
             title: i.title,
             unit_price: i.unit_price,
             quantity: i.quantity,

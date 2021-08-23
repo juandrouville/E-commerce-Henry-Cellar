@@ -45,10 +45,10 @@ export default function Orders() {
   }
 
   const columns = [
-    { title: "Id", field: "id" },
+    { title: "Id", field: "id", filtering: false },
     {
       title: "State",
-      field: "state",
+      field: "state", 
 
       render: rowData => (
          
@@ -56,17 +56,17 @@ export default function Orders() {
         <option value="pending">Pending</option>    
         <option value="accepted">Accepted</option>
         <option value="rejected">Rejected</option>
-        <option value="sent">Sent it</option>
+        <option value="sent">Sent</option>
         <option value="recieved">Recieved</option>
         </select>
       )
 
     },
-    { title: "User", field: "user.userName" },
+    { title: "User", field: "user.userName" , filtering: false },
     // { title: "Description", field: "description" },
-    { title: "Shipping Method", field: "shippingMethod"},
-    { title: "Payment Method", field: "paymentMethod" },
-    { title: "User adress", field: "user.adress" }
+    { title: "Shipping Method", field: "shippingMethod", filtering: false },
+    { title: "Payment Method", field: "paymentMethod" , filtering: false },
+    { title: "User adress", field: "user.adress", filtering: false  }
     ];
 
     return (
@@ -78,6 +78,7 @@ export default function Orders() {
           data={allOrders}
           icons={tableIcons}
           options={{
+            filtering: true,
             actionsColumnIndex: -1,
             detailPanelIndex: -1,
             headerStyle: {

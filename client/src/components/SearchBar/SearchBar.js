@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchProductByName, getAllproducts } from "../../actions/index";
+import * as AiIcons from "react-icons/ai";
+import * as BiIcons from "react-icons/bi";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -22,15 +24,18 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-box">
+    <div className="search">
       <form onSubmit={handleSubmit}>
         <input
+          className="search-input"
           value={name}
           type="search"
-          placeholder="Search for products"
+          placeholder="Search product"
           onChange={e => handleInputChange(e)}
         />
-        <button type="submit">Find</button>
+        <div className="btn">
+          <button type="submit"><AiIcons.AiOutlineSearch size={36}/></button>
+        </div>
       </form>
     </div>
   );
