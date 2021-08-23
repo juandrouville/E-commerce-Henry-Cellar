@@ -19,10 +19,10 @@ export const SideBarData = [
         icon: <IoIcons.IoIosCart />,
         cName: "nav-text"
     },
-    {
-        title: "Fav",
-        path: "/favourite",
-        icon: <MdIcons.MdFavorite />,
-        cName: "nav-text"
-    },
+    // {
+    //     title: "Fav",
+    //     path: "/favourite",
+    //     icon: <MdIcons.MdFavorite />,
+    //     cName: "nav-text"
+    // },
 ]

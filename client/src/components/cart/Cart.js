@@ -26,7 +26,7 @@ const Cart = () => {
   let clearCartOfDataBase=useSelector(state=>state.clearCartOfDB)
 
   useEffect(()=>{
-    if(isAuthenticated && userDB && orderlineRemoved){
+    if(isAuthenticated && userDB && (orderlineRemoved || clearCartOfDataBase)){
        dispatch(getOrderlines(userDB.order.id))
     }
   },[orderlineRemoved,clearCartOfDataBase])
