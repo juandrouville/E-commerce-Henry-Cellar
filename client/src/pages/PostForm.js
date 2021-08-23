@@ -5,6 +5,8 @@ import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import { validation } from "../components/validation/validation.js";
 import LayoutPrimary from "../layouts/layout-primary.js";
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
 
 export default function PostProduct(props) {
   const dispatch = useDispatch();
@@ -81,9 +83,17 @@ export default function PostProduct(props) {
 
   return (
     <LayoutPrimary>
-      <div >
-      
-        <div className="form">
+      <div className="all_products_container">
+      <NavLink
+          to="/AdminPanel"
+          refresh="true"
+          className="back_to_admin_panel"
+        >
+          <RiIcons.RiAdminLine />
+
+          <h3 className="h3">Back to AdminPanel</h3>
+        </NavLink>
+        <div className="formPost">
           <img src={wineimage} alt="post wine" width="50%" />
           <form className="table" onSubmit={handleSubmit}>
             <div className="form__inputs">

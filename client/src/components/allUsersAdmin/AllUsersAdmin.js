@@ -8,7 +8,8 @@ import { forwardRef } from "react";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import Edit from "@material-ui/icons/Edit";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
-
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
 
 const tableIcons = {
   Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
@@ -33,10 +34,12 @@ function AllUsersAdmin({ users, GetUsers }) {
     //     />
     //   ),
     // },
-    { title: "First Name", field: "firstName" },
-    { title: "Last Name", field: "lastName" },
+    //{ title: "First Name", field: "firstName" },
+    //{ title: "Last Name", field: "lastName" },
     { title: "User Name", field: "userName"},
     { title: "E-mail", field: "email" },
+    { title: "Address", field: "adress" },
+    { title: "Phone", field: "phone" },
     { title: "Admin", field: "admin" },
     { title: "Subscribed", field: "subscribed" },
     { title: "Blocked", field: "blocked" },
@@ -50,11 +53,42 @@ console.log(users);
   return (
     <LayoutPrimary>
       <div className="all_products_container">
+      <NavLink
+          to="/AdminPanel"
+          refresh="true"
+          className="back_to_admin_panel"
+        >
+          <RiIcons.RiAdminLine />
+
+          <h3 className="h3">Back to AdminPanel</h3>
+        </NavLink>
         <Materialtable
           title="Users"
           columns={columns}
           data={users}
           icons={tableIcons}
+          detailPanel={[
+            {
+              icon: ArrowDownward,
+              tooltip: "Show Name",
+
+              render: (rowData) => {
+                return (
+                  <div
+                    style={{
+                      fontSize: 20,
+                      textAlign: "center",
+                      color: "white",
+
+                      backgroundColor: "#420000",
+                    }}
+                  >
+                    {rowData.firstName} {rowData.lastName}
+                  </div>
+                );
+              },
+            },
+          ]}
           actions={[
             {
               icon: Edit,
