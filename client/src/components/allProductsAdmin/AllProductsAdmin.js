@@ -94,7 +94,8 @@ function AllProductsAdmin({ products, GetProducts }) {
               tooltip: "Edit Product",
               onClick: (event, rowData) => {
 
-                history.push(`/Edit/${rowData.id}`);
+                history.push(`/editProduct/${rowData.id}`);
+                
               },
 
             },
