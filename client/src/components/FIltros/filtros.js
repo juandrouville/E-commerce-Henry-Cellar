@@ -48,8 +48,8 @@ const Filtros = (state) => {
     }
   };
     return (
-      <div className="filtros">
-        <ul className="filtros__container">
+      <div className="select-container">
+        
           <li className="filters">
             Filter by Category
             <select className="hide" onChange={(e) => handleChangeCategory(e)}>
@@ -75,7 +75,7 @@ const Filtros = (state) => {
               {allWineries && allWineries.map((b) => <option>{b.name}</option>)}
             </select>
           </li>
-        </ul>
+        
       </div>
     );
   };
