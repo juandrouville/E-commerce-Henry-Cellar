@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { editOrder, getAllOrders  } from "../../actions/index";
 
 import { useHistory } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
 //import ProductsAdmin from "../productsAdmin/ProductsAdmin";
 
 import LayoutPrimary from "layouts/layout-primary";
@@ -65,7 +66,16 @@ export default function Orders() {
     return (
         <div>
             <LayoutPrimary>
-            <div className="all_orders_container">
+            <div className="all_products_container">
+            <NavLink
+          to="/AdminPanel"
+          refresh="true"
+          className="back_to_admin_panel"
+        >
+          <RiIcons.RiAdminLine />
+
+          <h3 className="h3">Back to AdminPanel</h3>
+        </NavLink>
         <Materialtable
           title="All Orders"
           columns={columns}

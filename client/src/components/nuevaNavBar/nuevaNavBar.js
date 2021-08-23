@@ -79,10 +79,10 @@ const NuevaNavBar = () => {
             </li>
             <li className="nav-text">
               {isAuthenticated ?
-                <Link to="/prueba" >
+                <NavLink to="/prueba" refresh="true">
                   <AiIcons.AiOutlineHistory />
-                  <span>my shopping</span>
-                </Link>
+                  <h3 className="h3">My Shopping</h3>
+                </NavLink>
                 : null}
             </li>
 
