@@ -28,6 +28,8 @@ import AuthNav from "../src/components/auth-Nav/auth-nav";
 import ContactUs from "../src/components/ContactUs/ContactUs";
 import AboutUs from "../src/components/AboutUs/AboutUs";
 import dotenv from "dotenv";
+import MercadoPago from "../src/components/mercadopago/MercadoPago"
+import finalcompra from "../src/components/Compra/finalcompra"
 import Carousel from "../src/components/carousel/carousel";
 import AllProductsAdmin from "components/allProductsAdmin/AllProductsAdmin";
 import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
@@ -58,8 +60,9 @@ ReactDOM.render(
         <Route exact path="/admin/orders" component={Orders}/>
         {/* <Route path="/edit" component={Edit} /> */}
         <Route path="/profile" component={profile} />
+        <Route exact path="/user/pagar" component={MercadoPago} />                                                
+        <Route exact path="/user/finalizarcompra" component={finalcompra} />
         <Route path="/aboutUs" component={AboutUs} />
-
         <Route path="/AdminPanel" component={AdminPanel} />
       </Auth0ProviderWithHistory>
     </Router>
