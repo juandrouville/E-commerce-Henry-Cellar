@@ -27,13 +27,11 @@ import {
   GET_ALL_USERS,
   CLEAR_ALL_USERS,
   USER_ID,
-
+  REMOVE_PRODUCT,
   GET_ALL_ORDERS
-
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
-
 
 const initialState = {
   productCategories: [],
@@ -47,7 +45,7 @@ const initialState = {
   editFavorites: undefined,
   setPagination: {
     filter: "",
-    valueFilter: "",
+    valueFilter: ""
   },
   cart: cartFromLocalStorage,
   orderlines: [],
@@ -58,8 +56,7 @@ const initialState = {
   order: [],
   userid: [],
 
-  allOrders:[]
-
+  allOrders: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -67,193 +64,193 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_PRODUCTS: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        getAllProducts: action.payload
       };
     }
     case GET_ALL_CATEGORIES: {
       return {
         ...state,
-        productCategories: action.payload,
+        productCategories: action.payload
       };
     }
     case GET_ALL_WINERIES: {
       return {
         ...state,
-        wineries: action.payload,
+        wineries: action.payload
       };
     }
     case SORT_BY_PRECIO: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        getAllProducts: action.payload
       };
     }
     case POST_PRODUCT: {
       return {
         ...state,
-        createdProduct: state.createdProduct.concat(action.payload),
+        createdProduct: state.createdProduct.concat(action.payload)
       };
     }
     case PRODUCT_DETAIL: {
       return {
         ...state,
-        productDetail: action.payload,
+        productDetail: action.payload
       };
     }
     case POST_REVIEW: {
       return {
         ...state,
-        productDetail: action.payload,
+        productDetail: action.payload
       };
     }
     case SEARCH_PRODUCT_BY_NAME: {
       return {
         ...state,
-        getAllProducts: action.payload,
+        getAllProducts: action.payload
       };
     }
 
     case NEXT_PAGE: {
       return {
         ...state,
-        page: action.payload,
+        page: action.payload
       };
     }
     case PREVIUS_PAGE: {
       return {
         ...state,
-        page: action.payload,
+        page: action.payload
       };
     }
     case SET_PAGINATION: {
       return {
         ...state,
-        setPagination: action.payload,
+        setPagination: action.payload
       };
     }
     case ADD_TO_CART: {
       let newItem = state.getAllProducts.find(
-        (product) => product.id === action.payload
+        product => product.id === action.payload
       );
-      let itemInCart = state.cart.find((item) => item.id === newItem.id);
+      let itemInCart = state.cart.find(item => item.id === newItem.id);
 
       return itemInCart
         ? {
-          ...state,
-          cart: state.cart.map((item) =>
-            item.id === newItem.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          ),
-        }
+            ...state,
+            cart: state.cart.map(item =>
+              item.id === newItem.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            )
+          }
         : {
-          ...state,
-          cart: [...state.cart, { ...newItem, quantity: 1 }],
-        };
+            ...state,
+            cart: [...state.cart, { ...newItem, quantity: 1 }]
+          };
     }
     case REMOVE_ONE_FROM_CART: {
-      let itemToDelete = state.cart.find((item) => item.id === action.payload);
+      let itemToDelete = state.cart.find(item => item.id === action.payload);
 
       return itemToDelete.quantity > 1
         ? {
-          ...state,
-          cart: state.cart.map((item) =>
-            item.id === action.payload
-              ? { ...item, quantity: item.quantity - 1 }
-              : item
-          ),
-        }
+            ...state,
+            cart: state.cart.map(item =>
+              item.id === action.payload
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            )
+          }
         : {
-          ...state,
-          cart: state.cart.filter((item) => item.id !== action.payload),
-        };
+            ...state,
+            cart: state.cart.filter(item => item.id !== action.payload)
+          };
     }
     case REMOVE_ALL_FROM_CART: {
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload),
+        cart: state.cart.filter(item => item.id !== action.payload)
       };
     }
     case CLEAR_CART: {
       return {
         ...state,
-        cart: [],
+        cart: []
       };
     }
     case GET_USER: {
       return {
         ...state,
-        user: action.payload,
+        user: action.payload
       };
     }
     case UNIFY_CARTS_DB_LOCALSTORAGE: {
       return {
         ...state,
-        cartDB: action.payload,
+        cartDB: action.payload
       };
     }
     case EDIT_FAVORITES: {
       return {
         ...state,
         editFavorites: action.payload
-      }
+      };
     }
     case GET_FAVORITES: {
       return {
         ...state,
         productFavourite: action.payload
-      }
+      };
     }
     case CLEAR_USER: {
       return {
         ...state,
-        user: undefined,
+        user: undefined
       };
     }
     case GET_DB_ORDERLINES: {
       return {
         ...state,
-        orderlines: action.payload,
+        orderlines: action.payload
       };
     }
     case ADD_PRODUCT_TO_DB_CART: {
       return {
         ...state,
-        addProductToDB: action.payload,
+        addProductToDB: action.payload
       };
     }
     case REMOVE_ORDERLINE_FROM_DB: {
       return {
         ...state,
-        orderlineRemoved: action.payload,
+        orderlineRemoved: action.payload
       };
     }
     case CLEAR_CART_OF_DB: {
       return {
         ...state,
         clearCartOfDB: action.payload,
+
       };
     }
 
     case GET_DB_ORDER: {
-
-      const userid = state.user.dataValues.id
+      const userid = state.user.dataValues.id;
       const userID = [];
 
       for (var i = 0; i < action.payload.length; i++) {
         userID.push({ id: action.payload[i].userId });
       }
 
-      let UserID = userID.find((item) => item.id === userid);
+      let UserID = userID.find(item => item.id === userid);
 
-      return UserID ? {
-        ...state,
-        order: action.payload,
-      } : {
-        order: [],
-      }
-
-
+      return UserID
+        ? {
+            ...state,
+            order: action.payload
+          }
+        : {
+            order: []
+          };
     }
     case GET_ALL_USERS: {
       return {
@@ -269,20 +266,23 @@ const rootReducer = (state = initialState, action) => {
     //     : "error de userid";
     // }
 
-    case GET_ALL_ORDERS:{
+    case GET_ALL_ORDERS: {
       return {
         ...state,
-        allOrders:action.payload
-      }
+        allOrders: action.payload
+      };
     }
-
+    case REMOVE_PRODUCT: {
+      return {
+        ...state
+      };
+    }
     case CLEAR_ALL_USERS:{
       return {
         ...state,
         allUsers:[]
       }
     }
-
     default: {
       return state;
     }
