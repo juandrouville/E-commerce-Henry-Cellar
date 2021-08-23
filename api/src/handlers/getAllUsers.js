@@ -5,9 +5,11 @@ async function getAllUsers(req , res , next){
     try{
         var allUsers = await User.findAll({
             attributes: { 
-                exclude: ["createdAt", "updatedAt"] },
-               
-            });
+                exclude: ["createdAt", "updatedAt"] 
+            },
+            where:{admin:false}
+            }
+            );
             
         res.json(allUsers);
 

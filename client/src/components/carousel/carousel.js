@@ -13,7 +13,7 @@ const Carousel = () => {
     const {user,isAuthenticated}=useAuth0()
 
     let productsFavourite = useSelector((state) => state.productFavourite);
-    const editFavoritesState=useSelector(state=>state.editFavorites)
+    //const editFavoritesState=useSelector(state=>state.editFavorites)
 
     const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const Carousel = () => {
     };
 
     
-    useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
+    //useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
 
   const settings = {
