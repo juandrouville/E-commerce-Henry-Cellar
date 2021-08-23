@@ -92,22 +92,13 @@ console.log(users);
           actions={[
             {
               icon: Edit,
-              tooltip: "Edit Product",
+              tooltip: "Edit User",
               onClick: (event, rowData) => {
                 alert("You clicked edit on row with id: " + rowData.id);
                 
               },
             },
-            {
-              icon: DeleteOutline,
-              tooltip: "Delete Product",
-              onClick: (event, rowData) => {
-                window.confirm(
-                  "Are you sure you want to delete on row with id: " +
-                    rowData.id
-                );
-              },
-            },
+            
           ]}
           options={{
             actionsColumnIndex: -1,
