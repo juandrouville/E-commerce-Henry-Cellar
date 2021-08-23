@@ -15,6 +15,7 @@ import { FaStar } from "react-icons/fa";
 import PostReview from "components/PostReview/PostReview";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "layouts/layout-primary";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -35,9 +36,11 @@ export default function ProductDetail() {
   const addToCart = (id) => {
     if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub));
     else dispatch(addCart(id));
+    toast.success(`The Product ${productDetail.name} was added to your cart !`)
   };
   return (
     <Layout>
+      <div><Toaster/></div>
       <div className="page_productDetail">
         {productDetail ? (
           <>
