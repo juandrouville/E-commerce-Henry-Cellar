@@ -30,6 +30,7 @@ export const ADD_PRODUCT_TO_DB_CART = "ADD_PRODUCT_TO_DB_CART";
 export const REMOVE_ORDERLINE_FROM_DB = "REMOVE_ORDERLINE_FROM_DB";
 export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
 export const GET_DB_ORDER = "GET_DB_ORDER";
+export const USER_ID = "USER_ID";
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -388,6 +389,12 @@ export function getDbOrder() {
       `http://localhost:3001/getorder`
     );
     dispatch({ type: GET_DB_ORDER, payload: res.data });
+  };
+}
+
+export function userid() {
+  return {
+    type: USER_ID
   };
 }
 

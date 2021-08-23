@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-    getDbOrder
+    getDbOrder,
+    userid
 } from "../../actions/index";
 
 
@@ -16,7 +17,7 @@ export default function HistoryUser() {
  
 
     useEffect(() => {
-        
+        dispatch(userid())
         dispatch(getDbOrder())
 
     }, [dispatch])
@@ -39,7 +40,9 @@ export default function HistoryUser() {
                               <h2>total:{i.total}</h2>
                               {i.orderlines.length ? 
                                i.orderlines.map((i) => {
-                                <h2>{i.amount}</h2>
+                                   return(
+                                    <h2>amount:{i.amount}</h2>   
+                                   )
                                }) : null }
                               
                             </div>

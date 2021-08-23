@@ -25,6 +25,7 @@ import {
   CLEAR_CART_OF_DB,
   GET_DB_ORDER,
   GET_ALL_USERS,
+  USER_ID,
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -50,6 +51,7 @@ const initialState = {
   orderlineRemoved: undefined,
   clearCartOfDB: 0,
   order: [],
+  userid: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -227,6 +229,7 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_DB_ORDER: {
       
+     
       return {
         
         
@@ -240,6 +243,12 @@ const rootReducer = (state = initialState, action) => {
         getAllUsers: action.payload,
 
       };
+    }
+    case USER_ID:{
+      return{
+        ...state,
+        userid: [...state.user.dataValues.id],
+      }
     }
     default: {
       return state;
