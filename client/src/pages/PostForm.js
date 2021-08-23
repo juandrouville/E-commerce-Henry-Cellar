@@ -95,13 +95,14 @@ export default function PostProduct(props) {
         </NavLink>
         <div className="formPost">
           <h1>Create Product</h1>
-          <img src={wineimage} alt="post wine" />
-          <form className="table" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
+          <div className="table" >
+            <img src={wineimage} alt="Loading..."/>
             <div className="form__inputs">
               <div>
-                <label>Product name</label>
+                <label className="title_input">Product name</label>
                 <input
-                  className={errors.name ? "danger" : "checks" }
+                  className="checks"
                   type="text"
                   name="name"
                   onChange={handleInputChange}
@@ -111,20 +112,21 @@ export default function PostProduct(props) {
                 {errors.name && <p className="danger">{errors.name}</p>}
               </div>
               <div>
-                <label>Winery</label>
+                <label className="title_input" >Winery</label>
                 <input
-                  className={errors.winery ? "danger" : "checks"}
+                  className="checks"
                   type="text"
                   name="winery"
                   onChange={handleInputChange}
                   value={input.winery}
+                  autoComplete="off"
                 />{" "}
                 {errors.winery && <p className="danger">{errors.winery}</p>}
               </div>
               <div>
-                <label>Price</label>
+                <label className="title_input" >Price</label>
                 <input
-                  className={errors.price ? "danger" : "checks"}
+                  className="checks"
                   type="number"
                   name="price"
                   onChange={handleInputChange}
@@ -133,9 +135,9 @@ export default function PostProduct(props) {
                 {errors.price && <p className="danger">{errors.price}</p>}
               </div>
               <div>
-                <label>Description</label>
-                <input
-                  className={errors.description ? "danger":"checks"}
+                <label className="title_input">Description</label>
+                <textarea
+                  className="checks"
                   type="text"
                   name="description"
                   onChange={handleInputChange}
@@ -146,9 +148,9 @@ export default function PostProduct(props) {
                 )}
               </div>
               <div>
-                <label>Stock</label>
+                <label className="title_input">Stock</label>
                 <input
-                  className={errors.stock ? "danger" : "checks" }
+                  className="checks"
                   type="number"
                   name="stock"
                   onChange={handleInputChange}
@@ -156,12 +158,13 @@ export default function PostProduct(props) {
                 />
                 {errors.stock && <p className="danger">{errors.stock}</p>}
               </div>
+              </div>
               <div className="checkbox">
                 <label className="title">Categories</label>
                 {allCategories.length &&
                   allCategories.map((category) => (
-                    <div key={category.id} >
-                      <label className="items">{category.name}</label>
+                    <div key={category.id} className="items-label" >
+                      <label >{category.name}</label>
                       <input
                         type="checkbox"
                         value={category.name}
@@ -175,16 +178,18 @@ export default function PostProduct(props) {
                 )}
               </div>
             </div>
-            <button
-              className="btn1"
-              type="submit"
-              disabled={Object.values(errors).length > 0 ? true : false}
-            >
-              Create!
-            </button>
           </form>
+            <button
+                className="btn1"
+                type="submit"
+                disabled={Object.values(errors).length > 0 ? true : false} >
+                Create!
+              </button>
         </div>
       </div>
+      
     </LayoutPrimary>
   );
 }
+              
+            
