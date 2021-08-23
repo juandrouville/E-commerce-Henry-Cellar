@@ -94,24 +94,26 @@ export default function PostProduct(props) {
           <h3 className="h3">Back to AdminPanel</h3>
         </NavLink>
         <div className="formPost">
-          <img src={wineimage} alt="post wine" width="50%" />
+          <h1>Create Product</h1>
+          <img src={wineimage} alt="post wine" />
           <form className="table" onSubmit={handleSubmit}>
             <div className="form__inputs">
               <div>
                 <label>Product name</label>
                 <input
-                  className={errors.name && "danger"}
+                  className={errors.name ? "danger" : "checks" }
                   type="text"
                   name="name"
                   onChange={handleInputChange}
                   value={input.name}
+                  autoComplete="off"
                 />
                 {errors.name && <p className="danger">{errors.name}</p>}
               </div>
               <div>
                 <label>Winery</label>
                 <input
-                  className={errors.winery && "danger"}
+                  className={errors.winery ? "danger" : "checks"}
                   type="text"
                   name="winery"
                   onChange={handleInputChange}
@@ -122,7 +124,7 @@ export default function PostProduct(props) {
               <div>
                 <label>Price</label>
                 <input
-                  className={errors.price && "danger"}
+                  className={errors.price ? "danger" : "checks"}
                   type="number"
                   name="price"
                   onChange={handleInputChange}
@@ -133,7 +135,7 @@ export default function PostProduct(props) {
               <div>
                 <label>Description</label>
                 <input
-                  className={errors.description && "danger"}
+                  className={errors.description ? "danger":"checks"}
                   type="text"
                   name="description"
                   onChange={handleInputChange}
@@ -146,37 +148,28 @@ export default function PostProduct(props) {
               <div>
                 <label>Stock</label>
                 <input
-                  className={errors.stock && "danger"}
+                  className={errors.stock ? "danger" : "checks" }
                   type="number"
                   name="stock"
                   onChange={handleInputChange}
                   value={input.stock}
-                  min={0}
-                  max={255}
                 />
                 {errors.stock && <p className="danger">{errors.stock}</p>}
               </div>
-              <div>
-                <label>Categories</label>
+              <div className="checkbox">
+                <label className="title">Categories</label>
                 {allCategories.length &&
                   allCategories.map((category) => (
-                    <div key={category.id}>
-                      <label>{category.name}</label>
+                    <div key={category.id} >
+                      <label className="items">{category.name}</label>
                       <input
                         type="checkbox"
                         value={category.name}
                         onClick={handleSelections}
+                        className="items-inputs"
                       ></input>
                     </div>
                   ))}
-                {/* <select onChange={(e) => handleCategories(e)}>
-                      {productCategories &&
-                        productCategories.map((category, i) => (
-                          <option key={category.id} value={category.name}>
-                            {category.name}
-                          </option>
-                        ))}
-                    </select> */}
                 {errors.categories && (
                   <p className="danger">{errors.categories}</p>
                 )}
