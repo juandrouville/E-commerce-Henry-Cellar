@@ -9,8 +9,9 @@ import React, { useEffect, useState } from "react";
 // import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../layouts/layout-primary";
+import { NavLink } from "react-router-dom";
 
-export default function Edit({ id }) {
+export default function EditProduct({ id }) {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const allCategories = useSelector((state) => state.productCategories);
@@ -87,8 +88,11 @@ export default function Edit({ id }) {
 
   return (
     <Layout>
-      <div>
-        <form onSubmit={handleSubmit} className="form__container">
+      <div className="all_products_container">
+        <NavLink to="/admin/products">
+          <h3>Back to Products</h3>
+        </NavLink>
+        <form onSubmit={handleSubmit} className="form_edit">
           <div>
             <label>Product Name:</label>
             <input

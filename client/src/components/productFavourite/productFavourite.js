@@ -1,45 +1,53 @@
-import react, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Product from "../product/Product";
+import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
-import {addCart} from "../../actions/index";
+import { addCart, editFavorites, getFavorites } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ProductFavourite = () => {
     let productsFavourite = useSelector((state) => state.productFavourite);
-    const dispatch = useDispatch();
 
-    const addToCart = (id) => {
-        dispatch(addCart(id));
-      };
+    const {user,isAuthenticated}=useAuth0()
 
-    // useEffect(() => {
-    //     productsFavourite();
-    // }, [productsFavourite]);
+  const dispatch = useDispatch();
+  const editFavoritesState=useSelector(state=>state.editFavorites)
+  
+  useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
+
+    const delFromFavourite = (id) => {
+        dispatch(editFavorites(id,user.sub,true));
+    };
+    
+    useEffect(()=>{},[])
+
 
     return (
         <div>
-            <h2>Fav Products</h2>
+            
             <div className="catalogo">
-                {productsFavourite ? (
+                {productsFavourite.length !== 0 ?
+                productsFavourite ? (
                     productsFavourite.map((p) => {
                         return (
                             <div>
                                 
-                                    <Product
-                                        name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
-                                        image={p.image}
-                                        price={p.price}
-                                        id={p.id}
-                                    />
-                                
-                                
+                                <CardFavorite
+                                    name={<Link to={`/product-detail/${p.id}`} key={p.id}>{p.name}</Link>}
+                                    image={p.image}
+                                    price={p.price}
+                                    id={p.id}
+                                    delFromFavourite={delFromFavourite}
+                                />
+
+
                             </div>
                         );
                     })
                 ) : (
                     <p>Cargando...</p>
-                )}
+                ) : (<h2>There are no items in favorites</h2>) }
             </div>
         </div>
     );

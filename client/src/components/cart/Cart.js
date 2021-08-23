@@ -1,106 +1,126 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import CartItem from "../CartItem/CartItem";
 import {
   clearCart,
   removeOneProduct,
   removeAllProduct,
   unifyCarts,
+  addProductToDBCart,
+  getOrderlines,
+  removeOrderline,
+  clearCartOfDB,
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
+import LayoutPrimary from "layouts/layout-primary";
+import toast, { Toaster } from "react-hot-toast";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useAuth0();
 
   let cart = useSelector((state) => state.cart);
+  let userDB=useSelector(state=>state.user)
+  let orderlines=useSelector(state=>state.orderlines)
+  let orderlineRemoved=useSelector(state=>state.orderlineRemoved)
+  let clearCartOfDataBase=useSelector(state=>state.clearCartOfDB)
 
-  useEffect(() => {
-    if (isAuthenticated) dispatch(unifyCarts(user.sub, cart));
-  }, [isAuthenticated, dispatch, cart, user]);
+  useEffect(()=>{
+    if(isAuthenticated && userDB && (orderlineRemoved || clearCartOfDataBase)){
+       dispatch(getOrderlines(userDB.order.id))
+    }
+  },[orderlineRemoved,clearCartOfDataBase])
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
 
-  const delFromCart = (id, all = false) => {
+  const delFromCart = (id, all = false, orderlineId =false,name=undefined) => {
     if (all) {
-      dispatch(removeAllProduct(id));
+      if(isAuthenticated) dispatch(removeOrderline(orderlineId,true))
+      else dispatch(removeAllProduct(id));
+      toast.error(`All "${name}" were successfully removed`)
     } else {
-      dispatch(removeOneProduct(id));
+      if(isAuthenticated) dispatch(removeOrderline(orderlineId,false))
+      else dispatch(removeOneProduct(id));
+      toast.error(`"${name}" successfully removed`)
     }
   };
 
   const clearcart = () => {
-    dispatch(clearCart());
+    if(isAuthenticated) dispatch(clearCartOfDB(userDB.order.id))
+    else dispatch(clearCart())
+    toast.success(`Your cart is now empty !`)
   };
 
-  let total = cart.reduce(function(acc, curr) {
-    return acc + curr.quantity * curr.price;
-  }, 0);
+  
 
   const { loginWithRedirect } = useAuth0();
 
-  const [open, setOpen] = useState();
+  // const [open, setOpen] = useState();
 
-  const OpenCart = () => {
-    setOpen(!open);
-  };
+  // const OpenCart = () => {
+  //   setOpen(!open);
+  // };
 
+  let result =[]
+
+  isAuthenticated && orderlines.length ? result=orderlines : result=cart
+
+  let total = result.reduce(function(acc, curr) {
+    return acc + curr.quantity * curr.price;
+  }, 0);
+ 
   return (
-    <div
-      className={
-        open ? "cart__container cart__container--open" : "cart__container"
-      }
-    >
-      <div className="ejemplo">
-        <a
-          onClick={() => {
-            OpenCart();
-          }}
-        >
-          x
-        </a>
+    <LayoutPrimary>
+    <div><Toaster/></div>
+    <div className="cart__container">
+      <h2 className="cart__title">Shopping Cart ({result.length} items)</h2>
+      <div className="cart__subtitles">
+        <h2>Image</h2>
+        <h2>Name</h2>
+        <h2>Unit Price</h2>
+        <h2>Quantity</h2>
+        <h2>Subtotal</h2>
       </div>
-      <h2 className="cart__title">Shopping Cart</h2>
       <div>
-        {cart ? (
-          cart.map((item, index) => {
+        {result.length ? (
+          result.map((item, index) => {
             return (
               <div className="cart__item">
                 <CartItem
-                  key={item}
+                  key={index}
                   id={item.id}
                   delFromCart={delFromCart}
                   name={item.name}
                   price={item.price}
                   quantity={item.quantity}
+                  orderlineId={item.orderlineId || null}
+                  image={item.image}
                 />
               </div>
             );
           })
         ) : (
-          <p>Cargando...</p>
+          <h2 className="empty_cart"> Oups  &#x1F613; ... your cart is empty !</h2>
         )}
       </div>
 
       <div className="total">
-        <h3>TOTAL:${total}</h3>
-        <div className="log__buttons">
-          <button onClick={(e) => clearcart(e)}>Clear Cart</button>
-          <div>
-            {isAuthenticated ? (
-              <>
-                <button>Buy</button>
-              </>
-            ) : (
-              <button onClick={() => loginWithRedirect()}>Login to buy</button>
-            )}
-          </div>
+        
+        <div className="cart_buttons">
+          <button className="buy_button" disabled={result.length===0?true:false} 
+          onClick={(e) => clearcart(e)}>Clear Cart</button>
         </div>
+            {isAuthenticated ? (
+              <div>
+                <button className="buy_button" disabled={result.length===0?true:false} >Buy</button>
+                <pre>  </pre>
+              </div>
+            ) : (
+              <div><button className="buy_button" onClick={() => loginWithRedirect()}>Login to buy</button></div>
+            )}
+          <h2>TOTAL: $ {total.toFixed(2)}</h2>
       </div>
     </div>
+    </LayoutPrimary>
   );
 };
 

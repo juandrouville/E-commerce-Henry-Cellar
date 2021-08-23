@@ -37,7 +37,7 @@ const Filtros = (state) => {
       dispatch(getAllproducts(null, "bodega", e.target.value));
     }
   };
-  
+
   const handleChangePrecio = (e) => {
     dispatch(setPagination("precio", e.target.value));
     if (e.target.value === "Select") {
@@ -48,15 +48,15 @@ const Filtros = (state) => {
     }
   };
     return (
-      <div className="filtros">
-        <ul className="filtros__container">
+      <div className="select-container">
+        
           <li className="filters">
             Filter by Category
             <select className="hide" onChange={(e) => handleChangeCategory(e)}>
               <option className="filter"></option>
               {allCategories.length &&
                 allCategories.map((category) => (
-                  <option>{category.name}</option>
+                  <option key={category.id}>{category.name}</option>
                 ))}
             </select>
           </li>
@@ -72,10 +72,10 @@ const Filtros = (state) => {
             Filter by Wineries
             <select className="hide" onChange={(e) => handleChangeBodega(e)}>
               <option className="filter"></option>
-              {allWineries && allWineries.map((b) => <option>{b.name}</option>)}
+              {allWineries && allWineries.map((b) => <option key={b.id}>{b.name}</option>)}
             </select>
           </li>
-        </ul>
+        
       </div>
     );
   };

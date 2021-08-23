@@ -5,6 +5,8 @@ import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import { validation } from "../components/validation/validation.js";
 import LayoutPrimary from "../layouts/layout-primary.js";
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
 
 export default function PostProduct(props) {
   const dispatch = useDispatch();
@@ -80,41 +82,42 @@ export default function PostProduct(props) {
   };
 
   return (
-    <LayoutPrimary>
-      <div className="form__container">
-        <Link to={`/`}>
-          <button>home</button>
-        </Link>
-        <div className="form">
-          <img src={wineimage} alt="post wine" width="50%" />
-          <form className="table" onSubmit={handleSubmit}>
+  
+      <div className="all_products_container">
+        <div className="formPost">
+          <h1>Create Product</h1>
+          <form onSubmit={handleSubmit}>
+          <div className="table" >
+            <img src={wineimage} alt="Loading..."/>
             <div className="form__inputs">
               <div>
-                <label>Product name</label>
+                <label className="title_input">Product name</label>
                 <input
-                  className={errors.name && "danger"}
+                  className="checks"
                   type="text"
                   name="name"
                   onChange={handleInputChange}
                   value={input.name}
+                  autoComplete="off"
                 />
                 {errors.name && <p className="danger">{errors.name}</p>}
               </div>
               <div>
-                <label>Winery</label>
+                <label className="title_input" >Winery</label>
                 <input
-                  className={errors.winery && "danger"}
+                  className="checks"
                   type="text"
                   name="winery"
                   onChange={handleInputChange}
                   value={input.winery}
+                  autoComplete="off"
                 />{" "}
                 {errors.winery && <p className="danger">{errors.winery}</p>}
               </div>
               <div>
-                <label>Price</label>
+                <label className="title_input" >Price</label>
                 <input
-                  className={errors.price && "danger"}
+                  className="checks"
                   type="number"
                   name="price"
                   onChange={handleInputChange}
@@ -123,9 +126,9 @@ export default function PostProduct(props) {
                 {errors.price && <p className="danger">{errors.price}</p>}
               </div>
               <div>
-                <label>Description</label>
-                <input
-                  className={errors.description && "danger"}
+                <label className="title_input">Description</label>
+                <textarea
+                  className="checks"
                   type="text"
                   name="description"
                   onChange={handleInputChange}
@@ -136,54 +139,46 @@ export default function PostProduct(props) {
                 )}
               </div>
               <div>
-                <label>Stock</label>
+                <label className="title_input">Stock</label>
                 <input
-                  className={errors.stock && "danger"}
+                  className="checks"
                   type="number"
                   name="stock"
                   onChange={handleInputChange}
                   value={input.stock}
-                  min={0}
-                  max={255}
                 />
                 {errors.stock && <p className="danger">{errors.stock}</p>}
               </div>
-              <div>
-                <label>Categories</label>
+              </div>
+              <div className="checkbox">
+                <label className="title">Categories</label>
                 {allCategories.length &&
                   allCategories.map((category) => (
-                    <div key={category.id}>
-                      <label>{category.name}</label>
+                    <div key={category.id} className="items-label" >
+                      <label >{category.name}</label>
                       <input
                         type="checkbox"
                         value={category.name}
                         onClick={handleSelections}
+                        className="items-inputs"
                       ></input>
                     </div>
                   ))}
-                {/* <select onChange={(e) => handleCategories(e)}>
-                      {productCategories &&
-                        productCategories.map((category, i) => (
-                          <option key={category.id} value={category.name}>
-                            {category.name}
-                          </option>
-                        ))}
-                    </select> */}
                 {errors.categories && (
                   <p className="danger">{errors.categories}</p>
                 )}
               </div>
             </div>
-            <button
-              className="btn1"
-              type="submit"
-              disabled={Object.values(errors).length > 0 ? true : false}
-            >
-              Create!
-            </button>
           </form>
+            <button
+                className="btn1"
+                type="submit"
+                disabled={Object.values(errors).length > 0 ? true : false} >
+                Create!
+              </button>
         </div>
       </div>
-    </LayoutPrimary>
   );
 }
+              
+            

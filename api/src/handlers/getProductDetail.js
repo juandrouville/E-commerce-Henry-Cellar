@@ -1,5 +1,6 @@
-const { Product } = require('../db')
-const { Categories } = require('../db')
+const { Product } = require('../db');
+const { Categories } = require('../db');
+const { Review } = require('../db');
 
 async function getProductDetail(req, res, next) {
     const { id } = req.params
@@ -14,7 +15,9 @@ async function getProductDetail(req, res, next) {
                     attributes: []
                 },
             },
+            //include: Review,
         });
+            
 
         res.json(product);
 

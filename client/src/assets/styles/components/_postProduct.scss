@@ -1,33 +1,204 @@
-.form {
-  margin: 100px auto;
-  border: 1px solid grey;
-  width: 320px;
-  height: 560px;
-  border-radius: 20px;
-  text-align: center;
-  padding: 20px;
 
-  @include response(medium) {
-    width: 590px;
-    height: 620px;
+.all_products_container{
+  display: flex;
+  flex-direction: column;
+  // background-color: #060b26;
+  background-color:rgb(177, 39, 39); 
+  padding-top: 200px;
+  padding-bottom: 200px;
+
+  
+
+  .danger{
+    font-size: 12px;
+    font-weight: 700;
+    color:rgb(177, 39, 39);
+    letter-spacing: 0.03rem;
+    padding-bottom: 15px;
   }
 
-  .form__inputs {
-    margin-top: 30px;
-    display: grid;
-    gap: 30px 20px;
-    grid-template-columns: auto auto;
-
+  .formPost {
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    background-color: white;
+    width:80%;
+    height: 80%;
+    margin: 30px auto;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    position:relative;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
     @include response(medium) {
-      grid-template-columns: auto auto auto;
-      gap: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      position:relative;
+      align-items: center;
+      background-color: white;
+      width: 900px;
+      height: 70%;
+      box-shadow: 0 10px 10px rgba(0,0,0,0.2);
     }
-    input {
-      border-radius: 20px;
+
+    h1{
+      color: rgb(71, 71, 71);
+      font-weight: 400;
+      font-size: 30px;
+      
+      @include response(medium){
+        color:rgb(71, 71, 71) ;
+        padding-bottom: 20px;
+        font-weight: 400;
+        font-size: 40px;
+        border-bottom: solid 3px rgb(71, 71, 71) ;
+        width:90%;
+      }
     }
-    label {
-      font-weight: 800;
-      padding-right: 5px;
+    
+    .table{
+      background-color:white;
+      display: flex;
+      flex-direction: column;
+      width:80%;
+      padding: 8%;
+      margin-top: 8%;
+      margin-bottom: 8%;
+      @include response(medium) {
+        display: flex;
+        flex-direction:row;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        justify-content: center;
+        align-self: center;
+        padding: 0px;
+      }
+      img{
+        width:250px;
+        height: 250px;
+        align-self: center;
+        margin: 10px;
+        @include response(medium) {
+          width:30%;
+          height: 40%;
+          align-self: center;
+          margin:20px;
+        }
+      }
+    }
+
+    
+    .form__inputs{
+      display: flex;
+      flex-direction: column;
+      width:100%;
+      @include response(medium){
+        display:flex;
+        flex-direction: column;
+        width: 400px;
+        padding-top:25px;
+        padding-bottom: 25px;
+        margin-right: 20px;
+      }
+      .title_input{
+        color:black;
+        font-weight: 700;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        letter-spacing: 0.03rem;
+      }
+      textarea{
+        margin-top: 15px;
+        padding-bottom: 0px;
+        overflow: hidden;
+      }
+      .checks{
+        background: none;
+        border:none;
+        border-bottom: solid 2px black;
+        resize: none;
+        width: 100%;
+        height: 20px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        transition: all 0.6s ease;
+        transform: translateY(-5px);
+        color:rgb(87, 86, 85);
+        &:focus{
+          outline: none;
+          border-bottom: solid 2px rgb(230, 181, 103);
+          padding-top: 10px;
+          padding-bottom: 5px;
+          height: 50px;
+          transition: all 0.6s ease;
+          transform: translateY(-15px);
+          color:black;
+        } 
+      }
+    }
+
+    .btn1{
+      width:40%;
+      border: none;
+      outline: none;
+      padding: 8px;
+      box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+      background-color: rgb(184, 48, 48);
+      font-size: 18px;
+      font-weight:700;
+      color:white;
+      letter-spacing: 0.05rem;
+      transition: all 0.3s ease;
+      &:hover{
+        cursor: pointer;
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+      }
     }
   }
+  .checkbox{
+    width:100%;
+    padding-top: 40px;
+    @include response(medium){
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width:400px;
+      background-color: white;
+      padding-top: 25px;
+      margin-left: 25px;
+      align-content:space-between;
+    }
+    .title{
+      color:black;
+      font-weight: 700;
+      letter-spacing: 0.03rem;
+      margin-bottom: 20px;
+      @include response(medium){
+        margin-bottom: 20px;
+        }
+    }  
+    .items-label{
+      color: rgb(82, 81, 82);
+      padding-bottom: 5px;
+      align-items: center;
+    }    
+    
+  } 
 }
+
+      
+
+      
+
+
+
+
+    
+
+  
+      
+  
+  
+

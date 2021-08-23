@@ -1,5 +1,13 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
+import LayoutPrimary from "layouts/layout-primary";
+import MapSection from "../Maps/Maps";
+
+const location = {
+  address: '9 de Julio s/n, Ciudad de Buenos Aires, Argentina',
+  lat: -34.60367706415473,
+  lng: -58.381581131043625,
+}
 
 export default function ContactUs() {
 
@@ -15,6 +23,8 @@ export default function ContactUs() {
   }
 
   return (
+    <LayoutPrimary>
+      <div className="contact-us">
     <form className="contact-form" onSubmit={sendEmail}>
       <input type="hidden" name="contact_number" />
       <label>Name</label>
@@ -25,5 +35,10 @@ export default function ContactUs() {
       <textarea name="message" />
       <input type="submit" value="Send" />
     </form>
+    </div>
+    <div>
+      <MapSection location={location} zoomLevel={15} />
+    </div>
+    </LayoutPrimary>
   );
 }

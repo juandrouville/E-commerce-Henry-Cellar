@@ -1,9 +1,9 @@
 import react from "react";
-import RatingStar from "../components/ratingStar/ratingStar"
+import HistoryUser from "../components/historyUser/historyUser"
 const Prueba = () => {
 
     return (
-        <div><RatingStar/></div>
+        <div><HistoryUser/></div>
     );
   };
   

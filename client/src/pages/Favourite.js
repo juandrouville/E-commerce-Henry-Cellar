@@ -1,11 +1,12 @@
 import react from "react";
-import ProductFavourite from "../components/productFavourite/productFavourite"
-import Layout from "../layouts/layout-primary"
+import ProductFavourite from "../components/productFavourite/productFavourite";
+import LayoutPrimary from "../layouts/layout-primary";
+
 const Favourite = () => {
-    return(
-        <Layout>
-            <ProductFavourite />
-        </Layout>
-    )
+  return (
+    <LayoutPrimary>
+      <ProductFavourite />
+    </LayoutPrimary>
+  );
 };
 export default Favourite;

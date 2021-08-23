@@ -8,6 +8,7 @@
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/grid";
 
+
 // Reset
 @import "reset.css";
 
@@ -28,12 +29,28 @@
 @import "./components/postProduct";
 @import "./components/filtros"; // Pages
 @import "./screens/catalogo";
+@import "./screens/landing";
+@import "./components/Review_Product";
 @import "./components/form";
 @import "./components/ratingStar";
 @import "./components/cart";
 @import "./components/CartItem";
 @import "./components/_profile.scss";
 @import "./components/Checkout";
+@import "./components/footer.scss";
+@import "./components/AdminPanel";
+@import "./components/nuevaNavBar";
+@import "./components/app";
+@import "./components/editproduct";
+@import "./components/PostReview.scss";
+@import "./components/carousel";
+@import "./components/aboutUs";
+@import "./components/productsAdmin";
+@import "./components/allProductsAdmin";
+@import "./components/contactUs";
+@import "./components/maps";
+@import "./components/historyUser";
+
 
 body {
   font-family: Recisive,

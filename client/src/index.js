@@ -23,9 +23,19 @@ import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
 import Prueba from "../src/pages/PruebaDeComponentes";
 import Favourtie from "../src/pages/Favourite";
+import AdminPanel from "../src/pages/AdminPanel";
+import AuthNav from "../src/components/auth-Nav/auth-nav";
+import ContactUs from "../src/components/ContactUs/ContactUs";
+import AboutUs from "../src/components/AboutUs/AboutUs";
 import dotenv from "dotenv";
 import MercadoPago from "../src/components/mercadopago/MercadoPago"
 import finalcompra from "../src/components/Compra/finalcompra"
+import Carousel from "../src/components/carousel/carousel";
+import AllProductsAdmin from "components/allProductsAdmin/AllProductsAdmin";
+import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
+import EditProduct from "components/Edit/Edit";
+import Orders from "components/allOrdersAdmin/Orders";
+
 dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
@@ -34,20 +44,26 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
+        <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
         <Route exact path="/prueba" component={Prueba} />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/create" component={PostProduct} />
+        <Route exact path="/AuthNav" component={AuthNav} />
+        <Route exact path="/ContactUs" component={ContactUs} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
-        <Route
-          path="/editProduct/:id"
-          render={({ match }) => <Edit id={match.params.id} />}
-        />
-        <Route path="/edit" component={Edit} />
+        <Route path="/editProduct/:id" render={({match})=><EditProduct id={match.params.id}/>}/>
+        <Route path="/admin" component={AdminPanel}/>
+        <Route exact path="/admin/create" component={PostProduct} />
+        <Route exact path="/admin/products" component={AllProductsAdmin} /> 
+        <Route exact path="/admin/users" component={AllUsersAdmin} />
+        <Route exact path="/admin/orders" component={Orders}/>
+        {/* <Route path="/edit" component={Edit} /> */}
         <Route path="/profile" component={profile} />
         <Route exact path="/user/pagar" component={MercadoPago} />                                                
         <Route exact path="/user/finalizarcompra" component={finalcompra} />
+        <Route path="/aboutUs" component={AboutUs} />
+        <Route path="/AdminPanel" component={AdminPanel} />
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,
