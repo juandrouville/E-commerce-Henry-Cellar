@@ -24,6 +24,7 @@ import {
   REMOVE_ORDERLINE_FROM_DB,
   CLEAR_CART_OF_DB,
   GET_ALL_USERS,
+  GET_ALL_ORDERS
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -48,6 +49,7 @@ const initialState = {
   addProductToDB: undefined,
   orderlineRemoved: undefined,
   clearCartOfDB: 0,
+  allOrders:[]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -227,6 +229,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         getAllUsers: action.payload,
       };
+    }
+    case GET_ALL_ORDERS:{
+      return {
+        ...state,
+        allOrders:action.payload
+      }
     }
     default: {
       return state;
