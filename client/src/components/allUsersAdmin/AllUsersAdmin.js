@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { getAllUsers } from "../../actions/index";
+import { connect, useDispatch } from "react-redux";
+import { clearAllUsers, editUser, getAllUsers } from "../../actions/index";
 import Pagination from "components/pagination/pagination";
 import LayoutPrimary from "layouts/layout-primary";
 import Materialtable from "material-table";
@@ -10,6 +10,7 @@ import Edit from "@material-ui/icons/Edit";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import { NavLink } from "react-router-dom";
 import * as RiIcons from "react-icons/ri";
+import toast from "react-hot-toast";
 
 const tableIcons = {
   Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
@@ -19,53 +20,52 @@ const tableIcons = {
   )),
 };
 
-function AllUsersAdmin({ users, GetUsers }) {
+function AllUsersAdmin({ allUsers, GetUsers }) {
+
+  const dispatch=useDispatch()
+
+  const handleBlockSelect=e=>{
+    dispatch(editUser(e.target.id,{[e.target.name]:e.target.value}))
+    toast.success(`The user ${e.target.id} changed its ${e.target.name} status`)
+  }
   
   const columns = [
-    // { title: "Id", field: "id" },
-    // {
-    //   title: "Image",
-    //   field: "image",
-    //   render: (rowData) => (
-    //     <img
-    //       src={rowData.image}
-    //       alt=""
-    //       style={{ width: 40, borderRadius: "50%" }}
-    //     />
-    //   ),
-    // },
-    //{ title: "First Name", field: "firstName" },
-    //{ title: "Last Name", field: "lastName" },
     { title: "User Name", field: "userName"},
     { title: "E-mail", field: "email" },
     { title: "Address", field: "adress" },
     { title: "Phone", field: "phone" },
-    { title: "Admin", field: "admin" },
+    { title: "Admin", field: "admin",
+
+    render:rowData=>(
+      <select defaultValue={rowData.admin}  id={rowData.id} name="admin" onChange={handleBlockSelect}>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>)
+  },
+
     { title: "Subscribed", field: "subscribed" },
-    { title: "Blocked", field: "blocked" },
+    { title: "Blocked", field: "blocked", 
+    render:rowData=>(
+    <select defaultValue={rowData.blocked} onChange={handleBlockSelect} id={rowData.id} name="blocked">
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>)}
 ];    
 
   useEffect(() => {
     GetUsers();
+    return ()=>{
+      dispatch(clearAllUsers())
+    }
   }, [GetUsers]);
 
-console.log(users);
-  return (
-    <LayoutPrimary>
-      <div className="all_products_container">
-      <NavLink
-          to="/AdminPanel"
-          refresh="true"
-          className="back_to_admin_panel"
-        >
-          <RiIcons.RiAdminLine />
 
-          <h3 className="h3">Back to AdminPanel</h3>
-        </NavLink>
-        <Materialtable
+  return (
+      <div>
+      <Materialtable
           title="Users"
           columns={columns}
-          data={users}
+          data={allUsers}
           icons={tableIcons}
           detailPanel={[
             {
@@ -119,13 +119,12 @@ console.log(users);
           }}
         />
       </div>
-    </LayoutPrimary>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    users: state.getAllUsers,
+    allUsers: state.allUsers,
   };
 }
 

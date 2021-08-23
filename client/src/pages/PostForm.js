@@ -82,17 +82,8 @@ export default function PostProduct(props) {
   };
 
   return (
-    <LayoutPrimary>
+  
       <div className="all_products_container">
-      <NavLink
-          to="/AdminPanel"
-          refresh="true"
-          className="back_to_admin_panel"
-        >
-          <RiIcons.RiAdminLine />
-
-          <h3 className="h3">Back to AdminPanel</h3>
-        </NavLink>
         <div className="formPost">
           <h1>Create Product</h1>
           <form onSubmit={handleSubmit}>
@@ -187,8 +178,6 @@ export default function PostProduct(props) {
               </button>
         </div>
       </div>
-      
-    </LayoutPrimary>
   );
 }
               

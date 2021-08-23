@@ -21,6 +21,7 @@ const getFavorites=require('./getFavorites')
 const editFavorites=require('./editFavorites')
 const getAllOrders=require('./getAllOrders')
 const editOrder=require('./editOrder')
+const editUser=require('./editUser')
 
 
 router.use("/allproducts", getAllProductsRouter);
@@ -43,5 +44,6 @@ router.use("/getFavorites",getFavorites);
 router.use('/editFavorites',editFavorites)
 router.use('/getAllOrders',getAllOrders)
 router.use('/editOrder',editOrder)
+router.use('/editUser',editUser)
 
 module.exports = router;

@@ -25,7 +25,7 @@ import {
   CLEAR_CART_OF_DB,
   GET_DB_ORDER,
   GET_ALL_USERS,
-
+  CLEAR_ALL_USERS,
   USER_ID,
 
   GET_ALL_ORDERS
@@ -258,8 +258,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_USERS: {
       return {
         ...state,
-        getAllUsers: action.payload,
-
+        allUsers: action.payload,
       };
     }
 
@@ -274,6 +273,13 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allOrders:action.payload
+      }
+    }
+
+    case CLEAR_ALL_USERS:{
+      return {
+        ...state,
+        allUsers:[]
       }
     }
 

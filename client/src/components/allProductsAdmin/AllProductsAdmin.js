@@ -50,17 +50,7 @@ function AllProductsAdmin({ products, GetProducts }) {
   }, [GetProducts]);
 
   return (
-    <LayoutPrimary>
       <div className="all_products_container">
-        <NavLink
-          to="/AdminPanel"
-          refresh="true"
-          className="back_to_admin_panel"
-        >
-          <RiIcons.RiAdminLine />
-
-          <h3 className="h3">Back to AdminPanel</h3>
-        </NavLink>
         <Materialtable
           title="All Products"
           columns={columns}
@@ -130,7 +120,7 @@ function AllProductsAdmin({ products, GetProducts }) {
           }}
         />
       </div>
-    </LayoutPrimary>
+
   );
 }
 
