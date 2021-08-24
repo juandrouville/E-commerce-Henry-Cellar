@@ -11,6 +11,7 @@ import { FaStar } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+import { TiShoppingCart } from "react-icons/ti";
 
 const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   let productsFavourite = useSelector((state) => state.productFavourite);
@@ -65,7 +66,7 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
               <pre> </pre>
               
               <button onClick={() => addToCart(id)}>
-                <img src={cart2} alt="cartlogo"/>
+                <TiShoppingCart size={30} />
               </button>
             </div>
           
