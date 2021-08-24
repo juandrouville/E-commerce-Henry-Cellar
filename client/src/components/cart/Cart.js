@@ -14,6 +14,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import LayoutPrimary from "layouts/layout-primary";
 import toast, { Toaster } from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -68,7 +69,16 @@ const Cart = () => {
   let total = result.reduce(function(acc, curr) {
     return acc + curr.quantity * curr.price;
   }, 0);
- 
+  let history = useHistory()
+  function comprar() {
+      if (user.id) {
+          // console.log()
+          history.push("/user/pagar");
+      } else {
+
+          history.push("/user/pagar");
+      }
+  }
   return (
     <LayoutPrimary>
     <div><Toaster/></div>
@@ -113,8 +123,10 @@ const Cart = () => {
             {isAuthenticated && !userData.blocked ? (
               
               <div>
-              {console.log(userData.firstName)}
-                <button className="buy_button" disabled={result.length===0?true:false} >Buy</button>
+                
+                <button className="buy_button" onClick={comprar}  li disabled={result.length===0?true:false} >Buy</button>
+
+
                 <pre>  </pre>
               </div>
             ) : (
