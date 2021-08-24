@@ -82,21 +82,23 @@ const Cart = () => {
   return (
     <LayoutPrimary>
     <div><Toaster/></div>
+    <div className="page_cart">
     <div className="cart__container">
-      <h2 className="cart__title">Shopping Cart ({result.length} items)</h2>
+      <h2 className="cart__title">Shopping Cart: {result.length} items </h2>
       <div className="cart__subtitles">
         <h2>Image</h2>
         <h2>Name</h2>
         <h2>Unit Price</h2>
         <h2>Quantity</h2>
         <h2>Subtotal</h2>
+        <h2>        </h2>
       </div>
-      <div>
+      
         {result.length ? (
           result.map((item, index) => {
             return (
               <div className="cart__item">
-                <CartItem
+                <CartItem className="line"
                   key={index}
                   id={item.id}
                   delFromCart={delFromCart}
@@ -112,10 +114,10 @@ const Cart = () => {
         ) : (
           <h2 className="empty_cart"> Oups  &#x1F613; ... your cart is empty !</h2>
         )}
-      </div>
+      
 
-      <div className="total">
         
+      <div className="total">
         <div className="cart_buttons">
           <button className="buy_button" disabled={result.length===0?true:false} 
           onClick={(e) => clearcart(e)}>Clear Cart</button>
@@ -134,6 +136,7 @@ const Cart = () => {
             )}
           <h2>TOTAL: $ {total.toFixed(2)}</h2>
       </div>
+    </div>
     </div>
     </LayoutPrimary>
   );
