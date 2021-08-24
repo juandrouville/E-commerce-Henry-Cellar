@@ -26,7 +26,7 @@ const Cart = () => {
   let orderlineRemoved = useSelector((state) => state.orderlineRemoved);
   let clearCartOfDataBase = useSelector((state) => state.clearCartOfDB);
 
-  //const userData = useSelector((state) => state.user.dataValues);
+  const userData = useSelector((state) => state.user);
 
   useEffect(() => {
     if (
@@ -139,9 +139,10 @@ const Cart = () => {
                 Clear Cart
               </button>
             </div>
-            {/* {isAuthenticated && !userData.blocked ? ( */}
-            {isAuthenticated ? (
+            {isAuthenticated && !userData.dataValues.blocked ? (
+              // {isAuthenticated ? (
               <div>
+                {!userData.dataValues.blocked ? (
                 <button
                   className="buy_button"
                   onClick={comprar}
@@ -149,7 +150,8 @@ const Cart = () => {
                   disabled={result.length === 0 ? true : false}
                 >
                   Buy
-                </button>
+                </button>) : (
+                  <h2>Sorry, your user is blocked to buy</h2>)}
 
                 <pre> </pre>
               </div>
