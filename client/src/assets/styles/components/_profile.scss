@@ -3,6 +3,7 @@
   align-items: center;
   padding: 20px;
   margin: 100px 50px 0px 50px;
+  
 
   @include response(medium) {
     flex-direction: row;
@@ -19,7 +20,17 @@
   padding-right: 15px;
 }
 
+.profileData{
+  color:white;
+}
+
 .h3Profile{
   padding-bottom: 10px;
+}
+
+.button_admin{
+display: flex;
+color:white;
+padding-left: 180px;
 }
 

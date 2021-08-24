@@ -1,38 +1,40 @@
 import React from "react";
 import Layout from "layouts/layout-primary";
 import { useAuth0 } from "@auth0/auth0-react";
+import { NavLink } from "react-router-dom";
+import * as RiIcons from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const { user } = useAuth0();
-  const { name, given_name, family_name, picture, email } = user;
-  console.log(user)
+  const userData = useSelector((state) => state.user.dataValues);
+
   return (
     <Layout>
-    <div className="all_products_container">
-      <div className="profile">
-        <div>
-          <img
-            src={picture}
-            alt="Profile"
-            className="imgProfile"
-          />
+      <div className="all_products_container">
+        <div className="profile">
+          <div>
+            <img src={userData.image} alt="Profile" className="imgProfile" />
+          </div>
+          <div className="profileData">
+            <h2 className="h3Profile">UserName: {userData.userName}</h2>
+            <h3 className="h3Profile">Name: {userData.firstName}</h3>
+            <h3 className="h3Profile">Last Name: {userData.lastName}</h3>
+            <p className="h3Profile">E-mail: {userData.email}</p>
+            <p className="h3Profile">Address: {userData.calle}</p>
+            <p className="h3Profile">Number: {userData.numero}</p>
+            <p className="h3Profile">City: {userData.localidad}</p>
+            <p className="h3Profile">State: {userData.provincia}</p>
+            <p className="h3Profile">Zip Code: {userData.codigopostal}</p>
+            <p className="h3Profile">Phone Number: {userData.phone}</p>
+          </div>
         </div>
-        <div className="profileData">
-          <h2 className="h3Profile">{name}</h2>
-          <h3 className="h3Profile">Nombre: {given_name}</h3>
-          <h3 className="h3Profile">Apellido: {family_name}</h3>
-          <p className="h3Profile">E-mail: {email}</p>
-          <p className="h3Profile">Address: </p>
-          <p className="h3Profile">Phone Number: </p>
-        </div>
+        {!userData.admin ? (
+        <NavLink className="button_admin" to="/AdminPanel" refresh="true">
+          <RiIcons.RiAdminLine />
+          <h3 className="h3">AdminPanel</h3>
+        </NavLink> ) : null}
       </div>
-      {/* <div >
-        <pre >
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </div> */}
-      
-    </div>
     </Layout>
   );
 };
