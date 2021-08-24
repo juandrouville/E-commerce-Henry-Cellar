@@ -15,6 +15,7 @@ import { FaStar } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "layouts/layout-primary";
 import toast, { Toaster } from "react-hot-toast";
+import PostReview from "components/PostReview/PostReview";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -88,6 +89,7 @@ export default function ProductDetail() {
               <p>No reviews </p>
             </div>
           )}
+          <PostReview productId={productDetail.id}/>
       </div>
     </Layout>
   );

@@ -228,8 +228,7 @@ const rootReducer = (state = initialState, action) => {
     case CLEAR_CART_OF_DB: {
       return {
         ...state,
-        clearCartOfDB: action.payload,
-
+        clearCartOfDB: action.payload
       };
     }
 
@@ -255,7 +254,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_USERS: {
       return {
         ...state,
-        allUsers: action.payload,
+        allUsers: action.payload
       };
     }
 
@@ -277,11 +276,11 @@ const rootReducer = (state = initialState, action) => {
         ...state
       };
     }
-    case CLEAR_ALL_USERS:{
+    case CLEAR_ALL_USERS: {
       return {
         ...state,
-        allUsers:[]
-      }
+        allUsers: []
+      };
     }
     default: {
       return state;

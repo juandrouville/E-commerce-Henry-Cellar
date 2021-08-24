@@ -14,6 +14,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import LayoutPrimary from "layouts/layout-primary";
 import toast, { Toaster } from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -68,25 +69,36 @@ const Cart = () => {
   let total = result.reduce(function(acc, curr) {
     return acc + curr.quantity * curr.price;
   }, 0);
- 
+  let history = useHistory()
+  function comprar() {
+      if (user.id) {
+          // console.log()
+          history.push("/user/pagar");
+      } else {
+
+          history.push("/user/pagar");
+      }
+  }
   return (
     <LayoutPrimary>
     <div><Toaster/></div>
+    <div className="page_cart">
     <div className="cart__container">
-      <h2 className="cart__title">Shopping Cart ({result.length} items)</h2>
+      <h2 className="cart__title">Shopping Cart: {result.length} items </h2>
       <div className="cart__subtitles">
         <h2>Image</h2>
         <h2>Name</h2>
         <h2>Unit Price</h2>
         <h2>Quantity</h2>
         <h2>Subtotal</h2>
+        <h2>        </h2>
       </div>
-      <div>
+      
         {result.length ? (
           result.map((item, index) => {
             return (
               <div className="cart__item">
-                <CartItem
+                <CartItem className="line"
                   key={index}
                   id={item.id}
                   delFromCart={delFromCart}
@@ -102,10 +114,10 @@ const Cart = () => {
         ) : (
           <h2 className="empty_cart"> Oups  &#x1F613; ... your cart is empty !</h2>
         )}
-      </div>
+      
 
-      <div className="total">
         
+      <div className="total">
         <div className="cart_buttons">
           <button className="buy_button" disabled={result.length===0?true:false} 
           onClick={(e) => clearcart(e)}>Clear Cart</button>
@@ -113,8 +125,10 @@ const Cart = () => {
             {isAuthenticated && !userData.blocked ? (
               
               <div>
-              {console.log(userData.firstName)}
-                <button className="buy_button" disabled={result.length===0?true:false} >Buy</button>
+                
+                <button className="buy_button" onClick={comprar}  li disabled={result.length===0?true:false} >Buy</button>
+
+
                 <pre>  </pre>
               </div>
             ) : (
@@ -122,6 +136,7 @@ const Cart = () => {
             )}
           <h2>TOTAL: $ {total.toFixed(2)}</h2>
       </div>
+    </div>
     </div>
     </LayoutPrimary>
   );
