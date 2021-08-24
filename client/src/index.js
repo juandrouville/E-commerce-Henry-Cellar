@@ -35,6 +35,7 @@ import AllProductsAdmin from "components/allProductsAdmin/AllProductsAdmin";
 import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
 import EditProduct from "components/Edit/Edit";
 import Orders from "components/allOrdersAdmin/Orders";
+import PageReview from "../src/pages/review";
 
 dotenv.config();
 
@@ -44,6 +45,7 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
+        <Route exact path="/review" component={PageReview} />
         <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
         <Route exact path="/prueba" component={Prueba} />
