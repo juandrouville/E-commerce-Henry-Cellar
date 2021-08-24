@@ -24,6 +24,7 @@ const Cart = () => {
   let orderlines=useSelector(state=>state.orderlines)
   let orderlineRemoved=useSelector(state=>state.orderlineRemoved)
   let clearCartOfDataBase=useSelector(state=>state.clearCartOfDB)
+  const userData = useSelector((state) => state.user.dataValues);
 
   useEffect(()=>{
     if(isAuthenticated && userDB && (orderlineRemoved || clearCartOfDataBase)){
@@ -109,8 +110,10 @@ const Cart = () => {
           <button className="buy_button" disabled={result.length===0?true:false} 
           onClick={(e) => clearcart(e)}>Clear Cart</button>
         </div>
-            {isAuthenticated ? (
+            {isAuthenticated && !userData.blocked ? (
+              
               <div>
+              {console.log(userData.firstName)}
                 <button className="buy_button" disabled={result.length===0?true:false} >Buy</button>
                 <pre>  </pre>
               </div>

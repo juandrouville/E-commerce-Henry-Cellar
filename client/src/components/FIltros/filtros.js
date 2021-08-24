@@ -22,7 +22,7 @@ const Filtros = (state) => {
 
   const handleChangeCategory = (e) => {
     dispatch(setPagination("categoria", e.target.value));
-    if (e.target.value === "All") {
+    if (e.target.value === "Categories") {
       dispatch(getAllproducts());
     } else {
       dispatch(getAllproducts(null, "categoria", e.target.value));
@@ -31,7 +31,7 @@ const Filtros = (state) => {
 
   const handleChangeBodega = (e) => {
     dispatch(setPagination("bodega", e.target.value));
-    if (e.target.value === "All") {
+    if (e.target.value === "Wineries") {
       dispatch(getAllproducts());
     } else {
       dispatch(getAllproducts(null, "bodega", e.target.value));
@@ -40,42 +40,39 @@ const Filtros = (state) => {
 
   const handleChangePrecio = (e) => {
     dispatch(setPagination("precio", e.target.value));
-    if (e.target.value === "Select") {
-      dispatch(getAllproducts());
-    }
     if (e.target.value === ASC || e.target.value === DESC) {
       dispatch(getAllproducts(null, "precio", e.target.value));
     }
   };
     return (
-      <div className="select-container">
-        
-          <li className="filters">
-            Filter by Category
-            <select className="hide" onChange={(e) => handleChangeCategory(e)}>
-              <option className="filter"></option>
+      <div className="body-filtros">
+      <div className="filters-container">
+          <div className="one-filter">
+            <select className="barSelect" onChange={(e) => handleChangeCategory(e)}>
+              <option className="disabled" selected>Categories</option>
               {allCategories.length &&
                 allCategories.map((category) => (
                   <option key={category.id}>{category.name}</option>
                 ))}
             </select>
-          </li>
-          <li className="filters">
-            Order by price
-            <select className="hide" onChange={(e) => handleChangePrecio(e)}>
-              <option className="filter">Select</option>
-              <option className="filter">Ascendant</option>
-              <option className="filter">Descendant</option>
+          </div>
+
+          <div className="one-filter">
+            <select className="barSelect" onChange={(e) => handleChangePrecio(e)}>
+              <option className="disabled" disabled selected >By Price </option>
+              <option >Ascendant</option>
+              <option >Descendant</option>
             </select>
-          </li>
-          <li className="filters">
-            Filter by Wineries
-            <select className="hide" onChange={(e) => handleChangeBodega(e)}>
-              <option className="filter"></option>
-              {allWineries && allWineries.map((b) => <option key={b.id}>{b.name}</option>)}
+          </div>
+
+          <div className="one-filter">
+            <select className="barSelect" onChange={(e) => handleChangeBodega(e)}>
+              <option className="disabled" selected>Wineries</option>
+              {allWineries && allWineries.map((b) => 
+              <option key={b.id}>{b.name}</option>)}
             </select>
-          </li>
-        
+          </div>
+        </div>
       </div>
     );
   };
