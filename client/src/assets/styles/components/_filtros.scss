@@ -1,30 +1,78 @@
-.filtros__container {
+ 
+.body-filtros{
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  
+  position:relative;
+  justify-content: center;
   
 
-  @include response(medium) {
-    justify-content: space-around;
+  .filters-container{
+    display: flex;
+    flex-direction:column;
     align-items: center;
-    flex-direction: row;
-    width: 60%;
-    margin: 0 auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
-
+    justify-content: center;
+    width: 500px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    padding-bottom: 20px;
+    padding-top: 15px;
+    background-color: #060b26;
+      @include response(medium) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width:auto;
+        padding: 10px 50px 10px 50px;
+        box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+        background-color: whitesmoke;
+    }
+    .barSelect{
+      border:none;
+      width:400px;
+      height: 40px;
+      background-color: white;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+      @include response(medium){
+        border:none;
+        width:200px;
+        height: 40px;
+        background-color: white;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px; 
+        padding-left: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.07rem;
+        color: rgb(82, 82, 82);
+        &:focus{
+          border: none;
+          outline: none;
+        }
+        &:hover{
+          color: black;
+          font-weight: 600;
+          cursor:pointer;
+        }
+      } 
+        
+      option:hover{
+        cursor: pointer;
+        background-color: violet;
+      } 
+      
+    }
   }
-  li {
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-}
+}    
+    
+    
+  
 
-.hide:hover {
-  cursor: pointer;
-}
+
 
 // .sideBar {
 //   .toggleBtn {
