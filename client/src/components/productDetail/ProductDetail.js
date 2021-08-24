@@ -12,7 +12,6 @@ import {
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
 import { FaStar } from "react-icons/fa";
-import PostReview from "components/PostReview/PostReview";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "layouts/layout-primary";
 import toast, { Toaster } from "react-hot-toast";
@@ -40,12 +39,12 @@ export default function ProductDetail() {
   };
   return (
     <Layout>
-      <div><Toaster/></div>
+      <div><Toaster /></div>
       <div className="page_productDetail">
         {productDetail ? (
           <>
             <div className="product__detail">
-              <img src={productDetail.image} alt="Loading..." className="productImage"/>
+              <img src={productDetail.image} alt="Loading..." className="productImage" />
               <div className="product__data">
                 <div className="name__price">
                   <h1 className="productName">{productDetail.name}</h1>
@@ -60,17 +59,17 @@ export default function ProductDetail() {
                   </p>
                 </div>
                 <div className="buyFavButtons">
-              <button onClick={() => addToCart(productDetail.id)}>
-                <img src={cart2} alt="cartlogo" width="30" height="30" />
-              </button>
-              {isAuthenticated ? (
-                <button onClick={() => addFavourite(productDetail.id)}>
-                  Fav <FaStar className="star" color="#ffc107" size={15} />
-                </button>
-              ) : null}
-              
+                  <button onClick={() => addToCart(productDetail.id)}>
+                    <img src={cart2} alt="cartlogo" width="30" height="30" />
+                  </button>
+                  {isAuthenticated ? (
+                    <button onClick={() => addFavourite(productDetail.id)}>
+                      Fav <FaStar className="star" color="#ffc107" size={15} />
+                    </button>
+                  ) : null}
+
+                </div>
               </div>
-            </div>
 
             </div>
           </>
@@ -78,24 +77,22 @@ export default function ProductDetail() {
           <p>Cargando...</p>
         )}
 
-      
+
         {productDetail.reviews ?
           productDetail.reviews.map(ele => {
             return (
-                <Review review={{ ...ele }} />
+              <Review review={{ ...ele }} />
             )
           }) : (
             <div className="sinComentarios">
-            <p>No reviews </p>
-          </div>
+              <p>No reviews </p>
+            </div>
           )}
       </div>
-        <PostReview productId={productDetail.id} />
-      
     </Layout>
   );
 }
-              
-              
+
+
 
 
