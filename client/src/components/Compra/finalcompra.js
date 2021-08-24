@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import { connect } from "react-redux";
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 
 //Crear form para direccion de envio y boton de confirmar compra

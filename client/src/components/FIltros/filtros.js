@@ -48,34 +48,34 @@ const Filtros = (state) => {
     }
   };
     return (
-      <div className="select-container">
-        
-          <li className="filters">
-            Filter by Category
-            <select className="hide" onChange={(e) => handleChangeCategory(e)}>
-              <option className="filter"></option>
+      <div className="body-filtros">
+      <div className="filters-container">
+          <div className="one-filter">
+            <select className="barSelect" onChange={(e) => handleChangeCategory(e)}>
+              <option className="disabled" disabled selected>Categories</option>
               {allCategories.length &&
                 allCategories.map((category) => (
                   <option key={category.id}>{category.name}</option>
                 ))}
             </select>
-          </li>
-          <li className="filters">
-            Order by price
-            <select className="hide" onChange={(e) => handleChangePrecio(e)}>
-              <option className="filter">Select</option>
-              <option className="filter">Ascendant</option>
-              <option className="filter">Descendant</option>
+          </div>
+
+          <div className="one-filter">
+            <select className="barSelect" onChange={(e) => handleChangePrecio(e)}>
+              <option className="disabled" disabled selected >By Price </option>
+              <option >Ascendant</option>
+              <option >Descendant</option>
             </select>
-          </li>
-          <li className="filters">
-            Filter by Wineries
-            <select className="hide" onChange={(e) => handleChangeBodega(e)}>
-              <option className="filter"></option>
-              {allWineries && allWineries.map((b) => <option key={b.id}>{b.name}</option>)}
+          </div>
+
+          <div className="one-filter">
+            <select className="barSelect" onChange={(e) => handleChangeBodega(e)}>
+              <option className="disabled"  disabled selected>Wineries</option>
+              {allWineries && allWineries.map((b) => 
+              <option key={b.id}>{b.name}</option>)}
             </select>
-          </li>
-        
+          </div>
+        </div>
       </div>
     );
   };
