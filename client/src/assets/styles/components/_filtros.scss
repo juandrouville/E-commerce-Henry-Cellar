@@ -54,17 +54,14 @@
           outline: none;
         }
         &:hover{
-          color: black;
           font-weight: 600;
           cursor:pointer;
         }
       } 
+      option{
+        font-size: 18px;
         
-      option:hover{
-        cursor: pointer;
-        background-color: violet;
-      } 
-      
+      }
     }
   }
 }    
