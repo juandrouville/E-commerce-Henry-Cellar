@@ -1,11 +1,10 @@
 //REACT
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { getAllproducts, removeProduct } from "../../actions/index";
 import { NavLink } from "react-router-dom";
 import * as RiIcons from "react-icons/ri";
 import { useHistory } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
 //import ProductsAdmin from "../productsAdmin/ProductsAdmin";
 
 import Pagination from "components/pagination/pagination";
@@ -24,7 +23,9 @@ const tableIcons = {
   ))
 };
 
-function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
+function AllProductsAdmin({ GetProducts, DeleteProduct }) {
+  const products = useSelector(state => state.getAllProducts);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const columns = [
@@ -44,12 +45,20 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
   ];
 
   useEffect(() => {
-    GetProducts();
-  }, [products]);
+    dispatch(getAllproducts());
+  }, [dispatch]);
 
-  useEffect(() => {
-    DeleteProduct();
-  }, [DeleteProduct]);
+  const handleDelete = async e => {
+    try {
+      dispatch(removeProduct(e));
+      alert("Product deleted!");
+      setTimeout(() => {
+        dispatch(getAllproducts());
+      }, 600);
+    } catch (error) {
+      console.log("delete product error", error);
+    }
+  };
 
   return (
     <div className="all_products_container">
@@ -98,8 +107,7 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
                   "?"
               );
               if (answer) {
-                DeleteProduct(rowData.id);
-                alert("Delete successfull!");
+                handleDelete(rowData.id);
               } else {
                 return;
               }
@@ -129,17 +137,4 @@ function AllProductsAdmin({ products, GetProducts, DeleteProduct }) {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    products: state.getAllProducts
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    GetProducts: () => dispatch(getAllproducts()),
-    DeleteProduct: id => dispatch(removeProduct(id))
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AllProductsAdmin);
+export default AllProductsAdmin;
