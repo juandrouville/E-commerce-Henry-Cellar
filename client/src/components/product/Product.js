@@ -1,17 +1,17 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import {
   addCart,
   addProductToDBCart,
   editFavorites,
   editProduct,
 } from "../../actions/index";
-import cart2 from "../../assets/images/cart2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   let productsFavourite = useSelector((state) => state.productFavourite);
@@ -45,7 +45,9 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
   return (
     <div className="row center">
       <div key={name} className="product">
-        <img src={`${image}`} alt="Henry" width="246" height="246" />
+        <Link to={`/product-detail/${id}`}>
+        <img  className="image_product" src={`${image}`} alt="Henry" />
+        </Link>
         <div className="product__data">
           <h3 onClick={() => history.push(`/product-detail/${id}`)}>{name}</h3>
           <br />

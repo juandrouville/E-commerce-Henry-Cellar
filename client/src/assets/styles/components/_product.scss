@@ -35,11 +35,14 @@
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
+    h3:hover{
+      cursor: pointer;
+    }
   }
 
-  img{
-    width:50%;
-    height:50%;
+  .image_product{
+    width:200px;
+    height:200px;
   }
 }
 
@@ -77,8 +80,10 @@
 
 .cartButton button:active {
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    background-color: rgb(63, 141, 63);
-    border:0
+    background-color: rgb(140, 33, 33);
+    color:white;
+    border:0;
+    transform: scale(0.9);
 
 }
 
