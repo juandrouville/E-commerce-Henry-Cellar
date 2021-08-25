@@ -12,7 +12,7 @@ mercadopago.configure({
 
 async function mercadop (req, res, next){
     try{
-        const id_order = req.params.id; 
+        const ordenId = req.params.id; 
         const cart = req.body.data;
         const items_ml = cart.map((i) => ({
             title: i.title,
@@ -21,7 +21,7 @@ async function mercadop (req, res, next){
           }));
           let preference = {
             items: items_ml,
-            external_reference: id_order,
+            external_reference: ordenId,
             payment_methods: {
               excluyed_payment_types: [
                 {
