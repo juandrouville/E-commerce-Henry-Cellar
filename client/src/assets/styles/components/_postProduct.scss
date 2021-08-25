@@ -2,13 +2,52 @@
 .all_products_container{
   display: flex;
   flex-direction: column;
-  // background-color: #060b26;
   background-color:rgb(177, 39, 39); 
   margin-top: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  
+  .header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    justify-content: space-around;
+    align-items:baseline;
+    padding-bottom: 40px;
+    border-bottom: 2px solid rgb(71, 71, 71);
+    @include response(medium){
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 50px;
+      padding-bottom: 60px;
+      justify-content: space-around;
+      align-items: baseline;
+    }
+    h1{
+      color: rgb(71, 71, 71);
+      font-weight: 400;
+      font-size: 30px;
+      @include response(medium){
+        color:rgb(71, 71, 71) ;
+        font-weight: 400;
+        font-size: 40px;
+      }
+    }
+      
+    h3{
+      outline: none;
+      color:rgb(71, 71, 71);
+      font-weight: 500;
+      font-size: 15px;
+      @include response(medium){
+        color:rgb(71, 71, 71) ;
+        font-weight: 400;
+        font-size: 15px;
+      }
+    }
+  }  
 
   .danger{
     font-size: 12px;
@@ -41,20 +80,7 @@
       box-shadow: 0 10px 10px rgba(0,0,0,0.2);
     }
 
-    h1{
-      color: rgb(71, 71, 71);
-      font-weight: 400;
-      font-size: 30px;
-      
-      @include response(medium){
-        color:rgb(71, 71, 71) ;
-        padding-bottom: 20px;
-        font-weight: 400;
-        font-size: 40px;
-        border-bottom: solid 3px rgb(71, 71, 71) ;
-        width:90%;
-      }
-    }
+    
     
     .table{
       background-color:white;
@@ -68,11 +94,12 @@
         display: flex;
         flex-direction:row;
         width: 100%;
-        height: 100%;
+        height: 400px;
         background-color: white;
         justify-content: center;
         align-self: center;
         padding: 0px;
+        overflow: hidden;
       }
       img{
         width:250px;
@@ -97,9 +124,11 @@
         display:flex;
         flex-direction: column;
         width: 400px;
+        height: 100%;
         padding-top:25px;
         padding-bottom: 25px;
         margin-right: 20px;
+        
       }
       .title_input{
         color:black;
@@ -110,8 +139,13 @@
       }
       textarea{
         margin-top: 15px;
-        padding-bottom: 0px;
+        padding-bottom: 20px;
         overflow: hidden;
+        &:focus{
+          margin-top: 30px;
+          margin-bottom: 30px;
+          height: auto;
+        }
       }
       .checks{
         background: none;
@@ -131,6 +165,8 @@
           padding-top: 10px;
           padding-bottom: 5px;
           height: 50px;
+          margin-bottom: 30px;
+          margin-top: 30px;
           transition: all 0.6s ease;
           transform: translateY(-15px);
           color:black;

@@ -34,8 +34,8 @@ function DisabledTabs() {
     <Paper square>
       <Tabs
         value={value}
-        indicatorColor="primary"
-        textColor="primary"
+        indicatorColor="black"
+        textColor="black"
         onChange={handleChange}
         aria-label="disabled tabs example"
       >
