@@ -119,7 +119,10 @@ const Cart = () => {
             ) : (
               <div><button className="buy_button" onClick={() => loginWithRedirect()}>Login to buy</button></div>
             )}
-          <h2>TOTAL: $ {total.toFixed(2)}</h2>
+            <div className="result">
+              <h2>TOTAL:</h2>
+              <h2>${total.toFixed(2)}</h2>
+            </div>
       </div>
     </div>
     </div>
