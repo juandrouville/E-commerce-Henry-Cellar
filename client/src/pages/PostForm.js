@@ -112,7 +112,6 @@ export default function PostProduct(props) {
                   value={input.winery}
                   autoComplete="off"
                 />{" "}
-                {errors.winery && <p className="danger">{errors.winery}</p>}
               </div>
               <div>
                 <label className="title_input" >Price</label>
@@ -171,6 +170,7 @@ export default function PostProduct(props) {
             </div>
           </form>
             <button
+                onClick={handleSubmit}
                 className="btn1"
                 type="submit"
                 disabled={Object.values(errors).length > 0 ? true : false} >
