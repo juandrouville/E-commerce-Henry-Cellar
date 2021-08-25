@@ -1,10 +1,8 @@
-import react, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import "boxicons";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 import { SideBarData } from "../sidebarData/sidebarData";
 import { IconContext } from "react-icons";
@@ -17,16 +15,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { useSelector } from "react-redux";
+
 const NuevaNavBar = () => {
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
   const { isAuthenticated } = useAuth0();
   const { user } = useAuth0();
   const userData = useSelector((state) => state.user);
-  useEffect(() => {
-  }, [userData]);
-  
+  useEffect(() => {}, [userData]);
+
   return (
     <div className="fixed">
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -42,8 +39,10 @@ const NuevaNavBar = () => {
                 refresh="true"
                 style={{ textDecoration: "none" }}
               >
-                <p style={{ color: "#ffffff" }}> {user.given_name} <CgProfile /></p>
-
+                <p style={{ color: "#ffffff" }}>
+                  {" "}
+                  {user.given_name} <CgProfile />
+                </p>
               </NavLink>
             </h3>
           ) : null}
@@ -72,8 +71,7 @@ const NuevaNavBar = () => {
               </Link>
             </li>
             <li className="nav-text">
-              {isAuthenticated && userData && userData.dataValues.admin 
-                 ? (
+              {isAuthenticated && userData && userData.dataValues.admin ? (
                 <NavLink to="/admin/products" refresh="true">
                   <RiIcons.RiAdminLine />
                   <h3 className="h3">AdminPanel</h3>
@@ -81,14 +79,13 @@ const NuevaNavBar = () => {
               ) : null}
             </li>
             <li className="nav-text">
-              {isAuthenticated ?
+              {isAuthenticated ? (
                 <NavLink to="/prueba" refresh="true">
                   <AiIcons.AiOutlineHistory />
                   <h3 className="h3">My Shopping</h3>
                 </NavLink>
-                : null}
+              ) : null}
             </li>
-
             <li className="nav-text">
               <NavLink to="/aboutUs" refresh="true">
                 <FcAbout />
@@ -102,9 +99,9 @@ const NuevaNavBar = () => {
               </NavLink>
             </li>
             <li className="nav-text">
-              <a href="https://instagram.com/" target="instagram">
+              <a href="https://www.instagram.com/henrycellar/" target="instagram">
                 <GrInstagram />
-                {/* <h3 className="h3">Contact Us</h3> */}
+                
               </a>
             </li>
           </ul>
