@@ -1,8 +1,8 @@
-const { Product, Categories } = require("../db");
+const { Product, Categories,Wineries } = require("../db");
 const { Op } = require("sequelize");
 
 const postProduct = async (req,res,next) => {
-    const {name, price, description, image, stock, categories} = req.body;
+    const {name, price, description, image, stock, categories, winery} = req.body;
 
     try {
         if(!name || !price || name==="" || price===""){
@@ -19,7 +19,13 @@ const postProduct = async (req,res,next) => {
             }
                 
         })
+        
+        if(winery){
+        const wineryToAsign=await Wineries.findOrCreate({where:{name:winery}})
 
+        addProduct[0].setWinery(wineryToAsign[0])    
+        }
+        
         
         if(categories && categories.length>0){
             categories.forEach(async (name)=>{
