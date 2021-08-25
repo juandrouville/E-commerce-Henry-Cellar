@@ -66,3 +66,7 @@ async function tarjeta(req, res, next) {
         
     }
 }
+module.exports = {
+  compra,
+  tarjeta
+};

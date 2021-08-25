@@ -36,13 +36,14 @@ const Carousel = () => {
   };
 
   return (
-    <div className="containerCarousel">
+    <div className="carousel">
       {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
       <Slider className="show" {...settings}>
         {productsFavourite.length !== 0 ? (
           productsFavourite ? (
             productsFavourite.map(p => {
               return (
+                <div className="containerCarousel">
                 <div>
                   <CardFavorite
                     name={
@@ -56,6 +57,7 @@ const Carousel = () => {
                     delFromFavourite={delFromFavourite}
                     stock={p.stock}
                   />
+                </div>
                 </div>
               );
             })

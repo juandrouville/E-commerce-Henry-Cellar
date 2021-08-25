@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 
 //ICON
 import home1 from "assets/icons/logo-wine.png";
-import Cart from "components/cart/Cart";
 import { FaStar } from "react-icons/fa";
 //Authentication with Auth0
 import AuthNav from "../auth-Nav/auth-nav";
