@@ -29,11 +29,7 @@ const Profile = () => {
             <p className="h3Profile">Phone Number: {userData.phone}</p>
           </div>
         </div>
-        {!userData.admin ? (
-        <NavLink className="button_admin" to="/AdminPanel" refresh="true">
-          <RiIcons.RiAdminLine />
-          <h3 className="h3">AdminPanel</h3>
-        </NavLink> ) : null}
+        
       </div>
     </Layout>
   );

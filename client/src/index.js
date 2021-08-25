@@ -67,7 +67,7 @@ ReactDOM.render(
         <Route exact path="/user/pagar" component={MercadoPago} />                                                
         <Route exact path="/user/finalizarcompra" component={finalcompra} />
         <Route path="/aboutUs" component={AboutUs} />
-        <Route path="/AdminPanel" component={AdminPanel} />
+        
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,

@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useEffect, useState } from "react";
 
 import "boxicons";
 import { Link } from "react-router-dom";
@@ -16,12 +16,17 @@ import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import { useSelector } from "react-redux";
 const NuevaNavBar = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
   const { isAuthenticated } = useAuth0();
   const { user } = useAuth0();
+  const userData = useSelector((state) => state.user);
+  useEffect(() => {
+  }, [userData]);
+  
   return (
     <div className="fixed">
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -67,11 +72,9 @@ const NuevaNavBar = () => {
               </Link>
             </li>
             <li className="nav-text">
-              {isAuthenticated &&
-                (user.sub === "google-oauth2|102669847324725021364" ||
-                  user.sub === "google-oauth2|109028710743016612481" ||
-                  user.sub === "google-oauth2|110496112430074927748") ? (
-                <NavLink to="/AdminPanel" refresh="true">
+              {isAuthenticated && userData && userData.dataValues.admin 
+                 ? (
+                <NavLink to="/admin/products" refresh="true">
                   <RiIcons.RiAdminLine />
                   <h3 className="h3">AdminPanel</h3>
                 </NavLink>
