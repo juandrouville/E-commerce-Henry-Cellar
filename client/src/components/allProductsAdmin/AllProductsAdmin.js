@@ -35,7 +35,7 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
       field: "image",
 
       render: rowData => (
-        <img src={rowData.image} style={{ width: 40, borderRadius: "50%" }} />
+        <img src={rowData.image} style={{ width: 30, borderRadius: "50%" }} />
       )
     },
     { title: "Name", field: "name" },
@@ -61,7 +61,7 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
   };
 
   return (
-    <div className="all_products_container">
+    <div >
       <Materialtable
         title="All Products"
         columns={columns}
@@ -128,11 +128,12 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
         components={{
           Pagination: props => (
             <div style={{ backgroundColor: "#e8eaf5" }}>
-              <Pagination />
+              
             </div>
           )
         }}
       />
+      <Pagination />
     </div>
   );
 }

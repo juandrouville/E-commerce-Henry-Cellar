@@ -139,7 +139,7 @@ const Cart = () => {
                 Clear Cart
               </button>
             </div>
-            {isAuthenticated && !userData.dataValues.blocked ? (
+            {isAuthenticated ? (
               // {isAuthenticated ? (
               <div>
                 {!userData.dataValues.blocked ? (
