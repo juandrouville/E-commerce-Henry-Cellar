@@ -165,9 +165,12 @@ const Cart = () => {
                 </button>
               </div>
             )}
-            <h2>TOTAL: $ {total.toFixed(2)}</h2>
-          </div>
-        </div>
+
+            <div className="result">
+              <h2>TOTAL:</h2>
+              <h2>${total.toFixed(2)}</h2>
+            </div>
+
       </div>
     </LayoutPrimary>
   );
