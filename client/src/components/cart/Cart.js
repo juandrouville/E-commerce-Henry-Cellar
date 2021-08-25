@@ -27,7 +27,7 @@ const Cart = () => {
   let clearCartOfDataBase = useSelector((state) => state.clearCartOfDB);
 
   const userData = useSelector((state) => state.user);
-
+  useEffect(() => {}, [userData]);
   useEffect(() => {
     if (
       isAuthenticated &&
@@ -87,6 +87,7 @@ const Cart = () => {
       history.push("/user/pagar");
     }
   }
+
   return (
     <LayoutPrimary>
       <div> <Toaster/> </div>
@@ -138,9 +139,9 @@ const Cart = () => {
               </button>
             </div>
             {isAuthenticated ? (
-              // {isAuthenticated ? (
+              
               <div>
-                {!userData.dataValues.blocked ? (
+                {userData && !userData.dataValues.blocked ? (
                 <button
                   className="buy_button"
                   onClick={comprar}
