@@ -87,7 +87,7 @@ export default function Orders() {
               zIndex: "1"
             },
 
-            pageSize: 9,
+            pageSize: 10,
           }}
           detailPanel={[
             {
