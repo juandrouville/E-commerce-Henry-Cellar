@@ -6,7 +6,7 @@ const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <button className="li" onClick={() => loginWithRedirect()}>
-      <BiIcons.BiLogIn className="svglogin" /> Log In
+      <BiIcons.BiLogIn className="svglogin" /><h3 className="h3">Log In</h3>
     </button>
   );
 };

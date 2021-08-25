@@ -64,7 +64,7 @@ const NuevaNavBar = () => {
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
                     {item.icon}
-                    <span>{item.title}</span>
+                    <h3 className="h3">{item.title}</h3>
                   </Link>
                 </li>
               );
