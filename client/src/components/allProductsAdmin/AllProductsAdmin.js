@@ -61,7 +61,7 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
   };
 
   return (
-    <div >
+    <div className="container_table_edit_product" >
       <Materialtable
         title="All Products"
         columns={columns}
@@ -79,8 +79,8 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
                     fontSize: 20,
                     textAlign: "center",
                     color: "white",
-
-                    backgroundColor: "#420000"
+                    backgroundColor: "#943030",
+                    padding:"40"
                   }}
                 >
                   {rowData.description}
