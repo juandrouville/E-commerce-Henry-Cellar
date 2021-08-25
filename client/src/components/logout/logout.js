@@ -19,8 +19,7 @@ const LogoutButton = () => {
           });
         }}
       >
-        <BiIcons.BiLogOut className="svglogin" />
-        Log Out
+        <BiIcons.BiLogOut className="svglogin" /><h3 className="h3">Log Out</h3>
       </button>
     </li>
   );

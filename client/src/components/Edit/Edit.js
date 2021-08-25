@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../layouts/layout-primary";
 import { NavLink } from "react-router-dom";
+import wineimage from "assets/images/create-wine-image.jpeg";
 
 export default function EditProduct({ id }) {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function EditProduct({ id }) {
     image: "",
     harvest: undefined,
     categories: [],
+    winery:""
   });
 
   const [errors, setErrors] = useState({});
@@ -39,7 +41,8 @@ export default function EditProduct({ id }) {
     let arr = [];
     if (productDetail.categories)
       productDetail.categories.map((category) => arr.push(category.name));
-    setState({
+     if(productDetail.winery?.name){
+       setState({
       name: productDetail.name,
       price: productDetail.price,
       description: productDetail.description,
@@ -47,7 +50,10 @@ export default function EditProduct({ id }) {
       image: productDetail.image,
       harvest: productDetail.harvest,
       categories: arr,
+      winery:productDetail.winery.name
     });
+    }
+   
   }, [productDetail]);
 
   const handleChange = (e) => {
@@ -87,6 +93,7 @@ export default function EditProduct({ id }) {
   let key = 1;
 
   return (
+
     
       <div className="all_products_container">
         <div className="formPost">
@@ -192,8 +199,10 @@ export default function EditProduct({ id }) {
                         ></input>
                       </div>
                     ))}
+
                   </div>
                 )}
+
 
                 {errors.categories && <p className="danger">{errors.categories}</p>}
               </div>
@@ -208,5 +217,6 @@ export default function EditProduct({ id }) {
         </div>
       </div>
     
+
   );
 }

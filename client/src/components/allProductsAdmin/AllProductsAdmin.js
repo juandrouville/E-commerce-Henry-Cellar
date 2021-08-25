@@ -94,7 +94,7 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
             icon: Edit,
             tooltip: "Edit Product",
             onClick: (event, rowData) => {
-              history.push(`/editProduct/${rowData.id}`);
+              history.push(`/admin/editProduct/${rowData.id}`);
             }
           },
           {
