@@ -437,7 +437,7 @@ export function editOrder(orderId, newValue) {
     try {
       const res = await axios.put(
         `/editOrder/${orderId}` || `http://localhost:3001/editOrder/${orderId}`,
-        {
+        { state: newValue.state,
           blocked:newValue.blocked,
           adress:newValue.adress,
           admin:newValue.admin

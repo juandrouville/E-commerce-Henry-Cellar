@@ -23,7 +23,7 @@ async function editOrder(req, res, next) {
         } else {
 
             for (let property in orderValues) {
-                        orderToEdit[property]=orderValues[property]
+                        orderValues[property] ? orderToEdit[property]=orderValues[property] : null
                     }
                     
                 
