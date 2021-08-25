@@ -1,10 +1,65 @@
+.contact-us-container {
+    display: flex;
+    align-items: center;
+}
+
 .contact-us{
+    width: 50%;
     display: flex;
     flex-direction: column;
-    
     align-items: center;
     border: 4px solid #420000;
     border-radius: 2rem;
-    margin: 80px;
-    padding: 90px;
+    margin-top: 4rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    //padding: 3rem;
+    
+}
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-form__input{
+    width: 250px;
+    padding-top: 5px;
+}
+.label {
+    
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.send{
+    margin: 10px;
+    width: 50px;
+    height: 30px;
+}
+.contact-form__textarea{
+    width: 250px;
+    height: 100px;
+
+}
+.contact-us-info{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    font-size: 1.5rem;
+}
+.a{
+    display: flex;
+    align-content: center;
+    
+    
+}
+
+.icon{
+    font-size: 25px;
+    padding-right: 5px;
 }
