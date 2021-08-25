@@ -32,9 +32,7 @@ export function Checkout({ products, data, user }) {
         console.log(data)
 
         document.getElementById("form1").appendChild(script)
-        return () => {
-            document.getElementById("form1").removeChild(script)
-        }
+        
     }, [])
 
 
