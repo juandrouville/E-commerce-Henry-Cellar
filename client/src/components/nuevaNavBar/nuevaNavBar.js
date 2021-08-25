@@ -17,6 +17,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { useSelector } from "react-redux";
+import { Avatar } from "@material-ui/core";
 const NuevaNavBar = () => {
   const [sidebar, setSidebar] = useState(false);
 
@@ -34,8 +35,10 @@ const NuevaNavBar = () => {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          {isAuthenticated ? (
+          {isAuthenticated && userData ? (
             <h3 className="welcome">
+              <Avatar src={userData.dataValues.image}/>
+              <pre>  </pre>
               Welcome,
               <NavLink
                 to="/Profile"
