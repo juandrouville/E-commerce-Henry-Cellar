@@ -12,12 +12,12 @@ module.exports = (sequelize) => {
     },
     paymentMethod:{
         type:DataTypes.STRING,
-        allowNull:false,
+       // allowNull:false,
         defaultValue:"No specified yet"
     },
     shippingMethod:{
         type:DataTypes.STRING,
-        allowNull:false,
+        //allowNull:false,
         defaultValue:"No specified yet"
     },
     paymentid: {
