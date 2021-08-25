@@ -36,6 +36,7 @@ export const GET_ALL_ORDERS="GET_ALL_ORDERS"
 export const EDIT_ORDER="EDIT_ORDER"
 export const EDIT_USER="EDIT_USER"
 export const CLEAR_ALL_USERS="CLEAR_ALL_USERS"
+export const CLEAR_ALL_ORDERS="CLEAR_ALL_ORDERS"
 
 
 export function sortByPrecio(page, order) {
@@ -437,7 +438,7 @@ export function editOrder(orderId, newValue) {
     try {
       const res = await axios.put(
         `/editOrder/${orderId}` || `http://localhost:3001/editOrder/${orderId}`,
-        {
+        { state: newValue.state,
           blocked:newValue.blocked,
           adress:newValue.adress,
           admin:newValue.admin
@@ -467,6 +468,11 @@ export function editUser(userId,newValue){
 export function clearAllUsers(){
   return {
     type:CLEAR_ALL_USERS
+  }
+}
+export function clearAllOrders(){
+  return {
+    type:CLEAR_ALL_ORDERS
   }
 }
 

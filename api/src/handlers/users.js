@@ -1,4 +1,8 @@
 const { User } = require('../db')
+const { Product } = require('../db')
+const { Order } = require('../db')
+
+
 async function compra(req, res, next) {
     try {
         const id = req.params.id;
@@ -51,8 +55,8 @@ async function tarjeta(req, res, next) {
           })
         })
         .then(respuesta => {
-          return Orden.update(
-            {estado: "creada"},
+          return Order.update(
+            {estado: "accepted"},
             {where: {id: ordenId}}
         )})
         .then(respuesta => {
@@ -66,3 +70,7 @@ async function tarjeta(req, res, next) {
         
     }
 }
+module.exports = {
+  compra,
+  tarjeta
+};

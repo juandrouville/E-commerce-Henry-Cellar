@@ -36,6 +36,7 @@ import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
 import EditProduct from "components/Edit/Edit";
 import Orders from "components/allOrdersAdmin/Orders";
 import PageReview from "../src/pages/review";
+import DetailOrder from "../src/components/detailOrder/detailOrder";
 
 dotenv.config();
 
@@ -45,6 +46,7 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
+        <Route exact path="/orderdetail" component={DetailOrder} />
         <Route exact path="/review" component={PageReview} />
         <Route exact path="/mycart" component={Cart} />
         <Route exact path="/favourite" component={Favourtie} />
@@ -65,7 +67,7 @@ ReactDOM.render(
         <Route exact path="/user/pagar" component={MercadoPago} />                                                
         <Route exact path="/user/finalizarcompra" component={finalcompra} />
         <Route path="/aboutUs" component={AboutUs} />
-        <Route path="/AdminPanel" component={AdminPanel} />
+        
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,

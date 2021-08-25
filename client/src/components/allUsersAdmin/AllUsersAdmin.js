@@ -89,17 +89,17 @@ function AllUsersAdmin({ allUsers, GetUsers }) {
               },
             },
           ]}
-          actions={[
-            {
-              icon: Edit,
-              tooltip: "Edit User",
-              onClick: (event, rowData) => {
-                alert("You clicked edit on row with id: " + rowData.id);
+          // actions={[
+          //   {
+          //     icon: Edit,
+          //     tooltip: "Edit User",
+          //     onClick: (event, rowData) => {
+          //       alert("You clicked edit on row with id: " + rowData.id);
                 
-              },
-            },
+          //     },
+          //   },
             
-          ]}
+          // ]}
           options={{
             actionsColumnIndex: -1,
             detailPanelIndex: -1,

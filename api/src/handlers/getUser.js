@@ -9,15 +9,18 @@ async function getUser(req, res, next) {
         if(email==="wineecommerce14@gmail.com") isAdmin=true
 
         var userSearched = await User.findOrCreate({
-            where: {
-                id: id,
+            where: {id: id}
+            , attributes: { exclude: ["createdAt", "updatedAt"],
+            },
+            defaults:{
+                id:id, 
                 firstName: given_name,
                 lastName: family_name,
                 userName: nickname,
                 image: picture,
                 email: email,
-                admin: isAdmin 
-            }, attributes: { exclude: ["createdAt", "updatedAt"] }
+                admin: isAdmin
+            }
         });
 
         const userOrder = await Order.findOrCreate({

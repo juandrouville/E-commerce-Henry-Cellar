@@ -31,14 +31,6 @@ module.exports = (sequelize) => {
       unique: true,
       allowNull: false,
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    phone: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     admin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,

@@ -22,7 +22,11 @@ const editFavorites = require("./editFavorites");
 const getAllOrders = require("./getAllOrders");
 const editOrder = require("./editOrder");
 const removeProduct = require("./removeProduct");
+const user = require("./user");
+const editUser=require('./editUser')
+const mercadopago=require("./mercadopago")
 
+router.use("/mercadopago", mercadopago);
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product", productDetail);
 router.use("/productSearch", getProductByNameRouter);
@@ -43,7 +47,8 @@ router.use("/getFavorites", getFavorites);
 router.use("/editFavorites", editFavorites);
 router.use("/getAllOrders", getAllOrders);
 router.use("/editOrder", editOrder);
+router.use("/editUser", editUser);
 router.use("/removeProduct", removeProduct);
-
+router.use("/user", user);
 
 module.exports = router;
