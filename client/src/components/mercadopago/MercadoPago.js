@@ -10,6 +10,7 @@ import { connect } from "react-redux"
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
+    orderline: state.orderlines,
   }
 }
 export function MercadoPago(props) {
@@ -19,13 +20,14 @@ export function MercadoPago(props) {
   //   {title: "producto 1", quantity: 1, price: 5},
   //   {title: "producto 2", quantity: 1, price: 5}
   // ]}
-  var cart = props.cart
+  var cart = props.orderline
+  console.log(cart)
   var obj = cart.map(i => ({
-    title: i.nombre,
-    unit_price: i.precio,
-    quantity: i.cantidad,
-    ordenId: i.ordenId,
-    id: i.productId
+    title: i.name,
+    unit_price: i.price,
+    quantity: i.quantity,
+    ordenId: i.orderId,
+    id: i.id
   }))
 
   var obj1 = { data: obj }

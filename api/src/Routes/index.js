@@ -24,8 +24,9 @@ const editOrder = require("./editOrder");
 const removeProduct = require("./removeProduct");
 const user = require("./user");
 const editUser=require('./editUser')
+const mercadopago=require("./mercadopago")
 
-
+router.use("/mercadopago", mercadopago);
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product", productDetail);
 router.use("/productSearch", getProductByNameRouter);

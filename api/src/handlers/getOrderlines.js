@@ -20,7 +20,8 @@ async function getOrderlines(req , res, next){
             price:orderline.product.price,
             quantity:orderline.amount,
             orderlineId:orderline.id,
-            image:orderline.product.image
+            image:orderline.product.image,
+            orderId: orderline.orderId
         })
        })
 
