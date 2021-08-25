@@ -9,9 +9,16 @@ export function Checkout({ products, data, user }) {
     let history = useHistory()
 
 
-    console.log("SOY ORDENID", products[0].ordenId)
-    const [state, setState] = useState({ordenId: products[0].ordenId})
-    const [stock, setStock] = useState({ordenId: products[0].ordenId, products: products})
+    //console.log("SOY ORDENID", products[0].ordenId)
+    const [state, setState] = useState({})
+    const [stock, setStock] = useState({})
+
+    useEffect(()=>{
+        if(user){
+            setState({ordenId: products[0].ordenId})
+            setStock({ordenId: products[0].ordenId, products: products})
+        }
+    },[user])
 
     useEffect(() => {
         const script = document.createElement("script")
