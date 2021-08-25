@@ -20,7 +20,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
       scope="read:current_user update:current_user_metadata"
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
-      useRefreshTokens={true}
+      useRefreshTokens={false}
       cacheLocation="localstorage"
     >
       {children}
