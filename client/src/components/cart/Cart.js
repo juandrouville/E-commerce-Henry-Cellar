@@ -141,16 +141,17 @@ const Cart = () => {
             {isAuthenticated ? (
               
               <div>
-                {userData && !userData.dataValues.blocked ? (
-                <button
+                {userData && userData.dataValues.blocked ? (
+                  <h2>Sorry, your user is blocked to buy</h2>)
+                 : (<button
                   className="buy_button"
                   onClick={comprar}
                   li
                   disabled={result.length === 0 ? true : false}
                 >
                   Buy
-                </button>) : (
-                  <h2>Sorry, your user is blocked to buy</h2>)}
+                </button>
+                )}
 
                 <pre> </pre>
               </div>
