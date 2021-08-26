@@ -17,7 +17,6 @@ export function Checkout({  data }) {
         script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
         script.setAttributeNode(attr_data_preference)
 
-
         document.getElementById("form1").appendChild(script)
 
     }, [data])
