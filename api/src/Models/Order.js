@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
     shippingMethod:{
         type:DataTypes.STRING,
         //allowNull:false,
-        defaultValue:"No specified yet"
+        defaultValue:"Retire in local"
     },
     paymentid: {
       type: DataTypes.INTEGER,

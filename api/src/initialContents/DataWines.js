@@ -96,7 +96,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/56/thumb_55354_default_big.jpeg",
     description:
-      "View: At sight it has a very intense ruby ​​red color with violet hues. Nose: The aroma of this wine reflects the prolonged ripening of its berries where dried fruits, cherries, soft sweet pepper and cassis are perceived. soft tannins and good structure. Its alcoholic content gives a sensation of sweetness. With flavors of plum and raisins.",
+      "View: At sight it has a very intense ruby ​​red color with violet hues. Nose: The aroma of this wine reflects the prolonged ripening of its berries where dried fruits, cherries, soft sweet pepper and cassis are perceived. soft tannins and good structure. Its alcoholic content gives a sensation of sweetness. With flavors of plum and raisins",
     bodega: "Rosell Boher",
     precio: 1100,
     stock: 30,
@@ -125,7 +125,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/56/thumb_55288_default_big.jpeg",
     description:
-      "Weight: Gross weight 0.3kg Measurements: Width 5 cm - Height 26 cm - Depth 5 cm Measurements with box: Width 10.5 cm - Height 28 cm - Depth 9.5 cm Batteries: the model works with 4 AA batteries (doesn't includes the same).",
+      "Weight: Gross weight 0.3kg Measurements: Width 5 cm - Height 26 cm - Depth 5 cm Measurements with box: Width 10.5 cm - Height 28 cm - Depth 9.5 cm Batteries: the model works with 4 AA batteries (not includes them).",
     bodega: null,
     precio: 4150,
     stock: 30,
@@ -136,7 +136,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/56/thumb_55287_default_big.jpeg",
     description:
-      "Weight: Gross weight 0.4kg Measurements: Width 5 cm - Height 27 cm - Depth 5 cm Measurements with box: Width 10.5 cm - Height 32.5 cm - Depth 9 cm Batteries: the model works with 4 AA batteries (doesn't includes the same).",
+      "Weight: Gross weight 0.4kg Measurements: Width 5 cm - Height 27 cm - Depth 5 cm Measurements with box: Width 10.5 cm - Height 32.5 cm - Depth 9 cm Batteries: the model works with 4 AA batteries (not includes them).",
     bodega: null,
     precio: 4150,
     stock: 30,
@@ -232,7 +232,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/54/thumb_53045_default_big.jpeg",
     description:
-      "Delicado color amarillo brillante con reflejos dorados verdosos.",
+      "Delicate bright yellow color with greenish golden reflections.",
     bodega: "Luigi Bosca",
     precio: 830,
     stock: 30,
@@ -254,7 +254,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/55/thumb_54257_default_big.jpeg",
     description:
-      "De color amarillo verdoso con reflejos acerados, resalta por sus aromas intensos de flores y frutos como rosas, jazmín, azares con durazno, manzana, ananá y citrus.",
+      "Greenish-yellow in color with steely reflections, it stands out for its intense aromas of flowers and fruits such as roses, jasmine, hazards with peach, apple, pineapple and citrus.",
     bodega: "Etchart",
     precio: 290,
     stock: 99,
@@ -275,7 +275,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/63/thumb_62747_default_big.jpeg",
     description:
-      "El Torrontés de Cafayate es renombrado y reconocido en el mundo entero por su distinción.",
+      "The Torrontés de Cafayate is renowned and recognized throughout the world for its distinction.",
     bodega: "Nanni",
     precio: 882,
     stock: 99,
@@ -297,7 +297,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/64/thumb_63279_default_big.jpeg",
     description:
-      "En su degustación surge un aroma etéreo y fino, generoso al gusto, pleno y aterciopelado.",
+      "In its tasting, an ethereal and fine aroma arises, generous to the taste, full and velvety.",
     bodega: "Lopez",
     precio: 441,
     stock: 99,
@@ -318,7 +318,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61468_default_big.jpeg",
     description:
-      "Elegante y amable, equilibrado con una acidez justa, final agradable y fresco.",
+      "Elegant and friendly, balanced with a fair acidity, pleasant and fresh finish.",
     bodega: "Dante Robino",
     precio: 276,
     stock: 99,
@@ -339,7 +339,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/60/thumb_59352_default_big.jpeg",
     description:
-      "Aroma fresco intenso con notas a frutas y uvas recién cortadas.En boca es delicado, armónico y muy fácil de beber.",
+      "Intense fresh aroma with notes of fruits and freshly cut grapes. On the palate it is delicate, harmonious and very easy to drink.",
     bodega: "Colon",
     precio: 220,
     stock: 99,
@@ -355,8 +355,7 @@ const products = [
     name: "Las Perdices Malbec Ice",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61468_default_big.jpeg",
-    description:
-      "Aromas de frutas rojas sobremaduras, pasas de ciruelas y guindas.",
+    description: "Aromas of overripe red fruits, prune raisins and cherries.",
     bodega: "Las Perdices",
     precio: 1630,
     stock: 99,
@@ -373,7 +372,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61779_default_big.jpeg",
     description:
-      "Fresco, frutado, muy suave y fácil de beber. Su frescura le confiere un final persistente.",
+      "Fresh, fruity, very smooth and easy to drink. Its freshness gives it a persistent finish.",
     bodega: "Mendel",
     precio: 3200,
     stock: 99,
@@ -390,7 +389,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/60/thumb_59304_default_big.jpeg",
     description:
-      "Aromas delicados y frescos. Hay notas de frutos como la guinda, la cereza y la frambuesa.",
+      "Delicate and fresh aromas. There are notes of fruits such as cherry, cherry and raspberry.",
     bodega: "Lagarde",
     precio: 1100,
     stock: 99,
@@ -407,7 +406,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/63/thumb_62697_default_big.jpeg",
     description:
-      "Su sabor es amable, con excelente equilibrio entre ácidez y estructura.",
+      "Its flavor is friendly, with an excellent balance between acidity and structure.",
     bodega: "Jorge Rubio",
     precio: 436,
     stock: 99,
@@ -424,7 +423,7 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/60/thumb_59807_default_big.jpeg",
     description:
-      "En la nariz se perciben intensos aromas a frutas frescas con sutiles notas florales.",
+      "Intense aromas of fresh fruits with subtle floral notes are perceived on the nose.",
     bodega: "Salentein",
     precio: 900,
     stock: 99,

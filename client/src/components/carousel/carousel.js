@@ -26,7 +26,7 @@ const Carousel = () => {
   //useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
   const settings = {
-    dots: false,
+    dots: true,
     showArrows: true,
     renderArrowPrev: true,
     renderArrowNext: true,
@@ -37,6 +37,7 @@ const Carousel = () => {
   };
 
   return (
+    <div className="carousel_container">
     <div className="carousel">
       <div className="carousel-inner">
         {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
@@ -46,6 +47,7 @@ const Carousel = () => {
           productsFavourite ? (
             productsFavourite.map(p => {
               return (
+<<<<<<< HEAD
                 <div key={p.id} className="containerCarousel">
                   <div>
                     <CardFavorite
@@ -62,6 +64,19 @@ const Carousel = () => {
                     />
                   </div>
                 </div>
+=======
+                <div>
+                  <CardFavorite
+                    name={ p.name}
+                    image={p.image}
+                    price={p.price}
+                    id={p.id}
+                    delFromFavourite={delFromFavourite}
+                    stock={p.stock}
+                  />
+                </div>
+                
+>>>>>>> Lighuen
               );
             })
           ) : (
@@ -70,6 +85,7 @@ const Carousel = () => {
         ) : null}
       </Slider>
     </div>
+  </div>
   );
 };
 

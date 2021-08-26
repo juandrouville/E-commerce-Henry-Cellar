@@ -59,6 +59,7 @@ export default function Orders() {
       field: "state",
 
       render: rowData => (
+<<<<<<< HEAD
         <select
           onChange={e => handleStateChange(e, rowData)}
           id={rowData.id}
@@ -69,6 +70,15 @@ export default function Orders() {
           <option value="rejected">Rejected</option>
           <option value="sent">Sent</option>
           <option value="recieved">Recieved</option>
+=======
+         
+        <select  onChange={(e)=>handleStateChange(e,rowData)} id={rowData.id} defaultValue={rowData.state}>
+        <option value="pending">Pending</option>    
+        <option value="accepted">Accepted</option>
+        <option value="rejected">Rejected</option>
+        <option value="sent">Sent</option>
+        <option value="received">received</option>
+>>>>>>> Lighuen
         </select>
       )
     },

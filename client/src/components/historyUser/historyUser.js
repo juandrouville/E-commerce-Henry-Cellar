@@ -2,10 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 // import {
 //     getDbOrder,
 //
 // } from "../../actions/index";
+=======
+import { BsXCircle } from "react-icons/bs";
+import {
+    getDbOrder,
+>>>>>>> Lighuen
 
 // import { useAuth0 } from "@auth0/auth0-react";
 // import PostReview from "components/PostReview/PostReview";
@@ -21,7 +27,9 @@ import { Link } from "react-router-dom";
 //     ))
 // };
 
+
 export default function HistoryUser() {
+<<<<<<< HEAD
   // const dispatch = useDispatch();
   const order = useSelector(state => state.order);
   // const user = useSelector((state) => state.user);
@@ -64,6 +72,84 @@ export default function HistoryUser() {
       </div>
     </LayoutPrimary>
   );
+=======
+    const dispatch = useDispatch();
+    const order = useSelector((state) => state.order);
+    const user = useSelector((state) => state.user);
+    let orderlines = useSelector((state) => state.orderlines);
+    let total = orderlines.reduce(function (acc, curr) {
+        return acc + curr.quantity * curr.price;
+    }, 0);
+
+    var firstName = user.dataValues.firstName;
+    var lastName = user.dataValues.lastName;
+    // const { isAuthenticated } = useAuth0();
+
+
+    // useEffect(() => {
+
+    //     dispatch(getDbOrder())
+
+    // }, [dispatch])
+
+
+    // 
+
+
+
+    return (
+        <LayoutPrimary>
+
+
+            <div className="historyPage" >
+                <div className="historyContainer">
+                    <h2>Welcome {firstName}  {lastName}</h2>
+                    <h3>Purchase History</h3>
+                    {total !== 0 ? (
+                        <div className="container_order_detail">
+                            <div className="header_titles">
+                                <p>Order</p>
+                                <p>State</p>
+                                <p>Total</p>
+                                <p>Detail</p>
+                            </div>
+
+
+                        {order.map((i) => { 
+                        return (
+
+                            <div className="line_order">
+                                <p>{i.id } </p>
+
+                                <p>{i.state}</p>
+
+                                <p> $
+
+                                    {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)}
+                                </p>
+                                <Link to="/orderdetail" className="viewDetail" >View</Link>
+                            </div>
+
+                            ) 
+                        })}
+                        </div>
+
+
+                    ) : (
+                        <div className="empty_cart">
+                            <BsXCircle size={40} />
+                            <h3 className="dontHistory"> You don´t have a history of purchases</h3>
+                            <Link to={`/home`}>
+                                <button>View Products</button>
+                            </Link>
+                        </div>
+                    )
+                    }
+                </div>
+            </div>
+        </LayoutPrimary>
+    );
+>>>>>>> Lighuen
 }
 
 // {i.orderlines.length ?

@@ -30,13 +30,15 @@ import {
   // USER_ID,
   REMOVE_PRODUCT,
   GET_ALL_ORDERS,
-  CLEAR_ALL_ORDERS
+  CLEAR_ALL_ORDERS,
+  GET_ALL_PAIRING
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
 const initialState = {
   productCategories: [],
+  pairings: [],
   getAllProducts: [],
   productDetail: [],
   // searchProductByName: [],
@@ -74,6 +76,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         productCategories: action.payload
+      };
+    }
+    case GET_ALL_PAIRING: {
+      return {
+        ...state,
+        pairings: action.payload
       };
     }
     case GET_ALL_WINERIES: {
