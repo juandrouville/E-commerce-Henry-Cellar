@@ -1,4 +1,4 @@
-const { Product, Categories, Wineries } = require("../db");
+const { Product, Categories, Wineries, Pairing } = require("../db");
 
 async function SetDataInitial(arrayProducts) {
   try {

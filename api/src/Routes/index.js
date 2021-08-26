@@ -25,6 +25,7 @@ const removeProduct = require("./removeProduct");
 const user = require("./user");
 const editUser=require('./editUser')
 const mercadopago=require("./mercadopago")
+const Pairing = require("./Pairing");
 
 router.use("/mercadopago", mercadopago);
 router.use("/allproducts", getAllProductsRouter);
@@ -50,5 +51,6 @@ router.use("/editOrder", editOrder);
 router.use("/editUser", editUser);
 router.use("/removeProduct", removeProduct);
 router.use("/user", user);
+router.use("/Pairing", Pairing);
 
 module.exports = router;

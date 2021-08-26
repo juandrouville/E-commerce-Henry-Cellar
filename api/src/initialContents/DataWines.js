@@ -9,6 +9,8 @@ const products = [
     precio: 432,
     stock: 30,
     category: ["Wine", "Tinto", "Malbec"],
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"]
+    
   },
   {
     name: "Postales Del Fin Del Mundo",
@@ -21,6 +23,7 @@ const products = [
     precio: 540,
     stock: 30,
     category: ["Wine", "Tinto", "Malbec"],
+    maridaje: ["Pescados", "Fiambres",  "Ternera", "Comida Asitica", "Pastas"]
   },
   {
     name: "Dv Catena Cabernet Malbec ",
@@ -32,6 +35,7 @@ const products = [
     precio: 1599.99,
     stock: 30,
     category: ["Wine", "Blend", "Tinto"],
+    maridaje: ["Pescados", "Fiambres",  "Ternera", "Comida Asitica", "Pastas"]
   },
   {
     name: "Del Fin Del Mundo Special Blend",
@@ -43,6 +47,7 @@ const products = [
     precio: 387,
     stock: 30,
     category: ["Wine", "Blend", "Tinto"],
+    maridaje: ["Pescados", "Fiambres",  "Ternera", "Comida Asitica", "Pastas"]
   },
   {
     name: "Quara Reserva Cabeernet Sauvignon",
@@ -54,6 +59,7 @@ const products = [
     precio: 410,
     stock: 30,
     category: ["Wine", "Cabernet Sauvignon", "Tinto"],
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"]
   },
   {
     name: "Famiglia Bianchi Cabernet Sauvignon",
@@ -65,6 +71,7 @@ const products = [
     precio: 810,
     stock: 30,
     category: ["Wine", "Cabernet Sauvignon", "Tinto"],
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"]
   },
   {
     name: "Pulenta Estate Merlot",
@@ -76,6 +83,7 @@ const products = [
     precio: 1750,
     stock: 30,
     category: ["Wine", "Tinto", "Merlot"],
+    maridaje: ["Pescados", "Fiambres", "Carnes Blancas", "Ternera", "Comida Asitica", "Pastas"]
   },
   {
     name: "Casa Boher Merlot",
@@ -87,6 +95,7 @@ const products = [
     precio: 1100,
     stock: 30,
     category: ["Wine", "Tinto", "Merlot"],
+    maridaje: ["Pescados", "Fiambres", "Carnes Blancas", "Ternera", "Comida Asitica", "Pastas"]
   },
   {
     name: "Sacacorcho 2 tiempos Azul WineFroz",
@@ -194,6 +203,7 @@ const products = [
     precio: 540,
     stock: 30,
     category: ["Wine", "Blanco", "Chardonnay"],
+    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
   },
   {
     name: "La Linda Chardonnay",
@@ -205,6 +215,7 @@ const products = [
     precio: 830,
     stock: 30,
     category: ["Wine", "Blanco", "Chardonnay"],
+    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
   },
 
   {
@@ -217,6 +228,7 @@ const products = [
     precio: 290,
     stock: 99,
     category: ["Wine", "Blanco", "Torrontes"],
+    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
   },
   {
     name: "Nanni Torrontes",
@@ -228,6 +240,7 @@ const products = [
     precio: 882,
     stock: 99,
     category: ["Wine", "Blanco", "Torrontes"],
+    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
   },
 
   {
@@ -240,6 +253,7 @@ const products = [
     precio: 441,
     stock: 99,
     category: ["Wine", "Blanco", "Blend"],
+    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
   },
   {
     name: "Capriccio Dulce Natural Dolcezza",
@@ -251,6 +265,7 @@ const products = [
     precio: 276,
     stock: 99,
     category: ["Wine", "Blanco", "Blend"],
+    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
   },
   {
     name: "Colon Rose",
@@ -262,6 +277,7 @@ const products = [
     precio: 220,
     stock: 99,
     category: ["Wine", "Rosado", "Malbec"],
+    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
   },
   {
     name: "Las Perdices Malbec Ice",
@@ -273,6 +289,7 @@ const products = [
     precio: 1630,
     stock: 99,
     category: ["Wine", "Rosado", "Malbec"],
+    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
   },
   {
     name: "Mendel Rosadia",
@@ -284,6 +301,7 @@ const products = [
     precio: 3200,
     stock: 99,
     category: ["Wine", "Rosado", "Blend"],
+    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
   },
   {
     name: "Lagarde Goes Pink Rose",
@@ -295,6 +313,7 @@ const products = [
     precio: 1100,
     stock: 99,
     category: ["Wine", "Rosado", "Blend"],
+    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
   },
   {
     name: "Finca Gabriel Rose",
@@ -306,6 +325,7 @@ const products = [
     precio: 436,
     stock: 99,
     category: ["Wine", "Rosado", "Syrah"],
+    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
   },
   {
     name: "Salentein Reserve Rosado",
@@ -317,6 +337,7 @@ const products = [
     precio: 900,
     stock: 99,
     category: ["Wine", "Rosado", "Syrah"],
+    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
   },
 ];
 
