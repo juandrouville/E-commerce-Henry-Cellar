@@ -16,6 +16,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "layouts/layout-primary";
 import toast, { Toaster } from "react-hot-toast";
 import PostReview from "components/PostReview/PostReview";
+import { TiShoppingCart } from "react-icons/ti";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -61,13 +62,13 @@ export default function ProductDetail() {
                 </div>
                 <div className="buyFavButtons">
                   <button onClick={() => addToCart(productDetail.id)}>
-                    <img src={cart2} alt="cartlogo" width="30" height="30" />
+                    <TiShoppingCart size={30} />
                   </button>
-                  {isAuthenticated ? (
+                  {/* {isAuthenticated ? ( */}
                     <button onClick={() => addFavourite(productDetail.id)}>
                       Fav <FaStar className="star" color="#ffc107" size={15} />
                     </button>
-                  ) : null}
+                  {/* ) : null} */}
 
                 </div>
               </div>
