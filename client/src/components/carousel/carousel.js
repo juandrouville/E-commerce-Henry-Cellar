@@ -38,54 +38,40 @@ const Carousel = () => {
 
   return (
     <div className="carousel_container">
-    <div className="carousel">
-      <div className="carousel-inner">
-        {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
-      </div>
-      <Slider className="show" {...settings}>
-        {productsFavourite.length !== 0 ? (
-          productsFavourite ? (
-            productsFavourite.map(p => {
-              return (
-<<<<<<< HEAD
-                <div key={p.id} className="containerCarousel">
-                  <div>
-                    <CardFavorite
-                      name={
-                        <Link to={`/product-detail/${p.id}`} key={p.id}>
-                          {p.name}
-                        </Link>
-                      }
-                      image={p.image}
-                      price={p.price}
-                      id={p.id}
-                      delFromFavourite={delFromFavourite}
-                      stock={p.stock}
-                    />
+      <div className="carousel">
+        <div className="carousel-inner">
+          {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
+        </div>
+        <Slider className="show" {...settings}>
+          {productsFavourite.length !== 0 ? (
+            productsFavourite ? (
+              productsFavourite.map(p => {
+                return (
+                  <div key={p.id} className="containerCarousel">
+                    <div>
+                      <CardFavorite
+                        name={
+                          <Link to={`/product-detail/${p.id}`} key={p.id}>
+                            {p.name}
+                          </Link>
+                        }
+                        image={p.image}
+                        price={p.price}
+                        id={p.id}
+                        delFromFavourite={delFromFavourite}
+                        stock={p.stock}
+                      />
+                    </div>
                   </div>
-                </div>
-=======
-                <div>
-                  <CardFavorite
-                    name={ p.name}
-                    image={p.image}
-                    price={p.price}
-                    id={p.id}
-                    delFromFavourite={delFromFavourite}
-                    stock={p.stock}
-                  />
-                </div>
-                
->>>>>>> Lighuen
-              );
-            })
-          ) : (
-            <p>Cargando...</p>
-          )
-        ) : null}
-      </Slider>
+                );
+              })
+            ) : (
+              <p>Cargando...</p>
+            )
+          ) : null}
+        </Slider>
+      </div>
     </div>
-  </div>
   );
 };
 

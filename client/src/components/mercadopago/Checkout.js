@@ -19,7 +19,6 @@ export function Checkout({ data }) {
 
     document.getElementById("form1").appendChild(script);
 
-<<<<<<< HEAD
     return () => {
       history.push("http://localhost:3000/user/finalizarcompra");
     };
@@ -30,18 +29,6 @@ export function Checkout({ data }) {
       <form id="form1"></form>
     </div>
   );
-=======
-        document.getElementById("form1").appendChild(script)
-
-    }, [data])
-
-    return (
-        <div>
-            <form id="form1">
-             </form>
-        </div >
-    )
->>>>>>> Lighuen
 }
 
 const mapStateToProps = state => {

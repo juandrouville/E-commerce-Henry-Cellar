@@ -2,16 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-// import {
-//     getDbOrder,
-//
-// } from "../../actions/index";
-=======
 import { BsXCircle } from "react-icons/bs";
 import {
     getDbOrder,
->>>>>>> Lighuen
 
 // import { useAuth0 } from "@auth0/auth0-react";
 // import PostReview from "components/PostReview/PostReview";
@@ -29,50 +22,6 @@ import {
 
 
 export default function HistoryUser() {
-<<<<<<< HEAD
-  // const dispatch = useDispatch();
-  const order = useSelector(state => state.order);
-  // const user = useSelector((state) => state.user);
-
-  // const { isAuthenticated } = useAuth0();
-
-  // useEffect(() => {
-
-  //     dispatch(getDbOrder())
-
-  // }, [dispatch])
-
-  //
-
-  return (
-    <LayoutPrimary>
-      <div className="historyContainer">
-        <h2>My Purchase History</h2>
-        {order.length ? (
-          order.map(i => {
-            return (
-              <div className="divclass">
-                {/* <li>Order number: {i.id} || State: {i.state} || Total: $ {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)} <Link to="/orderdetail">detail</Link></li> */}
-                <p>Order number: {i.id} </p>
-                <p>State: {i.state}</p>
-                <p>
-                  Total: ${" "}
-                  {i.orderlines.reduce(
-                    (a, b) => a + b.product.price * b.amount,
-                    0
-                  )}
-                </p>
-                <Link to="/orderdetail">detail</Link>
-              </div>
-            );
-          })
-        ) : (
-          <h2 className="empty_cart"> cargando... </h2>
-        )}
-      </div>
-    </LayoutPrimary>
-  );
-=======
     const dispatch = useDispatch();
     const order = useSelector((state) => state.order);
     const user = useSelector((state) => state.user);
@@ -93,7 +42,7 @@ export default function HistoryUser() {
     // }, [dispatch])
 
 
-    // 
+    //
 
 
 
@@ -115,7 +64,7 @@ export default function HistoryUser() {
                             </div>
 
 
-                        {order.map((i) => { 
+                        {order.map((i) => {
                         return (
 
                             <div className="line_order">
@@ -130,7 +79,7 @@ export default function HistoryUser() {
                                 <Link to="/orderdetail" className="viewDetail" >View</Link>
                             </div>
 
-                            ) 
+                            )
                         })}
                         </div>
 
@@ -149,7 +98,6 @@ export default function HistoryUser() {
             </div>
         </LayoutPrimary>
     );
->>>>>>> Lighuen
 }
 
 // {i.orderlines.length ?

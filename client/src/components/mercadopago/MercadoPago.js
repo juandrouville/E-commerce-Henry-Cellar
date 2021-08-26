@@ -1,23 +1,14 @@
-<<<<<<< HEAD
 import React from "react";
 import { useState, useEffect } from "react";
 import Checkout from "./Checkout";
 import axios from "axios";
 import { connect } from "react-redux";
-// import state from "sweetalert/typings/modules/state"
-=======
-import React from "react"
-import { useState, useEffect } from "react"
-import Checkout from "./Checkout"
-import axios from "axios"
-import { connect } from "react-redux"
-import LayoutPrimary from "layouts/layout-primary"
-import { BasicTextFields } from "./formData"
-import SimpleList from "./ListOfProd"
-import { Divider } from "@material-ui/core"
-import PaymentDiv from "./PaymentDiv"
-import { Toaster } from "react-hot-toast"
->>>>>>> Lighuen
+import LayoutPrimary from "layouts/layout-primary";
+import { BasicTextFields } from "./formData";
+import SimpleList from "./ListOfProd";
+import { Divider } from "@material-ui/core";
+import PaymentDiv from "./PaymentDiv";
+import { Toaster } from "react-hot-toast";
 // import { checkout } from "../../../../api/src/app"
 
 const mapStateToProps = state => {
@@ -60,35 +51,29 @@ export function MercadoPago({ orderlines }) {
           console.error(err);
         });
     }
-<<<<<<< HEAD
   }, [orderlines]);
-
-  return <div>{!datos ? <h1>Cargando..</h1> : <Checkout data={datos} />}</div>;
-}
-
-export default connect(mapStateToProps)(MercadoPago);
-=======
-  }, [orderlines])
-
-  
 
   return (
     <LayoutPrimary>
-      <div><Toaster /> </div>
-     <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",width:"100%"}}>
-    <SimpleList/>  
-    <BasicTextFields/>
-    <PaymentDiv data={datos}/>
-    <div>
-    </div>
-    </div> 
-    </LayoutPrimary> 
-  )
+      <div>
+        <Toaster />{" "}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          width: "100%"
+        }}
+      >
+        <SimpleList />
+        <BasicTextFields />
+        <PaymentDiv data={datos} />
+        <div></div>
+      </div>
+    </LayoutPrimary>
+  );
 }
 
-
-
-
-
-export default connect(mapStateToProps)(MercadoPago)
->>>>>>> Lighuen
+export default connect(mapStateToProps)(MercadoPago);
