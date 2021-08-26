@@ -50,11 +50,7 @@ const Carousel = () => {
                 <div className="containerCarousel">
                 <div>
                   <CardFavorite
-                    name={
-                      <Link to={`/product-detail/${p.id}`} key={p.id}>
-                        {p.name}
-                      </Link>
-                    }
+                    name={ p.name}
                     image={p.image}
                     price={p.price}
                     id={p.id}
