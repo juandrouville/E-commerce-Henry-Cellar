@@ -16,10 +16,12 @@ const Auth0ProviderWithHistory = ({ children }) => {
     <Auth0Provider
       domain={domain}
       clientId={clientId}
-      // domain="dev-qwgbl3q5.us.auth0.com"
-      // clientId="CpKkXkyG670JY3pHcHXBv2SnTK5q35wS"
+      //audience={config.audience}
+      scope="read:current_user update:current_user_metadata"
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
+      useRefreshTokens={false}
+      cacheLocation="localstorage"
     >
       {children}
     </Auth0Provider>

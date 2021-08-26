@@ -85,7 +85,12 @@ export default function PostProduct(props) {
   
       <div className="all_products_container">
         <div className="formPost">
-          <h1>Create Product</h1>
+          <div className="header">
+            <h1>Create Product</h1>
+            <NavLink to="/admin">
+              <h3>Back to Panel</h3>
+            </NavLink>
+          </div>
           <form onSubmit={handleSubmit}>
           <div className="table" >
             <img src={wineimage} alt="Loading..."/>

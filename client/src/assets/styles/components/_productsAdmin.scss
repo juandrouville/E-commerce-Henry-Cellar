@@ -1,7 +1,11 @@
 .admin_product_container{
     display: flex;
-    justify-content: space-evenly;   
+    justify-content: space-around; 
     padding-top: 4px;
     align-items: center;
     align-content: center;
+}
+
+.container_table_edit_product{
+    background-color: aqua;
 }

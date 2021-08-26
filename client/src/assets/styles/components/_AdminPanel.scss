@@ -1,8 +1,21 @@
 .admin_container{
-    display: flex;
-    justify-content: space-around;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #420000;
-    margin-top: 70px;
-    padding: 20px;
+    width: 100%;
+    position: relative;
+    border-bottom:2px solid rgb(57, 57, 57) ;
+    margin-bottom: 25px;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    @include response(medium){
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 2px solid rgb(57, 57, 57);
+        margin-top: 70px;
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
 }
