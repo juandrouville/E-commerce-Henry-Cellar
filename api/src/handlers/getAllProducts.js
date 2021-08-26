@@ -14,21 +14,21 @@ const getAllproducts = async (req, res, next) => {
   var min = req.query.min
 
   try {
+    
     if(max && min ){
-       var maxmin = await Product.findAll({
+      var maxmin = await Product.findAll({
 
-        limit: limit,
-        offset: offset,
-        where:{
-          price:{
-             [Op.between]:[min,max]
-          }
-        }
-      })
-     return res.send(maxmin)
-      
-    }
-
+       limit: limit,
+       offset: offset,
+       where:{
+         price:{
+            [Op.between]:[min,max]
+         }
+       }
+     })
+    return res.send(maxmin)
+     
+   }
     if (precio) {
       if (precio === "Ascendant") {
         var asc = await Product.findAll({
