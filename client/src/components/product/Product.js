@@ -61,13 +61,13 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
 
           
             <div className="cartButton">
-              {isAuthenticated ? (<button onClick={() => addFavourite(id)}>
+              {isAuthenticated ? (<button onClick={(e) => {addFavourite(id);e.target.disabled=true}}>
                 Fav <FaStar className="star" color="#ffc107" size={15} />
               </button>) : null}
               
               <pre> </pre>
               
-              <button onClick={() => addToCart(id)}>
+              <button onClick={() => addToCart(id)} disabled={stock<1? true : false}>
                 <TiShoppingCart size={30} />
               </button>
             </div>
