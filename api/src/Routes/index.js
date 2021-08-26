@@ -26,7 +26,9 @@ const user = require("./user");
 const editUser=require('./editUser')
 const mercadopago=require("./mercadopago")
 const Pairing = require("./Pairing");
+const OneOrderline = require("./getOneOrderline");
 
+router.use("/oneorderline", OneOrderline);
 router.use("/mercadopago", mercadopago);
 router.use("/allproducts", getAllProductsRouter);
 router.use("/product", productDetail);

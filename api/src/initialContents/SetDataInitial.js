@@ -29,7 +29,6 @@ async function SetDataInitial(arrayProducts) {
         arrayProducts[e].maridaje.map(async (m) => {
           await Pairing.findOrCreate({where:{name:m}});
           var pairing = await Pairing.findOne({where:{name:m}});
-          console.log(pairing);
           await oneProduct.addPairing(pairing);
         })
         
