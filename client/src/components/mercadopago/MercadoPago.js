@@ -3,7 +3,9 @@ import { useState, useEffect } from "react"
 import Checkout from "./Checkout"
 import axios from "axios"
 import { connect } from "react-redux"
-// import state from "sweetalert/typings/modules/state"
+import LayoutPrimary from "layouts/layout-primary"
+import { BasicTextFields } from "./formData"
+import SimpleList from "./ListOfProd"
 // import { checkout } from "../../../../api/src/app"
 
 
@@ -49,15 +51,25 @@ export function MercadoPago({orderlines}) {
   
 
   return (
-    <div>
+    <LayoutPrimary>
+     <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",width:"100%"}}>
+    <SimpleList/>  
+    <BasicTextFields/>
+
       {!datos ?
         <h1>Cargando..</h1>
         
          :<Checkout data={datos} />
       }
-    </div>
+      </div> 
+    </LayoutPrimary>
+    
   )
 
 }
+
+
+
+
 
 export default connect(mapStateToProps)(MercadoPago)

@@ -20,10 +20,6 @@ export function Checkout({  data }) {
 
         document.getElementById("form1").appendChild(script)
 
-        return () => {
-
-           history.push('http://localhost:3000/user/finalizarcompra')
-        }
     }, [data])
 
     return (
