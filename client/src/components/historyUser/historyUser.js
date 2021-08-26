@@ -55,7 +55,7 @@ export default function HistoryUser() {
                                 <p>Order number: {i.id} </p>
                                 <p>State: {i.state}</p>
                                 <p>Total: $ {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)}</p>
-                                <Link to="/orderdetail">detail</Link>
+                                <Link to={`/orderdetail/${i.id}`}>detail</Link>
 
                             </div>
                         )
