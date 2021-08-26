@@ -3,12 +3,21 @@ import { useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import { postReview } from "../../actions/index";
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 
 function PostReview (productId){
 
     productId = productId.productId;
+    
+    const userId = useSelector((state) =>{
+        if(state.user){
+            return state.user.dataValues.id;
+        };
+    });
+
+    console.log(userId);
 
     const dispatch = useDispatch();
 
@@ -16,6 +25,7 @@ function PostReview (productId){
         commentary:'',
         score:0,
         productId:'',
+        userId:userId,
     });
 
     const [rating, setRating] = useState(null);
