@@ -234,23 +234,11 @@ const rootReducer = (state = initialState, action) => {
     }
 
     case GET_DB_ORDER: {
-      const userid = state.user.dataValues.id;
-      const userID = [];
-
-      for (var i = 0; i < action.payload.length; i++) {
-        userID.push({ id: action.payload[i].userId });
-      }
-
-      let UserID = userID.find(item => item.id === userid);
-
-      return UserID
-        ? {
-            ...state,
-            order: action.payload
-          }
-        : {
-            order: []
-          };
+      return {
+        ...state,
+        order: action.payload
+      };
+        
     }
     case GET_ALL_USERS: {
       return {

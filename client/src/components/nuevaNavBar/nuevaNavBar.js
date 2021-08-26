@@ -14,17 +14,26 @@ import AuthNav from "../auth-Nav/auth-nav";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Avatar } from "@material-ui/core";
+import {
+  getDbOrder,
+} from "../../actions/index";
 
 
 const NuevaNavBar = () => {
+  const dispatch = useDispatch();
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
   const { isAuthenticated } = useAuth0();
   const { user } = useAuth0();
   const userData = useSelector((state) => state.user);
+
   useEffect(() => {}, [userData]);
+
+  const historyUser = (id) => {
+    dispatch(getDbOrder(id));
+  };
 
   return (
     <div className="fixed">
@@ -84,9 +93,10 @@ const NuevaNavBar = () => {
             </li>
             <li className="nav-text">
               {isAuthenticated ? (
-                <NavLink to="/prueba" refresh="true">
+                <NavLink to="/prueba" refresh="true"  className="button-text">
                   <AiIcons.AiOutlineHistory />
-                  <h3 className="h3">My Shopping</h3>
+                  <button className="li" onClick={() => historyUser(userData.dataValues.id)}>My Shopping</button>
+                  
                 </NavLink>
               ) : null}
             </li>
