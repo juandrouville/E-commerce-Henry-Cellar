@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   sequelize.define("order", {
     state: {
-      type: DataTypes.ENUM(["pending","accepted","rejected","sent","recieved"]),
+      type: DataTypes.ENUM(["pending","accepted","rejected","sent","received"]),
       allowNull:false,
     },
     total:{
