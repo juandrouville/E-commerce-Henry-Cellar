@@ -388,12 +388,14 @@ export function clearCartOfDB(orderId) {
   };
 }
 
-export function getDbOrder() {
+export function getDbOrder(id) {
   return async dispatch => {
     try {
       const res = await axios.get(
-        `/getAllOrders` || `http://localhost:3001/getAllOrders`
+        `/getorder/` + id || `http://localhost:3001/getorder/` + id
       );
+      
+
       dispatch({ type: GET_DB_ORDER, payload: res.data });
     } catch (error) {
       alert("ERROR AL OBTENER TODAS LAS ORDENES");

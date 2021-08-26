@@ -29,11 +29,11 @@ export default function HistoryUser() {
     // const { isAuthenticated } = useAuth0();
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        dispatch(getDbOrder())
+    //     dispatch(getDbOrder())
 
-    }, [dispatch])
+    // }, [dispatch])
 
 
     // 
