@@ -95,7 +95,7 @@ const NuevaNavBar = () => {
               {isAuthenticated ? (
                 <NavLink to="/prueba" refresh="true"  className="button-text">
                   <AiIcons.AiOutlineHistory />
-                  <button className="li" onClick={() => historyUser(userData.dataValues.id)}>My Shopping</button>
+                  <button className="li" onClick={() => historyUser(userData.dataValues.id)}><h3 className="h3">My Shopping</h3></button>
                   
                 </NavLink>
               ) : null}
