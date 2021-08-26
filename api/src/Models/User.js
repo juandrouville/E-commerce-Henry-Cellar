@@ -43,6 +43,11 @@ module.exports = (sequelize) => {
     //   type: DataTypes.STRING,
     //   defaultValue: "",
     // },
+    adress:{
+      type:DataTypes.STRING,
+      allowNull:true,
+      defaultValue:"Unknown"
+    },
     subscribed: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,

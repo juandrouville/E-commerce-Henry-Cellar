@@ -3,7 +3,12 @@ import { useState, useEffect } from "react"
 import Checkout from "./Checkout"
 import axios from "axios"
 import { connect } from "react-redux"
-// import state from "sweetalert/typings/modules/state"
+import LayoutPrimary from "layouts/layout-primary"
+import { BasicTextFields } from "./formData"
+import SimpleList from "./ListOfProd"
+import { Divider } from "@material-ui/core"
+import PaymentDiv from "./PaymentDiv"
+import { Toaster } from "react-hot-toast"
 // import { checkout } from "../../../../api/src/app"
 
 
@@ -49,15 +54,21 @@ export function MercadoPago({orderlines}) {
   
 
   return (
+    <LayoutPrimary>
+      <div><Toaster /> </div>
+     <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",width:"100%"}}>
+    <SimpleList/>  
+    <BasicTextFields/>
+    <PaymentDiv data={datos}/>
     <div>
-      {!datos ?
-        <h1>Cargando..</h1>
-        
-         :<Checkout data={datos} />
-      }
     </div>
+    </div> 
+    </LayoutPrimary> 
   )
-
 }
+
+
+
+
 
 export default connect(mapStateToProps)(MercadoPago)
