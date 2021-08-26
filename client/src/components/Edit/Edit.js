@@ -209,6 +209,7 @@ export default function EditProduct({ id }) {
             </div>
           </form>
           <button
+            onClick={handleSubmit}
             className="btn1"
             type="submit"
             disabled={Object.values(errors).length > 0 ? true : false}>
