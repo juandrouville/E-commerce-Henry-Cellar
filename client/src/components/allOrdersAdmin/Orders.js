@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editOrder, getAllOrders  } from "../../actions/index";
+import { clearAllOrders, editOrder, getAllOrders  } from "../../actions/index";
 
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -32,10 +32,15 @@ export default function Orders() {
    
    const allOrders=useSelector(state=>state.allOrders)
 
-   useEffect(()=>{dispatch(getAllOrders())},[dispatch])
+   useEffect(()=>{
+     dispatch(getAllOrders())
+     return ()=>{
+       dispatch(clearAllOrders())
+     }
+    },[dispatch])
 
   const handleStateChange=async(e,rowData)=>{
-     dispatch(editOrder(e.target.id,e.target.value))
+     dispatch(editOrder(e.target.id,{state:e.target.value}))
      try {
        await emailjs.send('service_7hulls6',"template_jrogisn",rowData,"user_BJC5R9YmSgfq18FKCkmzN")
        toast.success(`An email was sent to the user ${rowData.user.firstName} ${rowData.user.lastName}`)
@@ -87,7 +92,7 @@ export default function Orders() {
               zIndex: "1"
             },
 
-            pageSize: 9,
+            pageSize: 10,
           }}
           detailPanel={[
             {

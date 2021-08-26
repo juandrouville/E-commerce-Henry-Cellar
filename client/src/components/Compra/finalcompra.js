@@ -10,7 +10,7 @@ import swal from 'sweetalert2';
 //Direccion guardar en un estado local para luego mandar al user que lo almacene (useState)
 export function FinalizarCompra(props) {
 
-    // let history = useHistory()
+    let history = useHistory()
     const [state, setState] = useState()
 
     function cambios(e) {
@@ -26,7 +26,7 @@ export function FinalizarCompra(props) {
 
     function submit(e) {
         e.preventDefault()
-        // history.push("/user/finalizarcompra");
+       history.push("/user/finalizarcompra");
 
         if (state.calle && state.numero && state.localidad && state.provincia && state.codigoPostal) {
             axios.post(`http://localhost:3001/user/compra/${props.user.id}`, state, { withCredentials: true })
@@ -58,7 +58,8 @@ export function FinalizarCompra(props) {
                 <input key="localidad" onChange={cambios} type="text" placeholder="Localidad" name="localidad" />
                 <input key="provincia" onChange={cambios} type="text" placeholder="Provincia" name="provincia" />
                 <input key="codigoPostal" onKeyPress={submitEnter} onChange={cambios} type="number" placeholder="Código Postal" name="codigoPostal" />
-                <button key="boton" onChange={cambios} type="submit" value="Finalizar Compra" />
+                <button key="boton" onChange={cambios} type="submit" value="Finalizar Compra">enviar</button>
+                
             </form>
         </div>
     )

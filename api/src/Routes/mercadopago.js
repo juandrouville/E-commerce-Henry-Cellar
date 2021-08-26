@@ -4,6 +4,6 @@ const router = Router();
 
 router.post("/:id",mercadop);
 
-router.get("/",pagos);
+router.get("/pagos",pagos);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const { Product, Categories, Wineries } = require("../db");
+const { Product, Categories, Wineries, Pairing } = require("../db");
 
 async function SetDataInitial(arrayProducts) {
   try {
@@ -24,6 +24,16 @@ async function SetDataInitial(arrayProducts) {
           await oneProduct.addCategories(category);
         })
       );
+
+      if(arrayProducts[e].maridaje){
+        arrayProducts[e].maridaje.map(async (m) => {
+          await Pairing.findOrCreate({where:{name:m}});
+          var pairing = await Pairing.findOne({where:{name:m}});
+          console.log(pairing);
+          await oneProduct.addPairing(pairing);
+        })
+        
+      }
 
       if (arrayProducts[e].bodega) {
         await Wineries.findOrCreate({

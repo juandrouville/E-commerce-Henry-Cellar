@@ -1,11 +1,12 @@
 const { Product } = require('../db')
 const { Categories } = require('../db')
+const { Wineries } = require('../db')
 
 async function editProduct(req, res, next) {
 
     const { id } = req.params
 
-    const { name, price, description, image, stock, categories } = req.body;
+    const { name, price, description, image, stock, categories,winery } = req.body;
 
     let productValues = { name: name, description: description, price: price, image: image, stock: stock }
 
@@ -24,7 +25,15 @@ async function editProduct(req, res, next) {
            productToEdit.addCategories(model)
         }
         )
-
+        
+        productToEdit.setWinery(null)
+        
+        if(winery){
+        let newWinery=await Wineries.findOrCreate({where:{name:winery}})
+        
+        productToEdit.setWinery(newWinery[0])
+        }
+        
 
         await productToEdit.save()
 

@@ -27,7 +27,7 @@ const Cart = () => {
   let clearCartOfDataBase = useSelector((state) => state.clearCartOfDB);
 
   const userData = useSelector((state) => state.user);
-
+  useEffect(() => {}, [userData]);
   useEffect(() => {
     if (
       isAuthenticated &&
@@ -87,11 +87,10 @@ const Cart = () => {
       history.push("/user/pagar");
     }
   }
+
   return (
     <LayoutPrimary>
-      <div>
-        <Toaster />
-      </div>
+      <div> <Toaster/> </div>
       <div className="page_cart">
         <div className="cart__container">
           <h2 className="cart__title">Shopping Cart: {result.length} items </h2>
@@ -140,18 +139,19 @@ const Cart = () => {
               </button>
             </div>
             {isAuthenticated ? (
-              // {isAuthenticated ? (
+              
               <div>
-                {!userData.dataValues.blocked ? (
-                <button
+                {userData && userData.dataValues.blocked ? (
+                  <h2>Sorry, your user is blocked to buy</h2>)
+                 : (<button
                   className="buy_button"
                   onClick={comprar}
                   li
                   disabled={result.length === 0 ? true : false}
                 >
                   Buy
-                </button>) : (
-                  <h2>Sorry, your user is blocked to buy</h2>)}
+                </button>
+                )}
 
                 <pre> </pre>
               </div>
@@ -165,9 +165,13 @@ const Cart = () => {
                 </button>
               </div>
             )}
-            <h2>TOTAL: $ {total.toFixed(2)}</h2>
+
+            <div className="result">
+              <h2>TOTAL:</h2>
+              <h2>${total.toFixed(2)}</h2>
+            </div>
+            </div>
           </div>
-        </div>
       </div>
     </LayoutPrimary>
   );

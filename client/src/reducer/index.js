@@ -28,7 +28,8 @@ import {
   CLEAR_ALL_USERS,
   USER_ID,
   REMOVE_PRODUCT,
-  GET_ALL_ORDERS
+  GET_ALL_ORDERS,
+  CLEAR_ALL_ORDERS
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -233,23 +234,11 @@ const rootReducer = (state = initialState, action) => {
     }
 
     case GET_DB_ORDER: {
-      const userid = state.user.dataValues.id;
-      const userID = [];
-
-      for (var i = 0; i < action.payload.length; i++) {
-        userID.push({ id: action.payload[i].userId });
-      }
-
-      let UserID = userID.find(item => item.id === userid);
-
-      return UserID
-        ? {
-            ...state,
-            order: action.payload
-          }
-        : {
-            order: []
-          };
+      return {
+        ...state,
+        order: action.payload
+      };
+        
     }
     case GET_ALL_USERS: {
       return {
@@ -281,6 +270,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allUsers: []
       };
+    }
+    case CLEAR_ALL_ORDERS:{
+      return {
+        ...state,
+        allOrders:[]
+      }
     }
     default: {
       return state;

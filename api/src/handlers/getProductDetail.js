@@ -1,6 +1,7 @@
 const { Product } = require('../db');
 const { Categories } = require('../db');
 const { Review } = require('../db');
+const { Wineries } = require('../db');
 
 async function getProductDetail(req, res, next) {
     const { id } = req.params
@@ -8,14 +9,15 @@ async function getProductDetail(req, res, next) {
         const product = await Product.findOne({
             where: { id },
             attributes: { exclude: ["createdAt", "updatedAt"] },
-            include: {
+            include: [{
                 model: Categories,
                 attributes: ["name"],
                 through: {
                     attributes: []
                 },
             },
-            //include: Review,
+            {model:Wineries, attributes: ["name"]},
+            {model:Review}]
         });
             
 

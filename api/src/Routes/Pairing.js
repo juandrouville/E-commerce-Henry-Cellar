@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const {getOrder} = require("../handlers/getOrder");
+const { pairing } = require("../handlers/Pairing.js");
 const router = Router();
 
-router.get("/:id", getOrder);
+router.get("/", pairing);
 
 
 module.exports = router;
