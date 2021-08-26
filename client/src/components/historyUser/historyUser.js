@@ -24,8 +24,10 @@ export default function HistoryUser() {
     const dispatch = useDispatch();
     const order = useSelector((state) => state.order);
     const user = useSelector((state) => state.user);
-
-
+    let orderlines = useSelector((state) => state.orderlines);
+    let total = orderlines.reduce(function(acc, curr) {
+        return acc + curr.quantity * curr.price;
+      }, 0);
     // const { isAuthenticated } = useAuth0();
 
 
@@ -46,7 +48,7 @@ export default function HistoryUser() {
 
             <div className="historyContainer" >
                 <h2>My Purchase History</h2>
-                {order.length ? (
+                {total !== 0 ? (
                     order.map((i) => {
                         return (
 
@@ -63,7 +65,7 @@ export default function HistoryUser() {
 
 
                 ) : (
-                    <h2 className="empty_cart"> cargando... </h2>
+                    <h2 className="empty_cart"> You don´t have a history of purchases</h2>
                 )}
             </div>
         </LayoutPrimary>
