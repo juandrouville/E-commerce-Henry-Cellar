@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
 import { Link } from "react-router-dom";
+import { BsXCircle } from "react-icons/bs";
 import {
     getDbOrder,
 
@@ -20,12 +21,18 @@ import {
 //     ))
 // };
 
+
 export default function HistoryUser() {
     const dispatch = useDispatch();
     const order = useSelector((state) => state.order);
     const user = useSelector((state) => state.user);
+    let orderlines = useSelector((state) => state.orderlines);
+    let total = orderlines.reduce(function(acc, curr) {
+        return acc + curr.quantity * curr.price;
+      }, 0);
 
-
+    var firstName = user.dataValues.firstName;
+    var lastName = user.dataValues.lastName;
     // const { isAuthenticated } = useAuth0();
 
 
@@ -44,27 +51,47 @@ export default function HistoryUser() {
         <LayoutPrimary>
 
 
-            <div className="historyContainer" >
-                <h2>My Purchase History</h2>
-                {order.length ? (
-                    order.map((i) => {
-                        return (
+            <div className="historyPage" >
+                <div className="historyContainer">
+                    <h2>Welcome {firstName}  {lastName}</h2>
+                    <h3>Purchase History</h3>
+                {/* {total !== 0 ? (
+                    order.map((i) => { */}
+                        {/* return ( */}
 
-                            <div className="divclass">
-                                {/* <li>Order number: {i.id} || State: {i.state} || Total: $ {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)} <Link to="/orderdetail">detail</Link></li> */}
-                                <p>Order number: {i.id} </p>
-                                <p>State: {i.state}</p>
-                                <p>Total: $ {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)}</p>
-                                <Link to={`/orderdetail/${i.id}`}>detail</Link>
+                            <div className="container_order_detail">
+                                <div className="header_titles">
+                                    <p>Order</p>
+                                    <p>State</p>
+                                    <p>Total</p>
+                                    <p>Detail</p>
+                                </div>
+                                <div className="line_order">
+                                    {/* <p>Order number: {i.id ? i.id : 145} </p> */}
+                                    <p> {145} </p>
+                                    {/* <p>State: {i.state ? i.state : "sold"}</p> */}
+                                    <p>{"sold"}</p>
+                                    <p> $ 1500 
+                                    {/* {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)} */}
+                                    </p>
+                                    <Link to="/orderdetail" className="viewDetail" >View</Link>
+                                </div>
 
                             </div>
-                        )
-                    })
+                        {/* ) */}
+                    {/* }) */}
 
 
-                ) : (
-                    <h2 className="empty_cart"> cargando... </h2>
-                )}
+                {/* ) : ( */}
+                    <div className="empty_cart">
+                    <BsXCircle size={40}/>
+                    <h3 className="dontHistory"> You don´t have a history of purchases</h3>
+                    <Link to={`/home`}>
+                        <button>View Products</button>
+                    </Link>
+                    </div>
+                {/* ) */}
+                </div>
             </div>
         </LayoutPrimary>
     );
