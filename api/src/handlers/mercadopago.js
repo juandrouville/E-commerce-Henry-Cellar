@@ -92,13 +92,13 @@ async function mercadop (req, res, next){
    
   
     let b=Order.update(
-      { estado: "creada", paymentid, paymentstatus, merchantorderid },
+      { state: "accepted", paymentid, paymentstatus, merchantorderid },
       { where: { id: externalreference } }
     )
       .then((Order) => {
         console.info("salvando order");
         console.info("redirect success");
-        return true
+        return res.redirect("http://localhost:3000/home")
       })
       .catch((err) => {
         console.error("error al salvar", err);

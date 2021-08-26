@@ -22,7 +22,7 @@ export function Checkout({  data }) {
 
         return () => {
 
-           // history.push('http://localhost:3000/user/finalizarcompra')
+           history.push('http://localhost:3000/user/finalizarcompra')
         }
     }, [data])
 
