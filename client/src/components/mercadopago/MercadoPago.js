@@ -34,8 +34,9 @@ export function MercadoPago({orderlines}) {
 
   useEffect(() => {
     if(orderlines.length){
-      axios.post("http://localhost:3001/mercadopago/" + orderlines[0].ordenId, obj1)
+      axios.post("http://localhost:3001/mercadopago/" + orderlines[0].orderId,obj1)
         .then(data => {
+          console.log(data)
           setDatos(data.data)
           console.info("contenido de data:", data)
         })
@@ -49,8 +50,10 @@ export function MercadoPago({orderlines}) {
 
   return (
     <div>
-      {
-         <Checkout products={obj} data={datos} />
+      {!datos ?
+        <h1>Cargando..</h1>
+        
+         :<Checkout data={datos} />
       }
     </div>
   )
