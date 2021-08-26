@@ -3,6 +3,7 @@ import {
   SORT_BY_PRECIO,
   PRODUCT_DETAIL,
   POST_PRODUCT,
+  POST_CATEGORY,
   SEARCH_PRODUCT_BY_NAME,
   NEXT_PAGE,
   PREVIUS_PAGE,
@@ -26,7 +27,7 @@ import {
   GET_DB_ORDER,
   GET_ALL_USERS,
   CLEAR_ALL_USERS,
-  USER_ID,
+  // USER_ID,
   REMOVE_PRODUCT,
   GET_ALL_ORDERS,
   CLEAR_ALL_ORDERS
@@ -40,6 +41,7 @@ const initialState = {
   productDetail: [],
   // searchProductByName: [],
   createdProduct: [],
+  createdCategory: [],
   page: 0,
   user: undefined,
   productFavourite: [],
@@ -90,6 +92,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         createdProduct: state.createdProduct.concat(action.payload)
+      };
+    }
+    case POST_CATEGORY: {
+      return {
+        ...state,
+        createdCategory: state.createdCategory.concat(action.payload)
       };
     }
     case PRODUCT_DETAIL: {
@@ -238,7 +246,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         order: action.payload
       };
-        
     }
     case GET_ALL_USERS: {
       return {
@@ -271,11 +278,11 @@ const rootReducer = (state = initialState, action) => {
         allUsers: []
       };
     }
-    case CLEAR_ALL_ORDERS:{
+    case CLEAR_ALL_ORDERS: {
       return {
         ...state,
-        allOrders:[]
-      }
+        allOrders: []
+      };
     }
     default: {
       return state;

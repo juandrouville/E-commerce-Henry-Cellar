@@ -6,10 +6,10 @@ import {
   clearProductDetail,
   addCart,
   addProductToDBCart,
-  addToFavourite,
-  editFavorites,
+  // addToFavourite,
+  editFavorites
 } from "../../actions/index";
-import cart2 from "../../assets/images/cart2.png";
+// import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
 import { FaStar } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -20,7 +20,7 @@ import { TiShoppingCart } from "react-icons/ti";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
-  const productDetail = useSelector((state) => state.productDetail);
+  const productDetail = useSelector(state => state.productDetail);
   const { id } = useParams();
   const { isAuthenticated, user } = useAuth0();
   useEffect(() => {
@@ -30,23 +30,29 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
-  const addFavourite = (id) => {
+  const addFavourite = id => {
     dispatch(editFavorites(id, user.sub, false));
   };
 
-  const addToCart = (id) => {
+  const addToCart = id => {
     if (isAuthenticated) dispatch(addProductToDBCart(id, user.sub));
     else dispatch(addCart(id));
-    toast.success(`The Product ${productDetail.name} was added to your cart !`)
+    toast.success(`The Product ${productDetail.name} was added to your cart !`);
   };
   return (
     <Layout>
-      <div><Toaster /></div>
+      <div>
+        <Toaster />
+      </div>
       <div className="page_productDetail">
         {productDetail ? (
           <>
             <div className="product__detail">
-              <img src={productDetail.image} alt="Loading..." className="productImage" />
+              <img
+                src={productDetail.image}
+                alt="Loading..."
+                className="productImage"
+              />
               <div className="product__data">
                 <div className="name__price">
                   <h1 className="productName">{productDetail.name}</h1>
@@ -65,37 +71,29 @@ export default function ProductDetail() {
                     <TiShoppingCart size={30} />
                   </button>
                   {/* {isAuthenticated ? ( */}
-                    <button onClick={() => addFavourite(productDetail.id)}>
-                      Fav <FaStar className="star" color="#ffc107" size={15} />
-                    </button>
+                  <button onClick={() => addFavourite(productDetail.id)}>
+                    Fav <FaStar className="star" color="#ffc107" size={15} />
+                  </button>
                   {/* ) : null} */}
-
                 </div>
               </div>
-
             </div>
           </>
         ) : (
           <p>Cargando...</p>
         )}
 
-
-        {productDetail.reviews ?
+        {productDetail.reviews ? (
           productDetail.reviews.map(ele => {
-            return (
-              <Review review={{ ...ele }} />
-            )
-          }) : (
-            <div className="sinComentarios">
-              <p>No reviews </p>
-            </div>
-          )}
-          <PostReview productId={productDetail.id}/>
+            return <Review review={{ ...ele }} />;
+          })
+        ) : (
+          <div className="sinComentarios">
+            <p>No reviews </p>
+          </div>
+        )}
+        <PostReview productId={productDetail.id} />
       </div>
     </Layout>
   );
 }
-
-
-
-

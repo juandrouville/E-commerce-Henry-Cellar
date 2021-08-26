@@ -3,6 +3,7 @@ export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
 export const GET_ALL_WINERIES = "GET_ALL_WINERIES";
 export const SORT_BY_PRECIO = "SORT_BY_PRECIO";
+export const POST_CATEGORY = "POST_CATEGORY";
 export const POST_PRODUCT = "POST_PRODUCT";
 export const EDIT_PRODUCT = "EDIT_PRODUCT";
 export const FILTRO_BODEGA = "FILTRO_BODEGA";
@@ -32,12 +33,11 @@ export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
 export const GET_DB_ORDER = "GET_DB_ORDER";
 export const USER_ID = "USER_ID";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
-export const GET_ALL_ORDERS="GET_ALL_ORDERS"
-export const EDIT_ORDER="EDIT_ORDER"
-export const EDIT_USER="EDIT_USER"
-export const CLEAR_ALL_USERS="CLEAR_ALL_USERS"
-export const CLEAR_ALL_ORDERS="CLEAR_ALL_ORDERS"
-
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
+export const EDIT_ORDER = "EDIT_ORDER";
+export const EDIT_USER = "EDIT_USER";
+export const CLEAR_ALL_USERS = "CLEAR_ALL_USERS";
+export const CLEAR_ALL_ORDERS = "CLEAR_ALL_ORDERS";
 
 export function sortByPrecio(page, order) {
   if (!page) {
@@ -168,6 +168,20 @@ export function postProduct(input) {
       dispatch({ type: POST_PRODUCT, payload: res.data });
     } catch (err) {
       alert("HEMOSIDO TIMADO -error en post-");
+    }
+  };
+}
+
+export function postCategory(input) {
+  return async dispatch => {
+    try {
+      const res = await axios.post(
+        `/newCategory` || `http://localhost:3001/newCategory`,
+        input
+      );
+      dispatch({ type: POST_CATEGORY, payload: res.data });
+    } catch (err) {
+      alert("Error al crear categoria");
     }
   };
 }
@@ -373,15 +387,15 @@ export function removeOrderline(orderlineId, deleteAll = false) {
     }
   };
 }
-let id=1
+let id = 1;
 
 export function clearCartOfDB(orderId) {
   return async dispatch => {
     try {
-      const res = await axios.delete(
-        `/clearCart/${orderId}` || `http://localhost:3001/clearCart/${orderId}`
-      );
-      dispatch({ type: CLEAR_CART_OF_DB, payload: id++});
+      // const res = await axios.delete(
+      //   `/clearCart/${orderId}` || `http://localhost:3001/clearCart/${orderId}`
+      // );
+      dispatch({ type: CLEAR_CART_OF_DB, payload: id++ });
     } catch (error) {
       alert("ERROR AL LIMPIAR EL CARRITO EN LA BASE DE DATOS");
     }
@@ -394,7 +408,6 @@ export function getDbOrder(id) {
       const res = await axios.get(
         `/getorder/` + id || `http://localhost:3001/getorder/` + id
       );
-      
 
       dispatch({ type: GET_DB_ORDER, payload: res.data });
     } catch (error) {
@@ -440,12 +453,12 @@ export function editOrder(orderId, newValue) {
     try {
       const res = await axios.put(
         `/editOrder/${orderId}` || `http://localhost:3001/editOrder/${orderId}`,
-        { state: newValue.state,
-          blocked:newValue.blocked,
-          adress:newValue.adress,
-          admin:newValue.admin
+        {
+          state: newValue.state,
+          blocked: newValue.blocked,
+          adress: newValue.adress,
+          admin: newValue.admin
         }
-
       );
       dispatch({ type: EDIT_ORDER, payload: res.data });
     } catch (error) {
@@ -453,7 +466,7 @@ export function editOrder(orderId, newValue) {
     }
   };
 }
-export function editUser(userId,newValue){
+export function editUser(userId, newValue) {
   return async dispatch => {
     try {
       const res = await axios.put(
@@ -467,14 +480,13 @@ export function editUser(userId,newValue){
   };
 }
 
-export function clearAllUsers(){
+export function clearAllUsers() {
   return {
-    type:CLEAR_ALL_USERS
-  }
+    type: CLEAR_ALL_USERS
+  };
 }
-export function clearAllOrders(){
+export function clearAllOrders() {
   return {
-    type:CLEAR_ALL_ORDERS
-  }
+    type: CLEAR_ALL_ORDERS
+  };
 }
-

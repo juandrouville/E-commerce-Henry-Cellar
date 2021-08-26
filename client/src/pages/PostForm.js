@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postProduct, getAllCategories } from "../actions";
 import wineimage from "assets/images/create-wine-image.jpeg";
 import { validation } from "../components/validation/validation.js";
-import LayoutPrimary from "../layouts/layout-primary.js";
+// import LayoutPrimary from "../layouts/layout-primary.js";
 import { NavLink } from "react-router-dom";
-import * as RiIcons from "react-icons/ri";
+// import * as RiIcons from "react-icons/ri";
 
 export default function PostProduct(props) {
   const dispatch = useDispatch();
-  const allCategories = useSelector((state) => state.productCategories);
+  const allCategories = useSelector(state => state.productCategories);
   //linkear categorias ???
 
   const [input, setInput] = React.useState({
@@ -20,7 +20,7 @@ export default function PostProduct(props) {
     winery: "",
     price: "",
     stock: "",
-    categories: [],
+    categories: []
   });
 
   const [errors, setErrors] = React.useState({});
@@ -30,22 +30,22 @@ export default function PostProduct(props) {
     return function cleanup() {};
   }, [dispatch]);
 
-  const handleInputChange = function (e) {
+  const handleInputChange = function(e) {
     setInput({
       ...input,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
     setErrors(
       validation({
         ...input,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       })
     );
   };
 
   //handle categories ??
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     try {
       dispatch(postProduct(input));
@@ -65,11 +65,11 @@ export default function PostProduct(props) {
   //   }
   // };
 
-  const handleSelections = (e) => {
+  const handleSelections = e => {
     if (input.categories.includes(e.target.value)) {
       let oldCategories = input.categories;
       let newCategories = oldCategories.filter(
-        (category) => category !== e.target.value
+        category => category !== e.target.value
       );
       setInput({ ...input, categories: newCategories });
       setErrors(validation({ ...input, categories: newCategories }));
@@ -82,18 +82,17 @@ export default function PostProduct(props) {
   };
 
   return (
-  
-      <div className="all_products_container">
-        <div className="formPost">
-          <div className="header">
-            <h1>Create Product</h1>
-            <NavLink to="/admin">
-              <h3>Back to Panel</h3>
-            </NavLink>
-          </div>
-          <form onSubmit={handleSubmit}>
-          <div className="table" >
-            <img src={wineimage} alt="Loading..."/>
+    <div className="all_products_container">
+      <div className="formPost">
+        <div className="header">
+          <h1>Create Product</h1>
+          <NavLink to="/admin">
+            <h3>Back to Panel</h3>
+          </NavLink>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="table">
+            <img src={wineimage} alt="Loading..." />
             <div className="form__inputs">
               <div>
                 <label className="title_input">Product name</label>
@@ -108,7 +107,7 @@ export default function PostProduct(props) {
                 {errors.name && <p className="danger">{errors.name}</p>}
               </div>
               <div>
-                <label className="title_input" >Winery</label>
+                <label className="title_input">Winery</label>
                 <input
                   className="checks"
                   type="text"
@@ -119,7 +118,7 @@ export default function PostProduct(props) {
                 />{" "}
               </div>
               <div>
-                <label className="title_input" >Price</label>
+                <label className="title_input">Price</label>
                 <input
                   className="checks"
                   type="number"
@@ -153,37 +152,36 @@ export default function PostProduct(props) {
                 />
                 {errors.stock && <p className="danger">{errors.stock}</p>}
               </div>
-              </div>
-              <div className="checkbox">
-                <label className="title">Categories</label>
-                {allCategories.length &&
-                  allCategories.map((category) => (
-                    <div key={category.id} className="items-label" >
-                      <label >{category.name}</label>
-                      <input
-                        type="checkbox"
-                        value={category.name}
-                        onClick={handleSelections}
-                        className="items-inputs"
-                      ></input>
-                    </div>
-                  ))}
-                {errors.categories && (
-                  <p className="danger">{errors.categories}</p>
-                )}
-              </div>
             </div>
-          </form>
-            <button
-                onClick={handleSubmit}
-                className="btn1"
-                type="submit"
-                disabled={Object.values(errors).length > 0 ? true : false} >
-                Create!
-              </button>
-        </div>
+            <div className="checkbox">
+              <label className="title">Categories</label>
+              {allCategories.length &&
+                allCategories.map(category => (
+                  <div key={category.id} className="items-label">
+                    <label>{category.name}</label>
+                    <input
+                      type="checkbox"
+                      value={category.name}
+                      onClick={handleSelections}
+                      className="items-inputs"
+                    ></input>
+                  </div>
+                ))}
+              {errors.categories && (
+                <p className="danger">{errors.categories}</p>
+              )}
+            </div>
+          </div>
+        </form>
+        <button
+          onClick={handleSubmit}
+          className="btn1"
+          type="submit"
+          disabled={Object.values(errors).length > 0 ? true : false}
+        >
+          Create!
+        </button>
       </div>
+    </div>
   );
 }
-              
-            

@@ -1,14 +1,13 @@
 import React from "react";
 import Layout from "layouts/layout-primary";
-import { useAuth0 } from "@auth0/auth0-react";
-import { NavLink } from "react-router-dom";
-import * as RiIcons from "react-icons/ri";
+// import { useAuth0 } from "@auth0/auth0-react";
+// import * as RiIcons from "react-icons/ri";
 import { useSelector } from "react-redux";
 import FinalizarCompra from "../Compra/finalcompra";
 
 const Profile = () => {
-  const { user } = useAuth0();
-  const userData = useSelector((state) => state.user.dataValues);
+  // const { user } = useAuth0();
+  const userData = useSelector(state => state.user.dataValues);
 
   return (
     <Layout>

@@ -23,9 +23,10 @@ const getAllOrders = require("./getAllOrders");
 const editOrder = require("./editOrder");
 const removeProduct = require("./removeProduct");
 const user = require("./user");
-const editUser=require('./editUser')
-const mercadopago=require("./mercadopago")
+const editUser = require("./editUser");
+const mercadopago = require("./mercadopago");
 const Pairing = require("./Pairing");
+const postCategory = require("./postCategory");
 
 router.use("/mercadopago", mercadopago);
 router.use("/allproducts", getAllProductsRouter);
@@ -52,5 +53,6 @@ router.use("/editUser", editUser);
 router.use("/removeProduct", removeProduct);
 router.use("/user", user);
 router.use("/Pairing", Pairing);
+router.use("/newCategory", postCategory);
 
 module.exports = router;

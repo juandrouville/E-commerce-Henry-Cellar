@@ -17,7 +17,6 @@ import "assets/styles/main.scss";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import Home from "pages/Home.js";
 import LandingPage from "pages/LandingPage.js";
-import Edit from "components/Edit/Edit";
 import PostProduct from "pages/PostForm.js";
 import profile from "components/Profile/profile.js";
 import Cart from "./components/cart/Cart";
@@ -28,15 +27,16 @@ import AuthNav from "../src/components/auth-Nav/auth-nav";
 import ContactUs from "../src/components/ContactUs/ContactUs";
 import AboutUs from "../src/components/AboutUs/AboutUs";
 import dotenv from "dotenv";
-import MercadoPago from "../src/components/mercadopago/MercadoPago"
-import finalcompra from "../src/components/Compra/finalcompra"
-import Carousel from "../src/components/carousel/carousel";
+import MercadoPago from "../src/components/mercadopago/MercadoPago";
+import finalcompra from "../src/components/Compra/finalcompra";
+// import Carousel from "../src/components/carousel/carousel";
 import AllProductsAdmin from "components/allProductsAdmin/AllProductsAdmin";
 import AllUsersAdmin from "components/allUsersAdmin/AllUsersAdmin";
 import EditProduct from "components/Edit/Edit";
 import Orders from "components/allOrdersAdmin/Orders";
 import PageReview from "../src/pages/review";
 import DetailOrder from "../src/components/detailOrder/detailOrder";
+import PostCategory from "../src/pages/postCategory";
 
 dotenv.config();
 
@@ -56,17 +56,20 @@ ReactDOM.render(
         <Route exact path="/AuthNav" component={AuthNav} />
         <Route exact path="/ContactUs" component={ContactUs} />
         <Route exact path="/product-detail/:id" component={ProductDetail} />
-        <Route path="/admin" component={AdminPanel}/>
+        <Route path="/admin" component={AdminPanel} />
         <Route exact path="/admin/create" component={PostProduct} />
-        <Route exact path="/admin/products" component={AllProductsAdmin} /> 
+        <Route exact path="/admin/newCategory" component={PostCategory} />
+        <Route exact path="/admin/products" component={AllProductsAdmin} />
         <Route exact path="/admin/users" component={AllUsersAdmin} />
-        <Route exact path="/admin/orders" component={Orders}/>
-        <Route path="/admin/editProduct/:id" render={({match})=><EditProduct id={match.params.id}/>}/>
+        <Route exact path="/admin/orders" component={Orders} />
+        <Route
+          path="/admin/editProduct/:id"
+          render={({ match }) => <EditProduct id={match.params.id} />}
+        />
         <Route path="/profile" component={profile} />
-        <Route exact path="/user/pagar" component={MercadoPago} />                                                
+        <Route exact path="/user/pagar" component={MercadoPago} />
         <Route exact path="/user/finalizarcompra" component={finalcompra} />
         <Route path="/aboutUs" component={AboutUs} />
-        
       </Auth0ProviderWithHistory>
     </Router>
   </Provider>,

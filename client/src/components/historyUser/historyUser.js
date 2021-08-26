@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
 import { Link } from "react-router-dom";
-import {
-    getDbOrder,
+// import {
+//     getDbOrder,
+//
+// } from "../../actions/index";
 
-} from "../../actions/index";
 // import { useAuth0 } from "@auth0/auth0-react";
 // import PostReview from "components/PostReview/PostReview";
 // import Materialtable from "material-table";
@@ -21,53 +22,48 @@ import {
 // };
 
 export default function HistoryUser() {
-    const dispatch = useDispatch();
-    const order = useSelector((state) => state.order);
-    const user = useSelector((state) => state.user);
+  // const dispatch = useDispatch();
+  const order = useSelector(state => state.order);
+  // const user = useSelector((state) => state.user);
 
+  // const { isAuthenticated } = useAuth0();
 
-    // const { isAuthenticated } = useAuth0();
+  // useEffect(() => {
 
+  //     dispatch(getDbOrder())
 
-    // useEffect(() => {
+  // }, [dispatch])
 
-    //     dispatch(getDbOrder())
+  //
 
-    // }, [dispatch])
-
-
-    // 
-
-
-
-    return (
-        <LayoutPrimary>
-
-
-            <div className="historyContainer" >
-                <h2>My Purchase History</h2>
-                {order.length ? (
-                    order.map((i) => {
-                        return (
-
-                            <div className="divclass">
-                                {/* <li>Order number: {i.id} || State: {i.state} || Total: $ {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)} <Link to="/orderdetail">detail</Link></li> */}
-                                <p>Order number: {i.id} </p>
-                                <p>State: {i.state}</p>
-                                <p>Total: $ {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)}</p>
-                                <Link to="/orderdetail">detail</Link>
-
-                            </div>
-                        )
-                    })
-
-
-                ) : (
-                    <h2 className="empty_cart"> cargando... </h2>
-                )}
-            </div>
-        </LayoutPrimary>
-    );
+  return (
+    <LayoutPrimary>
+      <div className="historyContainer">
+        <h2>My Purchase History</h2>
+        {order.length ? (
+          order.map(i => {
+            return (
+              <div className="divclass">
+                {/* <li>Order number: {i.id} || State: {i.state} || Total: $ {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)} <Link to="/orderdetail">detail</Link></li> */}
+                <p>Order number: {i.id} </p>
+                <p>State: {i.state}</p>
+                <p>
+                  Total: ${" "}
+                  {i.orderlines.reduce(
+                    (a, b) => a + b.product.price * b.amount,
+                    0
+                  )}
+                </p>
+                <Link to="/orderdetail">detail</Link>
+              </div>
+            );
+          })
+        ) : (
+          <h2 className="empty_cart"> cargando... </h2>
+        )}
+      </div>
+    </LayoutPrimary>
+  );
 }
 
 // {i.orderlines.length ?
@@ -75,7 +71,7 @@ export default function HistoryUser() {
 //         return (
 //             <div className="divclass">
 //                 <h3>Product: {i.product.name} amount: {i.amount} unit price: ${i.product.price} Subtotal: $ {i.product.price * i.amount} </h3>
-//                 {/* <Link to="/review"> 
+//                 {/* <Link to="/review">
 //              <button ><PostReview productId={i.product.id} /></button>
 //              </Link> */}
 //                 <PostReview productId={i.product.id} />
@@ -86,24 +82,24 @@ export default function HistoryUser() {
 //     : null}
 //------------------------------
 //const columns= [
-    //     {
-        //         title: "order number",
-        //         field: "id"
-    //     },
-    //     {
-    //         title: "State",
-    //         field: "state"
-    //     },
-    //     {
-    //         title: "Total",
-    //         field: "total",
-    //         type: "numeric"
-    //     },
-    //     // {
-    //     //     title: "Detail",
-    //     //     field: "detail"
-    //     // }
-    // ]
+//     {
+//         title: "order number",
+//         field: "id"
+//     },
+//     {
+//         title: "State",
+//         field: "state"
+//     },
+//     {
+//         title: "Total",
+//         field: "total",
+//         type: "numeric"
+//     },
+//     // {
+//     //     title: "Detail",
+//     //     field: "detail"
+//     // }
+// ]
 //  <div className="all_orders_container">
 // <Materialtable
 //     title="My Purchase History"
@@ -146,7 +142,7 @@ export default function HistoryUser() {
 //                <div>
 //                 <ul>
 //                 {rowData.orderlines.map(orderline=>
-//                 <li><pre>{orderline.product.name} Unit Price: $ {orderline.product.price} Amount: {orderline.amount} Subtotal: $ {orderline.product.price*orderline.amount}</pre>                    
+//                 <li><pre>{orderline.product.name} Unit Price: $ {orderline.product.price} Amount: {orderline.amount} Subtotal: $ {orderline.product.price*orderline.amount}</pre>
 //                 </li>
 
 //                 )}
@@ -161,4 +157,4 @@ export default function HistoryUser() {
 
 //       ]}
 // />
-// </div> 
+// </div>
