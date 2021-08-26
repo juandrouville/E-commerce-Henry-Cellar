@@ -76,6 +76,7 @@ export default function HistoryUser() {
                                     </p>
                                     <Link to="/orderdetail" className="viewDetail" >View</Link>
                                 </div>
+
                             </div>
                         {/* ) */}
                     {/* }) */}
