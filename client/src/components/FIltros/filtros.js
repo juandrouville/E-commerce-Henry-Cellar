@@ -40,6 +40,9 @@ const Filtros = (state) => {
 
   const handleChangePrecio = (e) => {
     dispatch(setPagination("precio", e.target.value));
+    if(e.target.value === 'By Price'){
+      dispatch(getAllproducts());
+  }
     if (e.target.value === ASC || e.target.value === DESC) {
       dispatch(getAllproducts(null, "precio", e.target.value));
     }
@@ -59,7 +62,7 @@ const Filtros = (state) => {
 
           <div className="one-filter">
             <select className="barSelect" onChange={(e) => handleChangePrecio(e)}>
-              <option className="disabled" disabled selected >By Price </option>
+              <option className="disabled"> By Price </option>
               <option >Ascendant</option>
               <option >Descendant</option>
             </select>
