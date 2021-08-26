@@ -37,6 +37,7 @@ export const EDIT_ORDER="EDIT_ORDER"
 export const EDIT_USER="EDIT_USER"
 export const CLEAR_ALL_USERS="CLEAR_ALL_USERS"
 export const CLEAR_ALL_ORDERS="CLEAR_ALL_ORDERS"
+export const GET_ALL_PAIRING="GET_ALL_PAIRING"
 
 
 export function sortByPrecio(page, order) {
@@ -71,7 +72,21 @@ export function filtroCategoria(page, categoria) {
       });
   };
 }
-
+export function filtroMaridaje(page, maridaje) {
+  if (!page) {
+    page = 0;
+  }
+  return function(dispatch) {
+    axios
+      .get(
+        `/allproducts?categoria=${maridaje}&page=${page}` ||
+          `http://localhost:3001/allproducts?maridaje=${maridaje}&page=${page}`
+      )
+      .then(res => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
+  };
+}
 export function filtroBodega(page, bodega) {
   if (!page) {
     page = 0;
@@ -102,6 +117,9 @@ export function getAllproducts(page, filter, valuefilter) {
   if (filter === "bodega") {
     return filtroBodega(page, valuefilter);
   }
+  if (filter === "maridaje") {
+    return filtroMaridaje(page, valuefilter);
+  }
   if (!filter) {
     return async dispatch => {
       const res = await axios.get(
@@ -130,6 +148,14 @@ export function getAllCategories() {
       `/categories` || `http://localhost:3001/categories`
     );
     dispatch({ type: GET_ALL_CATEGORIES, payload: res.data });
+  };
+}
+export function getAllPairing() {
+  return async dispatch => {
+    const res = await axios.get(
+      `/Pairing` || `http://localhost:3001/Pairing`
+    );
+    dispatch({ type: GET_ALL_PAIRING, payload: res.data });
   };
 }
 export function getAllWineries() {
@@ -441,9 +467,8 @@ export function editOrder(orderId, newValue) {
       const res = await axios.put(
         `/editOrder/${orderId}` || `http://localhost:3001/editOrder/${orderId}`,
         { state: newValue.state,
-          blocked:newValue.blocked,
-          adress:newValue.adress,
-          admin:newValue.admin
+          shippingMethod:newValue.shippingMethod,
+          paymentMethod:newValue.paymentMethod,
         }
 
       );

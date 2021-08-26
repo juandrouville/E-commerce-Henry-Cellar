@@ -12,28 +12,30 @@ const Profile = () => {
 
   return (
     <Layout>
-      <div className="all_products_container">
-        <div className="profile">
-          <div>
+      <div className="page_profile">
+        <div className="conatiner_profile">
+          <div className="image_data">
             <img src={userData.image} alt="Profile" className="imgProfile" />
+            <div className="profileData">
+              <h2 className="h3Profile">{userData.userName}</h2>
+              <h3 className="h3Profile">Name: {userData.firstName}</h3>
+              <h3 className="h3Profile">Last Name: {userData.lastName}</h3>
+              <p className="h3Profile">E-mail: {userData.email}</p>
+              <p className="h3Profile">Address: {userData.calle}</p>
+              <p className="h3Profile">Number: {userData.numero}</p>
+              <p className="h3Profile">City: {userData.localidad}</p>
+              <p className="h3Profile">State: {userData.provincia}</p>
+              <p className="h3Profile">Zip Code: {userData.codigopostal}</p>
+              <p className="h3Profile">Phone Number: {userData.phone}</p>
+            </div>
           </div>
-          <div className="profileData">
-            <h2 className="h3Profile">UserName: {userData.userName}</h2>
-            <h3 className="h3Profile">Name: {userData.firstName}</h3>
-            <h3 className="h3Profile">Last Name: {userData.lastName}</h3>
-            <p className="h3Profile">E-mail: {userData.email}</p>
-            <p className="h3Profile">Address: {userData.calle}</p>
-            <p className="h3Profile">Number: {userData.numero}</p>
-            <p className="h3Profile">City: {userData.localidad}</p>
-            <p className="h3Profile">State: {userData.provincia}</p>
-            <p className="h3Profile">Zip Code: {userData.codigopostal}</p>
-            <p className="h3Profile">Phone Number: {userData.phone}</p>
-          </div>
+            <FinalizarCompra className="add_data"/>
         </div>
-        <FinalizarCompra />
       </div>
     </Layout>
   );
 };
+        
+          
 
 export default Profile;

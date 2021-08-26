@@ -1,5 +1,6 @@
-const { Product, Categories, Wineries } = require("../db");
+const { Product, Categories, Wineries,Pairing } = require("../db");
 var sequelize = require("sequelize");
+
 
 const getAllproducts = async (req, res, next) => {
   var page = req.query.page ? req.query.page : 0;
@@ -8,6 +9,7 @@ const getAllproducts = async (req, res, next) => {
   var precio = req.query.precio;
   var categoria = req.query.categoria;
   var bodega = req.query.bodega;
+  var maridaje = req.query.maridaje;
   try {
     if (precio) {
       if (precio === "Ascendant") {
@@ -49,7 +51,29 @@ const getAllproducts = async (req, res, next) => {
       if (findOne.length === 0) {
         return res.status(404).send("Error: Name of category is invalid");
       } else return res.json(findOne);
-    } else if (bodega) {
+    }  if (maridaje) {
+      var findOne = await Product.findAll({
+        limit: limit,
+        offset: offset,
+
+        include: {
+          model: Pairing,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+
+          where: {
+            name: maridaje,
+          },
+        },
+      });
+
+      if (findOne.length === 0) {
+        return res.status(404).send("Error: Name of Pairing is invalid");
+      } else return res.json(findOne);
+    }
+    if (bodega) {
       var findOne = await Product.findAll({
         limit: limit,
         offset: offset,
