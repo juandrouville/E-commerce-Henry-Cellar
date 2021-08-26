@@ -38,6 +38,7 @@ const Carousel = () => {
   };
 
   return (
+    <div className="carousel_container">
     <div className="carousel">
       <div className="carousel-inner">
       {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
@@ -47,14 +48,9 @@ const Carousel = () => {
           productsFavourite ? (
             productsFavourite.map(p => {
               return (
-                <div className="containerCarousel">
                 <div>
                   <CardFavorite
-                    name={
-                      <Link to={`/product-detail/${p.id}`} key={p.id}>
-                        {p.name}
-                      </Link>
-                    }
+                    name={ p.name}
                     image={p.image}
                     price={p.price}
                     id={p.id}
@@ -62,7 +58,7 @@ const Carousel = () => {
                     stock={p.stock}
                   />
                 </div>
-                </div>
+                
               );
             })
           ) : (
@@ -71,6 +67,7 @@ const Carousel = () => {
         ) : null}
       </Slider>
     </div>
+  </div>
   );
 };
 
