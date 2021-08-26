@@ -16,7 +16,8 @@ async function getProductDetail(req, res, next) {
                     attributes: []
                 },
             },
-            {model:Wineries, attributes: ["name"]} ]
+            {model:Wineries, attributes: ["name"]},
+            {model:Review}]
         });
             
 
