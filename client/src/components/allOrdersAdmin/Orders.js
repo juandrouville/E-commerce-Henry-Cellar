@@ -62,7 +62,7 @@ export default function Orders() {
         <option value="accepted">Accepted</option>
         <option value="rejected">Rejected</option>
         <option value="sent">Sent</option>
-        <option value="received">Received</option>
+        <option value="received">received</option>
         </select>
       )
 

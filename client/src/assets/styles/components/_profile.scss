@@ -1,36 +1,43 @@
-.profile{
-  display: flex;
+.page_profile{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin: 100px 50px 0px 50px;
-  
+  margin-top: 80px;
+}
 
-  @include response(medium) {
+.conatiner_profile{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-shadow: 0px 8px 8px rgba(0,0,0,0.2);
+  .image_data{
+    display: flex;
     flex-direction: row;
-    border: 1px solid rgb(113, 43, 43);
-    
+    align-items: center;
+    justify-content: space-around;
+    background-color: cadetblue;
+    padding-top:25px;
+    padding-bottom: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    img{
+      height: 100px;
+      width: 100px;
+      border-radius: 100px;
+      border: 1px solid black;
+      align-self: flex-start;
+    }
+    .profileData{
+      margin-left: 20px;
+      padding-right: 15px;
+    }
   }
   
-  
-
-  
 }
 
-.imgProfile{
-  padding-right: 15px;
-}
-
-.profileData{
-  color:white;
-}
-
-.h3Profile{
-  padding-bottom: 10px;
-}
-
-.button_admin{
-display: flex;
-color:white;
-padding-left: 180px;
-}
 

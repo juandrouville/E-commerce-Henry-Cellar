@@ -10,7 +10,7 @@ import swal from 'sweetalert2';
 //Direccion guardar en un estado local para luego mandar al user que lo almacene (useState)
 export function FinalizarCompra(props) {
 
-    let history = useHistory()
+    //let history = useHistory()
     const [state, setState] = useState()
 
     function cambios(e) {
@@ -26,7 +26,7 @@ export function FinalizarCompra(props) {
 
     function submit(e) {
         e.preventDefault()
-       history.push("/user/finalizarcompra");
+       //history.push("/user/finalizarcompra");
 
         if (state.calle && state.numero && state.localidad && state.provincia && state.codigoPostal) {
             axios.post(`http://localhost:3001/user/compra/${props.user.id}`, state, { withCredentials: true })
@@ -52,13 +52,14 @@ export function FinalizarCompra(props) {
         <div className='divFinalizarCompra'>
             <form onSubmit={submit} className='direccionDeEnvio'>
 
-                <h1>Direccion de envio</h1>
-                <input key="calle" onChange={cambios} type="text" placeholder="Calle" name="calle" />
-                <input key="numero" onChange={cambios} type="number" placeholder="Número" name="numero" />
-                <input key="localidad" onChange={cambios} type="text" placeholder="Localidad" name="localidad" />
-                <input key="provincia" onChange={cambios} type="text" placeholder="Provincia" name="provincia" />
-                <input key="codigoPostal" onKeyPress={submitEnter} onChange={cambios} type="number" placeholder="Código Postal" name="codigoPostal" />
-                <button key="boton" onChange={cambios} type="submit" value="Finalizar Compra">enviar</button>
+                <h1>shipping information:</h1>
+                <input key="calle" onChange={cambios} type="text" placeholder="Street" name="calle" />
+                <input key="numero" onChange={cambios} type="number" placeholder="Number" name="numero" />
+                <input key="localidad" onChange={cambios} type="text" placeholder="City" name="localidad" />
+                <input key="provincia" onChange={cambios} type="text" placeholder="State" name="provincia" />
+                <input key="codigoPostal" onChange={cambios} type="number" placeholder="Postal Code" name="codigoPostal" />
+                <input key="phone" onChange={cambios} type="number" placeholder="Phone" name="phone" />
+                <button key="boton" onSubmit={submit} type="submit" value="Finalizar Compra">enviar</button>
                 
             </form>
         </div>
