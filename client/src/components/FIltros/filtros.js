@@ -6,10 +6,12 @@ import {
   DESC,
   getAllWineries,
   setPagination,
+  getAllPairing
 } from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 
 const Filtros = (state) => {
+  const allPairing = useSelector((state) => state.pairings)
   const allWineries = useSelector((state) => state.wineries);
   const allCategories = useSelector((state) => state.productCategories);
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const Filtros = (state) => {
   useEffect(() => {
     dispatch(getAllCategories());
     dispatch(getAllWineries());
+    dispatch(getAllPairing())
     return function cleanup() {};
   }, [dispatch]);
 
@@ -26,6 +29,14 @@ const Filtros = (state) => {
       dispatch(getAllproducts());
     } else {
       dispatch(getAllproducts(null, "categoria", e.target.value));
+    }
+  };
+  const handleChangePairing = (e) => {
+    dispatch(setPagination("maridaje", e.target.value));
+    if (e.target.value === "Pairing") {
+      dispatch(getAllproducts());
+    } else {
+      dispatch(getAllproducts(null, "maridaje", e.target.value));
     }
   };
 
@@ -72,6 +83,13 @@ const Filtros = (state) => {
             <select className="barSelect" onChange={(e) => handleChangeBodega(e)}>
               <option className="disabled" selected>Wineries</option>
               {allWineries && allWineries.map((b) => 
+              <option key={b.id}>{b.name}</option>)}
+            </select>
+          </div>
+          <div className="one-filter">
+            <select className="barSelect" onChange={(e) => handleChangePairing(e)}>
+              <option className="disabled" selected>Pairing</option>
+              {allPairing && allPairing.map((b) => 
               <option key={b.id}>{b.name}</option>)}
             </select>
           </div>
