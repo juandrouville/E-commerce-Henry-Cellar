@@ -72,6 +72,21 @@ export function filtroCategoria(page, categoria) {
       });
   };
 }
+export function filtroMaxMin(page, max, min) {
+  if (!page) {
+    page = 0;
+  }
+  return function(dispatch) {
+    axios
+      .get(
+        `allproducts?min=${min}&max=${max}&page=${page}` ||
+          `http://localhost:3001/allproducts?min=${min}&max=${max}&page=${page}`
+      )
+      .then(res => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
+  };
+}
 export function filtroMaridaje(page, maridaje) {
   if (!page) {
     page = 0;
