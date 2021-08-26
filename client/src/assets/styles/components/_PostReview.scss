@@ -6,10 +6,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    width: 100%;
     height: 400px;
     box-shadow:  0 5px 5px rgba($color: #000000, $alpha: 1.0);
     border: none;
+    @include response(medium){
+        background-color: rgb(184, 48, 48);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        height: 400px;
+        box-shadow:  0 5px 5px rgba($color: #000000, $alpha: 1.0);
+        border: none;
+    }
     
     .containerStars {
         padding: 30px;
