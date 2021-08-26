@@ -2,6 +2,7 @@ import React from "react";
 import { addCart, addToFavourite } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import { useDispatch } from "react-redux";
+import { TiShoppingCart } from "react-icons/ti";
 
 
 const CardFavorite = ({ image, name, price, id,stock, delFromFavourite }) => {
@@ -14,20 +15,21 @@ const CardFavorite = ({ image, name, price, id,stock, delFromFavourite }) => {
 
 
   return (
-    <div>
+    <div >
        
       <div key={name} className="product">
-        <img src={`${image}`} alt="Henry"/>
+        <img className="image_product" src={`${image}`} alt="Henry"/>
         <div className="product__data">
           <h3>{name}</h3>
           <br />
           <p>${price}</p>
           <br />
           <p className="product__stock">Stock : {stock} unidades</p>
-          <div className="cartButton">
+          <div className="cartButton ">
             <button onClick={() => addToCart(id)}>
-              <img src={cart2} alt="cartlogo" width="30" height="30" />
+            <TiShoppingCart size={30} />
             </button>
+            <pre> </pre>
             <button onClick={() => delFromFavourite(id)}>
               x
             </button>

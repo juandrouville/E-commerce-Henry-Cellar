@@ -28,7 +28,9 @@ const Carousel = () => {
 
   const settings = {
     dots: false,
-
+    showArrows: true,
+    renderArrowPrev: true,
+    renderArrowNext: true,
     infinite: productsFavourite.length > 3,
     speed: 500,
     slidesToShow: 3,
@@ -37,7 +39,9 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
+      <div className="carousel-inner">
       {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
+      </div>
       <Slider className="show" {...settings}>
         {productsFavourite.length !== 0 ? (
           productsFavourite ? (
