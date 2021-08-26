@@ -45,6 +45,12 @@
           margin: 20px;
         }
 
+      .buyFavButtons{
+        display:flex;
+        align-items: center;
+        
+      }
+
       .name__price {
         display: flex;
         flex-direction: column;
