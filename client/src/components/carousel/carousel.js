@@ -27,7 +27,7 @@ const Carousel = () => {
 
 
   const settings = {
-    dots: false,
+    dots: true,
     showArrows: true,
     renderArrowPrev: true,
     renderArrowNext: true,

@@ -27,9 +27,9 @@ export default function HistoryUser() {
     const order = useSelector((state) => state.order);
     const user = useSelector((state) => state.user);
     let orderlines = useSelector((state) => state.orderlines);
-    let total = orderlines.reduce(function(acc, curr) {
+    let total = orderlines.reduce(function (acc, curr) {
         return acc + curr.quantity * curr.price;
-      }, 0);
+    }, 0);
 
     var firstName = user.dataValues.firstName;
     var lastName = user.dataValues.lastName;
@@ -55,42 +55,46 @@ export default function HistoryUser() {
                 <div className="historyContainer">
                     <h2>Welcome {firstName}  {lastName}</h2>
                     <h3>Purchase History</h3>
-                {/* {total !== 0 ? (
-                    order.map((i) => { */}
-                        {/* return ( */}
-
-                            <div className="container_order_detail">
-                                <div className="header_titles">
-                                    <p>Order</p>
-                                    <p>State</p>
-                                    <p>Total</p>
-                                    <p>Detail</p>
-                                </div>
-                                <div className="line_order">
-                                    {/* <p>Order number: {i.id ? i.id : 145} </p> */}
-                                    <p> {145} </p>
-                                    {/* <p>State: {i.state ? i.state : "sold"}</p> */}
-                                    <p>{"sold"}</p>
-                                    <p> $ 1500 
-                                    {/* {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)} */}
-                                    </p>
-                                    <Link to="/orderdetail" className="viewDetail" >View</Link>
-                                </div>
-
+                    {total !== 0 ? (
+                        <div className="container_order_detail">
+                            <div className="header_titles">
+                                <p>Order</p>
+                                <p>State</p>
+                                <p>Total</p>
+                                <p>Detail</p>
                             </div>
-                        {/* ) */}
-                    {/* }) */}
 
 
-                {/* ) : ( */}
-                    <div className="empty_cart">
-                    <BsXCircle size={40}/>
-                    <h3 className="dontHistory"> You don´t have a history of purchases</h3>
-                    <Link to={`/home`}>
-                        <button>View Products</button>
-                    </Link>
-                    </div>
-                {/* ) */}
+                        {order.map((i) => { 
+                        return (
+
+                            <div className="line_order">
+                                <p>{i.id } </p>
+
+                                <p>{i.state}</p>
+
+                                <p> $
+
+                                    {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)}
+                                </p>
+                                <Link to="/orderdetail" className="viewDetail" >View</Link>
+                            </div>
+
+                            ) 
+                        })}
+                        </div>
+
+
+                    ) : (
+                        <div className="empty_cart">
+                            <BsXCircle size={40} />
+                            <h3 className="dontHistory"> You don´t have a history of purchases</h3>
+                            <Link to={`/home`}>
+                                <button>View Products</button>
+                            </Link>
+                        </div>
+                    )
+                    }
                 </div>
             </div>
         </LayoutPrimary>
