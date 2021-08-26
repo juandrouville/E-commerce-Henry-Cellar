@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import * as RiIcons from "react-icons/ri";
 import { useSelector } from "react-redux";
+import FinalizarCompra from "../Compra/finalcompra";
 
 const Profile = () => {
   const { user } = useAuth0();
@@ -29,7 +30,7 @@ const Profile = () => {
             <p className="h3Profile">Phone Number: {userData.phone}</p>
           </div>
         </div>
-        
+        <FinalizarCompra />
       </div>
     </Layout>
   );
