@@ -1,5 +1,6 @@
 const { Orderline } = require('../db');
 const { Product } = require("../db")
+const { Order } =require("../db")
 
 async function getOneOrderline(req, res, next) {
     const { id } = req.params
@@ -14,6 +15,7 @@ async function getOneOrderline(req, res, next) {
             attributes: { exclude: ["createdAt", "updatedAt"] },
 
             include: [
+                {model:Order,attributes:{exclude: ["createdAt", "updatedAt"]}},
                 {model:Product,attributes:{exclude: ["createdAt", "updatedAt","description","image","stock","wineryId"]}}
             ],    
         });

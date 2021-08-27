@@ -32,12 +32,16 @@ export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
 export const GET_DB_ORDER = "GET_DB_ORDER";
 export const USER_ID = "USER_ID";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
-export const GET_ALL_ORDERS="GET_ALL_ORDERS"
-export const EDIT_ORDER="EDIT_ORDER"
-export const EDIT_USER="EDIT_USER"
-export const CLEAR_ALL_USERS="CLEAR_ALL_USERS"
-export const CLEAR_ALL_ORDERS="CLEAR_ALL_ORDERS"
-export const GET_ALL_PAIRING="GET_ALL_PAIRING"
+
+export const GET_ALL_ORDERS="GET_ALL_ORDERS";
+export const EDIT_ORDER="EDIT_ORDER";
+export const EDIT_USER="EDIT_USER";
+export const CLEAR_ALL_USERS="CLEAR_ALL_USERS";
+export const CLEAR_ALL_ORDERS="CLEAR_ALL_ORDERS";
+export const GET_ONE_ORDER_ORDERLINE= "GET_ONE_ORDER_ORDERLINE";
+
+export const GET_ALL_PAIRING="GET_ALL_PAIRING";
+
 
 
 export function sortByPrecio(page, order) {
@@ -520,5 +524,20 @@ export function clearAllOrders(){
   return {
     type:CLEAR_ALL_ORDERS
   }
+}
+
+export function getOneOrderOderline(id) {
+  return async dispatch => {
+    try {
+      const res = await axios.get(
+        `/oneorderline/` + id || `http://localhost:3001/oneorderline/` + id
+      );
+      
+
+      dispatch({ type: GET_ONE_ORDER_ORDERLINE, payload: res.data });
+    } catch (error) {
+      alert("ERROR AL OBTENER TODAS LAS ORDENLINES");
+    }
+  };
 }
 

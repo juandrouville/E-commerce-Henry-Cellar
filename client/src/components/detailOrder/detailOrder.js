@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 export default function DetailOrder() {
     const dispatch = useDispatch();
-    const order = useSelector((state) => state.order);
+    const orderOrderline = useSelector((state) => state.orderOrderline);
 
     let history = useHistory();
 
@@ -13,34 +13,31 @@ export default function DetailOrder() {
 
     return (
         <LayoutPrimary>
-            <div className="historyContainer" >
-                {order.length ? (
-                    order.map((i) => {
+            <div className="historyPage" >
+                {orderOrderline.length ? (
+                    orderOrderline.map((o) => {
                         return (
 
-                            <div>
-                                {i.orderlines.map((o) => {
-                                    return (
 
-                                        <div className="divclass">
-                                           
-                                            <p className="porder">Product: {o.product.name} </p>
-                                            <p className="porder">unit price: ${o.product.price}  x {o.amount}</p>
-                                            <p className="porder">Subtotal: $ {o.product.price * o.amount}</p>
 
-                                            {i.state === "received" ?(
+                            <div className="line_order">
 
-                                            <button className="buttonClass" onClick={() => history.push(`/product-detail/${o.product.id}`)}>your opinion</button>
-                                             ) :( null  )  
-                                        }
+                                <p>Product: {o.product.name} </p>
+                                <p>unit price: ${o.product.price}  x {o.amount}</p>
+                                <p>Subtotal: $ {o.product.price * o.amount}</p>
+
+                                {o.order.state === "received" ? (
+
+                                    <button className="buttonClass" onClick={() => history.push(`/product-detail/${o.product.id}`)}>your opinion</button>
+                                ) : (null)
+                                } 
 
 
 
 
-                                        </div>
-                                    )
-                                })}
                             </div>
+
+
                         )
                     })
 
