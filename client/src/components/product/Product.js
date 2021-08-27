@@ -77,11 +77,6 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
             >
               <TiShoppingCart size={30} />
             </button>
-            ) : null}
-            <pre> </pre>
-            <button onClick={() => addToCart(id)}>
-              <TiShoppingCart size={30} />
-            </button>
           </div>
         </div>
       </div>
