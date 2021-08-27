@@ -1,14 +1,15 @@
 import React from "react";
 import LayoutPrimary from "layouts/layout-primary";
+import img from '../../assets/images/dance.gif'; 
 
 export default function AboutUs() {
   return (
     <LayoutPrimary>
+    <div className="page_aboutUs">
       <div className="aboutUs_container">
+      <div className="container_text">
         <h1>About Us</h1>
-        <br></br>
-        <br></br>
-        <br></br>
+        <br/>
         <h2>The Project Members - Group 14</h2>
         <br></br>
         <ul className="names">
@@ -76,9 +77,7 @@ export default function AboutUs() {
             </a>{" "}
           </li>
         </ul>
-        <br></br>
-        <br></br>
-        <br></br>
+        <br/>
         <h2>The Project</h2>
         <br></br>
         <h4>
@@ -92,6 +91,9 @@ export default function AboutUs() {
           The are also several filters and a way to select items and save them
           in a favorites caroussel.{" "}
         </h4>
+        </div>
+        <img className="gif" src={img}/>
+      </div>
       </div>
     </LayoutPrimary>
   );
