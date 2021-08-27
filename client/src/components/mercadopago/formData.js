@@ -67,7 +67,7 @@ export function BasicTextFields() {
        if(state.dept) ad=ad.concat(`Dept ${state.dept}`)
        dispatch(editUser(user.sub,{adress:ad}))
        dispatch(editOrder(userDB.order.id,{shippingMethod:state.shipmentMethod}))
-       toast.success(`Your adress has been saved ${user.firstName}`)
+       toast.success(`Your adress has been saved`)
     }
     return (
      

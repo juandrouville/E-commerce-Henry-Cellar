@@ -15,6 +15,11 @@ export default function Pagination() {
           if (page > 0) {
             dispatch(prevPage(page - 1));
             dispatch(getAllproducts(page - 1, filter, valueFilter));
+            window.scroll({
+              top: 100,
+              left: 100,
+              behavior: 'smooth'
+            });
           }
         }}
       >
@@ -24,6 +29,11 @@ export default function Pagination() {
         onClick={() => {
           dispatch(nextPage(page + 1));
           dispatch(getAllproducts(page + 1, filter, valueFilter));
+          window.scroll({
+            top: 100,
+            left: 100,
+            behavior: 'smooth'
+          });
         }}
       >
         next

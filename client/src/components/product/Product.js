@@ -49,7 +49,11 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
         <img  className="image_product" src={`${image}`} alt="Henry" />
         </Link>
         <div className="product__data">
-          <h3 onClick={() => history.push(`/product-detail/${id}`)}>{name}</h3>
+          <h3 onClick={() => {  window.scroll({
+          top: 100,
+          left: 100,
+          behavior: 'smooth'
+         });history.push(`/product-detail/${id}`)}}>{name}</h3>
           <br />
           <p>${price}</p>
           <br />
@@ -66,10 +70,11 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
               </button>) : null}
               
               <pre> </pre>
-              
-              <button onClick={() => addToCart(id)} disabled={stock<1? true : false}>
+              {stock > 0 ? 
+              <button onClick={() => addToCart(id)}>
                 <TiShoppingCart size={30} />
-              </button>
+              </button>: null }
+              
             </div>
           
         </div>
