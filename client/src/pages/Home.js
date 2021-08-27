@@ -46,7 +46,7 @@ const Home = props => {
     if (isAuthenticated && !userDB) {
       dispatch(getUser(user));
     }
-  }, [dispatch]);
+  }, [dispatch,isAuthenticated]);
 
   useEffect(() => {
     if (isAuthenticated) dispatch(getFavorites(user.sub));
