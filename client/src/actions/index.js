@@ -72,7 +72,7 @@ export function filtroCategoria(page, categoria) {
       });
   };
 }
-export function filtroMaxMin(page, max, min) {
+export function filtroMaxMin(page, min, max) {
   if (!page) {
     page = 0;
   }
@@ -94,7 +94,7 @@ export function filtroMaridaje(page, maridaje) {
   return function(dispatch) {
     axios
       .get(
-        `/allproducts?categoria=${maridaje}&page=${page}` ||
+        `/allproducts?maridaje=${maridaje}&page=${page}` ||
           `http://localhost:3001/allproducts?maridaje=${maridaje}&page=${page}`
       )
       .then(res => {
@@ -118,7 +118,7 @@ export function filtroBodega(page, bodega) {
   };
 }
 
-export function getAllproducts(page, filter, valuefilter) {
+export function getAllproducts(page, filter, valuefilter,valuefilter2) {
   if (!page) {
     page = 0;
   }
@@ -134,6 +134,9 @@ export function getAllproducts(page, filter, valuefilter) {
   }
   if (filter === "maridaje") {
     return filtroMaridaje(page, valuefilter);
+  }
+  if (filter === "maxmin") {
+    return filtroMaxMin(page, valuefilter,valuefilter2);
   }
   if (!filter) {
     return async dispatch => {
