@@ -3,7 +3,7 @@ import img from "../../assets/images/user.png";
 import { FaStar } from "react-icons/fa";
 
 function Review(review) {
-  // var review = review.review;
+  var review = review.review;
   var stars = review.score;
   var score = Array(1, 2, 3, 4, 5);
   score.length = stars;
@@ -19,7 +19,7 @@ function Review(review) {
             ))}{" "}
             - Nombre de usuario
           </h5>
-          <p className="comentaryArea">{review.review.commentary}</p>
+          <p className="comentaryArea">{review.commentary}</p>
           <h5>{review.review.createdAt.slice(0, 10)}</h5>
         </div>
       </div>
