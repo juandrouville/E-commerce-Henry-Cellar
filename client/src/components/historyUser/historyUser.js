@@ -51,7 +51,7 @@ export default function HistoryUser() {
             Welcome {firstName} {lastName}
           </h2>
           <h3>Purchase History</h3>
-          {total !== 0 ? (
+          {order.length ? (
             <div className="container_order_detail">
               <div className="header_titles">
                 <p>Order</p>
