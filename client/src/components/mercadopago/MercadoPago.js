@@ -39,7 +39,7 @@ export function MercadoPago({orderlines}) {
 
   useEffect(() => {
     if(orderlines.length){
-      axios.post("http://localhost:3001/mercadopago/" + orderlines[0].orderId,obj1)
+      axios.post(`/mercadopago/` || "http://localhost:3001/mercadopago/" + orderlines[0].orderId,obj1)
         .then(data => {
           console.log(data)
           setDatos(data.data)
