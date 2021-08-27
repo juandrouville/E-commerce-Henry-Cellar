@@ -1,16 +1,22 @@
 import React from "react";
-import { addCart, addToFavourite } from "../../actions/index";
+import { addCart, addProductToDBCart, addToFavourite } from "../../actions/index";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { TiShoppingCart } from "react-icons/ti";
+import { useAuth0 } from "@auth0/auth0-react";
+import toast from "react-hot-toast";
 
 
 const CardFavorite = ({ image, name, price, id,stock, delFromFavourite }) => {
 
+  const {isAuthenticated,user}=useAuth0()
+
   const dispatch = useDispatch();
 
   const addToCart = (id) => {
-    dispatch(addCart(id));
+    if(isAuthenticated){dispatch(addProductToDBCart(id,user.sub))}
+    else dispatch(addCart(id));
+    toast.success(`${name} was added to your cart !`)
   };
 
 
