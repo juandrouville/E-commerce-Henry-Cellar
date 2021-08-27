@@ -68,7 +68,6 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
               <button
                 onClick={e => {
                   addFavourite(id);
-                  e.target.disabled = true;
                 }}
               >
                 Fav <FaStar className="star" color="#ffc107" size={15} />
