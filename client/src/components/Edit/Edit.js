@@ -8,7 +8,9 @@ import { validation } from "components/validation/validation";
 import React, { useEffect, useState } from "react";
 // import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux";
+import Layout from "../../layouts/layout-primary";
 import { NavLink } from "react-router-dom";
+import wineimage from "assets/images/create-wine-image.jpeg";
 
 export default function EditProduct({ id }) {
   const dispatch = useDispatch();
@@ -201,16 +203,16 @@ export default function EditProduct({ id }) {
                 <p className="danger">{errors.categories}</p>
               )}
             </div>
-          </form>
-          <button
-            onClick={handleSubmit}
-            className="btn1"
-            type="submit"
-            disabled={Object.values(errors).length > 0 ? true : false}
-          >
-            Edit!
-          </button>
-        </div>
+          </div>
+        </form>
+        <button
+          onClick={handleSubmit}
+          className="btn1"
+          type="submit"
+          disabled={Object.values(errors).length > 0 ? true : false}
+        >
+          Edit!
+        </button>
       </div>
     </div>
   );
