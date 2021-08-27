@@ -6,9 +6,11 @@ import {
   DESC,
   getAllWineries,
   setPagination,
-  getAllPairing
+  getAllPairing,
+  filtroMaxMin
 } from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import { get } from "react-hook-form";
 
 const Filtros = (state) => {
   const allPairing = useSelector((state) => state.pairings)
@@ -57,6 +59,10 @@ const Filtros = (state) => {
     if (e.target.value === ASC || e.target.value === DESC) {
       dispatch(getAllproducts(null, "precio", e.target.value));
     }
+    if(e.target.value === "0 - $500"){
+  
+      dispatch(getAllproducts(null,"maxmin",0, 500))
+    }
   };
     return (
       <div className="body-filtros">
@@ -76,6 +82,12 @@ const Filtros = (state) => {
               <option className="disabled"> By Price </option>
               <option >Ascendant</option>
               <option >Descendant</option>
+              <option >$0 - $500</option>
+              <option >$500 - $1000</option>
+              <option >$1000 - $1500</option>
+              <option >$1500 - $2000</option>
+              <option >Over $2000</option>
+             
             </select>
           </div>
 
