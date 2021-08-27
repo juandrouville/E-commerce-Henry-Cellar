@@ -303,12 +303,13 @@ export function getUser(userData) {
   };
 }
 
-export function setPagination(filter, valueFilter) {
+export function setPagination(filter, valueFilter,valueFilter2) {
   return {
     type: SET_PAGINATION,
     payload: {
       filter,
-      valueFilter
+      valueFilter,
+      valueFilter2,
     }
   };
 }

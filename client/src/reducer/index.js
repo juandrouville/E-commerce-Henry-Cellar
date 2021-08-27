@@ -48,7 +48,8 @@ const initialState = {
   editFavorites: undefined,
   setPagination: {
     filter: "",
-    valueFilter: ""
+    valueFilter: "",
+    valueFilter2: "",
   },
   cart: cartFromLocalStorage,
   orderlines: [],
