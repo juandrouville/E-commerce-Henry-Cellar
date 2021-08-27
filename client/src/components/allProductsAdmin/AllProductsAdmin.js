@@ -1,14 +1,14 @@
 //REACT
 import React, { useEffect } from "react";
 import { getAllproducts, removeProduct } from "../../actions/index";
-import { NavLink } from "react-router-dom";
-import * as RiIcons from "react-icons/ri";
+// import { NavLink } from "react-router-dom";
+// import * as RiIcons from "react-icons/ri";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //import ProductsAdmin from "../productsAdmin/ProductsAdmin";
 
 import Pagination from "components/pagination/pagination";
-import LayoutPrimary from "layouts/layout-primary";
+// import LayoutPrimary from "layouts/layout-primary";
 import Materialtable from "material-table";
 import { forwardRef } from "react";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
@@ -35,7 +35,11 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
       field: "image",
 
       render: rowData => (
-        <img src={rowData.image} style={{ width: 30, borderRadius: "50%" }} />
+        <img
+          src={rowData.image}
+          style={{ width: 30, borderRadius: "50%" }}
+          alt="admin"
+        />
       )
     },
     { title: "Name", field: "name" },
@@ -61,7 +65,7 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
   };
 
   return (
-    <div className="container_table_edit_product" >
+    <div className="container_table_edit_product">
       <Materialtable
         title="All Products"
         columns={columns}
@@ -80,7 +84,7 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
                     textAlign: "center",
                     color: "white",
                     backgroundColor: "#943030",
-                    padding:"40"
+                    padding: "40"
                   }}
                 >
                   {rowData.description}
@@ -127,9 +131,7 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
         }}
         components={{
           Pagination: props => (
-            <div style={{ backgroundColor: "#e8eaf5" }}>
-              
-            </div>
+            <div style={{ backgroundColor: "#e8eaf5" }}></div>
           )
         }}
       />

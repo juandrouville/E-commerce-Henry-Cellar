@@ -1,24 +1,24 @@
 //REACT
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   getAllproducts,
-  addCart,
-  addProductToDBCart
+  addCart
+  // addProductToDBCart
 } from "../../actions/index";
 import Product from "../product/Product";
 
 function AllProducts({ products, GetProducts, addCart }) {
-  const { user, isAuthenticated } = useAuth0();
+  // const { user, isAuthenticated } = useAuth0();
   useEffect(() => {
     GetProducts();
   }, [GetProducts]);
 
-  const addToCart = id => {
-    if (isAuthenticated) addProductToDBCart(id, user.sub);
-    else addCart(id);
-  };
+  // const addToCart = id => {
+  //   if (isAuthenticated) addProductToDBCart(id, user.sub);
+  //   else addCart(id);
+  // };
 
   return (
     <div>
