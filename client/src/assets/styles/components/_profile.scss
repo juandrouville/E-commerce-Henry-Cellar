@@ -8,33 +8,93 @@
 
 .conatiner_profile{
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   box-shadow: 0px 8px 8px rgba(0,0,0,0.2);
+  @include response(medium){
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-shadow: 0px 8px 8px rgba(0,0,0,0.2);
+  }
   .image_data{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: cadetblue;
-    padding-top:25px;
-    padding-bottom: 25px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    @include response(medium){
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      padding-top:25px;
+      padding-bottom: 25px;
+    }
     img{
-      height: 100px;
-      width: 100px;
+      height: 150px;
+      width: 150px;
       border-radius: 100px;
-      border: 1px solid black;
-      align-self: flex-start;
+      border: 1px solid rgb(100, 100, 100);
+      @include response(medium){
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+        border: 1px solid rgb(100, 100, 100);
+      }
     }
     .profileData{
-      margin-left: 20px;
-      padding-right: 15px;
+      display:flex;
+      flex-direction: column;
+      padding: 15px;
+      align-content: space-around;
+      margin-left: 10px;
+      margin-right: 10px;
+      h2{
+        color:rgb(71,71,71);
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgb(71,71,71);
+        margin-bottom: 10px;
+      }
+      p{
+        color: black;
+        font-size: 15px;
+      }
+    }
+  }
+  .optionsUser{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width:100%;
+    .btn_myCart{
+      display:flex;
+      padding-left: 25px;
+      align-items: center;
+      height: 40px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      text-decoration: none;
+      background: #060b26;
+      color:white;
+      h3{
+        margin-left: 15px;
+      }
+      &:hover{
+        cursor:pointer;
+        background-color: rgb(5, 153, 251);
+      }
     }
   }
   
