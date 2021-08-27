@@ -1,6 +1,6 @@
 const { Product, Categories, Wineries,Pairing } = require("../db");
 var sequelize = require("sequelize");
-
+const {Op} = require("sequelize");
 
 const getAllproducts = async (req, res, next) => {
   var page = req.query.page ? req.query.page : 0;
@@ -10,7 +10,25 @@ const getAllproducts = async (req, res, next) => {
   var categoria = req.query.categoria;
   var bodega = req.query.bodega;
   var maridaje = req.query.maridaje;
+  var max = req.query.max
+  var min = req.query.min
+
   try {
+    
+    if(max && min ){
+      var maxmin = await Product.findAll({
+
+       limit: limit,
+       offset: offset,
+       where:{
+         price:{
+            [Op.between]:[min,max]
+         }
+       }
+     })
+    return res.send(maxmin)
+     
+   }
     if (precio) {
       if (precio === "Ascendant") {
         var asc = await Product.findAll({

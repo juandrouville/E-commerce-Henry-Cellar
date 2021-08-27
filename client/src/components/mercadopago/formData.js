@@ -87,10 +87,11 @@ export function BasicTextFields() {
         <>
             <TextField id="outlined-basic" label="Street" name="street" variant="outlined" required onChange={handleChange}/>
             <TextField id="filled-basic" label="Nº" type="number" name="numeration" required onChange={handleChange}/>
-            <TextField id="filled-basic" label="Locality" name="locality" required onChange={handleChange}/>
-            <TextField id="filled-basic" label="State" name="state" required onChange={handleChange}/>
             <TextField id="filled-basic" label="Floor" name="floor"  type="number" onChange={handleChange}/>
             <TextField id="filled-basic" label="Dept"  name="dept" onChange={handleChange}/>
+            <TextField id="filled-basic" label="City" name="locality" required onChange={handleChange}/>
+            <TextField id="filled-basic" label="State" name="state" required onChange={handleChange}/>
+            
             <Button
            disabled={(!state.street || !state.numeration || !state.locality || !state.shipmentMethod || !state.state) ? true : false }
            variant="contained"

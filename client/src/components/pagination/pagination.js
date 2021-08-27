@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { nextPage, prevPage, getAllproducts } from "../../actions/index";
 
 export default function Pagination() {
-  var page = useSelector((state) => state.page);
-  var filter = useSelector((state) => state.setPagination.filter);
-  var valueFilter = useSelector((state) => state.setPagination.valueFilter);
+  var page = useSelector(state => state.page);
+  var filter = useSelector(state => state.setPagination.filter);
+  var valueFilter = useSelector(state => state.setPagination.valueFilter);
+  var valueFilter2 = useSelector(state => state.setPagination.valueFilter2);
   var dispatch = useDispatch();
 
   return (
@@ -22,6 +23,7 @@ export default function Pagination() {
             });
           }
         }}
+        disabled={page <= 0}
       >
         prev
       </button>
@@ -35,6 +37,7 @@ export default function Pagination() {
             behavior: 'smooth'
           });
         }}
+        disabled={page >= 3}
       >
         next
       </button>

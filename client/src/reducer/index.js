@@ -3,6 +3,7 @@ import {
   SORT_BY_PRECIO,
   PRODUCT_DETAIL,
   POST_PRODUCT,
+  POST_CATEGORY,
   SEARCH_PRODUCT_BY_NAME,
   NEXT_PAGE,
   PREVIUS_PAGE,
@@ -26,11 +27,15 @@ import {
   GET_DB_ORDER,
   GET_ALL_USERS,
   CLEAR_ALL_USERS,
-  USER_ID,
+  // USER_ID,
   REMOVE_PRODUCT,
   GET_ALL_ORDERS,
   CLEAR_ALL_ORDERS,
-  GET_ALL_PAIRING
+
+  GET_ONE_ORDER_ORDERLINE,
+
+  GET_ALL_PAIRING,
+
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -42,13 +47,15 @@ const initialState = {
   productDetail: [],
   // searchProductByName: [],
   createdProduct: [],
+  createdCategory: [],
   page: 0,
   user: undefined,
   productFavourite: [],
   editFavorites: undefined,
   setPagination: {
     filter: "",
-    valueFilter: ""
+    valueFilter: "",
+    valueFilter2: "",
   },
   cart: cartFromLocalStorage,
   orderlines: [],
@@ -59,7 +66,8 @@ const initialState = {
   order: [],
   userid: [],
 
-  allOrders: []
+  allOrders: [],
+  orderOrderline: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -98,6 +106,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         createdProduct: state.createdProduct.concat(action.payload)
+      };
+    }
+    case POST_CATEGORY: {
+      return {
+        ...state,
+        createdCategory: state.createdCategory.concat(action.payload)
       };
     }
     case PRODUCT_DETAIL: {
@@ -246,7 +260,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         order: action.payload
       };
-        
     }
     case GET_ALL_USERS: {
       return {
@@ -279,10 +292,17 @@ const rootReducer = (state = initialState, action) => {
         allUsers: []
       };
     }
-    case CLEAR_ALL_ORDERS:{
+    case CLEAR_ALL_ORDERS: {
       return {
         ...state,
-        allOrders:[]
+        allOrders: []
+      };
+    }
+    case GET_ONE_ORDER_ORDERLINE:{
+      console.log(action.payload)
+      return{
+        ...state,
+        orderOrderline: action.payload,
       }
     }
     default: {

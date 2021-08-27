@@ -78,11 +78,11 @@ const NuevaNavBar = () => {
                 </li>
               );
             })}
-            <li className="button-text">
-              <Link>
-                <AuthNav />
-              </Link>
-            </li>
+            <AuthNav/>
+            
+              
+              
+            
             <li className="nav-text">
               {isAuthenticated && userData && userData.dataValues.admin ? (
                 <NavLink to="/admin/products" refresh="true">
@@ -91,15 +91,20 @@ const NuevaNavBar = () => {
                 </NavLink>
               ) : null}
             </li>
-            <li className="nav-text">
+            
               {isAuthenticated ? (
-                <NavLink to="/prueba" refresh="true"  className="button-text">
-                  <AiIcons.AiOutlineHistory />
-                  <button className="li" onClick={() => historyUser(userData.dataValues.id)}><h3 className="h3">My Shopping</h3></button>
+                <NavLink to="/prueba" refresh="true" className="btn_history">
+                  <button
+                    className="btn_logueo" 
+                    onClick={() => historyUser(userData.dataValues.id)}>
+                    <AiIcons.AiOutlineHistory size={20} />
+                    <h3>My Shopping</h3>
+                  </button>
                   
                 </NavLink>
               ) : null}
-            </li>
+                  
+            
             <li className="nav-text">
               <NavLink to="/aboutUs" refresh="true">
                 <FcAbout />

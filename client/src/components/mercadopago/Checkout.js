@@ -1,38 +1,40 @@
-import React from "react"
-import { useEffect, useState } from "react"
+import React from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { connect } from "react-redux";
 
+export function Checkout({ data }) {
+  let history = useHistory();
 
-export function Checkout({  data }) {
-    let history = useHistory()
+  useEffect(() => {
+    const script = document.createElement("script");
 
-    useEffect(() => {
-        const script = document.createElement("script")
+    const attr_data_preference = document.createAttribute("data-preference-id");
+    attr_data_preference.value = data.id;
 
-        const attr_data_preference = document.createAttribute("data-preference-id")
-        attr_data_preference.value = data.id
+    script.src =
+      "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+    script.setAttributeNode(attr_data_preference);
 
-        script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-        script.setAttributeNode(attr_data_preference)
+    document.getElementById("form1").appendChild(script);
 
-        document.getElementById("form1").appendChild(script)
+    return () => {
+      history.push("http://localhost:3000/user/finalizarcompra");
+    };
+  }, [history, data]);
 
-    }, [data])
-
-    return (
-        <div>
-            <form id="form1">
-             </form>
-        </div >
-    )
+  return (
+    <div>
+      <form id="form1"></form>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.user
-    }
-}
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
 
-export default connect(mapStateToProps)(Checkout)
+export default connect(mapStateToProps)(Checkout);

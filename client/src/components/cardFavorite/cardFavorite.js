@@ -19,12 +19,10 @@ const CardFavorite = ({ image, name, price, id,stock, delFromFavourite }) => {
     toast.success(`${name} was added to your cart !`)
   };
 
-
   return (
-    <div >
-       
+    <div>
       <div key={name} className="card_favorite">
-        <img src={`${image}`} alt="Henry"/>
+        <img src={`${image}`} alt="Henry" />
         <div className="data_favorite">
           <Link to={`/product-detail/${id}`} className="link_detail">
             {name}
@@ -42,6 +40,7 @@ const CardFavorite = ({ image, name, price, id,stock, delFromFavourite }) => {
             <button onClick={() => delFromFavourite(id)}>
               x
             </button>
+            <button onClick={() => delFromFavourite(id)}>x</button>
           </div>
         </div>
       </div>
