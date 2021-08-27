@@ -47,13 +47,9 @@ export default function DetailOrder() {
                 {o.order.state === "received" ? (
                   <div>
                     <button className="buttonClass" onClick={() => history.push(`/postreview/${o.product.id}`)}>your opinion</button>
-                    {/* <button onClick={() => abrirModal()}>Mostrar Modal</button> */}
                   </div>
                 ) : null}
-                {/* <Modal isOpen={state} style={modalStyles}>
-                  <PostReview productId={o.product.id} />
-                  <Button onClick={() => abrirModal()}>Cerrar</Button>
-                </Modal> */}
+               
               </div>
             );
           })
