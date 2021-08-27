@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../CartItem/CartItem";
 import {
   clearCart,
   removeOneProduct,
   removeAllProduct,
-  unifyCarts,
-  addProductToDBCart,
+  // unifyCarts,
+  // addProductToDBCart,
   getOrderlines,
   removeOrderline,
-  clearCartOfDB,
+  clearCartOfDB
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import LayoutPrimary from "layouts/layout-primary";
@@ -20,13 +20,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useAuth0();
 
-  let cart = useSelector((state) => state.cart);
-  let userDB = useSelector((state) => state.user);
-  let orderlines = useSelector((state) => state.orderlines);
-  let orderlineRemoved = useSelector((state) => state.orderlineRemoved);
-  let clearCartOfDataBase = useSelector((state) => state.clearCartOfDB);
+  let cart = useSelector(state => state.cart);
+  let userDB = useSelector(state => state.user);
+  let orderlines = useSelector(state => state.orderlines);
+  let orderlineRemoved = useSelector(state => state.orderlineRemoved);
+  let clearCartOfDataBase = useSelector(state => state.clearCartOfDB);
 
-  const userData = useSelector((state) => state.user);
+  const userData = useSelector(state => state.user);
   useEffect(() => {}, [userData]);
   useEffect(() => {
     if (
@@ -90,7 +90,10 @@ const Cart = () => {
 
   return (
     <LayoutPrimary>
-      <div> <Toaster/> </div>
+      <div>
+        {" "}
+        <Toaster />{" "}
+      </div>
       <div className="page_cart">
         <div className="cart__container">
           <h2 className="cart__title">Shopping Cart: {result.length} items </h2>
@@ -133,24 +136,24 @@ const Cart = () => {
               <button
                 className="buy_button"
                 disabled={result.length === 0 ? true : false}
-                onClick={(e) => clearcart(e)}
+                onClick={e => clearcart(e)}
               >
                 Clear Cart
               </button>
             </div>
             {isAuthenticated ? (
-              
               <div>
                 {userData && userData.dataValues.blocked ? (
-                  <h2>Sorry, your user is blocked to buy</h2>)
-                 : (<button
-                  className="buy_button"
-                  onClick={comprar}
-                  li
-                  disabled={result.length === 0 ? true : false}
-                >
-                  Buy
-                </button>
+                  <h2>Sorry, your user is blocked to buy</h2>
+                ) : (
+                  <button
+                    className="buy_button"
+                    onClick={comprar}
+                    li
+                    disabled={result.length === 0 ? true : false}
+                  >
+                    Buy
+                  </button>
                 )}
 
                 <pre> </pre>
@@ -170,8 +173,8 @@ const Cart = () => {
               <h2>TOTAL:</h2>
               <h2>${total.toFixed(2)}</h2>
             </div>
-            </div>
           </div>
+        </div>
       </div>
     </LayoutPrimary>
   );

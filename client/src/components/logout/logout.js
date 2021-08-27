@@ -8,21 +8,18 @@ const LogoutButton = () => {
   const dispatch = useDispatch();
   const { logout } = useAuth0();
   return (
-    
-      <button
-        className="btn_logueo"
-        onClick={() => {
-          dispatch(clearUser());
-          logout({
-            returnTo: window.location.origin,
-          });
-        }}
-      >
-      <BiIcons.BiLogOut size={20}/>
+    <button
+      className="btn_logueo"
+      onClick={() => {
+        dispatch(clearUser());
+        logout({
+          returnTo: window.location.origin
+        });
+      }}
+    >
+      <BiIcons.BiLogOut size={20} />
       <h3>Log Out</h3>
-      </button>
-    
-           
+    </button>
   );
 };
 

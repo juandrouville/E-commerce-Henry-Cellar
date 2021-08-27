@@ -1,10 +1,11 @@
-import react from "react";
-import PostReview from "../components/PostReview/PostReview"
+import React from "react";
+import PostReview from "../components/PostReview/PostReview";
 const PageReview = () => {
+  return (
+    <div>
+      <PostReview />
+    </div>
+  );
+};
 
-    return (
-        <div><PostReview/></div>
-    );
-  };
-  
-  export default PageReview;
+export default PageReview;

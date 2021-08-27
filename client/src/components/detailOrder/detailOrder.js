@@ -1,4 +1,4 @@
-import { react, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
 import { useHistory } from "react-router-dom";
@@ -10,13 +10,13 @@ import {
   ModalFooter,
   FormGroup,
   Input,
-  Label,
+  Label
 } from "reactstrap";
 import PostReview from "../PostReview/PostReview";
 
 export default function DetailOrder() {
   const dispatch = useDispatch();
-  const orderOrderline = useSelector((state) => state.orderOrderline);
+  const orderOrderline = useSelector(state => state.orderOrderline);
 
   let history = useHistory();
   const [state, setState] = useState(false);
@@ -28,7 +28,7 @@ export default function DetailOrder() {
     position: "absolute",
     top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)",
+    transform: "translate(-50%, -50%)"
   };
 
   return (
@@ -36,6 +36,7 @@ export default function DetailOrder() {
       <div className="page_history_detail">
       <div className="container_history_detail">
         {orderOrderline.length ? (
+
           <div className="header">
             <div className="header_items">
               <h3>Product</h3>
@@ -44,6 +45,7 @@ export default function DetailOrder() {
               <h3>Action</h3>
             </div>
           {orderOrderline.map((o) => {
+
             return (
               <div className="line_items">
                 <p className="text_item">{o.product.name} </p>
