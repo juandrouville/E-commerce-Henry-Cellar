@@ -85,7 +85,7 @@ const SimpleForm = () => {
           },
           {
             id: "8 English",
-            component: <SearchBar />,
+            component: <SearchBar style={{color: 'gray', backgroundColor: 'lightblue'}} />,
             trigger: "10 English"
           },
           {
