@@ -30,7 +30,7 @@ const Carousel = () => {
     showArrows: true,
     renderArrowPrev: true,
     renderArrowNext: true,
-    infinite: productsFavourite.length > 3,
+    infinite: productsFavourite.length > 2,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1
