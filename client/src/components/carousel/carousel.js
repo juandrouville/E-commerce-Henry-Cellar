@@ -43,7 +43,7 @@ const Carousel = () => {
           {productsFavourite.length !== 0 ? <h1>Favourites</h1> : null}
         </div>
         <Slider className="show" {...settings}>
-          {productsFavourite.length !== 0 ? (
+          {
             productsFavourite ? (
               productsFavourite.map(p => {
                 return (
@@ -68,7 +68,7 @@ const Carousel = () => {
             ) : (
               <p>Cargando...</p>
             )
-          ) : null}
+         }
         </Slider>
       </div>
     </div>
