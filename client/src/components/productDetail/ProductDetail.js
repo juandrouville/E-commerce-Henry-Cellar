@@ -103,7 +103,7 @@ export default function ProductDetail() {
               <p>No reviews </p>
             </div>
           )}
-          <PostReview productId={productDetail.id}/>
+          
       </div>
     </Layout>
   );
