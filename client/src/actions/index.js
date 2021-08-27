@@ -33,11 +33,14 @@ export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
 export const GET_DB_ORDER = "GET_DB_ORDER";
 export const USER_ID = "USER_ID";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 export const EDIT_ORDER = "EDIT_ORDER";
 export const EDIT_USER = "EDIT_USER";
 export const CLEAR_ALL_USERS = "CLEAR_ALL_USERS";
 export const CLEAR_ALL_ORDERS = "CLEAR_ALL_ORDERS";
+export const GET_ONE_ORDER_ORDERLINE = "GET_ONE_ORDER_ORDERLINE";
+
 export const GET_ALL_PAIRING = "GET_ALL_PAIRING";
 
 export function sortByPrecio(page, order) {
@@ -72,6 +75,21 @@ export function filtroCategoria(page, categoria) {
       });
   };
 }
+export function filtroMaxMin(page, min, max) {
+  if (!page) {
+    page = 0;
+  }
+  return function(dispatch) {
+    axios
+      .get(
+        `allproducts?min=${min}&max=${max}&page=${page}` ||
+          `http://localhost:3001/allproducts?min=${min}&max=${max}&page=${page}`
+      )
+      .then(res => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
+  };
+}
 export function filtroMaridaje(page, maridaje) {
   if (!page) {
     page = 0;
@@ -79,7 +97,7 @@ export function filtroMaridaje(page, maridaje) {
   return function(dispatch) {
     axios
       .get(
-        `/allproducts?categoria=${maridaje}&page=${page}` ||
+        `/allproducts?maridaje=${maridaje}&page=${page}` ||
           `http://localhost:3001/allproducts?maridaje=${maridaje}&page=${page}`
       )
       .then(res => {
@@ -103,7 +121,7 @@ export function filtroBodega(page, bodega) {
   };
 }
 
-export function getAllproducts(page, filter, valuefilter) {
+export function getAllproducts(page, filter, valuefilter, valuefilter2) {
   if (!page) {
     page = 0;
   }
@@ -119,6 +137,9 @@ export function getAllproducts(page, filter, valuefilter) {
   }
   if (filter === "maridaje") {
     return filtroMaridaje(page, valuefilter);
+  }
+  if (filter === "maxmin") {
+    return filtroMaxMin(page, valuefilter, valuefilter2);
   }
   if (!filter) {
     return async dispatch => {
@@ -297,12 +318,13 @@ export function getUser(userData) {
   };
 }
 
-export function setPagination(filter, valueFilter) {
+export function setPagination(filter, valueFilter, valueFilter2) {
   return {
     type: SET_PAGINATION,
     payload: {
       filter,
-      valueFilter
+      valueFilter,
+      valueFilter2
     }
   };
 }
@@ -511,5 +533,19 @@ export function clearAllUsers() {
 export function clearAllOrders() {
   return {
     type: CLEAR_ALL_ORDERS
+  };
+}
+
+export function getOneOrderOderline(id) {
+  return async dispatch => {
+    try {
+      const res = await axios.get(
+        `/oneorderline/` + id || `http://localhost:3001/oneorderline/` + id
+      );
+
+      dispatch({ type: GET_ONE_ORDER_ORDERLINE, payload: res.data });
+    } catch (error) {
+      alert("ERROR AL OBTENER TODAS LAS ORDENLINES");
+    }
   };
 }

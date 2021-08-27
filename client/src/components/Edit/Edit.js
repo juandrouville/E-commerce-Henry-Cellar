@@ -201,15 +201,16 @@ export default function EditProduct({ id }) {
                 <p className="danger">{errors.categories}</p>
               )}
             </div>
-          </div>
-        </form>
-        <button
-          className="btn1"
-          type="submit"
-          disabled={Object.values(errors).length > 0 ? true : false}
-        >
-          Edit!
-        </button>
+          </form>
+          <button
+            onClick={handleSubmit}
+            className="btn1"
+            type="submit"
+            disabled={Object.values(errors).length > 0 ? true : false}
+          >
+            Edit!
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ function AllUsersAdmin({ allUsers, GetUsers }) {
     { title: "User Name", field: "userName" },
     { title: "E-mail", field: "email" },
     { title: "Address", field: "adress" },
-    { title: "Phone", field: "phone" },
+    // { title: "Phone", field: "phone" },
     {
       title: "Admin",
       field: "admin",

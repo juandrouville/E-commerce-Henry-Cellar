@@ -31,7 +31,11 @@ import {
   REMOVE_PRODUCT,
   GET_ALL_ORDERS,
   CLEAR_ALL_ORDERS,
-  GET_ALL_PAIRING
+
+  GET_ONE_ORDER_ORDERLINE,
+
+  GET_ALL_PAIRING,
+
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -50,7 +54,8 @@ const initialState = {
   editFavorites: undefined,
   setPagination: {
     filter: "",
-    valueFilter: ""
+    valueFilter: "",
+    valueFilter2: "",
   },
   cart: cartFromLocalStorage,
   orderlines: [],
@@ -61,7 +66,8 @@ const initialState = {
   order: [],
   userid: [],
 
-  allOrders: []
+  allOrders: [],
+  orderOrderline: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -291,6 +297,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allOrders: []
       };
+    }
+    case GET_ONE_ORDER_ORDERLINE:{
+      console.log(action.payload)
+      return{
+        ...state,
+        orderOrderline: action.payload,
+      }
     }
     default: {
       return state;

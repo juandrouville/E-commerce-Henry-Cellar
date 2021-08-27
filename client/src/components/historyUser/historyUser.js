@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BsXCircle } from "react-icons/bs";
 import {
     getDbOrder,
+    getOneOrderOderline
 
 // import { useAuth0 } from "@auth0/auth0-react";
 // import PostReview from "components/PostReview/PostReview";
@@ -32,6 +33,7 @@ export default function HistoryUser() {
 
     var firstName = user.dataValues.firstName;
     var lastName = user.dataValues.lastName;
+    let history = useHistory();
     // const { isAuthenticated } = useAuth0();
 
 
@@ -43,6 +45,9 @@ export default function HistoryUser() {
 
 
     //
+    const orderOrderline = (id) => {
+        dispatch(getOneOrderOderline(id));
+      };
 
 
 
@@ -76,7 +81,9 @@ export default function HistoryUser() {
 
                                     {i.orderlines.reduce((a, b) => a + (b.product.price * b.amount), 0)}
                                 </p>
-                                <Link to="/orderdetail" className="viewDetail" >View</Link>
+                                <Link to="/orderdetail" className="viewDetail" >
+                                <button onClick={() => orderOrderline(i.id)}>view</button>
+                                </Link>
                             </div>
 
                             )

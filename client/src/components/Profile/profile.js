@@ -20,15 +20,15 @@ const Profile = () => {
               <h3 className="h3Profile">Name: {userData.firstName}</h3>
               <h3 className="h3Profile">Last Name: {userData.lastName}</h3>
               <p className="h3Profile">E-mail: {userData.email}</p>
-              <p className="h3Profile">Address: {userData.calle}</p>
-              <p className="h3Profile">Number: {userData.numero}</p>
+              <p className="h3Profile">Address: {userData.adress}</p>
+              {/* <p className="h3Profile">Number: {userData.numero}</p>
               <p className="h3Profile">City: {userData.localidad}</p>
               <p className="h3Profile">State: {userData.provincia}</p>
               <p className="h3Profile">Zip Code: {userData.codigopostal}</p>
-              <p className="h3Profile">Phone Number: {userData.phone}</p>
+              <p className="h3Profile">Phone Number: {userData.phone}</p> */}
             </div>
           </div>
-            <FinalizarCompra className="add_data"/>
+            
         </div>
       </div>
     </Layout>

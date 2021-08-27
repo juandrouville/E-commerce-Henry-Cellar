@@ -1,42 +1,58 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
 import { useHistory } from "react-router-dom";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormGroup,
+  Input,
+  Label
+} from "reactstrap";
+import PostReview from "../PostReview/PostReview";
 
 export default function DetailOrder() {
-  // const dispatch = useDispatch();
-  const order = useSelector(state => state.order);
+  const dispatch = useDispatch();
+  const orderOrderline = useSelector(state => state.orderOrderline);
 
   let history = useHistory();
+  const [state, setState] = useState(false);
+
+  let abrirModal = () => {
+    setState(!state);
+  };
+  const modalStyles = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
+  };
 
   return (
     <LayoutPrimary>
-      <div className="historyContainer">
-        {order.length ? (
-          order.map(i => {
+      <div className="historyPage">
+        {orderOrderline.length ? (
+          orderOrderline.map(o => {
             return (
-              <div>
-                {i.orderlines.map(order => {
-                  return (
-                    <div className="divclass">
-                      <p className="porder">Product: {order.product.name} </p>
-                      <p className="porder">
-                        unit price: ${order.product.price} x {order.amount}
-                      </p>
-                      <p className="porder">
-                        Subtotal: $ {order.product.price * order.amount}
-                      </p>
-                      <button
-                        className="buttonClass"
-                        onClick={() =>
-                          history.push(`/product-detail/${order.product.id}`)
-                        }
-                      >
-                        your opinion
-                      </button>
-                    </div>
-                  );
-                })}
+              <div className="line_order">
+                <p>Product: {o.product.name} </p>
+                <p>
+                  unit price: ${o.product.price} x {o.amount}
+                </p>
+                <p>Subtotal: $ {o.product.price * o.amount}</p>
+
+                {o.order.state === "received" ? (
+                  <div>
+                    <button onClick={() => abrirModal()}>Mostrar Modal</button>
+                  </div>
+                ) : null}
+                <Modal isOpen={state} style={modalStyles}>
+                  <PostReview productId={o.product.id} />
+                  <Button onClick={() => abrirModal()}>Cerrar</Button>
+                </Modal>
               </div>
             );
           })
