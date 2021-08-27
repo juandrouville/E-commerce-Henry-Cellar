@@ -59,28 +59,26 @@ const Product = ({ image, name, price, id, stock, delFromFavourite }) => {
             <p className="product_nostock">No stock</p>
           )}
 
-<<<<<<< HEAD
           <div className="cartButton">
             {isAuthenticated ? (
-              <button onClick={() => addFavourite(id)}>
+              <button
+                onClick={e => {
+                  addFavourite(id);
+                  e.target.disabled = true;
+                }}
+              >
                 Fav <FaStar className="star" color="#ffc107" size={15} />
-=======
-          
-            <div className="cartButton">
-              {isAuthenticated ? (<button onClick={(e) => {addFavourite(id);e.target.disabled=true}}>
-                Fav <FaStar className="star" color="#ffc107" size={15} />
-              </button>) : null}
-              
-              <pre> </pre>
-              
-              <button onClick={() => addToCart(id)} disabled={stock<1? true : false}>
-                <TiShoppingCart size={30} />
->>>>>>> 6b226418a238ea1f97dc5e97f8ed42852af3e048
               </button>
             ) : null}
-
             <pre> </pre>
-
+            <button
+              onClick={() => addToCart(id)}
+              disabled={stock < 1 ? true : false}
+            >
+              <TiShoppingCart size={30} />
+            </button>
+            ) : null}
+            <pre> </pre>
             <button onClick={() => addToCart(id)}>
               <TiShoppingCart size={30} />
             </button>
