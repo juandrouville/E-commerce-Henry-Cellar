@@ -33,48 +33,53 @@ export default function ContactUs() {
 
   return (
     <LayoutPrimary>
-      <div className="contact-us-container">
-        <div className="contact-us">
-          <h2>Send us your questions and suggestions...</h2>
-          <br></br>
-          <br></br>
-          <form className="contact-form" onSubmit={sendEmail}>
-            <input
-              type="hidden"
-              name="contact_number"
-              className="contact-form__input"
-            />
-            <label className="label">Name</label>
-            <input
-              type="text"
-              name="user_name"
-              className="contact-form__input"
-            />
-            <label className="label">Email</label>
-            <input
-              type="email"
-              name="user_email"
-              className="contact-form__input"
-            />
-            <label className="label">Message</label>
-            <textarea className="contact-form__textarea" name="message" />
-            <input className="send" type="submit" value="Send" />
-          </form>
+      <div className="page_contact">
+        <div className="contact-us-container">
+          <div className="contact-us">
+            <h2>Send us your questions and suggestions...</h2>
+            <br></br>
+            <br></br>
+            <form className="contact-form" onSubmit={sendEmail}>
+              <div className="label-input">
+                <label className="label">Name</label>
+                <input
+                  type="text"
+                  name="user_name"
+                />
+              </div>
+              <div className="label-input">
+                <label className="label">Email</label>
+                <input
+                  type="email"
+                  name="user_email"
+                  className="contact-form__input"
+                />
+              </div>
+              <div className="label-input">
+                <label className="label">Message</label>
+                <textarea name="message" />
+              </div>
+              <input className="send" type="submit" value="Send" />
+            </form>
+          </div>
+          <div className="mapa_visit">
+            <div className="mapa">
+              <MapSection location={location} zoomLevel={15} />
+            </div>
+            <div className="contact-us-info">
+              <h2>Come visit us:</h2>
+              <h3>9 de Julio s/n - C.A.B.A. - Argentina</h3>
+              <h3>Phone: +5411-142021</h3>
+              <div className="instagram">
+                <a className="a" href="https://www.instagram.com/henrycellar/" target="instagram">
+                  <GrInstagram className="icon" /> <h4> @henrycellar</h4>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="contact-us-info">
-          <h2>Come visit us:</h2>
-          <br></br>
-          <h3>9 de Julio s/n - C.A.B.A. - Argentina</h3>
-          <br></br>
-          <h4>Phone: +5411-142021</h4>
-          <br></br>
-          <a className="a" href="https://www.instagram.com/henrycellar/" target="instagram">
-            <GrInstagram className="icon"/> <h4> @henrycellar</h4>
-          </a>
+        <div>
         </div>
-      </div>
-      <div>
-        <MapSection location={location} zoomLevel={15} />
       </div>
     </LayoutPrimary>
   );
