@@ -29,7 +29,8 @@ import {
   USER_ID,
   REMOVE_PRODUCT,
   GET_ALL_ORDERS,
-  CLEAR_ALL_ORDERS
+  CLEAR_ALL_ORDERS,
+  GET_ONE_ORDER_ORDERLINE,
 } from "../actions/index";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -57,7 +58,8 @@ const initialState = {
   order: [],
   userid: [],
 
-  allOrders: []
+  allOrders: [],
+  orderOrderline: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -275,6 +277,13 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allOrders:[]
+      }
+    }
+    case GET_ONE_ORDER_ORDERLINE:{
+      console.log(action.payload)
+      return{
+        ...state,
+        orderOrderline: action.payload,
       }
     }
     default: {
