@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDispatch, useSelector } from "react-redux";
 import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import {
   editFavorites,
   getFavorites
