@@ -1,7 +1,7 @@
 import { react, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LayoutPrimary from "layouts/layout-primary";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -46,13 +46,14 @@ export default function DetailOrder() {
 
                 {o.order.state === "received" ? (
                   <div>
-                    <button onClick={() => abrirModal()}>Mostrar Modal</button>
+                    <button className="buttonClass" onClick={() => history.push(`/postreview/${o.product.id}`)}>your opinion</button>
+                    {/* <button onClick={() => abrirModal()}>Mostrar Modal</button> */}
                   </div>
                 ) : null}
-                <Modal isOpen={state} style={modalStyles}>
+                {/* <Modal isOpen={state} style={modalStyles}>
                   <PostReview productId={o.product.id} />
                   <Button onClick={() => abrirModal()}>Cerrar</Button>
-                </Modal>
+                </Modal> */}
               </div>
             );
           })

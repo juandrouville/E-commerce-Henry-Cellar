@@ -37,7 +37,7 @@ import EditProduct from "components/Edit/Edit";
 import Orders from "components/allOrdersAdmin/Orders";
 import PageReview from "../src/pages/review";
 import DetailOrder from "../src/components/detailOrder/detailOrder";
-
+import PostReview from "../src/components/PostReview/PostReview"
 dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
@@ -46,6 +46,7 @@ ReactDOM.render(
   <Provider store={Store}>
     <Router>
       <Auth0ProviderWithHistory>
+        <Route exact path="/postreview/:id" component={PostReview} />
         <Route exact path="/orderdetail" component={DetailOrder} />
         <Route exact path="/review" component={PageReview} />
         <Route exact path="/mycart" component={Cart} />
