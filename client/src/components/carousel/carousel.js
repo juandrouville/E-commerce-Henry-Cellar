@@ -10,7 +10,7 @@ import {
   getFavorites
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
-
+//actualizacion
 const Carousel = () => {
   const { user, isAuthenticated } = useAuth0();
 
