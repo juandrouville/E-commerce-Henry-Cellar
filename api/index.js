@@ -6,7 +6,7 @@ const { SetDataInitial } = require('./src/initialContents/SetDataInitial');
 const { products } = require('./src/initialContents/DataWines');
 
 // Syncing all the models at once.
-conn.sync({ force: true })
+conn.sync({ force: false })
 .then(() => {
     SetDataInitial(products);
     console.log("sincroniza servidor 3001")

@@ -17,7 +17,6 @@ function Review(review) {
             {score.map(e => (
               <FaStar className="star" size={12} color="black" />
             ))}{" "}
-            - Nombre de usuario
           </h5>
           <p className="comentaryArea">{review.commentary}</p>
 
