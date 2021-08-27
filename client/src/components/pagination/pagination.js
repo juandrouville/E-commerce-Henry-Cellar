@@ -6,6 +6,7 @@ export default function Pagination() {
   var page = useSelector((state) => state.page);
   var filter = useSelector((state) => state.setPagination.filter);
   var valueFilter = useSelector((state) => state.setPagination.valueFilter);
+  var valueFilter2 = useSelector((state) => state.setPagination.valueFilter2);
   var dispatch = useDispatch();
 
   return (
@@ -14,7 +15,7 @@ export default function Pagination() {
         onClick={() => {
           if (page > 0) {
             dispatch(prevPage(page - 1));
-            dispatch(getAllproducts(page - 1, filter, valueFilter));
+            dispatch(getAllproducts(page - 1, filter, valueFilter,valueFilter2));
           }
         }}
       >
@@ -23,7 +24,7 @@ export default function Pagination() {
       <button
         onClick={() => {
           dispatch(nextPage(page + 1));
-          dispatch(getAllproducts(page + 1, filter, valueFilter));
+          dispatch(getAllproducts(page + 1, filter, valueFilter,valueFilter2));
         }}
       >
         next

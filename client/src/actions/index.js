@@ -32,12 +32,16 @@ export const CLEAR_CART_OF_DB = "CLEAR_CART_OF_DB";
 export const GET_DB_ORDER = "GET_DB_ORDER";
 export const USER_ID = "USER_ID";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+
 export const GET_ALL_ORDERS="GET_ALL_ORDERS";
 export const EDIT_ORDER="EDIT_ORDER";
 export const EDIT_USER="EDIT_USER";
 export const CLEAR_ALL_USERS="CLEAR_ALL_USERS";
 export const CLEAR_ALL_ORDERS="CLEAR_ALL_ORDERS";
 export const GET_ONE_ORDER_ORDERLINE= "GET_ONE_ORDER_ORDERLINE";
+
+export const GET_ALL_PAIRING="GET_ALL_PAIRING";
+
 
 
 export function sortByPrecio(page, order) {
@@ -72,7 +76,36 @@ export function filtroCategoria(page, categoria) {
       });
   };
 }
-
+export function filtroMaxMin(page, min, max) {
+  if (!page) {
+    page = 0;
+  }
+  return function(dispatch) {
+    axios
+      .get(
+        `allproducts?min=${min}&max=${max}&page=${page}` ||
+          `http://localhost:3001/allproducts?min=${min}&max=${max}&page=${page}`
+      )
+      .then(res => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
+  };
+}
+export function filtroMaridaje(page, maridaje) {
+  if (!page) {
+    page = 0;
+  }
+  return function(dispatch) {
+    axios
+      .get(
+        `/allproducts?maridaje=${maridaje}&page=${page}` ||
+          `http://localhost:3001/allproducts?maridaje=${maridaje}&page=${page}`
+      )
+      .then(res => {
+        dispatch({ type: GET_ALL_PRODUCTS, payload: res.data });
+      });
+  };
+}
 export function filtroBodega(page, bodega) {
   if (!page) {
     page = 0;
@@ -89,7 +122,7 @@ export function filtroBodega(page, bodega) {
   };
 }
 
-export function getAllproducts(page, filter, valuefilter) {
+export function getAllproducts(page, filter, valuefilter,valuefilter2) {
   if (!page) {
     page = 0;
   }
@@ -102,6 +135,12 @@ export function getAllproducts(page, filter, valuefilter) {
   }
   if (filter === "bodega") {
     return filtroBodega(page, valuefilter);
+  }
+  if (filter === "maridaje") {
+    return filtroMaridaje(page, valuefilter);
+  }
+  if (filter === "maxmin") {
+    return filtroMaxMin(page, valuefilter,valuefilter2);
   }
   if (!filter) {
     return async dispatch => {
@@ -131,6 +170,14 @@ export function getAllCategories() {
       `/categories` || `http://localhost:3001/categories`
     );
     dispatch({ type: GET_ALL_CATEGORIES, payload: res.data });
+  };
+}
+export function getAllPairing() {
+  return async dispatch => {
+    const res = await axios.get(
+      `/Pairing` || `http://localhost:3001/Pairing`
+    );
+    dispatch({ type: GET_ALL_PAIRING, payload: res.data });
   };
 }
 export function getAllWineries() {
@@ -260,12 +307,13 @@ export function getUser(userData) {
   };
 }
 
-export function setPagination(filter, valueFilter) {
+export function setPagination(filter, valueFilter,valueFilter2) {
   return {
     type: SET_PAGINATION,
     payload: {
       filter,
-      valueFilter
+      valueFilter,
+      valueFilter2,
     }
   };
 }
@@ -442,9 +490,8 @@ export function editOrder(orderId, newValue) {
       const res = await axios.put(
         `/editOrder/${orderId}` || `http://localhost:3001/editOrder/${orderId}`,
         { state: newValue.state,
-          blocked:newValue.blocked,
-          adress:newValue.adress,
-          admin:newValue.admin
+          shippingMethod:newValue.shippingMethod,
+          paymentMethod:newValue.paymentMethod,
         }
 
       );

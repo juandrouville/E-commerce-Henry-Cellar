@@ -8,6 +8,7 @@ import {
   addProductToDBCart,
   addToFavourite,
   editFavorites,
+  getOrderlines,
 } from "../../actions/index";
 import cart2 from "../../assets/images/cart2.png";
 import Review from "../Review/Review";
@@ -21,8 +22,12 @@ import { TiShoppingCart } from "react-icons/ti";
 export default function ProductDetail() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
+  const addProductLogged=useSelector(state=>state.addProductToDB)
+  const userDB=useSelector(state=>state.user)
+
   const { id } = useParams();
   const { isAuthenticated, user } = useAuth0();
+
   useEffect(() => {
     dispatch(getProductDetail(id));
     return () => {
@@ -30,8 +35,16 @@ export default function ProductDetail() {
     };
   }, [dispatch, id]);
 
+  useEffect(() => {
+    if (isAuthenticated && userDB) {
+      dispatch(getOrderlines(userDB.order.id));
+    }
+  }, [ addProductLogged]);
+
   const addFavourite = (id) => {
     dispatch(editFavorites(id, user.sub, false));
+    toast.success(`The Product ${productDetail.name} was added to your favorites !`)
+
   };
 
   const addToCart = (id) => {
@@ -61,11 +74,11 @@ export default function ProductDetail() {
                   </p>
                 </div>
                 <div className="buyFavButtons">
-                  <button onClick={() => addToCart(productDetail.id)}>
-                    <TiShoppingCart size={30} />
+                  <button  disabled={productDetail.stock<1? true : false} onClick={() => addToCart(productDetail.id)}>
+                    <TiShoppingCart size={30}   disabled={productDetail.stock <1 ? true : false}/>
                   </button>
                   {/* {isAuthenticated ? ( */}
-                    <button onClick={() => addFavourite(productDetail.id)}>
+                    <button  onClick={(e) => {addFavourite(productDetail.id);e.target.disabled=true}}>
                       Fav <FaStar className="star" color="#ffc107" size={15} />
                     </button>
                   {/* ) : null} */}
