@@ -41,6 +41,7 @@ export default function ContactUs() {
             <br></br>
             <form className="contact-form" onSubmit={sendEmail}>
               <div className="label-input">
+                <input type="hidden" name="contact_number" />
                 <label className="label">Name</label>
                 <input
                   type="text"
