@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import CardFavorite from "../cardFavorite/cardFavorite";
 import { Link } from "react-router-dom";
 import {
-  editFavorites
-  // getFavorites
+  editFavorites,
+  getFavorites
 } from "../../actions/index";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -15,7 +15,7 @@ const Carousel = () => {
   const { user } = useAuth0();
 
   let productsFavourite = useSelector(state => state.productFavourite);
-  //const editFavoritesState=useSelector(state=>state.editFavorites)
+  const editFavoritesState=useSelector(state=>state.editFavorites)
 
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const Carousel = () => {
     dispatch(editFavorites(id, user.sub, true));
   };
 
-  //useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
+  useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
   const settings = {
     dots: true,
