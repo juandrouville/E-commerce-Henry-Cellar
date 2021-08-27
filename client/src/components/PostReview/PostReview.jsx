@@ -4,12 +4,15 @@ import { FaStar } from "react-icons/fa";
 import { postReview } from "../../actions/index";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-
+import { useParams } from "react-router-dom"
+import LayoutPrimary from "layouts/layout-primary";
+import toast from "react-hot-toast";
 
 
 function PostReview (productId){
+    const { id } = useParams();
 
-    productId = productId.productId;
+    productId = id;
     
     const userId = useSelector((state) =>{
         if(state.user){
@@ -52,11 +55,14 @@ function PostReview (productId){
             ...review,
             score:rating,
         })
+       
         dispatch(postReview(review));
         cleanForm();
     }
 
     return (
+        <LayoutPrimary>
+
         <div className = "containerPostReview">
             <h1>Thanks for trust !</h1>
             <h3>Your opinion is important</h3>
@@ -75,7 +81,7 @@ function PostReview (productId){
                             ...review,
                             score:ratingValue});
                             setRating(ratingValue)}}
-                        />
+                            />
                         <FaStar 
                         className="star" 
                         color={ratingValue <= (hover || rating) ? "#e6b567" : "#e4e5e9"}
@@ -86,13 +92,14 @@ function PostReview (productId){
 
                     </label>
 
-                )
-            })}
+)
+})}
         </div>
             <textarea className = "comentaryArea" id="textarea" placeholder="Your Opinion" onChange={changeComentary} />
             <input className = "submit" type="submit" onClick={submitPost} />
         </div>
 
+</LayoutPrimary>
     )
 };
 
