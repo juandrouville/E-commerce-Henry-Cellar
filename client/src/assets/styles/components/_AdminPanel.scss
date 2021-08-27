@@ -3,12 +3,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     position: relative;
     border-bottom:2px solid rgb(57, 57, 57) ;
     margin-bottom: 25px;
     padding-top: 80px;
     padding-bottom: 40px;
+    width: 100%;
     @include response(medium){
         display: flex;
         justify-content: space-around;
@@ -18,4 +18,13 @@
         padding-bottom: 30px;
         padding-top: 30px;
     }
+}
+
+.container_tables_admin{
+    display:flex;
+    flex-direction: column;
+    width:80%;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
 }

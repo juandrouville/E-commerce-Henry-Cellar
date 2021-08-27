@@ -79,10 +79,6 @@ const NuevaNavBar = () => {
               );
             })}
             <AuthNav/>
-            
-              
-              
-            
             <li className="nav-text">
               {isAuthenticated && userData && userData.dataValues.admin ? (
                 <NavLink to="/admin/products" refresh="true">
@@ -91,7 +87,6 @@ const NuevaNavBar = () => {
                 </NavLink>
               ) : null}
             </li>
-            
               {isAuthenticated ? (
                 <NavLink to="/prueba" refresh="true" className="btn_history">
                   <button
@@ -103,8 +98,6 @@ const NuevaNavBar = () => {
                   
                 </NavLink>
               ) : null}
-                  
-            
             <li className="nav-text">
               <NavLink to="/aboutUs" refresh="true">
                 <FcAbout />
@@ -129,5 +122,12 @@ const NuevaNavBar = () => {
     </div>
   );
 };
+            
+              
+              
+            
+            
+                  
+            
 
 export default NuevaNavBar;

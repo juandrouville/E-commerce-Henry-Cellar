@@ -20,7 +20,9 @@ function Review(review) {
             - Nombre de usuario
           </h5>
           <p className="comentaryArea">{review.commentary}</p>
+
           <h5>{review.createdAt.slice(0, 10)}</h5>
+
         </div>
       </div>
     </div>

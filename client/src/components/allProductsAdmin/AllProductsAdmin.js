@@ -65,77 +65,79 @@ function AllProductsAdmin({ GetProducts, DeleteProduct }) {
   };
 
   return (
-    <div className="container_table_edit_product">
-      <Materialtable
-        title="All Products"
-        columns={columns}
-        data={products}
-        icons={tableIcons}
-        detailPanel={[
-          {
-            icon: ArrowDownward,
-            tooltip: "Show description",
+    <div>
+      <div className="container_tables_admin">
+        <Materialtable
+          title="All Products"
+          columns={columns}
+          data={products}
+          icons={tableIcons}
+          detailPanel={[
+            {
+              icon: ArrowDownward,
+              tooltip: "Show description",
 
-            render: rowData => {
-              return (
-                <div
-                  style={{
-                    fontSize: 20,
-                    textAlign: "center",
-                    color: "white",
-                    backgroundColor: "#943030",
-                    padding: "40"
-                  }}
-                >
-                  {rowData.description}
-                </div>
-              );
-            }
-          }
-        ]}
-        actions={[
-          {
-            icon: Edit,
-            tooltip: "Edit Product",
-            onClick: (event, rowData) => {
-              history.push(`/admin/editProduct/${rowData.id}`);
-            }
-          },
-          {
-            icon: DeleteOutline,
-            tooltip: "Delete Product",
-            onClick: (event, rowData) => {
-              var answer = window.confirm(
-                "Are you sure you want to delete the product: " +
-                  rowData.name +
-                  "?"
-              );
-              if (answer) {
-                handleDelete(rowData.id);
-              } else {
-                return;
+              render: rowData => {
+                return (
+                  <div
+                    style={{
+                      fontSize: 20,
+                      textAlign: "center",
+                      color: "white",
+                      backgroundColor: "#8c2121",
+                      padding: "40"
+                    }}
+                  >
+                    {rowData.description}
+                  </div>
+                );
               }
             }
-          }
-        ]}
-        options={{
-          actionsColumnIndex: -1,
-          detailPanelIndex: -1,
-          headerStyle: {
-            backgroundColor: "#420000",
-            color: "#FFF",
-            zIndex: "1"
-          },
+          ]}
+          actions={[
+            {
+              icon: Edit,
+              tooltip: "Edit Product",
+              onClick: (event, rowData) => {
+                history.push(`/admin/editProduct/${rowData.id}`);
+              }
+            },
+            {
+              icon: DeleteOutline,
+              tooltip: "Delete Product",
+              onClick: (event, rowData) => {
+                var answer = window.confirm(
+                  "Are you sure you want to delete the product: " +
+                    rowData.name +
+                    "?"
+                );
+                if (answer) {
+                  handleDelete(rowData.id);
+                } else {
+                  return;
+                }
+              }
+            }
+          ]}
+          options={{
+            actionsColumnIndex: -1,
+            detailPanelIndex: -1,
+            headerStyle: {
+              backgroundColor: "#8c2121",
+              color: "#FFF",
+              zIndex: "1"
+            },
 
-          pageSize: 9
-        }}
-        components={{
-          Pagination: props => (
-            <div style={{ backgroundColor: "#e8eaf5" }}></div>
-          )
-        }}
-      />
-      <Pagination />
+            pageSize: 9
+          }}
+          components={{
+            Pagination: props => (
+              <div></div>
+            )
+          }}
+        />
+        <Pagination />
+    </div>
     </div>
   );
 }
