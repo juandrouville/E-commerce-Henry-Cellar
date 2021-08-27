@@ -28,9 +28,11 @@ const CardFavorite = ({ image, name, price, id,stock, delFromFavourite }) => {
           <br />
           <h3>Stock : {stock} unidades</h3>
           <div className="button_card_favorite">
+          {stock>0 ? 
             <button onClick={() => addToCart(id)}>
             <TiShoppingCart size={26} />
-            </button>
+            </button> : null}
+            
             <button onClick={() => delFromFavourite(id)}>
               x
             </button>
