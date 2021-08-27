@@ -27,13 +27,10 @@ const Carousel = () => {
 
   const settings = {
     dots: true,
-    showArrows: true,
-    renderArrowPrev: true,
-    renderArrowNext: true,
-    infinite: productsFavourite.length > 2,
+    infinite: true,   
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToShow: 1,
+    slidesToScroll: 1,
   };
 
   return (
