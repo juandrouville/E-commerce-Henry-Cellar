@@ -75,8 +75,8 @@ export default function HistoryUser() {
                         0
                       )}
                     </p>
-                    <Link to="/orderdetail" className="viewDetail">
-                      <button onClick={() => orderOrderline(i.id)}>view</button>
+                    <Link to="/orderdetail" style={{textDecoration:"none"}}>
+                      <button className="buttonView" onClick={() => orderOrderline(i.id)}>view</button>
                     </Link>
                   </div>
                 );

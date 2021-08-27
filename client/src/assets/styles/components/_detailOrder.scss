@@ -49,12 +49,18 @@
         }
     }
 }
+.line_order{
+    display:flex;
+    flex-direction: row;
+    align-content: space-around;
+}
 
 .line_items{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    background: chocolate;
     border-top: 1px solid rgb(71,71,71);
     button{
         width: 70px;
@@ -102,5 +108,19 @@
         margin-bottom: 10px;
         font-weight: 700;
         letter-spacing: 0.06rem;
+    }
+}
+
+.buttonView{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    background: rgb(140, 33, 33);
+    border: none;
+    color:white;
+    width: 70px;
+    &:hover{
+        cursor: pointer;
     }
 }
