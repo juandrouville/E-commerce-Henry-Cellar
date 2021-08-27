@@ -80,6 +80,7 @@ export default function Orders() {
 
   return (
     <div className="all_orders_container">
+    <div className="container_tables_admin">
       <Materialtable
         title="All Orders"
         columns={columns}
@@ -90,7 +91,7 @@ export default function Orders() {
           actionsColumnIndex: -1,
           detailPanelIndex: -1,
           headerStyle: {
-            backgroundColor: "#420000",
+            backgroundColor: "#8c2121",
             color: "#FFF",
             zIndex: "1"
           },
@@ -114,7 +115,7 @@ export default function Orders() {
                     textAlign: "left",
                     color: "white",
 
-                    backgroundColor: "#43A047"
+                    backgroundColor: "#8c2121"
                   }}
                 >
                   <h3>
@@ -145,6 +146,7 @@ export default function Orders() {
           }
         ]}
       />
+      </div>
     </div>
   );
 }

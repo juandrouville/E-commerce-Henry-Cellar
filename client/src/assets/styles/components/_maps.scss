@@ -28,9 +28,10 @@
     color: #420000;
   }
   
-  @media screen and (min-width: 799px) {
+  @media screen and (min-width: 300px) {
     .google-map {
       height: 400px;
+      width: 100%;
       
     }
   

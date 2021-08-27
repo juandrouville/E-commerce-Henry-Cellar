@@ -75,7 +75,7 @@ function AllUsersAdmin({ allUsers, GetUsers }) {
   }, [GetUsers]);
 
   return (
-    <div>
+    <div className="container_tables_admin">
       <Materialtable
         title="Users"
         columns={columns}
@@ -94,7 +94,7 @@ function AllUsersAdmin({ allUsers, GetUsers }) {
                     textAlign: "center",
                     color: "white",
 
-                    backgroundColor: "#420000"
+                    backgroundColor: "#8c2121"
                   }}
                 >
                   {rowData.firstName} {rowData.lastName}
@@ -118,7 +118,7 @@ function AllUsersAdmin({ allUsers, GetUsers }) {
           actionsColumnIndex: -1,
           detailPanelIndex: -1,
           headerStyle: {
-            backgroundColor: "#420000",
+            backgroundColor: "#8c2121",
             color: "#FFF",
             zIndex: "1"
           },
@@ -126,7 +126,7 @@ function AllUsersAdmin({ allUsers, GetUsers }) {
         }}
         components={{
           Pagination: props => (
-            <div style={{ backgroundColor: "#e8eaf5" }}>
+            <div>
               <Pagination />
             </div>
           )
