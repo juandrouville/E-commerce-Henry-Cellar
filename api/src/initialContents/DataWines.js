@@ -18,7 +18,7 @@ const products = [
     description: "6 months in French and American oak.",
     type: "Tinto",
     varietal: "Malbec",
-    bodega: "Del Fin Del Mundo",
+    bodega: "Del Fin del Mundo",
     precio: 540,
     stock: 30,
     category: ["Wine", "Tinto", "Malbec"],
