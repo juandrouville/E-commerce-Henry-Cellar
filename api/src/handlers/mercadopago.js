@@ -31,9 +31,9 @@ async function mercadop (req, res, next){
               installments: 3,
             },
             back_urls: {
-              success: "http://localhost:3001/mercadopago/pagos",
-              failure: "http://localhost:3000/",
-              pending: "http://localhost:3000/",
+              success: `/mercadopago/pagos` || "http://localhost:3001/mercadopago/pagos",
+              failure: `/` || "http://localhost:3000/",
+              pending: `/` || "http://localhost:3000/",
             },
           };
 
