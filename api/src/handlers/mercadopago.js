@@ -98,11 +98,11 @@ async function mercadop (req, res, next){
       .then((Order) => {
         console.info("salvando order");
         console.info("redirect success");
-        return res.redirect("http://localhost:3000/home")
+        return res.redirect("/home"||"http://localhost:3000/home")
       })
       .catch((err) => {
         console.error("error al salvar", err);
-        return res.redirect("http://localhost:3000/error");
+        return res.redirect("/error"||"http://localhost:3000/error");
       });
       Promise.all([a,b]).then(response=>{res.send("Checkout exitoso")})
   }
