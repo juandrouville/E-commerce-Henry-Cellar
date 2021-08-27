@@ -15,9 +15,12 @@ export default function Pagination() {
         onClick={() => {
           if (page > 0) {
             dispatch(prevPage(page - 1));
-            dispatch(
-              getAllproducts(page - 1, filter, valueFilter, valueFilter2)
-            );
+            dispatch(getAllproducts(page - 1, filter, valueFilter));
+            window.scroll({
+              top: 100,
+              left: 100,
+              behavior: 'smooth'
+            });
           }
         }}
         disabled={page <= 0}
@@ -27,7 +30,12 @@ export default function Pagination() {
       <button
         onClick={() => {
           dispatch(nextPage(page + 1));
-          dispatch(getAllproducts(page + 1, filter, valueFilter, valueFilter2));
+          dispatch(getAllproducts(page + 1, filter, valueFilter));
+          window.scroll({
+            top: 100,
+            left: 100,
+            behavior: 'smooth'
+          });
         }}
         disabled={page >= 3}
       >

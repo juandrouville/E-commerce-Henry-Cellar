@@ -18,10 +18,16 @@ async function addProductToDBCart(req , res,next){
         if(orderOfUser.orderlines[i].productId===productId){
             
             estado="Si esta"
+            let productOfOrderline=await Product.findOne({where:{id:productId}})
             let oldAmount=orderOfUser.orderlines[i].amount
+            if(oldAmount<productOfOrderline.stock){
             orderOfUser.orderlines[i]["amount"]=oldAmount+1
             await orderOfUser.orderlines[i].save()
             res.json(orderOfUser.orderlines[i])
+            } else {
+                res.send("The limit stock was reached")
+            }
+            
         }
     }
     }

@@ -81,25 +81,17 @@ export default function ProductDetail() {
                   </p>
                 </div>
                 <div className="buyFavButtons">
-                  <button
-                    disabled={productDetail.stock < 1 ? true : false}
-                    onClick={() => addToCart(productDetail.id)}
-                  >
-                    <TiShoppingCart
-                      size={30}
-                      disabled={productDetail.stock < 1 ? true : false}
-                    />
-                  </button>
-                  {/* {isAuthenticated ? ( */}
-                  <button
-                    onClick={e => {
-                      addFavourite(productDetail.id);
-                      e.target.disabled = true;
-                    }}
-                  >
-                    Fav <FaStar className="star" color="#ffc107" size={15} />
-                  </button>
-                  {/* ) : null} */}
+                  { productDetail.stock>0 ?
+                    <button  onClick={() => addToCart(productDetail.id)}>
+                    <TiShoppingCart size={30}   disabled={productDetail.stock <1 ? true : false}/>
+                  </button> : null }
+                  
+                  { isAuthenticated ? 
+                    <button  onClick={(e) => {addFavourite(productDetail.id);e.target.disabled=true}}>
+                      Fav <FaStar className="star" color="#ffc107" size={15} />
+                    </button>
+                    : null} 
+
                 </div>
               </div>
             </div>

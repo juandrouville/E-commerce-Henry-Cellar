@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearAllOrders, editOrder, getAllOrders } from "../../actions/index";
 
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 // import * as RiIcons from "react-icons/ri";
 //import ProductsAdmin from "../productsAdmin/ProductsAdmin";
@@ -23,34 +23,33 @@ const tableIcons = {
 };
 
 export default function Orders() {
-  // const history = useHistory();
-  const dispatch = useDispatch();
 
-  const allOrders = useSelector(state => state.allOrders);
 
-  useEffect(() => {
-    dispatch(getAllOrders());
-    return () => {
-      dispatch(clearAllOrders());
-    };
-  }, [dispatch]);
+   const history = useHistory();
+   const dispatch = useDispatch()
+   
+   const allOrders=useSelector(state=>state.allOrders)
 
-  const handleStateChange = async (e, rowData) => {
-    dispatch(editOrder(e.target.id, { state: e.target.value }));
-    try {
-      await emailjs.send(
-        "service_7hulls6",
-        "template_jrogisn",
-        rowData,
-        "user_BJC5R9YmSgfq18FKCkmzN"
-      );
-      toast.success(
-        `An email was sent to the user ${rowData.user.firstName} ${rowData.user.lastName}`
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+   useEffect(()=>{
+     dispatch(getAllOrders())
+     return ()=>{
+       dispatch(clearAllOrders())
+     }
+    },[dispatch])
+
+  const handleStateChange=async(e,rowData)=>{
+     dispatch(editOrder(e.target.id,{state:e.target.value}))
+     try {
+       if(e.target.value==="sent"){
+         await emailjs.send('service_7hulls6',"template_jrogisn",rowData,"user_BJC5R9YmSgfq18FKCkmzN")
+       } else if(e.target.value==="rejected"){
+        await emailjs.send('service_7hulls6',"template_8i3cl8a",rowData,"user_BJC5R9YmSgfq18FKCkmzN")
+       }
+       toast.success(`An email was sent to the user ${rowData.user.firstName} ${rowData.user.lastName}`)
+     } catch (error) {
+       console.log(error)
+     }
+  }
 
   const columns = [
     { title: "Id", field: "id", filtering: false },
