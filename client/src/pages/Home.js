@@ -95,15 +95,16 @@ const Home = props => {
       {isAuthenticated ? <Carousel /> : null}
 
       <div id="catalogo">
-        <h1 className="catalogo__title">Catalog</h1>
+        <br/>
+        <br/>
         <div>
           <Filtros />
           <SimpleForm />
         </div>
         <AllProducts />
       </div>
-      <div className="cartButton">
-        <Pagination />
+      <div>
+        <Pagination/>
       </div>
     </LayoutPrimary>
   );

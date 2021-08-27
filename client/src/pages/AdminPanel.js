@@ -34,6 +34,8 @@ function DisabledTabs() {
   return (
     <Paper square>
       <Tabs
+        variant="scroll"
+        scrollButtons="auto"
         value={value}
         indicatorColor="black"
         textColor="black"

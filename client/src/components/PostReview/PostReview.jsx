@@ -92,6 +92,7 @@ function PostReview (productId){
             <textarea className = "comentaryArea" id="textarea" placeholder="Your Opinion" onChange={changeComentary} />
             <input className = "submit" type="submit" onClick={submitPost} />
         </div>
+        
 
     )
 };

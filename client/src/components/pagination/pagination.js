@@ -10,8 +10,9 @@ export default function Pagination() {
   var dispatch = useDispatch();
 
   return (
-    <div className="cart_buttons">
+    <div className="container_pagination">
       <button
+        className="cartButton"
         onClick={() => {
           if (page > 0) {
             dispatch(prevPage(page - 1));
