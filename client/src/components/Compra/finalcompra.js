@@ -34,9 +34,14 @@ export function FinalizarCompra(props) {
       state.codigoPostal
     ) {
       axios
-        .post(`http://localhost:3001/user/compra/${props.user.id}`, state, {
-          withCredentials: true
-        })
+        .post(
+          `/user/compra/${props.user.id}` ||
+            `http://localhost:3001/user/compra/${props.user.id}`,
+          state,
+          {
+            withCredentials: true
+          }
+        )
         .then(respuesta => {
           swal({
             title: "Compra finalizada con éxito!",
