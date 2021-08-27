@@ -4,86 +4,92 @@ const products = [
     img:
       "https://www.espaciovino.com.ar/media/default/0001/63/thumb_62806_default_small.jpeg",
     description:
-      "80% del vino es estacionado durante 6 meses en barricas de roble francés y americano, y el restante 20% en tanques de acero inoxidable para preservar la frescura del vino. Luego permanece en botella durante 6 meses antes de su expendio.",
+      "80% of the wine is aged for 6 months in French and American oak barrels, and the remaining 20% ​​in stainless steel tanks to preserve the freshness of the wine. It then remains in the bottle for 6 months before being spent.",
     bodega: "Viniterra",
     precio: 432,
     stock: 30,
     category: ["Wine", "Tinto", "Malbec"],
-    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"]
-    
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"],
   },
   {
     name: "Postales Del Fin Del Mundo",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/64/thumb_63323_default_big.jpeg",
-    description: "6 meses en roble francés y americano",
+    description: "6 months in French and American oak.",
     type: "Tinto",
     varietal: "Malbec",
     bodega: "Del Fin Del Mundo",
     precio: 540,
     stock: 30,
     category: ["Wine", "Tinto", "Malbec"],
-    maridaje: ["Pescados", "Fiambres",  "Ternera", "Comida Asitica", "Pastas"]
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"],
   },
   {
     name: "Dv Catena Cabernet Malbec ",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/53/thumb_52791_default_big.jpeg",
     description:
-      "DV Catena Cabernet Sauvignon-Malbec es un vino elegante y complejo, de color rojo rubi con reflejos violetas.A la nariz, intenso y concentrado, presenta notas de especias aportadas por el Cabernet Sauvignon del viñedo La Pirámide, y notas de moras maduras y ciruelas, características del Malbec del viñedo Angélica, acompañadas por vainilla, tabaco y licor aportadas por la crianza en roble.En boca, de impacto dulce y gran complejidad, con taninos integrados y redondos, de final largo y persistente.",
+      "DV Catena Cabernet Sauvignon-Malbec is an elegant and complex wine, ruby ​​red in color with violet reflections. On the nose, intense and concentrated, it presents notes of spices provided by the Cabernet Sauvignon from the La Pirámide vineyard, and notes of ripe blackberries and plums. , characteristics of Malbec from the Angélica vineyard, accompanied by vanilla, tobacco and liquor provided by aging in oak.In the mouth, sweet impact and great complexity, with integrated and round tannins, long and persistent finish.",
     bodega: "Catena Zapata",
     precio: 1599.99,
     stock: 30,
     category: ["Wine", "Blend", "Tinto"],
-    maridaje: ["Pescados", "Fiambres",  "Ternera", "Comida Asitica", "Pastas"]
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"],
   },
   {
     name: "Del Fin Del Mundo Special Blend",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/55/thumb_54326_default_big.jpeg",
     description:
-      "Color rojo profundo, muy intenso.Aroma potente recuerda a frutos rojos, especias y mermelada de frutas, notas a nuez de coco, ahumado y tabaco.En boca es frutado, delicado, de exquisito equilibrio, con taninos suaves y redondos. Su final de boca es elegante y prolongado. Vino de gran jerarquía.",
+      "Deep red color, very intense. Powerful aroma reminiscent of red fruits, spices and fruit jam, notes of coconut, smoked and tobacco. On the palate it is fruity, delicate, exquisitely balanced, with soft and round tannins. Its finish is elegant and long. Wine of great hierarchy.",
     bodega: "Del Fin del Mundo",
     precio: 387,
     stock: 30,
     category: ["Wine", "Blend", "Tinto"],
-    maridaje: ["Pescados", "Fiambres",  "Ternera", "Comida Asitica", "Pastas"]
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"],
   },
   {
     name: "Quara Reserva Cabeernet Sauvignon",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/59/thumb_58415_default_big.jpeg",
     description:
-      "De color rojo rubí, intenso y de buen matiz.En nariz, muy frutado y expresivo, con notas de pimientos y pimientas típicos de ese terroir.De buena estructura en boca, voluminoso, con taninos intensos y muy maduros. De final largo y aromático, con notas complejas de vainilla y tostado, aportadas por su paso por madera.",
+      "Ruby red in color, intense and with a good nuance. On the nose, very fruity and expressive, with notes of peppers and peppers typical of that terroir. Good structure on the palate, voluminous, with intense and very ripe tannins. Long and aromatic finish, with complex notes of vanilla and toast, provided by its aging in wood.",
     bodega: "Finca Quara",
     precio: 410,
     stock: 30,
     category: ["Wine", "Cabernet Sauvignon", "Tinto"],
-    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"]
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"],
   },
   {
     name: "Famiglia Bianchi Cabernet Sauvignon",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/53/thumb_52940_default_big.jpeg",
     description:
-      "Vino de color rojo rubí intenso y muy buena lágrima.Vino de una elegancia y personalidad destacada, sus aromas especiados seducen por su complejidad e intensidad. Pimienta negra, regaliz, cedro, granos de café tostados y dejos de menta fresca se arremolinan alrededor de frutadas sensaciones de cassis, moras y frutos silvestres.En boca se expresa ampliamente con gran persistencia de aromas y una notable y armoniosa estructura que acentúan su linaje real.",
+      "Wine of intense ruby ​​red color and very good tears. It has an elegance and outstanding personality, its spicy aromas seduce by its complexity and intensity. Black pepper, liquorice, cedar, roasted coffee beans and hints of fresh mint swirl around fruity sensations of cassis, blackberries and wild fruits. In the mouth it is widely expressed with great persistence of aromas and a remarkable and harmonious structure that accentuate its lineage real.",
     bodega: "Casa Bianchi",
     precio: 810,
     stock: 30,
     category: ["Wine", "Cabernet Sauvignon", "Tinto"],
-    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"]
+    maridaje: ["Pescados", "Fiambres", "Ternera", "Comida Asitica", "Pastas"],
   },
   {
     name: "Pulenta Estate Merlot",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/55/thumb_54228_default_big.jpeg",
     description:
-      "Estas notables variaciones de temperatura entre el día y la noche, llevan a nuestros viñedos a lograr colores muy profundos, con caracteres frutados muy intensos, aquí, la cereza, el eucalipto, y la menta emergen, para combinarse con las excelentes notas de madera. su gran estructura y persistencia en boca hacen de éste un gran vino.",
+      "These remarkable variations in temperature between day and night, lead our vineyards to achieve very deep colors, with very intense fruity characters, here, cherry, eucalyptus, and mint emerge, to combine with the excellent notes of wood. its great structure and persistence in the mouth make this a great wine.",
     bodega: "Pulenta Estate",
     precio: 1750,
     stock: 30,
     category: ["Wine", "Tinto", "Merlot"],
-    maridaje: ["Pescados", "Fiambres", "Carnes Blancas", "Ternera", "Comida Asitica", "Pastas"]
+    maridaje: [
+      "Pescados",
+      "Fiambres",
+      "Carnes Blancas",
+      "Ternera",
+      "Comida Asitica",
+      "Pastas",
+    ],
   },
   {
     name: "Casa Boher Merlot",
@@ -95,7 +101,14 @@ const products = [
     precio: 1100,
     stock: 30,
     category: ["Wine", "Tinto", "Merlot"],
-    maridaje: ["Pescados", "Fiambres", "Carnes Blancas", "Ternera", "Comida Asitica", "Pastas"]
+    maridaje: [
+      "Pescados",
+      "Fiambres",
+      "Carnes Blancas",
+      "Ternera",
+      "Comida Asitica",
+      "Pastas",
+    ],
   },
   {
     name: "Sacacorcho 2 tiempos Azul WineFroz",
@@ -177,7 +190,7 @@ const products = [
     name: "Decanter Casual",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61387_default_big.jpeg",
-    description: "Alto: 240 mm,Capacidad: 1400 ml,Boca: 135 mm.",
+    description: "Height: 240 mm, Capacity: 1400 ml, Mouth: 135 mm.",
     bodega: null,
     precio: 6930,
     stock: 30,
@@ -187,7 +200,7 @@ const products = [
     name: "Decanter Hybrid",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61388_default_big.jpeg",
-    description: "Alto: 270 mm,Capacidad: 1800 ml,Boca: 164 mm.",
+    description: "Height: 270mm, Capacity: 1800ml, Mouth: 164mm.",
     bodega: null,
     precio: 1240,
     stock: 30,
@@ -203,7 +216,16 @@ const products = [
     precio: 540,
     stock: 30,
     category: ["Wine", "Blanco", "Chardonnay"],
-    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
+    maridaje: [
+      "Aperitivos",
+      "Ensaladas Platos a base de vegetales",
+      "Fiambres",
+      "Antipastos",
+      "Pescados",
+      "Carnes Blancas",
+      "Crudos",
+      "Quesos",
+    ],
   },
   {
     name: "La Linda Chardonnay",
@@ -215,7 +237,16 @@ const products = [
     precio: 830,
     stock: 30,
     category: ["Wine", "Blanco", "Chardonnay"],
-    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
+    maridaje: [
+      "Aperitivos",
+      "Ensaladas Platos a base de vegetales",
+      "Fiambres",
+      "Antipastos",
+      "Pescados",
+      "Carnes Blancas",
+      "Crudos",
+      "Quesos",
+    ],
   },
 
   {
@@ -228,7 +259,16 @@ const products = [
     precio: 290,
     stock: 99,
     category: ["Wine", "Blanco", "Torrontes"],
-    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
+    maridaje: [
+      "Aperitivos",
+      "Ensaladas Platos a base de vegetales",
+      "Fiambres",
+      "Antipastos",
+      "Pescados",
+      "Carnes Blancas",
+      "Crudos",
+      "Quesos",
+    ],
   },
   {
     name: "Nanni Torrontes",
@@ -240,7 +280,16 @@ const products = [
     precio: 882,
     stock: 99,
     category: ["Wine", "Blanco", "Torrontes"],
-    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
+    maridaje: [
+      "Aperitivos",
+      "Ensaladas Platos a base de vegetales",
+      "Fiambres",
+      "Antipastos",
+      "Pescados",
+      "Carnes Blancas",
+      "Crudos",
+      "Quesos",
+    ],
   },
 
   {
@@ -253,7 +302,16 @@ const products = [
     precio: 441,
     stock: 99,
     category: ["Wine", "Blanco", "Blend"],
-    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
+    maridaje: [
+      "Aperitivos",
+      "Ensaladas Platos a base de vegetales",
+      "Fiambres",
+      "Antipastos",
+      "Pescados",
+      "Carnes Blancas",
+      "Crudos",
+      "Quesos",
+    ],
   },
   {
     name: "Capriccio Dulce Natural Dolcezza",
@@ -265,7 +323,16 @@ const products = [
     precio: 276,
     stock: 99,
     category: ["Wine", "Blanco", "Blend"],
-    maridaje: ["Aperitivos", "Ensaladas Platos a base de vegetales", "Fiambres", "Antipastos", "Pescados","Carnes Blancas", "Crudos","Quesos"]
+    maridaje: [
+      "Aperitivos",
+      "Ensaladas Platos a base de vegetales",
+      "Fiambres",
+      "Antipastos",
+      "Pescados",
+      "Carnes Blancas",
+      "Crudos",
+      "Quesos",
+    ],
   },
   {
     name: "Colon Rose",
@@ -277,19 +344,28 @@ const products = [
     precio: 220,
     stock: 99,
     category: ["Wine", "Rosado", "Malbec"],
-    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
+    maridaje: [
+      "Ensaladas y Platos a base de vegetales",
+      "Fiambres",
+      "Pescados",
+      "Comida asitica",
+    ],
   },
   {
     name: "Las Perdices Malbec Ice",
     img:
       "https://www.espaciovino.com.ar/media/default/0001/62/thumb_61468_default_big.jpeg",
-    description:
-      "Aromas of overripe red fruits, prune raisins and cherries.",
+    description: "Aromas of overripe red fruits, prune raisins and cherries.",
     bodega: "Las Perdices",
     precio: 1630,
     stock: 99,
     category: ["Wine", "Rosado", "Malbec"],
-    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
+    maridaje: [
+      "Ensaladas y Platos a base de vegetales",
+      "Fiambres",
+      "Pescados",
+      "Comida asitica",
+    ],
   },
   {
     name: "Mendel Rosadia",
@@ -301,7 +377,12 @@ const products = [
     precio: 3200,
     stock: 99,
     category: ["Wine", "Rosado", "Blend"],
-    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
+    maridaje: [
+      "Ensaladas y Platos a base de vegetales",
+      "Fiambres",
+      "Pescados",
+      "Comida asitica",
+    ],
   },
   {
     name: "Lagarde Goes Pink Rose",
@@ -313,7 +394,12 @@ const products = [
     precio: 1100,
     stock: 99,
     category: ["Wine", "Rosado", "Blend"],
-    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
+    maridaje: [
+      "Ensaladas y Platos a base de vegetales",
+      "Fiambres",
+      "Pescados",
+      "Comida asitica",
+    ],
   },
   {
     name: "Finca Gabriel Rose",
@@ -325,7 +411,12 @@ const products = [
     precio: 436,
     stock: 99,
     category: ["Wine", "Rosado", "Syrah"],
-    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
+    maridaje: [
+      "Ensaladas y Platos a base de vegetales",
+      "Fiambres",
+      "Pescados",
+      "Comida asitica",
+    ],
   },
   {
     name: "Salentein Reserve Rosado",
@@ -337,7 +428,12 @@ const products = [
     precio: 900,
     stock: 99,
     category: ["Wine", "Rosado", "Syrah"],
-    maridaje: ["Ensaladas y Platos a base de vegetales", "Fiambres","Pescados","Comida asitica"]
+    maridaje: [
+      "Ensaladas y Platos a base de vegetales",
+      "Fiambres",
+      "Pescados",
+      "Comida asitica",
+    ],
   },
 ];
 

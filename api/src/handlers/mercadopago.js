@@ -92,7 +92,7 @@ async function mercadop (req, res, next){
    
   
     let b=Order.update(
-      { state: "accepted", paymentid, paymentstatus, merchantorderid },
+      { state: "accepted", paymentid, paymentstatus, merchantorderid, paymentMethod:"MercadoPago" },
       { where: { id: externalreference } }
     )
       .then((Order) => {

@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import ProductFavourite from "../components/productFavourite/productFavourite";
 import LayoutPrimary from "../layouts/layout-primary";
 

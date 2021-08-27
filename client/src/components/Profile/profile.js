@@ -1,14 +1,20 @@
 import React from "react";
 import Layout from "layouts/layout-primary";
 import { useAuth0 } from "@auth0/auth0-react";
-import { NavLink } from "react-router-dom";
-import * as RiIcons from "react-icons/ri";
-import { useSelector } from "react-redux";
-import FinalizarCompra from "../Compra/finalcompra";
+import { Link, NavLink } from "react-router-dom";
+import { getDbOrder } from "../../actions";
+import { useSelector, useDispatch } from "react-redux";
+import * as AiIcons from "react-icons/ai";
+import AuthNav from "../auth-Nav/auth-nav";
+import * as IoIcons from "react-icons/io";
 
 const Profile = () => {
   const { user } = useAuth0();
-  const userData = useSelector((state) => state.user.dataValues);
+  const userData = useSelector(state => state.user.dataValues);
+  const dispatch = useDispatch();
+  const historyUser = id => {
+    dispatch(getDbOrder(id));
+  };
 
   return (
     <Layout>
@@ -17,25 +23,39 @@ const Profile = () => {
           <div className="image_data">
             <img src={userData.image} alt="Profile" className="imgProfile" />
             <div className="profileData">
-              <h2 className="h3Profile">{userData.userName}</h2>
-              <h3 className="h3Profile">Name: {userData.firstName}</h3>
-              <h3 className="h3Profile">Last Name: {userData.lastName}</h3>
-              <p className="h3Profile">E-mail: {userData.email}</p>
-              <p className="h3Profile">Address: {userData.adress}</p>
-              {/* <p className="h3Profile">Number: {userData.numero}</p>
-              <p className="h3Profile">City: {userData.localidad}</p>
-              <p className="h3Profile">State: {userData.provincia}</p>
-              <p className="h3Profile">Zip Code: {userData.codigopostal}</p>
-              <p className="h3Profile">Phone Number: {userData.phone}</p> */}
+              <h2>
+                {userData.firstName} {userData.lastName}
+              </h2>
+              <p>@{userData.userName}</p>
+              <br />
+              <p>E-mail: {userData.email}</p>
+              {userData.adress !== "Unknown" && (
+                <div className="user_Adress">
+                  <p>Address: {userData.adress}</p>
+                </div>
+              )}
             </div>
           </div>
-            
+          <div className="optionsUser">
+            <Link to={`/mycart`} className="btn_myCart">
+              <IoIcons.IoIosCart size={20} />
+              <h3>My Cart </h3>
+            </Link>
+            <NavLink to="/prueba" refresh="true" className="btn_history">
+              <button
+                className="btn_logueo"
+                onClick={() => historyUser(userData.dataValues.id)}
+              >
+                <AiIcons.AiOutlineHistory size={20} />
+                <h3>My Shopping</h3>
+              </button>
+            </NavLink>
+            <AuthNav />
+          </div>
         </div>
       </div>
     </Layout>
   );
 };
-        
-          
 
 export default Profile;
