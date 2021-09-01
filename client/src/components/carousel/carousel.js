@@ -23,7 +23,7 @@ const Carousel = () => {
     dispatch(editFavorites(id, user.sub, true));
   };
 
-  useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
+  //useEffect(()=>{if(isAuthenticated)dispatch(getFavorites(user.sub))},[editFavoritesState])
 
   const settings = {
     dots: true,

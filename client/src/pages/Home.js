@@ -49,10 +49,6 @@ const Home = props => {
   }, [dispatch,isAuthenticated]);
 
   useEffect(() => {
-    if (isAuthenticated) dispatch(getFavorites(user.sub));
-  }, [userDB]);
-
-  useEffect(() => {
     if (isAuthenticated && userDB && cart.length) {
       dispatch(unifyCarts(user.sub, cart));
       toast.success("Products of your cart were successfully added !");
@@ -67,8 +63,8 @@ const Home = props => {
   }, [cartDB, addProductLogged, userDB]);
 
   useEffect(() => {
-    if (isAuthenticated) dispatch(getFavorites(user.sub));
-  }, [editFavoritesState]);
+    if (isAuthenticated && userDB) dispatch(getFavorites(user.sub));
+  }, [userDB,editFavoritesState]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
