@@ -8,6 +8,7 @@ import {
   // addProductToDBCart
 } from "../../actions/index";
 import Product from "../product/Product";
+import Loading from '../Loading/Loading';
 
 function AllProducts({ products, GetProducts, addCart }) {
   // const { user, isAuthenticated } = useAuth0();
@@ -39,7 +40,9 @@ function AllProducts({ products, GetProducts, addCart }) {
             );
           })
         ) : (
-          <p>Cargando...</p>
+          <div className="loading-container">
+            <Loading/>
+          </div>
         )}
       </div>
     </div>
