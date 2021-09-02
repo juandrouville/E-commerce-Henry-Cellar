@@ -39,7 +39,7 @@ export function MercadoPago({ orderlines }) {
     if (orderlines.length) {
       axios
         .post(
-          "/mercadopago"+ orderlines[0].orderId
+          "/mercadopago/"+ orderlines[0].orderId
           || "http://localhost:3001/mercadopago/" + orderlines[0].orderId,
           obj1
         )
