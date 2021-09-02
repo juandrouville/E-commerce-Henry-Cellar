@@ -136,7 +136,7 @@ const Cart = () => {
               <button
                 className="buy_button"
                 disabled={result.length === 0 ? true : false}
-                onClick={e => clearcart(e)}
+                onClick={clearcart}
               >
                 Clear Cart
               </button>

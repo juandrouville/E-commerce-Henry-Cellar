@@ -438,9 +438,9 @@ let id = 1;
 export function clearCartOfDB(orderId) {
   return async dispatch => {
     try {
-      // const res = await axios.delete(
-      //   `/clearCart/${orderId}` || `http://localhost:3001/clearCart/${orderId}`
-      // );
+      const res = await axios.delete(
+        `/clearCart/${orderId}` || `http://localhost:3001/clearCart/${orderId}`
+      );
       dispatch({ type: CLEAR_CART_OF_DB, payload: id++ });
     } catch (error) {
       alert("ERROR AL LIMPIAR EL CARRITO EN LA BASE DE DATOS");
