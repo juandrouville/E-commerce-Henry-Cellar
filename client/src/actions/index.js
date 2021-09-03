@@ -409,7 +409,7 @@ export function postReview(review) {
 export function getOrderlines(cartId) {
   return dispatch => {
     //try {
-      const res = await axios.get(
+      const res = axios.get(
         `/getOrderlines/${cartId}` ||
           `http://localhost:3001/getOrderlines/${cartId}`
       );
