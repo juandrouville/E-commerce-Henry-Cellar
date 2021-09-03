@@ -407,16 +407,16 @@ export function postReview(review) {
 }
 
 export function getOrderlines(cartId) {
-  return async dispatch => {
-    try {
+  return dispatch => {
+    //try {
       const res = await axios.get(
         `/getOrderlines/${cartId}` ||
           `http://localhost:3001/getOrderlines/${cartId}`
       );
       dispatch({ type: GET_DB_ORDERLINES, payload: res.data });
-    } catch (error) {
-      alert("ERROR EN OBTENER LAS ORDERLINES DE LA DB");
-    }
+   // } catch (error) {
+   //   alert("ERROR EN OBTENER LAS ORDERLINES DE LA DB");
+   // }
   };
 }
 
